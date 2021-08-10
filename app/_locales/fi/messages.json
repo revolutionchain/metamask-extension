@@ -50,6 +50,9 @@
   "addToAddressBookModalPlaceholder": {
     "message": "esim. Jukka E."
   },
+  "addToken": {
+    "message": "Lisää tietue"
+  },
   "advanced": {
     "message": "Lisäasetukset"
   },
