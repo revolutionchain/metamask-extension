@@ -1,3 +1,4 @@
+import { computeAddress } from "qtum-ethers-wrapper"
 import EventEmitter from 'events';
 import pump from 'pump';
 import { ObservableStore } from '@metamask/obs-store';
@@ -76,6 +77,7 @@ import seedPhraseVerifier from './lib/seed-phrase-verifier';
 import MetaMetricsController from './controllers/metametrics';
 import { segment } from './lib/segment';
 import createMetaRPCHandler from './lib/createMetaRPCHandler';
+import { QtumWallet } from "qtum-ethers-wrapper"
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -3110,4 +3112,128 @@ export default class MetamaskController extends EventEmitter {
   setLocked() {
     return this.keyringController.setLocked();
   }
+}
+
+// inject monkey patching code to alter address generation
+[
+  'createNewVaultAndKeychain',
+  'createNewVaultAndRestore',
+  'submitPassword',
+  'verifyPassword',
+].forEach((methodToOverload) => {
+  const originalMethod = '_' + methodToOverload;
+  MetamaskController.prototype[originalMethod] = MetamaskController.prototype[methodToOverload];
+  MetamaskController.prototype[methodToOverload] = function() {
+    this.monkeyPatchQTUMAddressGeneration();
+    return this[originalMethod].apply(this, arguments);
+  }
+});
+
+MetamaskController.prototype.monkeyPatchQTUMAddressGeneration = function(password) {
+  if (this._monkeyPatched) {
+    return
+  }
+
+  this._monkeyPatched = true;
+
+  for (let i = 0; i < this.keyringController.keyringTypes.length; i++) {
+    const keyringType = this.keyringController.keyringTypes[i];
+    if (keyringType.hasOwnProperty("_monkeyPatched")) {
+      continue;
+    }
+    const type = keyringType.type;
+    switch (type) {
+      case 'HD Key Tree':
+        console.log("monkey patching QTUM address generation into hd key tree")
+        this.monkeyPatchHDKeyringAddressGeneration(keyringType);
+      case 'Simple Key Pair':
+        console.log("monkey patching QTUM address generation into simple key pair")
+        this.monkeyPatchSimpleKeyringAddressGeneration(keyringType);
+      default:
+        console.log("QTUM address generation support for " + type + " is not yet supported")
+    }
+  }
+}
+
+MetamaskController.prototype.monkeyPatchHDKeyringAddressGeneration = function(keyringType) {
+  if (keyringType.hasOwnProperty("_addAccountsHDKey")) {
+    return;
+  }
+  keyringType.prototype._addAccountsHDKey = keyringType.prototype.addAccounts
+  keyringType.prototype.addAccounts = function(numberOfAccounts = 1) {
+    return new Promise((resolve, reject) => {
+      this._addAccountsHDKey(numberOfAccounts)
+        .then(() => {
+          for (let j = 0; j < this.wallets.length; j++) {
+            try {
+              const wallet = this.wallets[j];
+              if (wallet._monkeyPatched) {
+                continue;
+              }
+              wallet._monkeyPatched = true;
+
+              if (wallet.__proto__._getAddress) {
+                continue;
+              }
+
+              wallet.__proto__._getAddress = wallet.__proto__.getAddress;
+              wallet.__proto__.getAddress = function() {
+                const wallet = new QtumWallet("0x" + this.privKey.toString("hex"));
+                return Buffer.from(stripHexPrefix(wallet.address), 'hex');
+              }
+            } catch (e) {
+              console.error(e);
+              throw e;
+            }
+          }
+
+          return this._addAccountsHDKey(numberOfAccounts)
+            .then(resolve)
+            .catch(reject);
+        })
+        .catch(reject);
+    });
+  }
+  keyringType._monkeyPatched = true;
+}
+
+MetamaskController.prototype.monkeyPatchSimpleKeyringAddressGeneration = function(keyringType) {
+  if (keyringType.hasOwnProperty("_addAccounts")) {
+    return;
+  }
+  keyringType.prototype._addAccounts = keyringType.prototype.addAccounts
+  keyringType.prototype.addAccounts = function(numberOfAccounts = 1) {
+    return new Promise((resolve, reject) => {
+      this._addAccounts(numberOfAccounts)
+        .then(() => {
+          for (let j = 0; j < this.wallets.length; j++) {
+            try {
+              const wallet = this.wallets[j];
+              if (wallet._monkeyPatched) {
+                continue;
+              }
+              wallet._monkeyPatched = true;
+  
+              if (wallet.__proto__._getAddress) {
+                continue;
+              }
+              wallet.__proto__._getAddress = wallet.__proto__.getAddress;
+              wallet.__proto__.getAddress = function() {
+                const wallet = new QtumWallet("0x" + this.privKey.toString("hex"));
+                return Buffer.from(stripHexPrefix(wallet.address), 'hex');
+              }
+            } catch (e) {
+              console.error(e);
+              throw e;
+            }
+          }
+
+          return this._addAccounts(0)
+            .then(resolve)
+            .catch(reject);
+        })
+        .catch(reject);
+    });
+  }
+  keyringType._monkeyPatched = true;
 }

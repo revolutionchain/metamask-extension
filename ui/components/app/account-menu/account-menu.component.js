@@ -396,6 +396,7 @@ export default class AccountMenu extends Component {
           text={t('importAccount')}
         />
         <AccountMenuItem
+        className="hide-component"
           onClick={() => {
             toggleAccountMenu();
             metricsEvent({

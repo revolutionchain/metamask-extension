@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import {
   decGWEIToHexWEI,
   decimalToHex,
+  hexToDecimal,
   hexWEIToDecGWEI,
 } from '../../../../helpers/utils/conversions.util';
 import { MIN_GAS_LIMIT_DEC } from '../../../../pages/send/send.constants';

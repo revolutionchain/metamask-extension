@@ -1,4 +1,13 @@
 {
+  "qtumMainnet": {
+    "message": "QTUM Mainnet"
+  },
+  "qtumTestnet": {
+    "message": "QTUM Testnet"
+  },
+  "qtumRegtest": {
+    "message": "QTUM Regtest"
+  },
   "about": {
     "message": "About"
   },
