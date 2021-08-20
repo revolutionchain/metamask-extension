@@ -109,6 +109,10 @@ $kovan: #9064ff;
 $rinkeby: #f6c343;
 $goerli: #3099f2;
 
+$qtumMainnet: #29b6af;
+$qtumTestnet: #ff4a8d;
+$qtumRegtest: #f6c343;
+
 $color-map: (
   'ui-1': $ui-1,
   'ui-2': $ui-2,
@@ -136,5 +140,8 @@ $color-map: (
   'kovan': $kovan,
   'rinkeby': $rinkeby,
   'goerli': $goerli,
+  'qtumMainnet': $qtumMainnet,
+  'qtumTestnet': $qtumTestnet,
+  'qtumRegtest': $qtumRegtest,
   'transparent': transparent,
 );

@@ -8,6 +8,7 @@ import {
   addHexes,
   hexToDecimal,
   hexWEIToDecGWEI,
+  getHexFromWeiHex,
 } from '../../helpers/utils/conversions.util';
 import {
   CONFIRM_TRANSACTION_ROUTE,
@@ -727,6 +728,16 @@ export default class ConfirmTransactionBase extends Component {
       },
       () => {
         this._removeBeforeUnload();
+
+        // convert txData.txParams.value from wei to satoshi
+        const satoshiValue = getHexFromWeiHex({
+          value: txData.txParams.value,
+          fromCurrency: "ETH",
+          toCurrency: "ETH",
+          toDenomination: "SATOSHI",
+        })
+
+        txData.txParams.value = satoshiValue;
 
         sendTransaction(txData)
           .then(() => {

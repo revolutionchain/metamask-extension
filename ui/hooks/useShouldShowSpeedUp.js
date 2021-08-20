@@ -9,6 +9,7 @@ import { SECOND } from '../../shared/constants/time';
  * @param {boolean} isEarliestNonce - Whether this group is currently the earliest nonce
  */
 export function useShouldShowSpeedUp(transactionGroup, isEarliestNonce) {
+  return false; // NYI
   const { transactions, hasRetried } = transactionGroup;
   const [earliestTransaction = {}] = transactions;
   const { submittedTime } = earliestTransaction;
