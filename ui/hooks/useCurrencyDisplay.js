@@ -60,7 +60,7 @@ export function useCurrencyDisplay(
       return conversionUtil(inputValue, {
         fromNumericBase: 'hex',
         toNumericBase: 'dec',
-        fromDenomination: 'WEI',
+        fromDenomination: opts.fromDenomination || 'WEI',
         numberOfDecimals: numberOfDecimals || 2,
         toDenomination: denomination,
       });
