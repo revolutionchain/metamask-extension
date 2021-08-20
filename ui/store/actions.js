@@ -316,6 +316,7 @@ export function importNewAccount(strategy, args) {
       log.debug(`background.getState`);
       newState = await promisifiedBackground.getState();
     } catch (err) {
+      console.log('[import new account error]', err);
       dispatch(displayWarning(err.message));
       throw err;
     } finally {
@@ -519,6 +520,16 @@ export function setCurrentCurrency(currencyCode) {
       dispatch(hideLoadingIndication());
     }
   };
+}
+
+export function setNativeCurrency() {
+  return async () => {
+    try {
+      await promisifiedBackground.setNativeCurrency();
+    } catch (error) {
+      console.log('[setNativeCurrency error]', error);
+    }
+  }
 }
 
 export function signMsg(msgData) {

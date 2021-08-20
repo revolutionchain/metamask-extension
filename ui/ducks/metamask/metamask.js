@@ -43,7 +43,7 @@ export default function reduceMetamask(state = {}, action) {
     participateInMetaMetrics: null,
     nextNonce: null,
     conversionRate: null,
-    nativeCurrency: 'ETH',
+    nativeCurrency: 'QTUM',
     ...state,
   };
 

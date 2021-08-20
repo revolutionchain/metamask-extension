@@ -353,6 +353,8 @@ class NetworkDropdown extends Component {
             </div>
           ) : null}
         </div>
+        {this.renderNetworkEntry('qtumTestnet')}
+        {this.renderNetworkEntry('qtumRegtest')}
 
         <div className="network-dropdown-list">
           {this.renderNetworkEntry('mainnet')}

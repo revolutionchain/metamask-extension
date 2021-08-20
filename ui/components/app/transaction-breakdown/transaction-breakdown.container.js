@@ -10,6 +10,9 @@ import { sumHexes } from '../../../helpers/utils/transactions.util';
 import { isEIP1559Transaction } from '../../../../shared/modules/transaction.utils';
 
 import TransactionBreakdown from './transaction-breakdown.component';
+import {
+  conversionUtil
+} from '../../../../shared/modules/conversion.utils';
 
 const mapStateToProps = (state, ownProps) => {
   const { transaction, isTokenApprove } = ownProps;
@@ -26,6 +29,13 @@ const mapStateToProps = (state, ownProps) => {
     baseFeePerGas &&
     subtractHexes(effectiveGasPrice, baseFeePerGas);
 
+  const valueInWei = conversionUtil(value, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'hex',
+    fromDenomination: 'SATOSHI',
+    toDenomination: 'WEI',
+  });
+
   // To calculate the total cost of the transaction, we use gasPrice if it is in the txParam,
   // which will only be the case on non-EIP1559 networks. If it is not in the params, we can
   // use the effectiveGasPrice from the receipt, which will ultimately represent to true cost
@@ -38,7 +48,7 @@ const mapStateToProps = (state, ownProps) => {
       getHexGasTotal({ gasLimit, gasPrice: usedGasPrice })) ||
     '0x0';
 
-  let totalInHex = sumHexes(hexGasTotal, value);
+  const totalInHex = sumHexes(hexGasTotal, valueInWei);
 
   const isMultiLayerFeeNetwork =
     getIsMultiLayerFeeNetwork(state) && l1HexGasTotal !== undefined;
