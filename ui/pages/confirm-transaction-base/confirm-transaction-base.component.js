@@ -19,7 +19,7 @@ import {
 } from '../../helpers/constants/error-keys';
 import UserPreferencedCurrencyDisplay from '../../components/app/user-preferenced-currency-display';
 import { PRIMARY, SECONDARY } from '../../helpers/constants/common';
-import { hexToDecimal } from '../../helpers/utils/conversions.util';
+import { hexToDecimal, getHexFromWeiHex } from '../../helpers/utils/conversions.util';
 import AdvancedGasInputs from '../../components/app/gas-customization/advanced-gas-inputs';
 import TextField from '../../components/ui/text-field';
 import {
@@ -512,6 +512,16 @@ export default class ConfirmTransactionBase extends Component {
       },
       () => {
         this._removeBeforeUnload();
+
+        // convert txData.txParams.value from wei to satoshi
+        const satoshiValue = getHexFromWeiHex({
+          value: txData.txParams.value,
+          fromCurrency: "ETH",
+          toCurrency: "ETH",
+          toDenomination: "SATOSHI",
+        })
+
+        txData.txParams.value = satoshiValue;
 
         sendTransaction(txData)
           .then(() => {

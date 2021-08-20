@@ -236,6 +236,7 @@ export function useTransactionDisplayData(transactionGroup) {
     prefix,
     displayValue: primaryDisplayValue,
     suffix: primarySuffix,
+    fromDenomination: 'SATOSHI',
     ...primaryCurrencyPreferences,
   });
 
@@ -243,6 +244,7 @@ export function useTransactionDisplayData(transactionGroup) {
     prefix,
     displayValue: secondaryDisplayValue,
     hideLabel: isTokenCategory || Boolean(swapTokenValue),
+    fromDenomination: 'SATOSHI',
     ...secondaryCurrencyPreferences,
   });
 

@@ -4,6 +4,7 @@ import { getNativeCurrency } from '../../../ducks/metamask/metamask';
 import { getHexGasTotal } from '../../../helpers/utils/confirm-tx.util';
 import { sumHexes } from '../../../helpers/utils/transactions.util';
 import TransactionBreakdown from './transaction-breakdown.component';
+import { conversionUtil } from '../../../helpers/utils/conversion-util';
 
 const mapStateToProps = (state, ownProps) => {
   const { transaction, isTokenApprove } = ownProps;
@@ -14,9 +15,16 @@ const mapStateToProps = (state, ownProps) => {
 
   const gasLimit = typeof gasUsed === 'string' ? gasUsed : gas;
 
+  const valueInWei = conversionUtil(value, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'hex',
+    fromDenomination: 'SATOSHI',
+    toDenomination: 'WEI',
+  });
+
   const hexGasTotal =
     (gasLimit && gasPrice && getHexGasTotal({ gasLimit, gasPrice })) || '0x0';
-  const totalInHex = sumHexes(hexGasTotal, value);
+  const totalInHex = sumHexes(hexGasTotal, valueInWei);
 
   return {
     nativeCurrency: getNativeCurrency(state),

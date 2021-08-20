@@ -11,6 +11,8 @@ import { formatDate } from '../../../helpers/utils/util';
 import TransactionActivityLogIcon from './transaction-activity-log-icon';
 import { CONFIRMED_STATUS } from './transaction-activity-log.constants';
 
+const enableSpeedUp = false
+
 export default class TransactionActivityLog extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
@@ -62,6 +64,7 @@ export default class TransactionActivityLog extends PureComponent {
 
     return isEarliestNonce &&
       status !== CONFIRMED_STATUS &&
+      enableSpeedUp &&
       index === inlineRetryIndex ? (
       <div className="transaction-activity-log__action-link" onClick={onRetry}>
         {t('speedUpTransaction')}
@@ -81,6 +84,7 @@ export default class TransactionActivityLog extends PureComponent {
 
     return isEarliestNonce &&
       status !== CONFIRMED_STATUS &&
+      enableSpeedUp &&
       index === inlineCancelIndex ? (
       <div className="transaction-activity-log__action-link" onClick={onCancel}>
         {t('speedUpCancellation')}
