@@ -22,6 +22,7 @@ export const BSC_CHAIN_ID = '0x38';
 export const OPTIMISM_CHAIN_ID = '0xa';
 export const OPTIMISM_TESTNET_CHAIN_ID = '0x45';
 export const POLYGON_CHAIN_ID = '0x89';
+export const QTUM_CHAIN_ID = '0x70'
 
 /**
  * The largest possible chain ID we can handle.
