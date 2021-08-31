@@ -18,6 +18,14 @@ import {
   MAINNET_CHAIN_ID,
   RINKEBY_CHAIN_ID,
   INFURA_BLOCKED_KEY,
+  CHAIN_ID_TO_RPC_URL_MAP,
+  QTUM_MAINNET_CHAIN_ID,
+  QTUM_TESTNET_CHAIN_ID,
+  QTUM_MAINNET_RPC_URL,
+  QTUM_TESTNET_RPC_URL,
+  QTUM_PROVIDER_TYPES,
+  QTUM_REGTEST_RPC_URL,
+  QTUM_REGTEST_CHAIN_ID,
 } from '../../../../shared/constants/network';
 import { SECOND } from '../../../../shared/constants/time';
 import {
@@ -42,12 +50,17 @@ if (process.env.IN_TEST === 'true') {
   };
 } else if (process.env.METAMASK_DEBUG || env === 'test') {
   defaultProviderConfigOpts = { type: RINKEBY, chainId: RINKEBY_CHAIN_ID };
+  // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_TESTNET_CHAIN_ID, rpcUrl: QTUM_TESTNET_RPC_URL };
+  defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
 } else {
   defaultProviderConfigOpts = { type: MAINNET, chainId: MAINNET_CHAIN_ID };
+  // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_MAINNET_CHAIN_ID, rpcUrl: QTUM_MAINNET_RPC_URL };
+  defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
 }
 
 const defaultProviderConfig = {
-  ticker: 'ETH',
+  // ticker: 'ETH',
+  ticker: 'QTUM',
   ...defaultProviderConfigOpts,
 };
 
@@ -235,7 +248,7 @@ export default class NetworkController extends EventEmitter {
     const ethQuery = new EthQuery(this._provider);
     const initialNetwork = this.getNetworkState();
     const { type } = this.getProviderConfig();
-    const isInfura = INFURA_PROVIDER_TYPES.includes(type);
+    const isInfura = INFURA_PROVIDER_TYPES.includes(type) && !QTUM_PROVIDER_TYPES.includes(type);
 
     if (isInfura) {
       this._checkInfuraAvailability(type);
@@ -295,12 +308,22 @@ export default class NetworkController extends EventEmitter {
       `Unknown Infura provider type "${type}".`,
     );
     const { chainId } = NETWORK_TYPE_TO_ID_MAP[type];
+    let rpcUrl = '';
+    let ticker = 'ETH';
+    const providerType = type;
+    if (QTUM_PROVIDER_TYPES.includes(type)) {
+      type = NETWORK_TYPE_RPC;
+      rpcUrl = CHAIN_ID_TO_RPC_URL_MAP[chainId];
+      ticker = 'QTUM';
+    }
     this.setProviderConfig({
+      labelKey: providerType,
       type,
-      rpcUrl: '',
+      rpcUrl: rpcUrl,
       chainId,
-      ticker: 'ETH',
-      nickname: '',
+      ticker: ticker,
+      networkType: providerType,
+      nickname: providerType,
     });
   }
 
@@ -390,7 +413,7 @@ export default class NetworkController extends EventEmitter {
 
   _configureProvider({ type, rpcUrl, chainId }) {
     // infura type-based endpoints
-    const isInfura = INFURA_PROVIDER_TYPES.includes(type);
+    const isInfura = INFURA_PROVIDER_TYPES.includes(type) && !QTUM_PROVIDER_TYPES.includes(type);
     if (isInfura) {
       this._configureInfuraProvider(type, this._infuraProjectId);
       // url-based rpc endpoints

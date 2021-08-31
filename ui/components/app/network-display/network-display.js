@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import {
   NETWORK_TYPE_RPC,
   NETWORK_TYPE_TO_ID_MAP,
+  QTUM_PROVIDER_TYPES,
+  NETWORK_TO_NAME_MAP,
 } from '../../../../shared/constants/network';
 
 import LoadingIndicator from '../../ui/loading-indicator';
@@ -35,8 +37,14 @@ export default function NetworkDisplay({
   }));
   const t = useI18nContext();
 
-  const { nickname: networkNickname, type: networkType } =
+  let { nickname: networkNickname, type: networkType } =
     targetNetwork ?? currentNetwork;
+
+  if (QTUM_PROVIDER_TYPES.includes(networkNickname)) {
+    networkNickname = NETWORK_TO_NAME_MAP[networkNickname] || networkNickname;
+  } else if (QTUM_PROVIDER_TYPES.includes(networkType)) {
+    networkNickname = NETWORK_TO_NAME_MAP[networkType] || networkNickname;
+  }
 
   return (
     <Chip

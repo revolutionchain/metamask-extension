@@ -4,6 +4,9 @@ export const KOVAN = 'kovan';
 export const MAINNET = 'mainnet';
 export const GOERLI = 'goerli';
 export const NETWORK_TYPE_RPC = 'rpc';
+export const QTUM_MAINNET = 'qtumMainnet';
+export const QTUM_TESTNET = 'qtumTestnet';
+export const QTUM_REGTEST = 'qtumRegtest';
 
 export const MAINNET_NETWORK_ID = '1';
 export const ROPSTEN_NETWORK_ID = '3';
@@ -11,6 +14,9 @@ export const RINKEBY_NETWORK_ID = '4';
 export const GOERLI_NETWORK_ID = '5';
 export const KOVAN_NETWORK_ID = '42';
 export const LOCALHOST_NETWORK_ID = '1337';
+export const QTUM_MAINNET_NETWORK_ID = '8888';
+export const QTUM_TESTNET_NETWORK_ID = '8889';
+export const QTUM_REGTEST_NETWORK_ID = '8890';
 
 export const MAINNET_CHAIN_ID = '0x1';
 export const ROPSTEN_CHAIN_ID = '0x3';
@@ -22,7 +28,9 @@ export const BSC_CHAIN_ID = '0x38';
 export const OPTIMISM_CHAIN_ID = '0xa';
 export const OPTIMISM_TESTNET_CHAIN_ID = '0x45';
 export const POLYGON_CHAIN_ID = '0x89';
-export const QTUM_CHAIN_ID = '0x70'
+export const QTUM_MAINNET_CHAIN_ID = '0x22B8'
+export const QTUM_TESTNET_CHAIN_ID = '0x22B9'
+export const QTUM_REGTEST_CHAIN_ID = '0x22BA'
 
 /**
  * The largest possible chain ID we can handle.
@@ -35,6 +43,9 @@ export const RINKEBY_DISPLAY_NAME = 'Rinkeby';
 export const KOVAN_DISPLAY_NAME = 'Kovan';
 export const MAINNET_DISPLAY_NAME = 'Ethereum Mainnet';
 export const GOERLI_DISPLAY_NAME = 'Goerli';
+export const QTUM_MAINNET_DISPLAY_NAME = 'QTUM Mainnet';
+export const QTUM_TESTNET_DISPLAY_NAME = 'QTUM Testnet';
+export const QTUM_REGTEST_DISPLAY_NAME = 'QTUM Regtest';
 
 const infuraProjectId = process.env.INFURA_PROJECT_ID;
 const getRpcUrl = (network) =>
@@ -45,6 +56,9 @@ export const RINKEBY_RPC_URL = getRpcUrl('rinkeby');
 export const KOVAN_RPC_URL = getRpcUrl('kovan');
 export const MAINNET_RPC_URL = getRpcUrl('mainnet');
 export const GOERLI_RPC_URL = getRpcUrl('goerli');
+export const QTUM_MAINNET_RPC_URL = `https://localhost:23889`;
+export const QTUM_TESTNET_RPC_URL = `https://localhost:23889`;
+export const QTUM_REGTEST_RPC_URL = `https://localhost:23889`;
 
 export const ETH_SYMBOL = 'ETH';
 export const WETH_SYMBOL = 'WETH';
@@ -59,7 +73,8 @@ export const BNB_TOKEN_IMAGE_URL = './images/bnb.png';
 export const MATIC_TOKEN_IMAGE_URL = './images/matic-token.png';
 export const QTUM_TOKEN_IMAGE_URL = './images/qtum_logo.png';
 
-export const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET, GOERLI];
+export const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET, GOERLI, QTUM_MAINNET, QTUM_TESTNET, QTUM_REGTEST];
+export const QTUM_PROVIDER_TYPES = [QTUM_MAINNET, QTUM_TESTNET, QTUM_REGTEST];
 
 export const TEST_CHAINS = [
   ROPSTEN_CHAIN_ID,
@@ -77,6 +92,9 @@ export const NETWORK_TYPE_TO_ID_MAP = {
   [KOVAN]: { networkId: KOVAN_NETWORK_ID, chainId: KOVAN_CHAIN_ID },
   [GOERLI]: { networkId: GOERLI_NETWORK_ID, chainId: GOERLI_CHAIN_ID },
   [MAINNET]: { networkId: MAINNET_NETWORK_ID, chainId: MAINNET_CHAIN_ID },
+  [QTUM_MAINNET]: { networkId: QTUM_MAINNET_NETWORK_ID, chainId: QTUM_MAINNET_CHAIN_ID },
+  [QTUM_TESTNET]: { networkId: QTUM_TESTNET_NETWORK_ID, chainId: QTUM_TESTNET_CHAIN_ID },
+  [QTUM_REGTEST]: { networkId: QTUM_REGTEST_NETWORK_ID, chainId: QTUM_REGTEST_CHAIN_ID },
 };
 
 export const NETWORK_TO_NAME_MAP = {
@@ -97,6 +115,18 @@ export const NETWORK_TO_NAME_MAP = {
   [KOVAN_CHAIN_ID]: KOVAN_DISPLAY_NAME,
   [GOERLI_CHAIN_ID]: GOERLI_DISPLAY_NAME,
   [MAINNET_CHAIN_ID]: MAINNET_DISPLAY_NAME,
+
+  [QTUM_MAINNET]: QTUM_MAINNET_DISPLAY_NAME,
+  [QTUM_TESTNET]: QTUM_TESTNET_DISPLAY_NAME,
+  [QTUM_REGTEST]: QTUM_REGTEST_DISPLAY_NAME,
+
+  [QTUM_MAINNET_NETWORK_ID]: QTUM_MAINNET_DISPLAY_NAME,
+  [QTUM_TESTNET_NETWORK_ID]: QTUM_TESTNET_DISPLAY_NAME,
+  [QTUM_REGTEST_NETWORK_ID]: QTUM_REGTEST_DISPLAY_NAME,
+
+  [QTUM_MAINNET_CHAIN_ID]: QTUM_MAINNET_DISPLAY_NAME,
+  [QTUM_TESTNET_CHAIN_ID]: QTUM_TESTNET_DISPLAY_NAME,
+  [QTUM_REGTEST_CHAIN_ID]: QTUM_REGTEST_DISPLAY_NAME,
 };
 
 export const CHAIN_ID_TO_TYPE_MAP = Object.entries(
@@ -112,6 +142,9 @@ export const CHAIN_ID_TO_RPC_URL_MAP = {
   [KOVAN_CHAIN_ID]: KOVAN_RPC_URL,
   [GOERLI_CHAIN_ID]: GOERLI_RPC_URL,
   [MAINNET_CHAIN_ID]: MAINNET_RPC_URL,
+  [QTUM_MAINNET_CHAIN_ID]: QTUM_MAINNET_RPC_URL,
+  [QTUM_TESTNET_CHAIN_ID]: QTUM_TESTNET_RPC_URL,
+  [QTUM_REGTEST_CHAIN_ID]: QTUM_REGTEST_RPC_URL,
 };
 
 export const CHAIN_ID_TO_NETWORK_ID_MAP = Object.values(
