@@ -40,9 +40,12 @@ export default function NetworkDisplay({
   let { nickname: networkNickname, type: networkType } =
     targetNetwork ?? currentNetwork;
 
+  let isQtum = null;
   if (QTUM_PROVIDER_TYPES.includes(networkNickname)) {
+    isQtum = networkNickname
     networkNickname = NETWORK_TO_NAME_MAP[networkNickname] || networkNickname;
   } else if (QTUM_PROVIDER_TYPES.includes(networkType)) {
+    isQtum = networkType || networkNickname
     networkNickname = NETWORK_TO_NAME_MAP[networkType] || networkNickname;
   }
 
@@ -57,11 +60,12 @@ export default function NetworkDisplay({
           isLoading={networkIsLoading}
         >
           <ColorIndicator
-            color={networkType === NETWORK_TYPE_RPC ? COLORS.UI4 : networkType}
+            color={networkType === NETWORK_TYPE_RPC ? (isQtum || COLORS.UI4) : networkType}
             size={indicatorSize}
             type={ColorIndicator.TYPES.FILLED}
             iconClassName={
               networkType === NETWORK_TYPE_RPC && indicatorSize !== SIZES.XS
+                && !isQtum
                 ? 'fa fa-question'
                 : undefined
             }

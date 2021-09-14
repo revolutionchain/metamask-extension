@@ -31,6 +31,9 @@ export const COLORS = {
   KOVAN: 'kovan',
   RINKEBY: 'rinkeby',
   GOERLI: 'goerli',
+  QTUMMAINNET: 'qtumMainnet',
+  QTUMRTESTNET: 'qtumTestnet',
+  QTUMREGTEST: 'qtumRegtest',
   TRANSPARENT: 'transparent',
 };
 
