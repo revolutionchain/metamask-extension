@@ -1,3 +1,15 @@
+# Metamask with QTUM support
+
+This is an alpha version of Metamask with QTUM support
+
+To use Web3 in QTUM Dapps, use `window.qtum` as your Web3 provider instead of `window.ethereum`
+
+See [Releases](https://github.com/earlgreytech/metamask-extension/releases) for tags/releases with QTUM support
+
+See [Janus](https://github.com/qtumproject/janus) for our Web3 compatible API layer
+
+See [qtum-ethers-wrapper](https://github.com/earlgreytech/qtum-ethers) for client-side transaction signing
+
 # MetaMask Browser Extension
 
 You can find the latest version of MetaMask on [our official website](https://metamask.io/). For help using MetaMask, visit our [User Support Site](https://metamask.zendesk.com/hc/en-us).
