@@ -144,18 +144,18 @@ $warning-light-orange: #f8b588;
 }
 
 .btn-primary {
-  color: $white;
-  border: 1px solid $Blue-500;
-  background-color: $Blue-500;
+  color: black;
+  border: 1px solid $primary-cyan;
+  background-color: $primary-cyan;
 
   &:hover {
-    border-color: $hover-confirm;
-    background-color: $hover-confirm;
+    border-color: $primary-cyan-highlight;
+    background-color: $primary-cyan-highlight;
   }
 
   &:active {
-    background: $Blue-600;
-    border-color: $Blue-600;
+    background: $primary-cyan-highlight;
+    border-color: $primary-cyan-highlight;
   }
 
   &--disabled,
@@ -293,7 +293,7 @@ input[type="submit"][disabled] {
   }
 
   &.btn-primary {
-    background-color: $Blue-500;
+    background-color: $primary-cyan;
 
     &--disabled,
     &[disabled] {
@@ -301,7 +301,7 @@ input[type="submit"][disabled] {
     }
 
     &:active {
-      background-color: $Blue-600;
+      background-color: $primary-cyan-highlight;
     }
   }
 

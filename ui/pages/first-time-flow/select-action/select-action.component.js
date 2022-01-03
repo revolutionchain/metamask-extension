@@ -44,13 +44,13 @@ export default class SelectAction extends PureComponent {
         <div className="select-action__wrapper">
           <div className="select-action__body">
             <div className="select-action__body-header">
-              {t('newToMetaMask')}
+              {t('newToQtumQnekt')}
             </div>
             <div className="select-action__select-buttons">
               <div className="select-action__select-button">
                 <div className="select-action__button-content">
                   <div className="select-action__button-symbol">
-                    <img src="./images/download-alt.svg" alt="" />
+                    <img src="./images/add.svg" alt="" />
                   </div>
                   <div className="select-action__button-text-big">
                     {t('noAlreadyHaveSeed')}
@@ -63,6 +63,7 @@ export default class SelectAction extends PureComponent {
                   type="primary"
                   className="first-time-flow__button"
                   onClick={this.handleImport}
+                  rounded={false}
                 >
                   {t('importWallet')}
                 </Button>
@@ -70,7 +71,7 @@ export default class SelectAction extends PureComponent {
               <div className="select-action__select-button">
                 <div className="select-action__button-content">
                   <div className="select-action__button-symbol">
-                    <img src="./images/thin-plus.svg" alt="" />
+                    <img src="./images/add.svg" alt="" />
                   </div>
                   <div className="select-action__button-text-big">
                     {t('letsGoSetUp')}
@@ -83,6 +84,7 @@ export default class SelectAction extends PureComponent {
                   type="primary"
                   className="first-time-flow__button"
                   onClick={this.handleCreate}
+                  rounded={false}
                 >
                   {t('createAWallet')}
                 </Button>

@@ -349,7 +349,7 @@
     "message": "MetaMask Beta Version"
   },
   "betaWelcome": {
-    "message": "Welcome to MetaMask Beta"
+    "message": "Welcome to Qtum Qnekt Beta"
   },
   "blockExplorerAccountAction": {
     "message": "Account",
@@ -609,7 +609,7 @@
     "message": "Create"
   },
   "createAWallet": {
-    "message": "Create a Wallet"
+    "message": "Create wallet"
   },
   "createAccount": {
     "message": "Create Account"
@@ -1725,6 +1725,9 @@
   "newToMetaMask": {
     "message": "New to MetaMask?"
   },
+  "newToQtumQnekt": {
+    "message": "New to Qtum Qnekt?"
+  },
   "newTotal": {
     "message": "New Total"
   },
@@ -1754,7 +1757,7 @@
     "message": "No address has been set for this name."
   },
   "noAlreadyHaveSeed": {
-    "message": "No, I already have a Secret Recovery Phrase"
+    "message": "No, I already have a secret recovery phrase"
   },
   "noConversionRateAvailable": {
     "message": "No Conversion Rate Available"
@@ -2955,7 +2958,7 @@
     "message": "Test Faucet"
   },
   "thisWillCreate": {
-    "message": "This will create a new wallet and Secret Recovery Phrase"
+    "message": "This will create a new wallet and secret recovery phrase"
   },
   "time": {
     "message": "Time"
@@ -3285,7 +3288,7 @@
     "description": "Refers to a interface for connecting external devices to the browser. Used for connecting ledger to the browser. Read more here https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API"
   },
   "welcome": {
-    "message": "Welcome to MetaMask"
+    "message": "Welcome to Qtum Qnekt"
   },
   "welcomeBack": {
     "message": "Welcome Back!"

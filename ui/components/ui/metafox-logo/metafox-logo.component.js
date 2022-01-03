@@ -27,8 +27,8 @@ export default class MetaFoxLogo extends PureComponent {
         })}
       >
         <img
-          height="30"
-          src="./images/logo/metamask-logo-horizontal.svg"
+          height="60"
+          src="./images/logo/qtum-logo.svg"
           className={classnames({
             'app-header__metafox-logo--horizontal': !isOnboarding,
             'onboarding-app-header__metafox-logo--horizontal': isOnboarding,
@@ -37,7 +37,7 @@ export default class MetaFoxLogo extends PureComponent {
         />
         <img
           {...iconProps}
-          src="./images/logo/metamask-fox.svg"
+          src="./images/logo/qtum-logo.svg"
           className={classnames({
             'app-header__metafox-logo--icon': !isOnboarding,
             'onboarding-app-header__metafox-logo--icon': isOnboarding,
