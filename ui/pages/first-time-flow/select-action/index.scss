@@ -1,7 +1,8 @@
 .select-action {
   .app-header__logo-container {
     width: 742px;
-    margin-top: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
   }
 
   &__body {
@@ -11,40 +12,51 @@
   }
 
   &__body-header {
-    @include H3;
+    @include H1;
 
     text-align: center;
-    margin-top: 65px;
-    color: black;
+    color: white;
+
+    background: $ui-bg;
+    width: 100%;
+    position: absolute;
+    padding-top: 70px;
+    padding-bottom: 340px;
   }
 
   &__select-buttons {
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
+    margin-top: 170px;
+    z-index: 10;
   }
 
   &__select-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    width: 388px;
-    height: 278px;
-    border: 1px solid #d8d8d8;
+    justify-content: space-between;
+    width: 511px;
+    height: 399px;
     box-sizing: border-box;
-    border-radius: 10px;
-    margin-left: 22px;
+    margin-left: 30px;
+    background-color: white;
+    box-shadow: 0px 4px 63px -9px rgba(174, 177, 213, 0.25);
+    padding: 32px 67px;
 
     .first-time-flow__button {
-      max-width: 221px;
-      height: 44px;
+      width: 100%;
+      max-width: 373px;
+      height: 60px;
+      border-radius: 0;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 0;
     }
   }
 
   &__button-symbol {
     color: #c4c4c4;
-    margin-top: 41px;
   }
 
   &__button-content {
@@ -52,22 +64,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 144px;
   }
 
   &__button-text-big {
-    @include H4;
+    @include H2;
 
-    color: #000;
-    margin-top: 12px;
+    font-size: 30px;
+    line-height: 45px;
+    color: $Black-200;
+    margin-top: 20px;
     text-align: center;
   }
 
   &__button-text-small {
-    @include H6;
+    @include H5;
 
-    color: #7a7a7b;
-    margin-top: 10px;
+    font-weight: light;
+    color: $Black-300;
+    margin-top: 16px;
     text-align: center;
   }
 
