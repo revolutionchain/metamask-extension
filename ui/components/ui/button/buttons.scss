@@ -157,12 +157,6 @@ $warning-light-orange: #f8b588;
     background: $primary-cyan-highlight;
     border-color: $primary-cyan-highlight;
   }
-
-  &--disabled,
-  &[disabled] {
-    border-color: $hover-secondary;
-    background-color: $hover-secondary;
-  }
 }
 
 .btn-link {
@@ -294,11 +288,6 @@ input[type="submit"][disabled] {
 
   &.btn-primary {
     background-color: $primary-cyan;
-
-    &--disabled,
-    &[disabled] {
-      background-color: $hover-secondary;
-    }
 
     &:active {
       background-color: $primary-cyan-highlight;

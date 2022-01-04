@@ -1254,8 +1254,11 @@
   "importAccountMsg": {
     "message": "Imported accounts will not be associated with your originally created MetaMask account Secret Recovery Phrase. Learn more about imported accounts"
   },
+  "recoveryPhrase": {
+    "message": "Recovery Phrase"
+  },
   "importAccountSeedPhrase": {
-    "message": "Import a wallet with Secret Recovery Phrase"
+    "message": "Import an account with secret recovery phrase"
   },
   "importAccountText": {
     "message": "or $1",
@@ -3128,6 +3131,9 @@
   },
   "typePassword": {
     "message": "Type your MetaMask password"
+  },
+  "typeHere": {
+    "message": "Type here"
   },
   "u2f": {
     "message": "U2F",
