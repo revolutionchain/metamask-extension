@@ -10,22 +10,20 @@
   }
 
   &__name {
-    @include H5;
-
-    width: 100%;
+    font-size: 20px;
+    line-height: 27px;
     font-weight: 500;
-    color: $black;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
+    color: white;
     margin-bottom: 4px;
+    width: 100%;
+    text-align: left;
   }
 
   &__address {
-    @include H7;
-
-    color: #989a9b;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: light;
+    color: #EBEBEB;
     display: flex;
     align-items: center;
   }
@@ -33,27 +31,22 @@
   &__clickable {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 4px 0;
-    padding: 6px 1px;
-    border-radius: 10px;
     cursor: pointer;
     width: 100%;
     background-color: unset;
 
     &:hover {
-      background-color: $Grey-000;
+      
     }
 
     &:active {
-      background-color: #d9d7da;
+      
     }
   }
 
   &__copy {
-    height: 13px;
     display: inline-block;
     margin-inline-start: 3px;
+    margin-left: 10px;
   }
 }

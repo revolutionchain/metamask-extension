@@ -71,28 +71,28 @@ $fa-font-path: '/fonts/fontawesome';
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 100;
-  src: local('Gotham Thin'), local('Gotham-Thin'), url('/fonts/Gotham/Gotham-Thin.ttf') format('truetype');
+  src: local('Gotham Thin'), local('Gotham-Thin'), url('/fonts/Gotham/Gotham-Thin.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 300;
-  src: local('Gotham Light'), local('Gotham-Light'), url('/fonts/Gotham/Gotham-Light.ttf') format('truetype');
+  src: local('Gotham Light'), local('Gotham-Light'), url('/fonts/Gotham/Gotham-Light.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 700;
-  src: local('Gotham Bold'), local('Gotham-Bold'), url('/fonts/Gotham/Gotham-Bold.ttf') format('truetype');
+  src: local('Gotham Bold'), local('Gotham-Bold'), url('/fonts/Gotham/Gotham-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 900;
-  src: local('Gotham Black'), local('Gotham-Black'), url('/fonts/Gotham/Gotham-Black.ttf') format('truetype');
+  src: local('Gotham Black'), local('Gotham-Black'), url('/fonts/Gotham/Gotham-Black.otf') format('opentype');
 }
 
 $font-family: Gotham, Euclid, Roboto, Helvetica, Arial, sans-serif;

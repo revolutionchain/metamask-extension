@@ -22,7 +22,7 @@ export default function AccountListItem({
         <Identicon
           address={address}
           className="account-list-item__identicon"
-          diameter={18}
+          diameter={25}
         />
         <div className="account-list-item__account-name">{name || address}</div>
         {icon ? <div className="account-list-item__icon">{icon}</div> : null}
