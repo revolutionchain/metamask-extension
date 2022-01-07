@@ -117,7 +117,7 @@ const AssetListItem = ({
       icon={
         <Identicon
           className={iconClassName}
-          diameter={32}
+          diameter={24}
           address={tokenAddress}
           image={tokenImage}
           alt={`${primary} ${tokenSymbol}`}

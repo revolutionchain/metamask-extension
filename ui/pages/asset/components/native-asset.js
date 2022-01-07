@@ -42,27 +42,29 @@ export default function NativeAsset({ nativeCurrency }) {
 
   return (
     <>
-      <AssetNavigation
-        accountName={selectedAccountName}
-        assetName={nativeCurrency}
-        onBack={() => history.push(DEFAULT_ROUTE)}
-        isEthNetwork={!rpcPrefs.blockExplorerUrl}
-        optionsButton={
-          <AssetOptions
-            isNativeAsset
-            onClickBlockExplorer={() => {
-              blockExplorerLinkClickedEvent();
-              global.platform.openTab({
-                url: accountLink,
-              });
-            }}
-            onViewAccountDetails={() => {
-              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-            }}
-          />
-        }
-      />
-      <EthOverview className="asset__overview" />
+      <div className="asset__header">
+        <AssetNavigation
+          accountName={selectedAccountName}
+          assetName={nativeCurrency}
+          onBack={() => history.push(DEFAULT_ROUTE)}
+          isEthNetwork={!rpcPrefs.blockExplorerUrl}
+          optionsButton={
+            <AssetOptions
+              isNativeAsset
+              onClickBlockExplorer={() => {
+                blockExplorerLinkClickedEvent();
+                global.platform.openTab({
+                  url: accountLink,
+                });
+              }}
+              onViewAccountDetails={() => {
+                dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              }}
+            />
+          }
+        />
+        <EthOverview className="asset__overview" />
+      </div>
       <TransactionList hideTokenTransactions />
     </>
   );

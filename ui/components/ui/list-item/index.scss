@@ -1,9 +1,9 @@
 .list-item {
   width: 100%;
-  min-height: 86px;
+  min-height: 100px;
   margin: 0;
   background: #fff;
-  padding: 24px 16px;
+  padding: 24px 24px 24px 0px;
 
   @include Paragraph;
 

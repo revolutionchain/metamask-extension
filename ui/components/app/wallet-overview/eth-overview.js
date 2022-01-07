@@ -117,7 +117,13 @@ const EthOverview = ({ className }) => {
         <>
           <IconButton
             className="eth-overview__button"
-            Icon={BuyIcon}
+            Icon={
+              <img
+                src="./images/icons/eth_buy.svg"
+                alt=""
+                style={{ height: 26, width: 20 }}
+              />
+            }
             disabled={!(isMainnetChain || isTestnetChain)}
             label={t('buy')}
             onClick={() => {
@@ -128,7 +134,13 @@ const EthOverview = ({ className }) => {
           <IconButton
             className="eth-overview__button"
             data-testid="eth-overview-send"
-            Icon={SendIcon}
+            Icon={
+              <img
+                src="./images/icons/eth_send.svg"
+                alt=""
+                style={{ height: 26, width: 20 }}
+              />
+            }
             label={t('send')}
             onClick={() => {
               sendEvent();
@@ -138,7 +150,13 @@ const EthOverview = ({ className }) => {
           <IconButton
             className="eth-overview__button"
             disabled={!isSwapsChain}
-            Icon={SwapIcon}
+            Icon={
+              <img
+                src="./images/icons/eth_swap.svg"
+                alt=""
+                style={{ height: 28, width: 28 }}
+              />
+            }
             onClick={() => {
               if (isSwapsChain) {
                 enteredSwapsEvent();
@@ -164,7 +182,7 @@ const EthOverview = ({ className }) => {
         </>
       }
       className={className}
-      icon={<Identicon diameter={32} image={primaryTokenImage} imageBorder />}
+      icon={<Identicon diameter={32} image={primaryTokenImage} />}
     />
   );
 };

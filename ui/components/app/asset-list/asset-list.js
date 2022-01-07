@@ -88,8 +88,7 @@ const AssetList = ({ onClickAsset }) => {
         }
         tokenSymbol={primaryCurrencyProperties.suffix}
         secondary={showFiat ? secondaryCurrencyDisplay : undefined}
-        tokenImage={primaryTokenImage}
-        identiconBorder
+        tokenImage="images/icons/eth_cell.svg"
       />
       <TokenList
         onTokenClick={(tokenAddress) => {
@@ -97,7 +96,7 @@ const AssetList = ({ onClickAsset }) => {
           selectTokenEvent();
         }}
       />
-      <Box marginTop={4}>
+      {/* <Box marginTop={4}>
         <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
           <Typography
             color={COLORS.UI4}
@@ -114,7 +113,7 @@ const AssetList = ({ onClickAsset }) => {
             addTokenEvent();
           }}
         />
-      </Box>
+      </Box> */}
     </>
   );
 };
