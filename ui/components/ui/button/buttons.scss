@@ -11,8 +11,8 @@ $hover-orange: #ffd3b5;
 $warning-light-orange: #f8b588;
 
 .button {
-  @include H6;
-
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 500;
   padding: 0.75rem 1rem;
   display: flex;

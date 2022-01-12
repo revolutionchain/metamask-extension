@@ -5,24 +5,26 @@
     position: relative;
     display: flex;
     justify-content: center;
-    background-color: $Grey-000;
+    background-color: $Grey-001;
     border-bottom: none;
-    padding: 14px 0 3px 0;
+    padding: 48px 48px 0px 48px;
 
     .page-container__title {
       @include H4;
-
-      text-align: center;
+      font-size: 30px;
+      line-height: 45px;
+      color: $Black-200;
     }
 
     .page-container__header-close-text {
-      @include H5;
+      background: url(/images/close.svg) no-repeat center;
+      width: 28px;
+      height: 28px;
 
       position: absolute;
-      right: 1rem;
-      width: min-content;
-      font-size: 0.75rem;
-      white-space: nowrap;
+      right: 30px;
+      top: 30px;
+      padding: 0;
     }
   }
 
@@ -37,10 +39,9 @@
 
   &__to-row {
     margin: 0;
-    padding: 0.5rem;
+    padding: 8px 48px 16px;
     flex: 0 0 auto;
-    background-color: $Grey-000;
-    border-bottom: 1px solid $alto;
+    background-color: $Grey-001;
   }
 
   &__select-recipient-wrapper {
@@ -169,7 +170,7 @@
     align-items: center;
     background: $white;
     border-radius: 0.5rem;
-    padding: 0.75rem 0.5rem;
+    padding: 13px 16px 11px;
     border: 1px solid $Grey-100;
     transition: border-color 150ms ease-in-out;
 
@@ -226,7 +227,7 @@
     }
 
     &--valid {
-      border-color: $Blue-500;
+      border-color: $Grey-101;
 
       .ens-input__wrapper {
         &__status-icon {
@@ -246,18 +247,20 @@
 
   &__selected-input {
     &__title {
-      @include H6;
-
       @extend %ellipsify;
+
+      font-size: 16px;
+      line-height: 27px;
+      color: $Black-300;
 
       word-wrap: break-word;
       white-space: inherit !important;
     }
 
     &__subtitle {
-      @include H7;
-
-      color: $Grey-500;
+      font-size: 16px;
+      line-height: 27px;
+      color: $Black-300;
       margin-top: 0.25rem;
     }
   }
