@@ -8,6 +8,9 @@
   "qtumRegtest": {
     "message": "QTUM Regtest"
   },
+  "insufficientSpendableBalance": {
+    "message": "Your spendable balance is "
+  },
   "QRHardwareInvalidTransactionTitle": {
     "message": "Error"
   },
@@ -1307,7 +1310,7 @@
     "message": "Insufficient funds."
   },
   "insufficientFundsForGas": {
-    "message": "Insufficient funds for gas"
+    "message": "Insufficient funds for gas",
   },
   "insufficientTokens": {
     "message": "Insufficient tokens."
