@@ -44,7 +44,7 @@
     "message": "log aktivitas"
   },
   "addAcquiredTokens": {
-    "message": "Tambahkan token yang Anda peroleh menggunakan MetaMask"
+    "message": "Tambahkan token yang Anda peroleh menggunakan Qnekt"
   },
   "addAlias": {
     "message": "Tambahkan alias"
@@ -57,10 +57,10 @@
     "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
   },
   "addEthereumChainConfirmationDescription": {
-    "message": "Ini akan memungkinkan jaringan ini digunakan dengan MetaMask."
+    "message": "Ini akan memungkinkan jaringan ini digunakan dengan Qnekt."
   },
   "addEthereumChainConfirmationRisks": {
-    "message": "MetaMask tidak memverifikasi jaringan kustom."
+    "message": "Qnekt tidak memverifikasi jaringan kustom."
   },
   "addEthereumChainConfirmationRisksLearnMore": {
     "message": "Pelajari tentang $1.",
@@ -145,7 +145,7 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Qnekt",
     "description": "The name of the application"
   },
   "approvalAndAggregatorTxFeeCost": {
@@ -195,7 +195,7 @@
     "message": "Timer Mengunci Otomatis (menit)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Atur waktu siaga dalam menit sebelum MetaMask menjadi terkunci."
+    "message": "Atur waktu siaga dalam menit sebelum Qnekt menjadi terkunci."
   },
   "average": {
     "message": "Rata-rata"
@@ -207,7 +207,7 @@
     "message": "Kembali ke Semua"
   },
   "backupApprovalInfo": {
-    "message": "Kode rahasia ini diperlukan untuk memulihkan dompet seandainya Anda kehilangan perangkat, lupa kata sandi, harus menginstal kembali MetaMask, atau ingin mengakses dompet Anda di perangkat lain."
+    "message": "Kode rahasia ini diperlukan untuk memulihkan dompet seandainya Anda kehilangan perangkat, lupa kata sandi, harus menginstal kembali Qnekt, atau ingin mengakses dompet Anda di perangkat lain."
   },
   "backupApprovalNotice": {
     "message": "Cadangkan kode Pemulihan Rahasia Anda untuk menjaga keamanan dompet dan dana Anda."
@@ -250,7 +250,7 @@
     "message": "Beli ETH dengan Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre memungkinkan Anda menggunakan kartu debit untuk menyetorkan ETH langsung di akun MetaMask Anda."
+    "message": "Wyre memungkinkan Anda menggunakan kartu debit untuk menyetorkan ETH langsung di akun Qnekt Anda."
   },
   "bytes": {
     "message": "Byte"
@@ -277,7 +277,7 @@
     "message": "ID Rantai ini saat ini digunakan oleh jaringan $1."
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Anda perlu menggunakan MetaMask di Google Chrome untuk terhubung ke Dompet Perangkat Keras Anda."
+    "message": "Anda perlu menggunakan Qnekt di Google Chrome untuk terhubung ke Dompet Perangkat Keras Anda."
   },
   "clickToRevealSeed": {
     "message": "Klik di sini untuk membuka kata rahasia"
@@ -341,8 +341,8 @@
     "message": "$1 akun",
     "description": "$1 is the number of accounts to which the web3 site/application is asking to connect; this will substitute $1 in connectToMultiple"
   },
-  "connectWithMetaMask": {
-    "message": "Hubungkan Dengan MetaMask"
+  "connectWithQnekt": {
+    "message": "Hubungkan Dengan Qnekt"
   },
   "connectedAccountsDescriptionPlural": {
     "message": "Anda memiliki $1 akun yang terhubung ke situs ini.",
@@ -352,7 +352,7 @@
     "message": "Anda memiliki 1 akun yang terhubung ke situs ini."
   },
   "connectedAccountsEmptyDescription": {
-    "message": "MetaMask tidak terhubung ke situs ini. Untuk terhubung ke situs web3, temukan tombol hubungkan di situs mereka."
+    "message": "Qnekt tidak terhubung ke situs ini. Untuk terhubung ke situs web3, temukan tombol hubungkan di situs mereka."
   },
   "connectedSites": {
     "message": "Situs yang terhubung"
@@ -474,7 +474,7 @@
     "message": "Token Kustom"
   },
   "dataBackupFoundInfo": {
-    "message": "Beberapa data akun Anda telah dicadangkan selama penginstalan MetaMask yang lalu. Ini bisa mencakup pengaturan, kontak, dan token Anda. Apakah Anda ingin memulihkan data ini sekarang?"
+    "message": "Beberapa data akun Anda telah dicadangkan selama penginstalan Qnekt yang lalu. Ini bisa mencakup pengaturan, kontak, dan token Anda. Apakah Anda ingin memulihkan data ini sekarang?"
   },
   "decimal": {
     "message": "Desimal Token"
@@ -609,7 +609,7 @@
     "message": "Jangan bagikan frasa kepada siapa pun."
   },
   "endOfFlowMessage5": {
-    "message": "Berhati-hatilah dengan phishing! MetaMask tidak pernah secara spontan meminta Frasa Pemulihan Rahasia Anda."
+    "message": "Berhati-hatilah dengan phishing! Qnekt tidak pernah secara spontan meminta Frasa Pemulihan Rahasia Anda."
   },
   "endOfFlowMessage6": {
     "message": "Jika Anda perlu mencadangkan Frasa Pemulihan Rahasia lagi, Anda dapat menemukannya di Pengaturan -> Keamanan."
@@ -619,7 +619,7 @@
     "description": "$1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
   },
   "endOfFlowMessage8": {
-    "message": "MetaMask tidak dapat memulihkan Frasa Pemulihan Rahasia Anda."
+    "message": "Qnekt tidak dapat memulihkan Frasa Pemulihan Rahasia Anda."
   },
   "endOfFlowMessage9": {
     "message": "Pelajari selengkapnya."
@@ -671,7 +671,7 @@
     "description": "Message displayed on generic error page in the popup UI, $1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
   },
   "errorPageTitle": {
-    "message": "MetaMask menemukan kesalahan",
+    "message": "Qnekt menemukan kesalahan",
     "description": "Title of generic error page"
   },
   "errorStack": {
@@ -836,7 +836,7 @@
     "message": "Hubungkan dompet perangkat keras"
   },
   "hardwareWalletsMsg": {
-    "message": "Pilih dompet perangkat keras yang ingin Anda gunakan dengan MetaMask."
+    "message": "Pilih dompet perangkat keras yang ingin Anda gunakan dengan Qnekt."
   },
   "here": {
     "message": "di sini",
@@ -872,7 +872,7 @@
     "message": "impor menggunakan Frasa Pemulihan Rahasia"
   },
   "importAccountMsg": {
-    "message": " Akun yang diimpor tidak akan dikaitkan dengan Frasa Pemulihan Rahasia akun MetaMask yang asli dibuat. Pelajari selengkapnya tentang akun yang diimpor "
+    "message": " Akun yang diimpor tidak akan dikaitkan dengan Frasa Pemulihan Rahasia akun Qnekt yang asli dibuat. Pelajari selengkapnya tentang akun yang diimpor "
   },
   "importAccountSeedPhrase": {
     "message": "Impor akun dengan Frasa Pemulihan Rahasia"
@@ -898,7 +898,7 @@
     "description": "status showing that an account has been fully loaded into the keyring"
   },
   "infuraBlockedNotification": {
-    "message": "MetaMask tidak dapat terhubung ke host blockchain. Tinjau alasan yang mungkin $1.",
+    "message": "Qnekt tidak dapat terhubung ke host blockchain. Tinjau alasan yang mungkin $1.",
     "description": "$1 is a clickable link with with text defined by the 'here' key"
   },
   "initialTransactionConfirmed": {
@@ -1046,7 +1046,7 @@
     "message": "Pesan"
   },
   "metaMaskConnectStatusParagraphOne": {
-    "message": "Kini, Anda memiliki kontrol lebih banyak atas koneksi akun Anda di MetaMask."
+    "message": "Kini, Anda memiliki kontrol lebih banyak atas koneksi akun Anda di Qnekt."
   },
   "metaMaskConnectStatusParagraphThree": {
     "message": "Klik untuk mengelola akun Anda yang terhubung."
@@ -1058,10 +1058,10 @@
     "message": "Menghubungkan Anda ke Ethereum dan Web Terdesentralisasi."
   },
   "metamaskSwapsOfflineDescription": {
-    "message": "MetaMask Swap sedang dalam pemeliharaan. Silakan periksa kembali nanti."
+    "message": "Qnekt Swap sedang dalam pemeliharaan. Silakan periksa kembali nanti."
   },
   "metamaskVersion": {
-    "message": "Versi MetaMask"
+    "message": "Versi Qnekt"
   },
   "metametricsCommitmentsAllowOptOut": {
     "message": "Selalu izinkan Anda untuk menyisih melalui Pengaturan"
@@ -1071,7 +1071,7 @@
     "description": "This string is localized separately from some of the commitments so that we can bold it"
   },
   "metametricsCommitmentsIntro": {
-    "message": "MetaMask akan.."
+    "message": "Qnekt akan.."
   },
   "metametricsCommitmentsNeverCollectIP": {
     "message": "$1 mengumpulkan alamat IP lengkap Anda",
@@ -1088,11 +1088,11 @@
   "metametricsCommitmentsSendAnonymizedEvents": {
     "message": "Kirim kejadian pageview & klik anonim"
   },
-  "metametricsHelpImproveMetaMask": {
-    "message": "Bantu Kami Menyempurnakan MetaMask"
+  "metametricsHelpImproveQnekt": {
+    "message": "Bantu Kami Menyempurnakan Qnekt"
   },
   "metametricsOptInDescription": {
-    "message": "MetaMask ingin mengumpulkan data penggunaan untuk lebih memahami cara pengguna berinteraksi dengan ekstensi. Data ini akan digunakan untuk secara kontinu memperbaiki kegunaan dan pengalaman pengguna atas produk kami dan ekosistem Ethereum."
+    "message": "Qnekt ingin mengumpulkan data penggunaan untuk lebih memahami cara pengguna berinteraksi dengan ekstensi. Data ini akan digunakan untuk secara kontinu memperbaiki kegunaan dan pengalaman pengguna atas produk kami dan ekosistem Ethereum."
   },
   "mismatchedChain": {
     "message": "Detail jaringan untuk ID rantai ini tidak cocok dengan catatan kami. Kami menyarankan agar Anda $1 sebelum melanjutkan.",
@@ -1112,14 +1112,14 @@
     "message": "Nama"
   },
   "needEtherInWallet": {
-    "message": "Untuk berinteraksi dengan aplikasi yang terdesentralisasi menggunakan MetaMask, Anda memerlukan Ether di dompet Anda."
+    "message": "Untuk berinteraksi dengan aplikasi yang terdesentralisasi menggunakan Qnekt, Anda memerlukan Ether di dompet Anda."
   },
   "needHelp": {
     "message": "Butuh bantuan? Hubungi $1",
     "description": "$1 represents `needHelpLinkText`, the text which goes in the help link"
   },
   "needHelpLinkText": {
-    "message": "Dukungan MetaMask"
+    "message": "Dukungan Qnekt"
   },
   "needImportFile": {
     "message": "Anda harus memilih file untuk diimpor.",
@@ -1183,8 +1183,8 @@
   "newPassword": {
     "message": "Kata sandi baru (min. 8 karakter)"
   },
-  "newToMetaMask": {
-    "message": "Baru menggunakan MetaMask?"
+  "newToQnekt": {
+    "message": "Baru menggunakan Qnekt?"
   },
   "newTotal": {
     "message": "Total Baru"
@@ -1197,7 +1197,7 @@
   },
   "nextNonceWarning": {
     "message": "Nonce lebih tinggi dari nonce yang disarankan $1",
-    "description": "The next nonce according to MetaMask's internal logic"
+    "description": "The next nonce according to Qnekt's internal logic"
   },
   "noAccountsFound": {
     "message": "Tidak ditemukan akun untuk kueri pencarian yang diberikan"
@@ -1242,19 +1242,19 @@
     "message": "Biaya Jaringan Tidak Cukup"
   },
   "notifications1Description": {
-    "message": "Pengguna MetaMask Mobile sekarang bisa menukar token di dalam dompet seluler mereka. Pindai kode QR untuk mendapatkan aplikasi seluler dan mulai menukar.",
+    "message": "Pengguna Qnekt Mobile sekarang bisa menukar token di dalam dompet seluler mereka. Pindai kode QR untuk mendapatkan aplikasi seluler dan mulai menukar.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the swapping on mobile feature."
   },
   "notifications1Title": {
     "message": "Penukaran di seluler ada di sini!",
-    "description": "Title for a notification in the 'See What's New' popup. Tells users that they can now use MetaMask Swaps on Mobile."
+    "description": "Title for a notification in the 'See What's New' popup. Tells users that they can now use Qnekt Swaps on Mobile."
   },
   "notifications3ActionText": {
     "message": "Baca selengkapnya",
     "description": "The 'call to action' on the button, or link, of the 'Stay secure' notification. Upon clicking, users will be taken to a page about security on the metamask support website."
   },
   "notifications3Description": {
-    "message": "Dapatkan informasi terbaru tentang praktik terbaik keamanan MetaMask dan dapatkan kiat-kiat keamanan terkini dari dukungan MetaMask resmi.",
+    "message": "Dapatkan informasi terbaru tentang praktik terbaik keamanan Qnekt dan dapatkan kiat-kiat keamanan terkini dari dukungan Qnekt resmi.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the information they can get on security from the linked support page."
   },
   "notifications3Title": {
@@ -1266,7 +1266,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Swap on Binance Smart Chain!' notification. Upon clicking, users will be taken to a page where then can swap tokens on Binance Smart Chain."
   },
   "notifications4Description": {
-    "message": "Dapatkan harga terbaik di penukaran token langsung di dompet Anda. MetaMask kini menghubungkan Anda ke berbagai agregator penukaran terdesentralisasi dan pembuat pasar profesional di Binance Smart Chain.",
+    "message": "Dapatkan harga terbaik di penukaran token langsung di dompet Anda. Qnekt kini menghubungkan Anda ke berbagai agregator penukaran terdesentralisasi dan pembuat pasar profesional di Binance Smart Chain.",
     "description": "Description of a notification in the 'See What's New' popup."
   },
   "notifications4Title": {
@@ -1278,11 +1278,11 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes the seed phrase wording update."
   },
   "notifications6DescriptionOne": {
-    "message": "Pada Chrome versi 91, API yang memungkinkan dukungan Ledger (U2F) kami tidak lagi mendukung dompet perangkat keras. MetaMask telah menerapkan dukungan Ledger Live baru yang memungkinkan Anda terus terhubung ke perangkat Ledger Anda melalui aplikasi desktop Ledger Live.",
+    "message": "Pada Chrome versi 91, API yang memungkinkan dukungan Ledger (U2F) kami tidak lagi mendukung dompet perangkat keras. Qnekt telah menerapkan dukungan Ledger Live baru yang memungkinkan Anda terus terhubung ke perangkat Ledger Anda melalui aplikasi desktop Ledger Live.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the Ledger support update."
   },
   "notifications6DescriptionThree": {
-    "message": "Saat berinteraksi dengan akun Ledger Anda di MetaMask, tab baru akan terbuka dan Anda akan diminta untuk membuka aplikasi Ledger Live.  Setelah aplikasi tersebut terbuka, Anda akan diminta untuk mengizinkan koneksi WebSocket ke akun MetaMask Anda.  Tidak diperlukan tindakan lebih lanjut.",
+    "message": "Saat berinteraksi dengan akun Ledger Anda di Qnekt, tab baru akan terbuka dan Anda akan diminta untuk membuka aplikasi Ledger Live.  Setelah aplikasi tersebut terbuka, Anda akan diminta untuk mengizinkan koneksi WebSocket ke akun Qnekt Anda.  Tidak diperlukan tindakan lebih lanjut.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the Ledger support update."
   },
   "notifications6DescriptionTwo": {
@@ -1328,7 +1328,7 @@
     "message": "Ikut serta dalam MetaMetric"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Ikut serta dalam MetaMetric untuk membantu kami membuat MetaMask lebih baik"
+    "message": "Ikut serta dalam MetaMetric untuk membantu kami membuat Qnekt lebih baik"
   },
   "password": {
     "message": "Kata sandi"
@@ -1427,7 +1427,7 @@
     "message": "Jangan membagikan Frasa Pemulihan Rahasia Anda kepada siapa pun"
   },
   "recoveryPhraseReminderItemTwo": {
-    "message": "Tim MetaMask tidak akan pernah meminta Frasa Pemulihan Rahasia Anda"
+    "message": "Tim Qnekt tidak akan pernah meminta Frasa Pemulihan Rahasia Anda"
   },
   "recoveryPhraseReminderSubText": {
     "message": "Frasa Pemulihan Rahasia Anda mengendalikan semua akun Anda."
@@ -1575,7 +1575,7 @@
     "message": "Jika seseorang menanyakan frasa pemulihan Anda, kemungkinan mereka akan mencoba menipu Anda."
   },
   "seedPhraseIntroSidebarCopyTwo": {
-    "message": "Jangan pernah membagikan frasa pemulihan Anda bahkan kepada MetaMask!"
+    "message": "Jangan pernah membagikan frasa pemulihan Anda bahkan kepada Qnekt!"
   },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "Apa itu frasa pemulihan?"
@@ -1614,7 +1614,7 @@
     "message": "Pilih Akun"
   },
   "selectAnAccountAlreadyConnected": {
-    "message": "Akun ini sudah terhubung ke MetaMask."
+    "message": "Akun ini sudah terhubung ke Qnekt."
   },
   "selectEachPhrase": {
     "message": "Pilih masing-masing frasa untuk memastikan kebenarannya."
@@ -1739,7 +1739,7 @@
     "message": "Kesalahan dalam log status pengambilan."
   },
   "stateLogFileName": {
-    "message": "Log Status MetaMask"
+    "message": "Log Status Qnekt"
   },
   "stateLogs": {
     "message": "Log Status"
@@ -1842,7 +1842,7 @@
     "message": "Edit batas"
   },
   "swapEnableDescription": {
-    "message": "Ini wajib dan memberikan MetaMask izin untuk menukar $1 Anda.",
+    "message": "Ini wajib dan memberikan Qnekt izin untuk menukar $1 Anda.",
     "description": "Gives the user info about the required approval transaction for swaps. $1 will be the symbol of a token being approved for swaps."
   },
   "swapEstimatedNetworkFee": {
@@ -1897,10 +1897,10 @@
   "swapMaxSlippage": {
     "message": "Maks. slippage"
   },
-  "swapMetaMaskFee": {
-    "message": "Biaya MetaMask"
+  "swapQnektFee": {
+    "message": "Biaya Qnekt"
   },
-  "swapMetaMaskFeeDescription": {
+  "swapQnektFeeDescription": {
     "message": "Kami menemukan harga terbaik dari sumber likuiditas teratas, setiap waktu. Biaya sebesar $1% otomatis diperhitungkan ke kuota ini.",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
@@ -1909,7 +1909,7 @@
     "description": "$1 is the number of quotes that the user can select from when opening the list of quotes on the 'view quote' screen"
   },
   "swapNetworkFeeSummary": {
-    "message": "Biaya jaringan mencakup biaya pemrosesan penukaran Anda dan menyimpannya di jaringan $1. MetaMask tidak mendapatkan keuntungan dari biaya ini."
+    "message": "Biaya jaringan mencakup biaya pemrosesan penukaran Anda dan menyimpannya di jaringan $1. Qnekt tidak mendapatkan keuntungan dari biaya ini."
   },
   "swapNewQuoteIn": {
     "message": "Kuota baru di $1",
@@ -1946,7 +1946,7 @@
     "message": "Jika harga berubah antara waktu pesanan Anda ditempatkan dan dikonfirmasi, ini disebut \"slippage\". Penukaran Anda akan otomatis dibatalkan jika slippage melebihi pengaturan \"toleransi slippage\"."
   },
   "swapQuoteIncludesRate": {
-    "message": "Kuota mencakup biaya MetaMask $1%",
+    "message": "Kuota mencakup biaya Qnekt $1%",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapQuoteNofN": {
@@ -2091,7 +2091,7 @@
     "message": "Lihat dalam aktivitas"
   },
   "switchEthereumChainConfirmationDescription": {
-    "message": "Ini akan mengalihkan jaringan yang dipilih dalam MetaMask ke jaringan yang ditambahkan sebelumnya:"
+    "message": "Ini akan mengalihkan jaringan yang dipilih dalam Qnekt ke jaringan yang ditambahkan sebelumnya:"
   },
   "switchEthereumChainConfirmationTitle": {
     "message": "Izinkan situs ini untuk beralih jaringan?"
@@ -2121,16 +2121,16 @@
     "message": "Pastikan tidak ada orang lain yang melihat layar Anda saat memindai kode ini"
   },
   "syncWithMobileComplete": {
-    "message": "Data Anda telah berhasil disinkronkan. Nikmati aplikasi seluler MetaMask!"
+    "message": "Data Anda telah berhasil disinkronkan. Nikmati aplikasi seluler Qnekt!"
   },
   "syncWithMobileDesc": {
-    "message": "Anda dapat menyinkronkan akun dan informasi dengan perangkat seluler Anda. Buka aplikasi seluler MetaMask, buka \"Pengaturan\" dan ketuk \"Sinkronkan dari Ekstensi Browser\""
+    "message": "Anda dapat menyinkronkan akun dan informasi dengan perangkat seluler Anda. Buka aplikasi seluler Qnekt, buka \"Pengaturan\" dan ketuk \"Sinkronkan dari Ekstensi Browser\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Jika Anda baru membuka aplikasi seluler MetaMask untuk pertama kali, cukup ikuti langkah-langkah yang ada di ponsel Anda."
+    "message": "Jika Anda baru membuka aplikasi seluler Qnekt untuk pertama kali, cukup ikuti langkah-langkah yang ada di ponsel Anda."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Pindai kode ini dengan aplikasi seluler MetaMask Anda"
+    "message": "Pindai kode ini dengan aplikasi seluler Qnekt Anda"
   },
   "syncWithMobileTitle": {
     "message": "Sinkronisasi dengan seluler"
@@ -2247,7 +2247,7 @@
     "message": "Coba lagi"
   },
   "typePassword": {
-    "message": "Ketikkan kata sandi MetaMask Anda"
+    "message": "Ketikkan kata sandi Qnekt Anda"
   },
   "unapproved": {
     "message": "Tidak disetujui"
@@ -2346,14 +2346,14 @@
     "description": "$1 is a clickable link."
   },
   "welcome": {
-    "message": "Selamat datang di MetaMask"
+    "message": "Selamat datang di Qnekt"
   },
   "welcomeBack": {
     "message": "Selamat Datang Kembali!"
   },
   "whatsNew": {
     "message": "Apa yang baru",
-    "description": "This is the title of a popup that gives users notifications about new features and updates to MetaMask."
+    "description": "This is the title of a popup that gives users notifications about new features and updates to Qnekt."
   },
   "whatsThis": {
     "message": "Apa ini?"
