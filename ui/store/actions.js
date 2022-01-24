@@ -1065,6 +1065,7 @@ export function updateMetamaskState(newState) {
       currentLocale: newLocale,
       selectedAddress: newSelectedAddress,
       provider: newProvider,
+      nativeCurrency: nativeCurrency,
     } = newState;
 
     if (currentLocale && newLocale && currentLocale !== newLocale) {
@@ -1129,6 +1130,19 @@ export function updateMetamaskState(newState) {
       type: actionConstants.UPDATE_METAMASK_STATE,
       value: newState,
     });
+
+    if (nativeCurrency === 'QTUM' && newState.qtumBalances[newSelectedAddress] !== undefined) {
+      dispatch({
+        type: actionConstants.UPDATE_QTUM_BALANCE,
+        value: {
+          qtumBalances: {
+            spendableBalance: newState.qtumBalances[newSelectedAddress].spendableBalance,
+            pendingBalance: newState.qtumBalances[newSelectedAddress].pendingBalance,
+          }
+        }
+      });
+    }
+
   };
 }
 

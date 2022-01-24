@@ -44,6 +44,7 @@ export default function reduceMetamask(state = {}, action) {
     nextNonce: null,
     conversionRate: null,
     nativeCurrency: 'QTUM',
+    qtumBalances: {},
     ...state,
   };
 
@@ -193,6 +194,13 @@ export default function reduceMetamask(state = {}, action) {
         ...metamaskState,
         nextNonce: action.value,
       };
+    }
+
+    case actionConstants.UPDATE_QTUM_BALANCE: {
+      return {
+        ...metamaskState,
+        ...action.value,
+      }
     }
 
     default:
@@ -398,4 +406,8 @@ export function doesUserHaveALedgerAccount(state) {
   return state.metamask.keyrings.some((kr) => {
     return kr.type === KEYRING_TYPES.LEDGER;
   });
+}
+
+export function getQtumBalances(state) {
+  return state.metamask.qtumBalances;
 }

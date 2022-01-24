@@ -28,6 +28,7 @@ export default class PreferencesController {
    */
   constructor(opts = {}) {
     const initState = {
+      qtumBalances: {},
       frequentRpcListDetail: [],
       useBlockie: false,
       useNonceField: false,
@@ -178,6 +179,21 @@ export default class PreferencesController {
       textDirection,
     });
     return textDirection;
+  }
+
+  getQtumBalances() {
+    return this.store.getState().qtumBalances;
+  }
+
+  setQtumBalances(address, balances) {
+    const oldBalances = this.getQtumBalances();
+
+    oldBalances[address] = {
+      ...oldBalances[address],
+      ...balances,
+    };
+
+    this.store.updateState({ qtumBalances: oldBalances });
   }
 
   /**
