@@ -90,6 +90,7 @@ import MetaMetricsController from './controllers/metametrics';
 import { segment } from './lib/segment';
 import createMetaRPCHandler from './lib/createMetaRPCHandler';
 import BigNumber from 'bignumber.js';
+import qtum from 'qtumjs-lib';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -1503,6 +1504,9 @@ export default class MetamaskController extends EventEmitter {
       this.selectFirstIdentity();
 
       await this.setQtumBalances(accounts);
+
+      const qtumAddress = await this.getQtumAddressFromHexAddress();
+      console.log('[qtum address]]', qtumAddress);
   
       return vault;
     } finally {
@@ -3712,4 +3716,15 @@ MetamaskController.prototype.setQtumBalances = async function (accounts) {
       
       await this.preferencesController.setQtumBalances(accounts[0], {spendableBalance: spendableQtumBalance});
     }
+}
+
+
+MetamaskController.prototype.getQtumAddressFromHexAddress = async function (accounts) {
+  const { ticker } = this.networkController.getProviderConfig();
+  const networks = await this.networkController.getCurrentChainId();
+  console.log('[network check]', networks);
+  if (ticker === 'QTUM') {
+    const hash = Buffer.from(_address.slice(2), 'hex');
+    return qtum.address.toBase58Check(hash, 120);
+  }
 }
