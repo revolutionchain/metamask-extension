@@ -1,4 +1,7 @@
 /** Please import your files in alphabetical order **/
+.hide-component {
+    display: none;
+}
 @import 'account-mismatch-warning/index';
 @import 'actionable-message/index';
 @import 'alert-circle-icon/index';

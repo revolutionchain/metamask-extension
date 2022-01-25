@@ -1,4 +1,4 @@
-import { ETH, GWEI, WEI } from '../constants/common';
+import { ETH, GWEI, WEI, SATOSHI } from '../constants/common';
 import { addHexPrefix } from '../../../app/scripts/lib/util';
 import {
   conversionUtil,
@@ -74,6 +74,46 @@ export function getValueFromWeiHex({
   });
 }
 
+export function getHexFromWeiHex({
+  value,
+  fromCurrency = ETH,
+  toCurrency,
+  conversionRate,
+  numberOfDecimals,
+  toDenomination,
+}) {
+  return conversionUtil(value, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'hex',
+    fromCurrency,
+    toCurrency,
+    numberOfDecimals,
+    fromDenomination: WEI,
+    toDenomination,
+    conversionRate,
+  });
+}
+
+export function getValueFromSatoshiHex({
+  value,
+  fromCurrency = ETH,
+  toCurrency,
+  conversionRate,
+  numberOfDecimals,
+  toDenomination,
+}) {
+  return conversionUtil(value, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'dec',
+    fromCurrency,
+    toCurrency,
+    numberOfDecimals,
+    fromDenomination: SATOSHI,
+    toDenomination,
+    conversionRate,
+  });
+}
+
 export function getWeiHexFromDecimalValue({
   value,
   fromCurrency,
@@ -90,6 +130,25 @@ export function getWeiHexFromDecimalValue({
     invertConversionRate,
     fromDenomination,
     toDenomination: WEI,
+  });
+}
+
+export function getSatoshiHexFromDecimalValue({
+  value,
+  fromCurrency,
+  conversionRate,
+  fromDenomination,
+  invertConversionRate,
+}) {
+  return conversionUtil(value, {
+    fromNumericBase: 'dec',
+    toNumericBase: 'hex',
+    toCurrency: ETH,
+    fromCurrency,
+    conversionRate,
+    invertConversionRate,
+    fromDenomination,
+    toDenomination: SATOSHI,
   });
 }
 
@@ -139,6 +198,15 @@ export function hexWEIToDecGWEI(decGWEI) {
   return conversionUtil(decGWEI, {
     fromNumericBase: 'hex',
     toNumericBase: 'dec',
+    fromDenomination: 'WEI',
+    toDenomination: 'GWEI',
+  });
+}
+
+export function hexWEIToHexGWEI(decGWEI) {
+  return conversionUtil(decGWEI, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'hex',
     fromDenomination: 'WEI',
     toDenomination: 'GWEI',
   });

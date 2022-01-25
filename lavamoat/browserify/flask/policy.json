@@ -179,6 +179,7 @@
     },
     "@ethersproject/contracts": {
       "globals": {
+        "name": true,
         "setTimeout": true
       },
       "packages": {
@@ -236,8 +237,14 @@
       }
     },
     "@ethersproject/keccak256": {
+      "globals": {
+        "setTimeout": true
+      },
       "packages": {
         "@ethersproject/bytes": true,
+        "@ledgerhq/hw-app-eth": true,
+        "@ledgerhq/hw-transport-u2f": true,
+        "ethers": true,
         "js-sha3": true
       }
     },
@@ -451,6 +458,49 @@
         "events": true,
         "rlp": true,
         "uuid": true
+      }
+    },
+    "@ledgerhq/errors": {
+      "globals": {
+        "console.warn": true
+      }
+    },
+    "@ledgerhq/hw-app-eth": {
+      "packages": {
+        "@ledgerhq/errors": true,
+        "bignumber.js": true,
+        "buffer": true,
+        "rlp": true
+      }
+    },
+    "@ledgerhq/hw-transport": {
+      "globals": {
+        "clearTimeout": true,
+        "console.warn": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@ledgerhq/errors": true,
+        "buffer": true,
+        "events": true
+      }
+    },
+    "@ledgerhq/hw-transport-u2f": {
+      "globals": {
+        "location.origin": true
+      },
+      "packages": {
+        "@ledgerhq/errors": true,
+        "@ledgerhq/hw-transport": true,
+        "@ledgerhq/logs": true,
+        "buffer": true,
+        "u2f-api": true
+      }
+    },
+    "@ledgerhq/logs": {
+      "globals": {
+        "__ledgerLogsListen": "write",
+        "console.error": true
       }
     },
     "@material-ui/core": {
@@ -1002,6 +1052,23 @@
         "crypto-browserify": true
       }
     },
+    "bip174": {
+      "packages": {
+        "buffer": true,
+        "is-buffer": true
+      }
+    },
+    "bip32": {
+      "packages": {
+        "bs58check": true,
+        "buffer": true,
+        "create-hash": true,
+        "create-hmac": true,
+        "tiny-secp256k1": true,
+        "typeforce": true,
+        "wif": true
+      }
+    },
     "bip39": {
       "packages": {
         "create-hash": true,
@@ -1014,6 +1081,29 @@
     "bip66": {
       "packages": {
         "safe-buffer": true
+      }
+    },
+    "bitcoinjs-lib": {
+      "globals": {
+        "console.warn": true
+      },
+      "packages": {
+        "bech32": true,
+        "bip174": true,
+        "bip32": true,
+        "bip66": true,
+        "bitcoin-ops": true,
+        "bs58check": true,
+        "buffer": true,
+        "create-hash": true,
+        "is-buffer": true,
+        "merkle-lib": true,
+        "pushdata-bitcoin": true,
+        "randombytes": true,
+        "tiny-secp256k1": true,
+        "typeforce": true,
+        "varuint-bitcoin": true,
+        "wif": true
       }
     },
     "bitwise": {
@@ -3250,6 +3340,11 @@
         "is-plain-obj": true
       }
     },
+    "merkle-lib": {
+      "packages": {
+        "buffer": true
+      }
+    },
     "miller-rabin": {
       "packages": {
         "bn.js": true,
@@ -3874,6 +3969,11 @@
         "define": true
       }
     },
+    "pushdata-bitcoin": {
+      "packages": {
+        "bitcoin-ops": true
+      }
+    },
     "qrcode-generator": {
       "globals": {
         "define": true
@@ -3888,6 +3988,37 @@
         "prop-types": true,
         "qr.js": true,
         "react": true
+      }
+    },
+    "qtum-ethers-wrapper": {
+      "globals": {
+        "setTimeout": true
+      },
+      "packages": {
+        "@ethersproject/abstract-provider": true,
+        "@ethersproject/abstract-signer": true,
+        "@ethersproject/address": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/hash": true,
+        "@ethersproject/hdnode": true,
+        "@ethersproject/json-wallets": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/random": true,
+        "@ethersproject/signing-key": true,
+        "@ethersproject/transactions": true,
+        "bignumber.js": true,
+        "bip66": true,
+        "bitcoinjs-lib": true,
+        "bn.js": true,
+        "buffer": true,
+        "ethers": true,
+        "hash.js": true,
+        "secp256k1": true,
+        "timers-browserify": true,
+        "varuint-bitcoin": true,
+        "wif": true
       }
     },
     "rabin-wasm": {
@@ -4619,6 +4750,14 @@
         "process": true
       }
     },
+    "tiny-secp256k1": {
+      "packages": {
+        "bn.js": true,
+        "buffer": true,
+        "create-hmac": true,
+        "elliptic": true
+      }
+    },
     "tiny-warning": {
       "globals": {
         "console": true
@@ -4693,9 +4832,27 @@
         "is-typedarray": true
       }
     },
+    "typeforce": {
+      "packages": {
+        "is-buffer": true
+      }
+    },
     "typical": {
       "globals": {
         "define": true
+      }
+    },
+    "u2f-api": {
+      "globals": {
+        "MessageChannel": true,
+        "chrome": true,
+        "console.error": true,
+        "document.body.appendChild": true,
+        "document.createElement": true,
+        "location.protocol": true,
+        "navigator": true,
+        "setTimeout": true,
+        "u2f": true
       }
     },
     "uint8arrays": {
@@ -4758,6 +4915,11 @@
       "packages": {
         "is-buffer": true,
         "varint": true
+      }
+    },
+    "varuint-bitcoin": {
+      "packages": {
+        "safe-buffer": true
       }
     },
     "vm-browserify": {
@@ -4863,6 +5025,12 @@
         "XMLHttpRequest": true,
         "define": true,
         "setTimeout": true
+      }
+    },
+    "wif": {
+      "packages": {
+        "bs58check": true,
+        "buffer": true
       }
     },
     "xhr2": {

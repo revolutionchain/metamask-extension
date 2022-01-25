@@ -27,8 +27,10 @@ import { stripHexPrefix, BN } from 'ethereumjs-util';
 
 // Big Number Constants
 const BIG_NUMBER_WEI_MULTIPLIER = new BigNumber('1000000000000000000');
+const BIG_NUMBER_QTUM_MULTIPLIER = new BigNumber('1');
 const BIG_NUMBER_GWEI_MULTIPLIER = new BigNumber('1000000000');
 const BIG_NUMBER_ETH_MULTIPLIER = new BigNumber('1');
+const BIG_NUMBER_SATOSHI_MULTIPLIER = new BigNumber('100000000');
 
 // Setter Maps
 const toBigNumber = {
@@ -40,11 +42,27 @@ const toNormalizedDenomination = {
   WEI: (bigNumber) => bigNumber.div(BIG_NUMBER_WEI_MULTIPLIER),
   GWEI: (bigNumber) => bigNumber.div(BIG_NUMBER_GWEI_MULTIPLIER),
   ETH: (bigNumber) => bigNumber.div(BIG_NUMBER_ETH_MULTIPLIER),
+  QTUM: (bigNumber) => {
+    const wei = bigNumber.times(BIG_NUMBER_WEI_MULTIPLIER);
+    const maximumPrecision = wei.times(1e-8);
+    return maximumPrecision.times(1e-18);
+  },
+  SATOSHI: (bigNumber) => bigNumber.div(BIG_NUMBER_SATOSHI_MULTIPLIER),
 };
 const toSpecifiedDenomination = {
   WEI: (bigNumber) => bigNumber.times(BIG_NUMBER_WEI_MULTIPLIER).round(),
   GWEI: (bigNumber) => bigNumber.times(BIG_NUMBER_GWEI_MULTIPLIER).round(9),
   ETH: (bigNumber) => bigNumber.times(BIG_NUMBER_ETH_MULTIPLIER).round(9),
+  QTUM: (bigNumber) => {
+    // Convert Wei to Qtum
+    // 10000000000
+    // one satoshi is 0.00000001
+    // we need to drop precision for values smaller than that
+    const wei = bigNumber.times(BIG_NUMBER_WEI_MULTIPLIER).round();
+    const maximumPrecision = wei.times(1e-8).round();
+    return maximumPrecision.times(1e-18);
+  },
+  SATOSHI: (bigNumber) => bigNumber.times(BIG_NUMBER_SATOSHI_MULTIPLIER).round(9),
 };
 const baseChange = {
   hex: (n) => n.toString(16),

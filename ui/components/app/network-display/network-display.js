@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import {
   NETWORK_TYPE_RPC,
   NETWORK_TYPE_TO_ID_MAP,
+  QTUM_PROVIDER_TYPES,
+  NETWORK_TO_NAME_MAP,
 } from '../../../../shared/constants/network';
 
 import LoadingIndicator from '../../ui/loading-indicator';
@@ -35,8 +37,17 @@ export default function NetworkDisplay({
   }));
   const t = useI18nContext();
 
-  const { nickname: networkNickname, type: networkType } =
+  let { nickname: networkNickname, type: networkType } =
     targetNetwork ?? currentNetwork;
+
+  let isQtum = null;
+  if (QTUM_PROVIDER_TYPES.includes(networkNickname)) {
+    isQtum = networkNickname
+    networkNickname = NETWORK_TO_NAME_MAP[networkNickname] || networkNickname;
+  } else if (QTUM_PROVIDER_TYPES.includes(networkType)) {
+    isQtum = networkType || networkNickname
+    networkNickname = NETWORK_TO_NAME_MAP[networkType] || networkNickname;
+  }
 
   return (
     <Chip
@@ -49,11 +60,12 @@ export default function NetworkDisplay({
           isLoading={networkIsLoading}
         >
           <ColorIndicator
-            color={networkType === NETWORK_TYPE_RPC ? COLORS.UI4 : networkType}
+            color={networkType === NETWORK_TYPE_RPC ? (isQtum || COLORS.UI4) : networkType}
             size={indicatorSize}
             type={ColorIndicator.TYPES.FILLED}
             iconClassName={
               networkType === NETWORK_TYPE_RPC && indicatorSize !== SIZES.XS
+                && !isQtum
                 ? 'fa fa-question'
                 : undefined
             }

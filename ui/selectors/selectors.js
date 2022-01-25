@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 import { addHexPrefix } from '../../app/scripts/lib/util';
 import {
   MAINNET_CHAIN_ID,
+  QTUM_CHAIN_ID,
+  BSC_CHAIN_ID,
   TEST_CHAINS,
   NETWORK_TYPE_RPC,
   NATIVE_CURRENCY_TOKEN_IMAGE_MAP,
@@ -463,7 +465,7 @@ function getSuggestedAssetCount(state) {
 
 export function getIsMainnet(state) {
   const chainId = getCurrentChainId(state);
-  return chainId === MAINNET_CHAIN_ID;
+  return chainId === QTUM_CHAIN_ID;
 }
 
 export function getIsTestnet(state) {

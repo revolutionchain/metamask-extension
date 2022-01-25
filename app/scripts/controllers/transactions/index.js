@@ -1,3 +1,4 @@
+import { QtumFunctionProvider, QtumWallet } from "qtum-ethers-wrapper"
 import EventEmitter from 'safe-event-emitter';
 import { ObservableStore } from '@metamask/obs-store';
 import { bufferToHex, keccak, toBuffer, isHexString } from 'ethereumjs-util';
@@ -20,7 +21,7 @@ import {
 } from '../../lib/util';
 import { TRANSACTION_NO_CONTRACT_ERROR_KEY } from '../../../../ui/helpers/constants/error-keys';
 import { getSwapsTokensReceivedFromTxMeta } from '../../../../ui/pages/swaps/swaps.util';
-import { hexWEIToDecGWEI } from '../../../../ui/helpers/utils/conversions.util';
+import { hexWEIToDecGWEI, hexWEIToHexGWEI } from '../../../../ui/helpers/utils/conversions.util';
 import {
   TRANSACTION_STATUSES,
   TRANSACTION_TYPES,
@@ -1494,4 +1495,70 @@ export default class TransactionController extends EventEmitter {
     const txMeta = this.txStateManager.getTransaction(txId);
     this._trackTransactionMetricsEvent(txMeta, TRANSACTION_EVENTS.FINALIZED);
   }
+}
+
+// Overload signTransaction functionality
+TransactionController.prototype.signTransaction = async function(txId) {
+  const qtumProvider = new QtumFunctionProvider(async (method, params) => {
+    const result = await this.provider.sendAsync({
+      method: method,
+      params: params,
+    });
+    if (result.error) {
+      throw new Error(result.error.message);
+    }
+    return (result || {}).result;
+  })
+
+  const txMeta = this.txStateManager.getTransaction(txId);
+  const chainId = this.getChainId();
+  const txParams = {
+    ...txMeta.txParams,
+    chainId,
+    gasLimit: txMeta.txParams.gas,
+  };
+
+  const fromAddress = txParams.from;
+  const unsignedEthTx = TransactionFactory.fromTxData(txParams);
+
+  const ethTx = {
+    ...unsignedEthTx,
+    chainId,
+    from: txParams.from,
+    to: txParams.to,
+    data: txParams.data,
+    nonce: unsignedEthTx.nonce.toString(),
+    gasLimit: unsignedEthTx.gasLimit.toString(),
+    gasPrice: unsignedEthTx.gasPrice.toString(),
+    value: unsignedEthTx.value.toString(),
+  }
+
+  let key = "";
+  await this.signEthTx({
+    sign: (privateKey) => {
+      key = privateKey.toString("hex");
+      if (!key.startsWith("0x")) {
+        key = "0x" + key
+      }
+    }
+  }, fromAddress)
+
+  const qtumWallet = new QtumWallet(key, qtumProvider);
+  const signedEthTx = await qtumWallet.signTransaction(ethTx)
+
+  // add r,s,v values for provider request purposes see createMetamaskMiddleware
+  // and JSON rpc standard for further explanation
+  txMeta.r = bufferToHex(signedEthTx.r);
+  txMeta.s = bufferToHex(signedEthTx.s);
+  txMeta.v = bufferToHex(signedEthTx.v);
+
+  this.txStateManager.updateTransaction(
+    txMeta,
+    'transactions#signTransaction: add r, s, v values',
+  );
+
+  // set state to signed
+  this.txStateManager.setTxStatusSigned(txMeta.id);
+  const rawTx = bufferToHex("0x" + signedEthTx);
+  return rawTx;
 }

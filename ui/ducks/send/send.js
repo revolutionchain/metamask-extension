@@ -13,6 +13,7 @@ import { GAS_ESTIMATE_TYPES, GAS_LIMITS } from '../../../shared/constants/gas';
 import {
   CONTRACT_ADDRESS_ERROR,
   INSUFFICIENT_FUNDS_ERROR,
+  INSUFFICIENT_SPENDABLE_BALANCE_ERROR,
   INSUFFICIENT_TOKENS_ERROR,
   INVALID_RECIPIENT_ADDRESS_ERROR,
   INVALID_RECIPIENT_ADDRESS_NOT_ETH_NETWORK_ERROR,
@@ -79,6 +80,7 @@ import {
   getGasEstimateType,
   getTokens,
   getUnapprovedTxs,
+  getQtumBalances,
 } from '../metamask/metamask';
 
 import { resetEnsResolution } from '../ens';
@@ -508,6 +510,12 @@ export const initializeSendState = createAsyncThunk(
       }
       balance = await getERC20Balance(asset.details, fromAddress);
     }
+
+    let qtumBalances;
+    if (asset.type === ASSET_TYPES.NATIVE) {
+      qtumBalances = getQtumBalances(state);
+    }
+
     return {
       address: fromAddress,
       nativeBalance: account.balance,
@@ -522,6 +530,7 @@ export const initializeSendState = createAsyncThunk(
       eip1559support,
       useTokenDetection: getUseTokenDetection(state),
       tokenAddressList: Object.keys(getTokenList(state)),
+      qtumBalances,
     };
   },
 );
@@ -621,6 +630,11 @@ export const initialState = {
     // Warning to display on the address field
     warning: null,
   },
+  qtumBalances: {
+    spendableBalance: '0x0',
+    pendingBalane: '0x0',
+    error: null,
+  }
 };
 
 const slice = createSlice({
@@ -663,7 +677,7 @@ const slice = createSlice({
         });
       } else {
         amount = subtractCurrencies(
-          addHexPrefix(state.asset.balance),
+          addHexPrefix(state.qtumBalances.spendableBalance),
           addHexPrefix(state.gas.gasTotal),
           {
             toNumericBase: 'hex',
@@ -1030,16 +1044,26 @@ const slice = createSlice({
     },
     resetSendState: () => initialState,
     validateAmountField: (state) => {
+      const { qtumBalances } = state;
       switch (true) {
         // set error to INSUFFICIENT_FUNDS_ERROR if the account balance is lower
         // than the total price of the transaction inclusive of gas fees.
-        case state.asset.type === ASSET_TYPES.NATIVE &&
+        // case state.asset.type === ASSET_TYPES.NATIVE &&
+        //   !isBalanceSufficient({
+        //     amount: state.amount.value,
+        //     balance: state.asset.balance,
+        //     gasTotal: state.gas.gasTotal ?? '0x0',
+        //   }):
+        //   state.amount.error = INSUFFICIENT_FUNDS_ERROR;
+        //   break;
+        case state.asset.type === ASSET_TYPES.NATIVE && 
           !isBalanceSufficient({
             amount: state.amount.value,
-            balance: state.asset.balance,
+            balance: qtumBalances.spendableBalance,
             gasTotal: state.gas.gasTotal ?? '0x0',
           }):
           state.amount.error = INSUFFICIENT_FUNDS_ERROR;
+          state.qtumBalances.error = INSUFFICIENT_SPENDABLE_BALANCE_ERROR;
           break;
         // set error to INSUFFICIENT_FUNDS_ERROR if the token balance is lower
         // than the amount of token the user is attempting to send.
@@ -1065,6 +1089,7 @@ const slice = createSlice({
       }
     },
     validateGasField: (state) => {
+      const { qtumBalances } = state;
       // Checks if the user has enough funds to cover the cost of gas, always
       // uses the native currency and does not take into account the amount
       // being sent. If the user has enough to cover cost of gas but not gas
@@ -1072,7 +1097,7 @@ const slice = createSlice({
       const insufficientFunds = !isBalanceSufficient({
         amount:
           state.asset.type === ASSET_TYPES.NATIVE ? state.amount.value : '0x0',
-        balance: state.account.balance,
+        balance: state.asset.type === ASSET_TYPES.NATIVE ? qtumBalances.spendableBalance : state.account.balance,
         gasTotal: state.gas.gasTotal ?? '0x0',
       });
 
@@ -1200,6 +1225,7 @@ const slice = createSlice({
         state.account.balance = action.payload.nativeBalance;
         state.asset.balance = action.payload.assetBalance;
         state.gas.gasLimit = action.payload.gasLimit;
+        state.qtumBalances = { ...action.payload.qtumBalances };
         slice.caseReducers.updateGasFeeEstimates(state, {
           payload: {
             gasFeeEstimates: action.payload.gasFeeEstimates,
@@ -1742,6 +1768,10 @@ export function getDraftTransactionID(state) {
 }
 
 export function sendAmountIsInError(state) {
+  return Boolean(state[name].qtumBalances.error);
+}
+
+export function sendQtumAmountIsInError(state) {
   return Boolean(state[name].amount.error);
 }
 
@@ -1769,6 +1799,7 @@ export function getSendErrors(state) {
   return {
     gasFee: state.send.gas.error,
     amount: state.send.amount.error,
+    qtumBalances: state.send.qtumBalances.error
   };
 }
 
@@ -1782,4 +1813,22 @@ export function isSendFormInvalid(state) {
 
 export function getSendStage(state) {
   return state[name].stage;
+}
+
+export function getQtumSpendableBalanceInString(state) {
+  let balance = '0x0'
+  if(!!state.send.qtumBalances.spendableBalance) {
+    const amount = subtractCurrencies(
+      addHexPrefix(state.send.qtumBalances.spendableBalance),
+      addHexPrefix(state.send.gas.gasTotal),
+      {
+        toNumericBase: 'hex',
+        aBase: 16,
+        bBase: 16,
+      },
+    );
+    balance = addHexPrefix(amount);
+  }
+
+  return balance;
 }

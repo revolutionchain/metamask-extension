@@ -316,6 +316,7 @@ export function importNewAccount(strategy, args) {
       log.debug(`background.getState`);
       newState = await promisifiedBackground.getState();
     } catch (err) {
+      console.log('[import new account error]', err);
       dispatch(displayWarning(err.message));
       throw err;
     } finally {
@@ -519,6 +520,16 @@ export function setCurrentCurrency(currencyCode) {
       dispatch(hideLoadingIndication());
     }
   };
+}
+
+export function setNativeCurrency() {
+  return async () => {
+    try {
+      await promisifiedBackground.setNativeCurrency();
+    } catch (error) {
+      console.log('[setNativeCurrency error]', error);
+    }
+  }
 }
 
 export function signMsg(msgData) {
@@ -1054,6 +1065,7 @@ export function updateMetamaskState(newState) {
       currentLocale: newLocale,
       selectedAddress: newSelectedAddress,
       provider: newProvider,
+      nativeCurrency: nativeCurrency,
     } = newState;
 
     if (currentLocale && newLocale && currentLocale !== newLocale) {
@@ -1118,6 +1130,19 @@ export function updateMetamaskState(newState) {
       type: actionConstants.UPDATE_METAMASK_STATE,
       value: newState,
     });
+
+    if (nativeCurrency === 'QTUM' && newState.qtumBalances[newSelectedAddress] !== undefined) {
+      dispatch({
+        type: actionConstants.UPDATE_QTUM_BALANCE,
+        value: {
+          qtumBalances: {
+            spendableBalance: newState.qtumBalances[newSelectedAddress].spendableBalance,
+            pendingBalance: newState.qtumBalances[newSelectedAddress].pendingBalance,
+          }
+        }
+      });
+    }
+
   };
 }
 

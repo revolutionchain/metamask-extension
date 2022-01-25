@@ -6,7 +6,7 @@ import { addHexPrefix } from '../../../app/scripts/lib/util';
 
 const MIN_GAS_PRICE_DEC = '0';
 const MIN_GAS_PRICE_HEX = parseInt(MIN_GAS_PRICE_DEC, 10).toString(16);
-const MIN_GAS_LIMIT_DEC = '21000';
+const MIN_GAS_LIMIT_DEC = '22000';
 const MIN_GAS_LIMIT_HEX = parseInt(MIN_GAS_LIMIT_DEC, 10).toString(16);
 
 const MIN_GAS_PRICE_GWEI = addHexPrefix(
@@ -28,6 +28,7 @@ const MIN_GAS_TOTAL = multiplyCurrencies(MIN_GAS_LIMIT_HEX, MIN_GAS_PRICE_HEX, {
 const TOKEN_TRANSFER_FUNCTION_SIGNATURE = '0xa9059cbb';
 
 const INSUFFICIENT_FUNDS_ERROR = 'insufficientFunds';
+const INSUFFICIENT_SPENDABLE_BALANCE_ERROR = 'insufficientSpendableBalance';
 const INSUFFICIENT_TOKENS_ERROR = 'insufficientTokens';
 const NEGATIVE_ETH_ERROR = 'negativeETH';
 const INVALID_RECIPIENT_ADDRESS_ERROR = 'invalidAddressRecipient';
@@ -46,6 +47,7 @@ const ENS_REGISTRATION_ERROR = 'ensRegistrationError';
 
 export {
   INSUFFICIENT_FUNDS_ERROR,
+  INSUFFICIENT_SPENDABLE_BALANCE_ERROR,
   INSUFFICIENT_TOKENS_ERROR,
   INVALID_RECIPIENT_ADDRESS_ERROR,
   KNOWN_RECIPIENT_ADDRESS_WARNING,

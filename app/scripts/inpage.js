@@ -49,8 +49,24 @@ const metamaskStream = new WindowPostMessageStream({
   target: 'metamask-contentscript',
 });
 
-initializeProvider({
+const inPageProvider = initializeProvider({
   connectionStream: metamaskStream,
   logger: log,
-  shouldShimWeb3: true,
+  // since we are using the official metamask initializeProvider implementation
+  // we need to not set the global provider as it will be a name collision with official Metamask
+  shouldSetOnWindow: false,
+  shouldShimWeb3: false,
 });
+
+/**
+ * Sets the given provider instance as window.ethereum and dispatches the
+ * 'ethereum#initialized' event on window.
+ *
+ * @param providerInstance - The provider instance.
+ */
+function setGlobalProvider(providerInstance) {
+  window.qtum = providerInstance;
+  window.dispatchEvent(new Event('qtum#initialized'));
+}
+
+setGlobalProvider(inPageProvider);

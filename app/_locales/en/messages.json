@@ -1,4 +1,16 @@
 {
+  "qtumMainnet": {
+    "message": "QTUM Mainnet"
+  },
+  "qtumTestnet": {
+    "message": "QTUM Testnet"
+  },
+  "qtumRegtest": {
+    "message": "QTUM Regtest"
+  },
+  "insufficientSpendableBalance": {
+    "message": "Your spendable balance is "
+  },
   "QRHardwareInvalidTransactionTitle": {
     "message": "Error"
   },
