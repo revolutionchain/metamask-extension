@@ -34,7 +34,7 @@ class SelectedAccount extends Component {
 
   render() {
     const { t } = this.context;
-    const { selectedIdentity } = this.props;
+    const { selectedIdentity, qtumAddress, isQtumAddressShow } = this.props;
     const checksummedAddress = toChecksumHexAddress(selectedIdentity.address);
 
     return (
@@ -54,14 +54,14 @@ class SelectedAccount extends Component {
                 () => this.setState({ copied: false }),
                 SECOND * 3,
               );
-              copyToClipboard(checksummedAddress);
+              copyToClipboard(isQtumAddressShow ? qtumAddress : checksummedAddress);
             }}
           >
             <div className="selected-account__name">
               {selectedIdentity.name}
             </div>
             <div className="selected-account__address">
-              {shortenAddress(checksummedAddress)}
+              {isQtumAddressShow ? shortenAddress(qtumAddress) : shortenAddress(checksummedAddress)}
               <div className="selected-account__copy">
                 <CopyIcon size={11} color="#989a9b" />
               </div>

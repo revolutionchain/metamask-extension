@@ -20,6 +20,7 @@ import {
   getEnsWarning,
 } from '../../../../ducks/ens';
 import AddRecipient from './add-recipient.component';
+import { getQtumAddressBook, isQtumAddressShow } from '../../../../ducks/metamask/metamask';
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddRecipient);
 
@@ -33,6 +34,8 @@ function mapStateToProps(state) {
   }
 
   const addressBook = getAddressBook(state);
+  const qtumAddressBook = getQtumAddressBook(state);
+  const isQtumAddressShowCheck = isQtumAddressShow(state);
 
   const ownedAccounts = accountsWithSendEtherInfoSelector(state).sort((a, b) =>
     a.name.localeCompare(b.name),
@@ -40,6 +43,8 @@ function mapStateToProps(state) {
 
   return {
     addressBook,
+    qtumAddressBook,
+    isQtumAddressShowCheck,
     addressBookEntryName,
     contacts: addressBook.filter(({ name }) => Boolean(name)),
     ensResolution,

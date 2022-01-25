@@ -90,6 +90,7 @@ import MetaMetricsController from './controllers/metametrics';
 import { segment } from './lib/segment';
 import createMetaRPCHandler from './lib/createMetaRPCHandler';
 import BigNumber from 'bignumber.js';
+import qtum from 'qtumjs-lib';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -588,9 +589,12 @@ export default class MetamaskController extends EventEmitter {
 
     this.networkController.on(NETWORK_EVENTS.NETWORK_DID_CHANGE, async () => {
       const { ticker } = this.networkController.getProviderConfig();
-      console.log('[ticker]', ticker);
       try {
         await this.currencyRateController.setNativeCurrency(ticker);
+        const qtumAccounts = await this.preferencesController.getQtumAddresses();
+        Object.keys(qtumAccounts).forEach((item) => {
+          this.setQtumAddressFromHexAddress(item);
+        })
       } catch (error) {
         // TODO: Handle failure to get conversion rate more gracefully
         console.error(error);
@@ -1317,6 +1321,14 @@ export default class MetamaskController extends EventEmitter {
       setNativeCurrency: nodeify(
         this.setNativeCurrency, this
       ),
+      // get Hex address from QTUM
+      getHexAddressFromQtum: nodeify(
+        this.getHexAddressFromQtum, this
+      ),
+      // get qtum address from hex
+      getQtumAddressFromHex: nodeify(
+        this.getQtumAddressFromHex, this
+      ),
 
       // MetaMetrics
       trackMetaMetricsEvent: nodeify(
@@ -1383,9 +1395,6 @@ export default class MetamaskController extends EventEmitter {
             this.collectibleDetectionController,
           )
         : null,
-
-      // set native currency to QTUM
-      setNativeCurrency: nodeify(this.setNativeCurrency, this),
     };
   }
 
@@ -1422,7 +1431,7 @@ export default class MetamaskController extends EventEmitter {
         this.selectFirstIdentity();
 
         await this.setQtumBalances(accounts);
-    
+        await this.setQtumAddressFromHexAddress(accounts[0]);
       }
 
       return vault;
@@ -1503,7 +1512,9 @@ export default class MetamaskController extends EventEmitter {
       this.selectFirstIdentity();
 
       await this.setQtumBalances(accounts);
-  
+
+      await this.setQtumAddressFromHexAddress(accounts[0]);
+
       return vault;
     } finally {
       releaseLock();
@@ -1907,6 +1918,8 @@ export default class MetamaskController extends EventEmitter {
 
     await this.setQtumBalances(newAccounts);
 
+    await this.setQtumAddressFromHexAddress(newAccounts[0]);
+
     const { identities } = this.preferencesController.store.getState();
     return { ...keyState, identities };
   }
@@ -2001,6 +2014,8 @@ export default class MetamaskController extends EventEmitter {
     await this.preferencesController.setSelectedAddress(accounts[0]);
 
     await this.setQtumBalances(accounts);
+    await this.setQtumAddressFromHexAddress(accounts[0]);
+
   }
 
   // ---------------------------------------------------------------------------
@@ -3394,6 +3409,20 @@ export default class MetamaskController extends EventEmitter {
   setLocked() {
     return this.keyringController.setLocked();
   }
+
+  /**
+   * A method for getting hex address from qtum address.
+   */
+  async getHexAddressFromQtum(_qtumAddress) {
+    return await this.getHexAddressFromQtumAddress(_qtumAddress);
+  }
+  
+  /**
+   * A method for getting qtum address from hex address.
+   */
+   async getQtumAddressFromHex(_qtumAddress) {
+    return await this.getQtumAddressFromHexAddress(_qtumAddress);
+  }
 }
 
 // inject monkey patching code to alter address generation
@@ -3666,7 +3695,6 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressImport = function (
 
 MetamaskController.prototype.monkeyPatchQTUMSetCurrency = async function () {
   const { ticker } = this.networkController.getProviderConfig();
-  console.log('[monkeyPatchQTUMSetCurrency ticker]', ticker);
   try {
     await this.currencyRateController.setNativeCurrency(ticker);
   } catch (error) {
@@ -3684,19 +3712,23 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
       _address,
       'all',
     ]);
-    console.log('[monkeyPatchQTUMGetBalance]', balances);
 
-    const spendableBalance = balances.reduce((sum, item) => {
-      if (item.safe === true && item.type === 'P2PK') {
-        // eslint-disable-next-line no-param-reassign
-        const b = new BigNumber(item.amount);
-        sum = b.add(new BigNumber(sum));
-      }
-      return sum;
-    }, 0);
-    const bigBalance = new BigNumber(spendableBalance).times(new BigNumber(10).pow(18));
+    if(balances) {
+      const spendableBalance = balances.reduce((sum, item) => {
+        if (item.safe === true && item.type === 'P2PK') {
+          // eslint-disable-next-line no-param-reassign
+          const b = new BigNumber(item.amount);
+          sum = b.add(new BigNumber(sum));
+        }
+        return sum;
+      }, 0);
+      const bigBalance = new BigNumber(spendableBalance).times(new BigNumber(10).pow(18));
+  
+      return addHexPrefix(bigBalance.toString(16));
+    } else {
+      return '0x00';
+    }
 
-    return addHexPrefix(bigBalance.toString(16));
   } catch (error) {
     // TODO: Handle failure to get conversion rate more gracefully
     console.error(error);
@@ -3712,4 +3744,63 @@ MetamaskController.prototype.setQtumBalances = async function (accounts) {
       
       await this.preferencesController.setQtumBalances(accounts[0], {spendableBalance: spendableQtumBalance});
     }
+}
+
+
+MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  const networks = await this.networkController.getNetworkState();
+  try {
+    if (ticker === 'QTUM') {
+      const chainId = await this.networkController.getCurrentChainId();
+      let version;
+      switch (chainId) {
+        case '0x22B8':
+          version = 58;
+          break;
+        case '0x22B9':
+          version = 120;
+          break;
+        default:
+          version = 120;
+          break;
+      }
+      const hash = Buffer.from(_address.slice(2), 'hex');
+      return qtum.address.toBase58Check(hash, version);
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+  }
+}
+
+MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const qtumAddress = await this.getQtumAddressFromHexAddress(
+      _address,
+    );
+    await this.preferencesController.setQtumAddress(_address, qtumAddress);
+  }
+}
+
+MetamaskController.prototype.getHexAddressFromQtumAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  try {
+    if (ticker === 'QTUM') {
+      if (_address === undefined) {
+        return 'Invalid Address'
+      }
+      console.log('[qtum address pass]', _address);
+      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      console.log('[from hash to hex]', hexAddress);
+      return `0x${hexAddress}`
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+    return '0x00';
+  }
 }

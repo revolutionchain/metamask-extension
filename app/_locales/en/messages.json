@@ -2042,6 +2042,12 @@
   "primaryCurrencySettingDescription": {
     "message": "Select native to prioritize displaying values in the native currency of the chain (e.g. ETH). Select Fiat to prioritize displaying values in your selected fiat currency."
   },
+  "primaryAddressSetting": {
+    "message": "Primary Address"
+  },
+  "primaryAddressSettingDescription": {
+    "message": "Select Hex Address to prioritize displaying normal ethereum hex address. Select Qtum Address to prioritize displaying base58 qtum address."
+  },
   "priorityFee": {
     "message": "Priority Fee"
   },

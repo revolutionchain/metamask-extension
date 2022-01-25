@@ -532,6 +532,30 @@ export function setNativeCurrency() {
   }
 }
 
+export function getHexAddressFromQtumAddress(_address) {
+  return async () => {
+    try {
+      const qtumAddress = await promisifiedBackground.getHexAddressFromQtum(_address);
+      return qtumAddress;
+    } catch (error) {
+      console.log('[getHexAddressFromQtum error]', error);
+      return undefined;
+    }
+  }
+}
+
+export function getQtumAddressFromHexAddress(_address) {
+  return async () => {
+    try {
+      const qtumAddress = await promisifiedBackground.getQtumAddressFromHex(_address);
+      return qtumAddress;
+    } catch (error) {
+      console.log('[getQtumAddressFromHexAddress error]', error);
+      return undefined;
+    }
+  }
+}
+
 export function signMsg(msgData) {
   log.debug('action - signMsg');
   return async (dispatch) => {
@@ -1066,6 +1090,7 @@ export function updateMetamaskState(newState) {
       selectedAddress: newSelectedAddress,
       provider: newProvider,
       nativeCurrency: nativeCurrency,
+      qtumAddresses: qtumAddresses,
     } = newState;
 
     if (currentLocale && newLocale && currentLocale !== newLocale) {
@@ -2065,6 +2090,10 @@ export function setDefaultHomeActiveTabName(value) {
 
 export function setUseNativeCurrencyAsPrimaryCurrencyPreference(value) {
   return setPreference('useNativeCurrencyAsPrimaryCurrency', value);
+}
+
+export function setPrimaryAddressPreference(value) {
+  return setPreference('isQtumAddressShow', value);
 }
 
 export function setHideZeroBalanceTokens(value) {

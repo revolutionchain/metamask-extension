@@ -22,6 +22,8 @@ export default class ExportPrivateKeyModal extends Component {
   static propTypes = {
     exportAccount: PropTypes.func.isRequired,
     selectedIdentity: PropTypes.object.isRequired,
+    qtumAddress: PropTypes.string,
+    isQtumAddressShow: PropTypes.bool,
     warning: PropTypes.node,
     showAccountDetailModal: PropTypes.func.isRequired,
     hideModal: PropTypes.func.isRequired,
@@ -134,6 +136,8 @@ export default class ExportPrivateKeyModal extends Component {
       showAccountDetailModal,
       hideModal,
       previousModalState,
+      qtumAddress,
+      isQtumAddressShow,
     } = this.props;
     const { name, address } = selectedIdentity;
 
@@ -149,7 +153,7 @@ export default class ExportPrivateKeyModal extends Component {
         <span className="export-private-key-modal__account-name">{name}</span>
         <ReadOnlyInput
           wrapperClass="ellip-address-wrapper"
-          value={toChecksumHexAddress(address)}
+          value={isQtumAddressShow ? qtumAddress : toChecksumHexAddress(address)}
         />
         <div className="export-private-key-modal__divider" />
         <span className="export-private-key-modal__body-title">

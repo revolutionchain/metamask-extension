@@ -6,6 +6,7 @@ import {
   hideModal,
   clearAccountDetails,
 } from '../../../../store/actions';
+import { getQtumAddress, isQtumAddressShow } from '../../../../ducks/metamask/metamask';
 import { getSelectedIdentity } from '../../../../selectors';
 import ExportPrivateKeyModal from './export-private-key-modal.component';
 
@@ -17,11 +18,14 @@ function mapStateToPropsFactory() {
     // Note that the selected identity **will** change from underneath us when we unlock the keyring
     // which is the expected behavior that we are side-stepping.
     selectedIdentity = selectedIdentity || getSelectedIdentity(state);
+    
     return {
       warning: state.appState.warning,
       privateKey: state.appState.accountDetail.privateKey,
       selectedIdentity,
       previousModalState: state.appState.modal.previousModalState.name,
+      qtumAddress: getQtumAddress(state, selectedIdentity.address),
+      isQtumAddressShow: isQtumAddressShow(state),
     };
   };
 }

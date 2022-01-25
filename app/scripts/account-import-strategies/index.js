@@ -17,7 +17,6 @@ const accountImporter = {
     try {
       const importer = this.strategies[strategy];
       const privateKeyHex = importer(...args);
-      console.log('[importer]', privateKeyHex);
       return Promise.resolve(privateKeyHex);
     } catch (e) {
       return Promise.reject(e);
