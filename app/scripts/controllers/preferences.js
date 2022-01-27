@@ -29,6 +29,7 @@ export default class PreferencesController {
   constructor(opts = {}) {
     const initState = {
       qtumBalances: {},
+      qtumAddresses: {},
       frequentRpcListDetail: [],
       useBlockie: false,
       useNonceField: false,
@@ -59,6 +60,7 @@ export default class PreferencesController {
         showTestNetworks: false,
         useNativeCurrencyAsPrimaryCurrency: true,
         hideZeroBalanceTokens: false,
+        isQtumAddressShow: false,
       },
       // ENS decentralized website resolution
       ipfsGateway: 'dweb.link',
@@ -215,6 +217,24 @@ export default class PreferencesController {
     this.store.updateState({ identities });
   }
 
+  getQtumAddresses() {
+    return this.store.getState().qtumAddresses;
+  }
+
+  /**
+   * Updates identities to only include specified addresses. Removes identities
+   * not included in addresses array
+   *
+   * @param {string[]} addresses - An array of hex addresses
+   *
+   */
+   setQtumAddress(address, qtumAddress) {
+    const { qtumAddresses } = this.store.getState();
+    console.log('[qtum addresses]', qtumAddresses, qtumAddress);
+    qtumAddresses[address] = qtumAddress
+    this.store.updateState({ qtumAddresses });
+  }
+
   /**
    * Removes an address from state
    *
@@ -237,6 +257,22 @@ export default class PreferencesController {
       this.setSelectedAddress(selected);
     }
     return address;
+  }
+
+  /**
+   * Removes an qtum address from state
+   *
+   * @param {string} address - A hex address
+   * @returns {string} the address that was removed
+   */
+   removeQtumAddress(address) {
+    const { qtumAddresses } = this.store.getState();
+
+    if (!qtumAddresses[address]) {
+      throw new Error(`${address} can't be deleted cause it was not found`);
+    }
+    delete qtumAddresses[address];
+    this.store.updateState({ qtumAddresses });
   }
 
   /**
@@ -272,7 +308,7 @@ export default class PreferencesController {
       throw new Error('Expected non-empty array of addresses. Error #11201');
     }
 
-    const { identities, lostIdentities } = this.store.getState();
+    const { identities, lostIdentities, qtumIdentities } = this.store.getState();
 
     const newlyLost = {};
     Object.keys(identities).forEach((identity) => {

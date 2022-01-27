@@ -36,6 +36,7 @@ export default function reduceMetamask(state = {}, action) {
       showFiatInTestnets: false,
       showTestNetworks: false,
       useNativeCurrencyAsPrimaryCurrency: true,
+      isQtumAddressShow: true,
     },
     firstTimeFlowType: null,
     completedOnboarding: false,
@@ -45,6 +46,7 @@ export default function reduceMetamask(state = {}, action) {
     conversionRate: null,
     nativeCurrency: 'QTUM',
     qtumBalances: {},
+    qtumAddresses: {},
     ...state,
   };
 
@@ -410,4 +412,12 @@ export function doesUserHaveALedgerAccount(state) {
 
 export function getQtumBalances(state) {
   return state.metamask.qtumBalances;
+}
+
+export function getQtumAddress(state, address) {
+  return state.metamask.qtumAddresses[address];
+}
+
+export function isQtumAddressShow(state) {
+  return state.metamask.preferences.isQtumAddressShow;
 }

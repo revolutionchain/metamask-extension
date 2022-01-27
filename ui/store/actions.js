@@ -315,6 +315,7 @@ export function importNewAccount(strategy, args) {
       await promisifiedBackground.importAccountWithStrategy(strategy, args);
       log.debug(`background.getState`);
       newState = await promisifiedBackground.getState();
+      console.log('[new state]', newState);
     } catch (err) {
       console.log('[import new account error]', err);
       dispatch(displayWarning(err.message));
@@ -1066,8 +1067,10 @@ export function updateMetamaskState(newState) {
       selectedAddress: newSelectedAddress,
       provider: newProvider,
       nativeCurrency: nativeCurrency,
+      qtumAddresses: qtumAddresses,
     } = newState;
 
+    console.log('[qtum update metamaskstate]', qtumAddresses);
     if (currentLocale && newLocale && currentLocale !== newLocale) {
       dispatch(updateCurrentLocale(newLocale));
     }
@@ -2065,6 +2068,10 @@ export function setDefaultHomeActiveTabName(value) {
 
 export function setUseNativeCurrencyAsPrimaryCurrencyPreference(value) {
   return setPreference('useNativeCurrencyAsPrimaryCurrency', value);
+}
+
+export function setPrimaryAddressPreference(value) {
+  return setPreference('isQtumAddressShow', value);
 }
 
 export function setHideZeroBalanceTokens(value) {

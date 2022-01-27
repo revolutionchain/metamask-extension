@@ -1423,7 +1423,7 @@ export default class MetamaskController extends EventEmitter {
         this.selectFirstIdentity();
 
         await this.setQtumBalances(accounts);
-    
+        await this.setQtumAddressFromHexAddress(accounts[0]);
       }
 
       return vault;
@@ -1505,9 +1505,8 @@ export default class MetamaskController extends EventEmitter {
 
       await this.setQtumBalances(accounts);
 
-      const qtumAddress = await this.getQtumAddressFromHexAddress();
-      console.log('[qtum address]]', qtumAddress);
-  
+      await this.setQtumAddressFromHexAddress(accounts[0]);
+
       return vault;
     } finally {
       releaseLock();
@@ -1911,6 +1910,8 @@ export default class MetamaskController extends EventEmitter {
 
     await this.setQtumBalances(newAccounts);
 
+    await this.setQtumAddressFromHexAddress(newAccounts[0]);
+
     const { identities } = this.preferencesController.store.getState();
     return { ...keyState, identities };
   }
@@ -2005,6 +2006,8 @@ export default class MetamaskController extends EventEmitter {
     await this.preferencesController.setSelectedAddress(accounts[0]);
 
     await this.setQtumBalances(accounts);
+    await this.setQtumAddressFromHexAddress(accounts[0]);
+
   }
 
   // ---------------------------------------------------------------------------
@@ -3690,17 +3693,22 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
     ]);
     console.log('[monkeyPatchQTUMGetBalance]', balances);
 
-    const spendableBalance = balances.reduce((sum, item) => {
-      if (item.safe === true && item.type === 'P2PK') {
-        // eslint-disable-next-line no-param-reassign
-        const b = new BigNumber(item.amount);
-        sum = b.add(new BigNumber(sum));
-      }
-      return sum;
-    }, 0);
-    const bigBalance = new BigNumber(spendableBalance).times(new BigNumber(10).pow(18));
+    if(balances) {
+      const spendableBalance = balances.reduce((sum, item) => {
+        if (item.safe === true && item.type === 'P2PK') {
+          // eslint-disable-next-line no-param-reassign
+          const b = new BigNumber(item.amount);
+          sum = b.add(new BigNumber(sum));
+        }
+        return sum;
+      }, 0);
+      const bigBalance = new BigNumber(spendableBalance).times(new BigNumber(10).pow(18));
+  
+      return addHexPrefix(bigBalance.toString(16));
+    } else {
+      return '0x00';
+    }
 
-    return addHexPrefix(bigBalance.toString(16));
   } catch (error) {
     // TODO: Handle failure to get conversion rate more gracefully
     console.error(error);
@@ -3719,12 +3727,41 @@ MetamaskController.prototype.setQtumBalances = async function (accounts) {
 }
 
 
-MetamaskController.prototype.getQtumAddressFromHexAddress = async function (accounts) {
+MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
-  const networks = await this.networkController.getCurrentChainId();
-  console.log('[network check]', networks);
+  const networks = await this.networkController.getNetworkState();
+  try {
+    if (ticker === 'QTUM') {
+      const chainId = await this.networkController.getCurrentChainId();
+      let version;
+      switch (chainId) {
+        case '0x22B8':
+          version = 58;
+          break;
+        case '0x22B9':
+          version = 120;
+          break;
+        default:
+          version = 120;
+          break;
+      }
+      const hash = Buffer.from(_address.slice(2), 'hex');
+      return qtum.address.toBase58Check(hash, version);
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+  }
+}
+
+MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
   if (ticker === 'QTUM') {
-    const hash = Buffer.from(_address.slice(2), 'hex');
-    return qtum.address.toBase58Check(hash, 120);
+    const qtumAddress = await this.getQtumAddressFromHexAddress(
+      _address,
+    );
+    console.log('[qtumAddress]', qtumAddress);
+    await this.preferencesController.setQtumAddress(_address, qtumAddress);
   }
 }

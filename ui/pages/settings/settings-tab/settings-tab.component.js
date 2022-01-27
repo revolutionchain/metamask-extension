@@ -207,6 +207,65 @@ export default class SettingsTab extends PureComponent {
     );
   }
 
+  renderUsePrimaryAddressOptions() {
+    const { t } = this.context;
+    const {
+      setPrimaryAddressPreference,
+      isQtumAddressShow,
+    } = this.props;
+
+    console.log('[primary address]', isQtumAddressShow);
+
+    return (
+      <div className="settings-page__content-row">
+        <div className="settings-page__content-item">
+          <span>{t('primaryAddressSetting')}</span>
+          <div className="settings-page__content-description">
+            {t('primaryAddressSettingDescription')}
+          </div>
+        </div>
+        <div className="settings-page__content-item">
+          <div className="settings-page__content-item-col">
+            <div className="settings-tab__radio-buttons">
+              <div className="settings-tab__radio-button">
+                <input
+                  type="radio"
+                  id="hex-primary-address"
+                  onChange={() =>
+                    setPrimaryAddressPreference(false)
+                  }
+                  checked={!isQtumAddressShow}
+                />
+                <label
+                  htmlFor="hex-primary-address"
+                  className="settings-tab__radio-label"
+                >
+                  Hex Address
+                </label>
+              </div>
+              <div className="settings-tab__radio-button">
+                <input
+                  type="radio"
+                  id="qtum-primary-address"
+                  onChange={() =>
+                    setPrimaryAddressPreference(true)
+                  }
+                  checked={isQtumAddressShow}
+                />
+                <label
+                  htmlFor="qtum-primary-currency"
+                  className="settings-tab__radio-label"
+                >
+                  Qtum Address
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     // eslint-disable-next-line no-unused-vars
     const { warning } = this.props;
@@ -216,6 +275,7 @@ export default class SettingsTab extends PureComponent {
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
         {this.renderCurrentConversion()}
         {this.renderUsePrimaryCurrencyOptions()}
+        {this.renderUsePrimaryAddressOptions()}
         {this.renderCurrentLocale()}
         {this.renderBlockieOptIn()}
         {this.renderHideZeroBalanceTokensOptIn()}

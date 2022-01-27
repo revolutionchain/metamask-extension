@@ -179,7 +179,6 @@
     },
     "@ethersproject/contracts": {
       "globals": {
-        "name": true,
         "setTimeout": true
       },
       "packages": {
@@ -237,14 +236,8 @@
       }
     },
     "@ethersproject/keccak256": {
-      "globals": {
-        "setTimeout": true
-      },
       "packages": {
         "@ethersproject/bytes": true,
-        "@ledgerhq/hw-app-eth": true,
-        "@ledgerhq/hw-transport-u2f": true,
-        "ethers": true,
         "js-sha3": true
       }
     },
@@ -458,49 +451,6 @@
         "events": true,
         "rlp": true,
         "uuid": true
-      }
-    },
-    "@ledgerhq/errors": {
-      "globals": {
-        "console.warn": true
-      }
-    },
-    "@ledgerhq/hw-app-eth": {
-      "packages": {
-        "@ledgerhq/errors": true,
-        "bignumber.js": true,
-        "buffer": true,
-        "rlp": true
-      }
-    },
-    "@ledgerhq/hw-transport": {
-      "globals": {
-        "clearTimeout": true,
-        "console.warn": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "@ledgerhq/errors": true,
-        "buffer": true,
-        "events": true
-      }
-    },
-    "@ledgerhq/hw-transport-u2f": {
-      "globals": {
-        "location.origin": true
-      },
-      "packages": {
-        "@ledgerhq/errors": true,
-        "@ledgerhq/hw-transport": true,
-        "@ledgerhq/logs": true,
-        "buffer": true,
-        "u2f-api": true
-      }
-    },
-    "@ledgerhq/logs": {
-      "globals": {
-        "__ledgerLogsListen": "write",
-        "console.error": true
       }
     },
     "@material-ui/core": {
@@ -1043,6 +993,12 @@
         "buffer": true
       }
     },
+    "bigi": {
+      "packages": {
+        "assert": true,
+        "buffer": true
+      }
+    },
     "bignumber.js": {
       "globals": {
         "crypto": true,
@@ -1050,23 +1006,6 @@
       },
       "packages": {
         "crypto-browserify": true
-      }
-    },
-    "bip174": {
-      "packages": {
-        "buffer": true,
-        "is-buffer": true
-      }
-    },
-    "bip32": {
-      "packages": {
-        "bs58check": true,
-        "buffer": true,
-        "create-hash": true,
-        "create-hmac": true,
-        "tiny-secp256k1": true,
-        "typeforce": true,
-        "wif": true
       }
     },
     "bip39": {
@@ -1084,23 +1023,21 @@
       }
     },
     "bitcoinjs-lib": {
-      "globals": {
-        "console.warn": true
-      },
       "packages": {
         "bech32": true,
-        "bip174": true,
-        "bip32": true,
+        "bigi": true,
         "bip66": true,
         "bitcoin-ops": true,
         "bs58check": true,
         "buffer": true,
         "create-hash": true,
+        "create-hmac": true,
+        "ecurve": true,
         "is-buffer": true,
         "merkle-lib": true,
         "pushdata-bitcoin": true,
         "randombytes": true,
-        "tiny-secp256k1": true,
+        "safe-buffer": true,
         "typeforce": true,
         "varuint-bitcoin": true,
         "wif": true
@@ -1598,6 +1535,13 @@
     "duplexer": {
       "packages": {
         "stream-browserify": true
+      }
+    },
+    "ecurve": {
+      "packages": {
+        "assert": true,
+        "bigi": true,
+        "safe-buffer": true
       }
     },
     "elliptic": {
@@ -4021,6 +3965,14 @@
         "wif": true
       }
     },
+    "qtumjs-lib": {
+      "packages": {
+        "bignumber.js": true,
+        "bitcoinjs-lib": true,
+        "qtum-opcodes": true,
+        "safe-buffer": true
+      }
+    },
     "rabin-wasm": {
       "globals": {
         "Blob": true,
@@ -4750,14 +4702,6 @@
         "process": true
       }
     },
-    "tiny-secp256k1": {
-      "packages": {
-        "bn.js": true,
-        "buffer": true,
-        "create-hmac": true,
-        "elliptic": true
-      }
-    },
     "tiny-warning": {
       "globals": {
         "console": true
@@ -4840,19 +4784,6 @@
     "typical": {
       "globals": {
         "define": true
-      }
-    },
-    "u2f-api": {
-      "globals": {
-        "MessageChannel": true,
-        "chrome": true,
-        "console.error": true,
-        "document.body.appendChild": true,
-        "document.createElement": true,
-        "location.protocol": true,
-        "navigator": true,
-        "setTimeout": true,
-        "u2f": true
       }
     },
     "uint8arrays": {
