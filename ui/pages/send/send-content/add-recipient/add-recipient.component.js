@@ -14,6 +14,8 @@ export default class AddRecipient extends Component {
     userInput: PropTypes.string,
     ownedAccounts: PropTypes.array,
     addressBook: PropTypes.array,
+    qtumAddressBook: PropTypes.object,
+    isQtumAddressShowCheck: PropTypes.bool,
     updateRecipient: PropTypes.func,
     ensResolution: PropTypes.string,
     ensError: PropTypes.string,
@@ -127,6 +129,11 @@ export default class AddRecipient extends Component {
   }
 
   renderExplicitAddress(address, name) {
+    const {
+      qtumAddressBook,
+      isQtumAddressShowCheck
+    } = this.props;
+
     return (
       <div
         key={address}
@@ -136,11 +143,11 @@ export default class AddRecipient extends Component {
         <Identicon address={address} diameter={28} />
         <div className="send__select-recipient-wrapper__group-item__content">
           <div className="send__select-recipient-wrapper__group-item__title">
-            {name ? <Confusable input={name} /> : ellipsify(address)}
+            {name ? <Confusable input={name} /> : isQtumAddressShowCheck ? qtumAddressBook[address] : ellipsify(address)}
           </div>
           {name && (
             <div className="send__select-recipient-wrapper__group-item__subtitle">
-              {ellipsify(address)}
+              {isQtumAddressShowCheck ? qtumAddressBook[address] : ellipsify(address)}
             </div>
           )}
         </div>
@@ -152,6 +159,8 @@ export default class AddRecipient extends Component {
     let { ownedAccounts } = this.props;
     const {
       userInput,
+      qtumAddressBook,
+      isQtumAddressShowCheck,
       useContactListForRecipientSearch,
       isUsingMyAccountsForRecipientSearch,
     } = this.props;
@@ -178,6 +187,8 @@ export default class AddRecipient extends Component {
         <RecipientGroup
           label={t('myAccounts')}
           items={ownedAccounts}
+          qtumAddressBook={qtumAddressBook}
+          isQtumAddressShowCheck={isQtumAddressShowCheck}
           onSelect={this.selectRecipient}
         />
       </div>
@@ -190,6 +201,8 @@ export default class AddRecipient extends Component {
       userInput,
       ownedAccounts = [],
       addressBook,
+      qtumAddressBook,
+      isQtumAddressShowCheck,
       useMyAccountsForRecipientSearch,
     } = this.props;
 
@@ -197,6 +210,8 @@ export default class AddRecipient extends Component {
       <div className="send__select-recipient-wrapper__list">
         <ContactList
           addressBook={addressBook}
+          qtumAddressBook={qtumAddressBook}
+          isQtumAddressShowCheck={isQtumAddressShowCheck}
           searchForContacts={this.searchForContacts.bind(this)}
           searchForRecents={this.searchForRecents.bind(this)}
           selectRecipient={this.selectRecipient.bind(this)}

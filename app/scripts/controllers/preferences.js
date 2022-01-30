@@ -222,15 +222,13 @@ export default class PreferencesController {
   }
 
   /**
-   * Updates identities to only include specified addresses. Removes identities
-   * not included in addresses array
+   * Updates qtumAddresses to only include specified addresses.
    *
    * @param {string[]} addresses - An array of hex addresses
    *
    */
    setQtumAddress(address, qtumAddress) {
     const { qtumAddresses } = this.store.getState();
-    console.log('[qtum addresses]', qtumAddresses, qtumAddress);
     qtumAddresses[address] = qtumAddress
     this.store.updateState({ qtumAddresses });
   }
@@ -308,7 +306,7 @@ export default class PreferencesController {
       throw new Error('Expected non-empty array of addresses. Error #11201');
     }
 
-    const { identities, lostIdentities, qtumIdentities } = this.store.getState();
+    const { identities, lostIdentities } = this.store.getState();
 
     const newlyLost = {};
     Object.keys(identities).forEach((identity) => {

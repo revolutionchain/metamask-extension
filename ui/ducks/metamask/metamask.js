@@ -418,6 +418,10 @@ export function getQtumAddress(state, address) {
   return state.metamask.qtumAddresses[address];
 }
 
+export function getQtumAddressBook(state) {
+  return state.metamask.qtumAddresses;
+}
+
 export function isQtumAddressShow(state) {
   return state.metamask.preferences.isQtumAddressShow;
 }

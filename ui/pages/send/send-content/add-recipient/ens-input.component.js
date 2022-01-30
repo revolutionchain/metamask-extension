@@ -17,6 +17,8 @@ export default class EnsInput extends Component {
   static propTypes = {
     className: PropTypes.string,
     selectedAddress: PropTypes.string,
+    qtumAddressBook: PropTypes.object,
+    isQtumAddressShowCheck: PropTypes.bool,
     selectedName: PropTypes.string,
     scanQrCode: PropTypes.func,
     onPaste: PropTypes.func,
@@ -83,7 +85,7 @@ export default class EnsInput extends Component {
 
   render() {
     const { t } = this.context;
-    const { className, selectedAddress, selectedName, userInput } = this.props;
+    const { className, selectedAddress, selectedName, userInput, qtumAddressBook, isQtumAddressShowCheck } = this.props;
 
     const hasSelectedAddress = Boolean(selectedAddress);
 
@@ -105,11 +107,11 @@ export default class EnsInput extends Component {
             <>
               <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
                 <div className="ens-input__selected-input__title">
-                  {selectedName || selectedAddress}
+                  {selectedName || (isQtumAddressShowCheck ? qtumAddressBook[selectedAddress] : selectedAddress)}
                 </div>
                 {selectedName !== selectedAddress && (
                   <div className="ens-input__selected-input__subtitle">
-                    {selectedAddress}
+                    {isQtumAddressShowCheck ? qtumAddressBook[selectedAddress] : selectedAddress}
                   </div>
                 )}
               </div>

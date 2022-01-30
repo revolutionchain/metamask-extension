@@ -589,7 +589,6 @@ export default class MetamaskController extends EventEmitter {
 
     this.networkController.on(NETWORK_EVENTS.NETWORK_DID_CHANGE, async () => {
       const { ticker } = this.networkController.getProviderConfig();
-      console.log('[ticker]', ticker);
       try {
         await this.currencyRateController.setNativeCurrency(ticker);
       } catch (error) {
@@ -3673,7 +3672,6 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressImport = function (
 
 MetamaskController.prototype.monkeyPatchQTUMSetCurrency = async function () {
   const { ticker } = this.networkController.getProviderConfig();
-  console.log('[monkeyPatchQTUMSetCurrency ticker]', ticker);
   try {
     await this.currencyRateController.setNativeCurrency(ticker);
   } catch (error) {
@@ -3691,7 +3689,6 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
       _address,
       'all',
     ]);
-    console.log('[monkeyPatchQTUMGetBalance]', balances);
 
     if(balances) {
       const spendableBalance = balances.reduce((sum, item) => {
@@ -3761,7 +3758,6 @@ MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_add
     const qtumAddress = await this.getQtumAddressFromHexAddress(
       _address,
     );
-    console.log('[qtumAddress]', qtumAddress);
     await this.preferencesController.setQtumAddress(_address, qtumAddress);
   }
 }

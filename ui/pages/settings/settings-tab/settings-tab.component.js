@@ -214,8 +214,6 @@ export default class SettingsTab extends PureComponent {
       isQtumAddressShow,
     } = this.props;
 
-    console.log('[primary address]', isQtumAddressShow);
-
     return (
       <div className="settings-page__content-row">
         <div className="settings-page__content-item">
