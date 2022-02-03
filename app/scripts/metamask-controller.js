@@ -1317,6 +1317,14 @@ export default class MetamaskController extends EventEmitter {
       setNativeCurrency: nodeify(
         this.setNativeCurrency, this
       ),
+      // get Hex address from QTUM
+      getHexAddressFromQtum: nodeify(
+        this.getHexAddressFromQtum, this
+      ),
+      // get qtum address from hex
+      getQtumAddressFromHex: nodeify(
+        this.getQtumAddressFromHex, this
+      ),
 
       // MetaMetrics
       trackMetaMetricsEvent: nodeify(
@@ -1383,9 +1391,6 @@ export default class MetamaskController extends EventEmitter {
             this.collectibleDetectionController,
           )
         : null,
-
-      // set native currency to QTUM
-      setNativeCurrency: nodeify(this.setNativeCurrency, this),
     };
   }
 
@@ -3400,6 +3405,20 @@ export default class MetamaskController extends EventEmitter {
   setLocked() {
     return this.keyringController.setLocked();
   }
+
+  /**
+   * A method for getting hex address from qtum address.
+   */
+  async getHexAddressFromQtum(_qtumAddress) {
+    return await this.getHexAddressFromQtumAddress(_qtumAddress);
+  }
+  
+  /**
+   * A method for getting qtum address from hex address.
+   */
+   async getQtumAddressFromHex(_qtumAddress) {
+    return await this.getQtumAddressFromHexAddress(_qtumAddress);
+  }
 }
 
 // inject monkey patching code to alter address generation
@@ -3759,5 +3778,25 @@ MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_add
       _address,
     );
     await this.preferencesController.setQtumAddress(_address, qtumAddress);
+  }
+}
+
+MetamaskController.prototype.getHexAddressFromQtumAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  try {
+    if (ticker === 'QTUM') {
+      if (_address === undefined) {
+        return 'Invalid Address'
+      }
+      console.log('[qtum address pass]', _address);
+      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      console.log('[from hash to hex]', hexAddress);
+      return `0x${hexAddress}`
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+    return '0x00';
   }
 }

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { isHexString } from 'ethereumjs-util';
 
-import { isValidDomainName } from '../../../../helpers/utils/util';
+import { isValidDomainName, getHexAddressFromQtum, getQtumAddressFromHex } from '../../../../helpers/utils/util';
 import {
   isBurnAddress,
   isValidHexAddress,
 } from '../../../../../shared/modules/hexstring-utils';
 
 export default class EnsInput extends Component {
+
   static contextTypes = {
     t: PropTypes.func,
     metricsEvent: PropTypes.func,
@@ -16,6 +18,7 @@ export default class EnsInput extends Component {
 
   static propTypes = {
     className: PropTypes.string,
+    chainId: PropTypes.string,
     selectedAddress: PropTypes.string,
     qtumAddressBook: PropTypes.object,
     isQtumAddressShowCheck: PropTypes.bool,
@@ -36,17 +39,24 @@ export default class EnsInput extends Component {
     this.props.initializeEnsSlice();
   }
 
+  isBase58 = (value) => /^[A-HJ-NP-Za-km-z1-9]*$/.test(value);
+
   onPaste = (event) => {
     if (event.clipboardData.items?.length) {
       const clipboardItem = event.clipboardData.items[0];
       clipboardItem?.getAsString((text) => {
         const input = text.trim();
+        let hexAddress = input;
+        if(this.isBase58(input) || !isHexString(input)) {
+          hexAddress = getHexAddressFromQtum(input);
+        } 
         if (
-          !isBurnAddress(input) &&
-          isValidHexAddress(input, { mixedCaseUseChecksum: true })
+          !isBurnAddress(hexAddress) &&
+          isValidHexAddress(hexAddress, { mixedCaseUseChecksum: true })
         ) {
-          this.props.onPaste(input);
+          this.props.onPaste(hexAddress);
         }
+
       });
     }
   };
@@ -60,28 +70,45 @@ export default class EnsInput extends Component {
       resetEnsResolution,
     } = this.props;
     const input = value.trim();
+    let hexAddress = input;
+    if (this.isBase58(input) || !isHexString(input)) {
+      hexAddress = getHexAddressFromQtum(input);
+    }
+    onChange(hexAddress);
 
-    onChange(input);
     if (internalSearch) {
       return null;
     }
     // Empty ENS state if input is empty
     // maybe scan ENS
-    if (isValidDomainName(input)) {
-      lookupEnsName(input);
+    if (isValidDomainName(hexAddress)) {
+      lookupEnsName(hexAddress);
     } else {
       resetEnsResolution();
+
       if (
         onValidAddressTyped &&
-        !isBurnAddress(input) &&
-        isValidHexAddress(input, { mixedCaseUseChecksum: true })
+        !isBurnAddress(hexAddress) &&
+        isValidHexAddress(hexAddress, { mixedCaseUseChecksum: true })
       ) {
-        onValidAddressTyped(input);
+        onValidAddressTyped(hexAddress);
       }
     }
 
     return null;
   };
+
+  convertAddress = (input) => {
+    const { chainId, isQtumAddressShowCheck } = this.props;
+    if (isQtumAddressShowCheck && isHexString(input) && input !== '') {
+      const newAddress = getQtumAddressFromHex(input, chainId);
+      return newAddress;
+    } else if (!isQtumAddressShowCheck && this.isBase58(input) && input !== '') {
+      const newAddress = getHexAddressFromQtum(input);
+      return newAddress;
+    }
+    return input;
+  }
 
   render() {
     const { t } = this.context;
@@ -107,7 +134,7 @@ export default class EnsInput extends Component {
             <>
               <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
                 <div className="ens-input__selected-input__title">
-                  {selectedName || (isQtumAddressShowCheck ? qtumAddressBook[selectedAddress] : selectedAddress)}
+                  {this.convertAddress(selectedName) || (isQtumAddressShowCheck ? qtumAddressBook[selectedAddress] : this.convertAddress(selectedAddress))}
                 </div>
                 {selectedName !== selectedAddress && (
                   <div className="ens-input__selected-input__subtitle">
@@ -130,7 +157,7 @@ export default class EnsInput extends Component {
                 onChange={this.onChange}
                 onPaste={this.onPaste}
                 spellCheck="false"
-                value={selectedAddress || userInput}
+                value={this.convertAddress(selectedAddress) || this.convertAddress(userInput)}
                 autoFocus
                 data-testid="ens-input"
               />

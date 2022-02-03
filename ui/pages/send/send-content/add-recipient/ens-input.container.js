@@ -11,8 +11,14 @@ import { getQtumAddressBook, isQtumAddressShow } from '../../../../ducks/metamas
 function mapStateToProps(state) {
   const qtumAddressBook = getQtumAddressBook(state);
   const isQtumAddressShowCheck = isQtumAddressShow(state);
+  const {
+    metamask: {
+      provider: { chainId },
+    },
+  } = state;
 
   return {
+    chainId,
     qtumAddressBook,
     isQtumAddressShowCheck,
   };

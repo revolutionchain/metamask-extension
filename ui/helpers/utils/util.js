@@ -2,6 +2,7 @@ import punycode from 'punycode/punycode';
 import abi from 'human-standard-token-abi';
 import BigNumber from 'bignumber.js';
 import * as ethUtil from 'ethereumjs-util';
+import qtum from 'qtumjs-lib';
 import { DateTime } from 'luxon';
 import { addHexPrefix } from '../../../app/scripts/lib/util';
 import {
@@ -427,4 +428,26 @@ export const toHumanReadableTime = (t, milliseconds) => {
 
 export function clearClipboard() {
   window.navigator.clipboard.writeText('');
+}
+
+export function getQtumAddressFromHex(_address, _chainId) {
+  let version;
+  switch (_chainId) {
+    case '0x22B8':
+      version = 58;
+      break;
+    case '0x22B9':
+      version = 120;
+      break;
+    default:
+      version = 120;
+      break;
+  }
+  const hash = Buffer.from(_address.slice(2), 'hex');
+  return qtum.address.toBase58Check(hash, version);
+}
+
+export function getHexAddressFromQtum(_address) {
+  const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+  return `0x${hexAddress}`
 }

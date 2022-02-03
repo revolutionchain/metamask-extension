@@ -532,6 +532,30 @@ export function setNativeCurrency() {
   }
 }
 
+export function getHexAddressFromQtumAddress(_address) {
+  return async () => {
+    try {
+      const qtumAddress = await promisifiedBackground.getHexAddressFromQtum(_address);
+      return qtumAddress;
+    } catch (error) {
+      console.log('[getHexAddressFromQtum error]', error);
+      return undefined;
+    }
+  }
+}
+
+export function getQtumAddressFromHexAddress(_address) {
+  return async () => {
+    try {
+      const qtumAddress = await promisifiedBackground.getQtumAddressFromHex(_address);
+      return qtumAddress;
+    } catch (error) {
+      console.log('[getQtumAddressFromHexAddress error]', error);
+      return undefined;
+    }
+  }
+}
+
 export function signMsg(msgData) {
   log.debug('action - signMsg');
   return async (dispatch) => {
