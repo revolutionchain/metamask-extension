@@ -18,6 +18,8 @@ export default class ContactListTab extends Component {
 
   static propTypes = {
     addressBook: PropTypes.array,
+    qtumAddressBook: PropTypes.object,
+    isQtumAddressShowCheck: PropTypes.bool,
     history: PropTypes.object,
     selectedAddress: PropTypes.string,
     viewingContact: PropTypes.bool,
@@ -28,7 +30,7 @@ export default class ContactListTab extends Component {
   };
 
   renderAddresses() {
-    const { addressBook, history, selectedAddress } = this.props;
+    const { addressBook, history, selectedAddress, qtumAddressBook, isQtumAddressShowCheck } = this.props;
     const contacts = addressBook.filter(({ name }) => Boolean(name));
     const nonContacts = addressBook.filter(({ name }) => !name);
     const { t } = this.context;
@@ -37,6 +39,8 @@ export default class ContactListTab extends Component {
       return (
         <div>
           <ContactList
+            qtumAddressBook={qtumAddressBook}
+            isQtumAddressShowCheck={isQtumAddressShowCheck}
             searchForContacts={() => contacts}
             searchForRecents={() => nonContacts}
             selectRecipient={(address) => {
