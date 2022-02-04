@@ -29,12 +29,12 @@
   }
 
   &__dialog {
-    margin: 1rem;
+    margin: 1rem 3rem;
     cursor: pointer;
   }
 
   &__error-dialog {
-    margin: 1rem;
+    margin: 1rem 3rem;
   }
 
   &__to-row {
@@ -249,6 +249,7 @@
     &__title {
       @extend %ellipsify;
 
+      display: flex;
       font-size: 16px;
       line-height: 27px;
       color: $Black-300;
