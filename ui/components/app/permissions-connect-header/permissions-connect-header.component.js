@@ -22,8 +22,8 @@ export default class PermissionsConnectHeader extends Component {
 
     return (
       <div className="permissions-connect-header__icon">
-        <SiteIcon icon={icon} name={iconName} size={64} />
-        <div className="permissions-connect-header__text">{siteOrigin}</div>
+        <SiteIcon icon={icon} name={iconName} size={102} />
+        {/* <div className="permissions-connect-header__text">{siteOrigin}</div> */}
       </div>
     );
   }

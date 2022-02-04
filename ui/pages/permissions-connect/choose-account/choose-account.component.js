@@ -105,7 +105,7 @@ export default class ChooseAccount extends Component {
                   className="permissions-connect-choose-account__list-check-box"
                   checked={selectedAccounts.has(address)}
                 />
-                <Identicon diameter={34} address={address} />
+                <Identicon diameter={64} address={address} />
                 <div className="permissions-connect-choose-account__account__info">
                   <div className="permissions-connect-choose-account__account__label">
                     {addressLabel}
@@ -167,7 +167,7 @@ export default class ChooseAccount extends Component {
                 this.allAreSelected() ? this.deselectAll() : this.selectAll()
               }
             />
-            <div className="permissions-connect-choose-account__text-grey">
+            <div className="permissions-connect-choose-account__text">
               {this.context.t('selectAll')}
             </div>
             <Tooltip
@@ -183,12 +183,12 @@ export default class ChooseAccount extends Component {
           </div>
         ) : null}
         <div
-          className="permissions-connect-choose-account__text-blue"
+          className="permissions-connect-choose-account__text"
           onClick={() =>
             selectNewAccountViaModal(this.handleAccountClick.bind(this))
           }
         >
-          {this.context.t('newAccount')}
+          + {this.context.t('newAccount')}
         </div>
       </div>
     );
@@ -209,7 +209,7 @@ export default class ChooseAccount extends Component {
         <PermissionsConnectHeader
           icon={targetDomainMetadata.icon}
           iconName={targetDomainMetadata.name}
-          headerTitle={t('connectWithMetaMask')}
+          headerTitle={t('connectWithQnekt')}
           headerText={
             accounts.length > 0
               ? t('selectAccounts')
@@ -223,17 +223,19 @@ export default class ChooseAccount extends Component {
           <PermissionsConnectFooter />
           <div className="permissions-connect-choose-account__bottom-buttons">
             <Button
-              onClick={() => cancelPermissionsRequest(permissionsRequestId)}
-              type="secondary"
-            >
-              {t('cancel')}
-            </Button>
-            <Button
               onClick={() => selectAccounts(selectedAccounts)}
               type="primary"
+              rounded={false}
               disabled={selectedAccounts.size === 0}
             >
               {t('next')}
+            </Button>
+            <Button
+              onClick={() => cancelPermissionsRequest(permissionsRequestId)}
+              rounded={false}
+              type="secondary"
+            >
+              {t('cancel')}
             </Button>
           </div>
         </div>
