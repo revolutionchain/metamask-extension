@@ -251,7 +251,7 @@ export default class SettingsTab extends PureComponent {
                   checked={isQtumAddressShow}
                 />
                 <label
-                  htmlFor="qtum-primary-currency"
+                  htmlFor="qtum-primary-address"
                   className="settings-tab__radio-label"
                 >
                   Qtum Address

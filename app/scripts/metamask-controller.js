@@ -591,6 +591,10 @@ export default class MetamaskController extends EventEmitter {
       const { ticker } = this.networkController.getProviderConfig();
       try {
         await this.currencyRateController.setNativeCurrency(ticker);
+        const qtumAccounts = await this.preferencesController.getQtumAddresses();
+        Object.keys(qtumAccounts).forEach((item) => {
+          this.setQtumAddressFromHexAddress(item);
+        })
       } catch (error) {
         // TODO: Handle failure to get conversion rate more gracefully
         console.error(error);

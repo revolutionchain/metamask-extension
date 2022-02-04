@@ -8,20 +8,26 @@ import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils
 import Tooltip from '../tooltip';
 import CopyIcon from '../icon/copy-icon.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
+import { getQtumAddressBook, isQtumAddressShow } from '../../../ducks/metamask/metamask';
 
 export default connect(mapStateToProps)(QrCodeView);
 
 function mapStateToProps(state) {
   const { buyView, warning } = state.appState;
+  const qtumAddressBook = getQtumAddressBook(state);
+  const isQtumAddressShowCheck = isQtumAddressShow(state);
+
   return {
     // Qr code is not fetched from state. 'message' and 'data' props are passed instead.
     buyView,
     warning,
+    qtumAddressBook,
+    isQtumAddressShowCheck,
   };
 }
 
 function QrCodeView(props) {
-  const { Qr, warning } = props;
+  const { Qr, warning, qtumAddressBook, isQtumAddressShowCheck } = props;
   const { message, data } = Qr;
   const address = `${
     isHexPrefixed(data) ? 'ethereum:' : ''
@@ -64,10 +70,10 @@ function QrCodeView(props) {
         <div
           className="qr-code__address-container"
           onClick={() => {
-            handleCopy(toChecksumHexAddress(data));
+            handleCopy(isQtumAddressShowCheck ? qtumAddressBook[data] : toChecksumHexAddress(data));
           }}
         >
-          <div className="qr-code__address">{toChecksumHexAddress(data)}</div>
+          <div className="qr-code__address">{isQtumAddressShowCheck ? qtumAddressBook[data] : toChecksumHexAddress(data)}</div>
           <div className="qr-code__copy-icon">
             <CopyIcon size={11} className="qr-code__copy-icon__svg" color="" />
           </div>
@@ -79,6 +85,8 @@ function QrCodeView(props) {
 
 QrCodeView.propTypes = {
   warning: PropTypes.node,
+  qtumAddressBook: PropTypes.object,
+  isQtumAddressShowCheck: PropTypes.bool,
   Qr: PropTypes.shape({
     message: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),

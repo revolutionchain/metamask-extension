@@ -54,7 +54,7 @@ class SelectedAccount extends Component {
                 () => this.setState({ copied: false }),
                 SECOND * 3,
               );
-              copyToClipboard(checksummedAddress);
+              copyToClipboard(isQtumAddressShow ? qtumAddress : checksummedAddress);
             }}
           >
             <div className="selected-account__name">
