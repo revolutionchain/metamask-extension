@@ -44,6 +44,7 @@ export default class TransactionListItemDetails extends PureComponent {
     tryReverseResolveAddress: PropTypes.func.isRequired,
     senderNickname: PropTypes.string.isRequired,
     recipientNickname: PropTypes.string,
+    testActivities: PropTypes.any,
   };
 
   state = {
@@ -132,6 +133,7 @@ export default class TransactionListItemDetails extends PureComponent {
       onClose,
       recipientNickname,
       showCancel,
+      testActivities,
     } = this.props;
     const {
       primaryTransaction: transaction,
@@ -143,7 +145,6 @@ export default class TransactionListItemDetails extends PureComponent {
       <Popover title={title} onClose={onClose}>
         <div className="transaction-list-item-details">
           <div className="transaction-list-item-details__header">
-            <div>{t('details')}</div>
             <div className="transaction-list-item-details__header-buttons">
               {showSpeedUp && (
                 <Button
@@ -172,8 +173,9 @@ export default class TransactionListItemDetails extends PureComponent {
                   type="raised"
                   onClick={this.handleCopyTxId}
                   disabled={!hash}
+                  className="transaction-list-item-details__header-rounded-button"
                 >
-                  <Copy size={10} color="#3098DC" />
+                  <img src="./images/icons/copy-line.svg" alt="" />
                 </Button>
               </Tooltip>
               <Tooltip
@@ -194,8 +196,9 @@ export default class TransactionListItemDetails extends PureComponent {
                   type="raised"
                   onClick={this.handleBlockExplorerClick}
                   disabled={!hash}
+                  className="transaction-list-item-details__header-rounded-button"
                 >
-                  <img src="./images/arrow-popout.svg" alt="" />
+                  <img src="./images/icons/send-alt.svg" alt="" />
                 </Button>
               </Tooltip>
               {showRetry && (
@@ -256,6 +259,7 @@ export default class TransactionListItemDetails extends PureComponent {
                 onCancel={this.handleCancel}
                 onRetry={this.handleRetry}
                 isEarliestNonce={isEarliestNonce}
+                testActivities={testActivities}
               />
             </div>
           </div>
