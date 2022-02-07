@@ -6,6 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
+import Button from '../../ui/button';
 import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
@@ -20,7 +21,6 @@ import {
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
-import Button from '../../ui/button';
 
 import { isBeta } from '../../../helpers/utils/build-types';
 
@@ -35,7 +35,10 @@ export function AccountMenuItem(props) {
       {children}
     </div>
   ) : (
-    <div className={itemClassName} onClick={onClick}>
+    <div
+      className={`${itemClassName} account-menu__item--settings`}
+      onClick={onClick}
+    >
       {icon ? <div className="account-menu__item__icon">{icon}</div> : null}
       {text ? <div className="account-menu__item__text">{text}</div> : null}
       {subText ? (
@@ -196,11 +199,9 @@ export default class AccountMenu extends Component {
           key={identity.address}
         >
           <div className="account-menu__check-mark">
-            {isSelected ? (
-              <div className="account-menu__check-mark-icon" />
-            ) : null}
+            {isSelected ? <i className="fa fa-check" /> : null}
           </div>
-          <Identicon address={identity.address} diameter={24} />
+          <Identicon address={identity.address} diameter={64} />
           <div className="account-menu__account-info">
             <div className="account-menu__name">{identity.name || ''}</div>
             <UserPreferencedCurrencyDisplay
@@ -328,19 +329,26 @@ export default class AccountMenu extends Component {
     return (
       <div className="account-menu">
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
-        <AccountMenuItem className="account-menu__header">
+        <div className="account-menu__header">
           {t('myAccounts')}
-          <Button
-            className="account-menu__lock-button"
-            onClick={() => {
-              lockMetamask();
-              history.push(DEFAULT_ROUTE);
-            }}
-          >
-            {t('lock')}
-          </Button>
-        </AccountMenuItem>
-        <div className="account-menu__divider" />
+          <div className="account-menu__header-right">
+            <div
+              className="account-menu__close-button"
+              onClick={toggleAccountMenu}
+            >
+              <i className="fa fa-times" />
+            </div>
+            <div
+              className="account-menu__lock-button"
+              onClick={() => {
+                lockMetamask();
+                history.push(DEFAULT_ROUTE);
+              }}
+            >
+              {t('lock')}
+            </div>
+          </div>
+        </div>
         <div className="account-menu__accounts-container">
           {shouldShowAccountsSearch ? this.renderAccountsSearch() : null}
           <div
@@ -354,51 +362,22 @@ export default class AccountMenu extends Component {
           </div>
           {this.renderScrollButton()}
         </div>
-        <div className="account-menu__divider" />
         <AccountMenuItem
           onClick={() => {
-            toggleAccountMenu();
-            metricsEvent({
-              eventOpts: {
-                category: 'Navigation',
-                action: 'Main Menu',
-                name: 'Clicked Create Account',
-              },
-            });
-            history.push(NEW_ACCOUNT_ROUTE);
+            global.platform.openTab({ url: supportLink });
           }}
           icon={
             <img
-              className="account-menu__item-icon"
-              src="images/plus-btn-white.svg"
-              alt={t('createAccount')}
+              src="images/icons/chat-bubble.svg"
+              alt={supportText}
+              width={40}
+              height={40}
             />
           }
-          text={t('createAccount')}
+          text={supportText}
         />
-        <AccountMenuItem
-          onClick={() => {
-            toggleAccountMenu();
-            metricsEvent({
-              eventOpts: {
-                category: 'Navigation',
-                action: 'Main Menu',
-                name: 'Clicked Import Account',
-              },
-            });
-            history.push(IMPORT_ACCOUNT_ROUTE);
-          }}
-          icon={
-            <img
-              className="account-menu__item-icon"
-              src="images/import-account.svg"
-              alt={t('importAccount')}
-            />
-          }
-          text={t('importAccount')}
-        />
-        <AccountMenuItem
-        className="hide-component"
+        {/* <AccountMenuItem
+          className="hide-component"
           onClick={() => {
             toggleAccountMenu();
             metricsEvent({
@@ -422,16 +401,7 @@ export default class AccountMenu extends Component {
             />
           }
           text={t('connectHardwareWallet')}
-        />
-        <div className="account-menu__divider" />
-        <AccountMenuItem
-          onClick={() => {
-            global.platform.openTab({ url: supportLink });
-          }}
-          icon={<img src="images/support.svg" alt={supportText} />}
-          text={supportText}
-        />
-
+        /> */}
         <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
@@ -444,14 +414,45 @@ export default class AccountMenu extends Component {
               },
             });
           }}
-          icon={
-            <img
-              className="account-menu__item-icon"
-              src="images/settings.svg"
-            />
-          }
+          icon={<img src="images/icons/settings.svg" width={35} height={35} />}
           text={t('settings')}
         />
+        <div className="account-menu__bottom-buttons">
+          <Button
+            onClick={() => {
+              toggleAccountMenu();
+              metricsEvent({
+                eventOpts: {
+                  category: 'Navigation',
+                  action: 'Main Menu',
+                  name: 'Clicked Create Account',
+                },
+              });
+              history.push(NEW_ACCOUNT_ROUTE);
+            }}
+            type="primary"
+            rounded={false}
+          >
+            + {t('createAccount')}
+          </Button>
+          <Button
+            onClick={() => {
+              toggleAccountMenu();
+              metricsEvent({
+                eventOpts: {
+                  category: 'Navigation',
+                  action: 'Main Menu',
+                  name: 'Clicked Import Account',
+                },
+              });
+              history.push(IMPORT_ACCOUNT_ROUTE);
+            }}
+            rounded={false}
+            type="secondary"
+          >
+            {t('importAccount')}
+          </Button>
+        </div>
       </div>
     );
   }
