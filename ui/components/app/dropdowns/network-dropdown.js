@@ -358,7 +358,6 @@ class NetworkDropdown extends Component {
         {this.renderNetworkEntry('qtumRegtest')}
 
         <div className="network-dropdown-list">
-          {this.renderNetworkEntry('mainnet')}
 
           {this.renderCustomRpcList(
             rpcListDetailWithoutLocalHost,
@@ -370,10 +369,6 @@ class NetworkDropdown extends Component {
               'network-dropdown-testnets--no-visibility': !shouldShowTestNetworks,
             })}
           >
-            {this.renderNetworkEntry('ropsten')}
-            {this.renderNetworkEntry('kovan')}
-            {this.renderNetworkEntry('rinkeby')}
-            {this.renderNetworkEntry('goerli')}
             {this.renderCustomRpcList(
               rpcListDetailForLocalHost,
               this.props.provider,
