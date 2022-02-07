@@ -6,6 +6,7 @@ import {
   setUseNativeCurrencyAsPrimaryCurrencyPreference,
   setHideZeroBalanceTokens,
   setParticipateInMetaMetrics,
+  setPrimaryAddressPreference,
 } from '../../../store/actions';
 import { getPreferences } from '../../../selectors';
 import SettingsTab from './settings-tab.component';
@@ -25,6 +26,7 @@ const mapStateToProps = (state) => {
   const {
     useNativeCurrencyAsPrimaryCurrency,
     hideZeroBalanceTokens,
+    isQtumAddressShow,
   } = getPreferences(state);
 
   return {
@@ -36,6 +38,7 @@ const mapStateToProps = (state) => {
     useBlockie,
     useNativeCurrencyAsPrimaryCurrency,
     hideZeroBalanceTokens,
+    isQtumAddressShow,
   };
 };
 
@@ -46,6 +49,9 @@ const mapDispatchToProps = (dispatch) => {
     updateCurrentLocale: (key) => dispatch(updateCurrentLocale(key)),
     setUseNativeCurrencyAsPrimaryCurrencyPreference: (value) => {
       return dispatch(setUseNativeCurrencyAsPrimaryCurrencyPreference(value));
+    },
+    setPrimaryAddressPreference: (value) => {
+      return dispatch(setPrimaryAddressPreference(value));
     },
     setParticipateInMetaMetrics: (val) =>
       dispatch(setParticipateInMetaMetrics(val)),

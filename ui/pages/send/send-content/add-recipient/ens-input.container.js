@@ -6,6 +6,23 @@ import {
   resetEnsResolution,
 } from '../../../../ducks/ens';
 import EnsInput from './ens-input.component';
+import { getQtumAddressBook, isQtumAddressShow } from '../../../../ducks/metamask/metamask';
+
+function mapStateToProps(state) {
+  const qtumAddressBook = getQtumAddressBook(state);
+  const isQtumAddressShowCheck = isQtumAddressShow(state);
+  const {
+    metamask: {
+      provider: { chainId },
+    },
+  } = state;
+
+  return {
+    chainId,
+    qtumAddressBook,
+    isQtumAddressShowCheck,
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -15,4 +32,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(EnsInput);
+export default connect(mapStateToProps, mapDispatchToProps)(EnsInput);
