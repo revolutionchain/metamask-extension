@@ -26,7 +26,6 @@ const mapStateToProps = (state) => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const {
     transactionGroup: { transactions = [], primaryTransaction } = {},
-    testActivities = [],
     ...restOwnProps
   } = ownProps;
 
@@ -44,7 +43,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...dispatchProps,
     ...restOwnProps,
-    activities: activities.length ? activities : testActivities,
+    activities,
     inlineRetryIndex,
     inlineCancelIndex,
     primaryTransaction,

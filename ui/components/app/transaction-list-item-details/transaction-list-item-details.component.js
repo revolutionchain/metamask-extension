@@ -44,7 +44,6 @@ export default class TransactionListItemDetails extends PureComponent {
     tryReverseResolveAddress: PropTypes.func.isRequired,
     senderNickname: PropTypes.string.isRequired,
     recipientNickname: PropTypes.string,
-    testActivities: PropTypes.any,
   };
 
   state = {
@@ -133,7 +132,6 @@ export default class TransactionListItemDetails extends PureComponent {
       onClose,
       recipientNickname,
       showCancel,
-      testActivities,
     } = this.props;
     const {
       primaryTransaction: transaction,
@@ -259,7 +257,6 @@ export default class TransactionListItemDetails extends PureComponent {
                 onCancel={this.handleCancel}
                 onRetry={this.handleRetry}
                 isEarliestNonce={isEarliestNonce}
-                testActivities={testActivities}
               />
             </div>
           </div>

@@ -88,7 +88,6 @@ export const TransactionListItemDetailsComponent = () => {
       transactionGroup={transactionGroup}
       senderNickname="sender-nickname"
       recipientNickname="recipient-nickname"
-      testActivities={activities}
     />
   );
 };
