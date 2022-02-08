@@ -3,7 +3,10 @@
   flex: 0;
   flex-direction: column;
   justify-content: center;
-  width: 92%;
+  width: 100%;
+  background: #FBFBFB;
+  border-radius: 18px 18px 0px 0px;
+  padding: 39px 39px 21px;
 
   &__icon {
     display: flex;
@@ -26,19 +29,19 @@
   }
 
   &__title {
-    @include H3;
-
+    font-size: 30px;
+    line-height: 45px;
     text-align: center;
-    color: $Black-100;
+    color: $Black-200;
     margin-top: 16px;
   }
 
   &__text,
   &__subtitle {
-    @include H6;
-
+    font-size: 20px;
+    line-height: 24px;
     text-align: center;
-    color: $Grey-500;
+    color: $Black-200;
   }
 
   &__text {

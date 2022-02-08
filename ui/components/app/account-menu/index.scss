@@ -2,9 +2,9 @@
   position: fixed;
   z-index: 100;
   top: 58px;
-  width: 320px;
-  border-radius: 4px;
-  background: rgba($black, 0.8);
+  width: 612px;
+  border-radius: 18px;
+  background: white;
   box-shadow: rgba($black, 0.15) 0 2px 2px 2px;
   min-width: 150px;
   color: $white;
@@ -41,28 +41,41 @@
       cursor: pointer;
 
       &:hover {
-        background-color: rgba($white, 0.05);
+        background-color: rgba($white, 0.85);
       }
 
       &:active {
-        background-color: rgba($white, 0.1);
+        background-color: rgba($white, 0.9);
       }
     }
 
     &__icon {
-      height: 16px;
-      width: 16px;
-      margin-right: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      margin-right: 42px;
     }
 
     &__text {
-      @include Paragraph;
+      font-size: 20px;
+      line-height: 27px;
+      color: $Black-300;
     }
 
     &__subtext {
       @include H7;
 
       padding: 5px 0 0 30px;
+    }
+
+    &--settings {
+      padding: 17px 48px;
+      background-color: white;
+      color: $Black-300;
+      font-size: 20px;
+      line-height: 27px;
     }
   }
 
@@ -92,19 +105,37 @@
 
   &__header {
     display: flex;
-    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    background: #FBFBFB;
+    border-radius: 18px 18px 0px 0px;
+    padding: 39px 39px 20px;
+    color: $Black-200;
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  &__header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  & &__close-button {
+    font-size: 18px;
+    display: flex;
+    cursor: pointer;
   }
 
   & &__lock-button {
-    @include H7;
-
-    border: 1px solid $ui-white;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #B6B6B6;
     background-color: transparent;
-    color: $white;
-    padding: 3.5px 24px;
-    width: 59px;
+    color: black;
+    padding: 8px 30px;
+    margin-top: 30px;
+    cursor: pointer;
   }
 
   &__item-icon {
@@ -117,6 +148,7 @@
     position: relative;
     flex-direction: column;
     z-index: 200;
+    margin-bottom: 17px;
 
     @media (max-height: 600px) {
       max-height: 236px;
@@ -124,10 +156,7 @@
   }
 
   &__accounts {
-    overflow-y: auto;
     position: relative;
-    max-height: 256px;
-    scrollbar-width: auto;
 
     @media screen and (max-width: $break-small) {
       max-height: 228px;
@@ -161,8 +190,11 @@
   &__account {
     display: flex;
     flex-flow: row nowrap;
-    padding: 16px 14px;
+    background-color: white;
+    align-items: center;
+    padding: 24px;
     flex: 0 0 auto;
+    border-bottom: 1px solid #C5C6CB;
 
     @media screen and (max-width: $break-small) {
       padding: 12px 14px;
@@ -194,12 +226,14 @@
 
   &__check-mark {
     width: 14px;
-    margin-right: 12px;
+    height: 100%;
+    margin-right: 19px;
     flex: 0 0 auto;
+    color: $Black-200;
   }
 
   &__check-mark-icon {
-    background-image: url("/images/check-white.svg");
+    background-image: url("/images/check.svg");
     height: 18px;
     width: 18px;
     background-repeat: no-repeat;
@@ -214,9 +248,9 @@
   }
 
   &__name {
-    @include H4;
-
-    color: $white;
+    font-size: 20px;
+    line-height: 27px;
+    color: $Black-300;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -224,9 +258,10 @@
   }
 
   &__balance {
-    @include H6;
-
-    color: $dusty-gray;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 24px;
+    color: $Black-200;
   }
 
   &__action {
@@ -257,5 +292,22 @@
 
   &__icon-list {
     display: flex;
+  }
+
+  &__bottom-buttons {
+    background-color: white;
+    display: flex;
+    padding: 0 48px 48px;
+    margin-top: 25px;
+
+    .btn-secondary {
+      height: 60px;
+      margin-left: 15px;
+    }
+
+    .btn-primary {
+      height: 60px;
+      margin-right: 15px;
+    }
   }
 }

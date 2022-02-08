@@ -65,7 +65,7 @@ export default function MultilayerFeeMessage({
         key="total-item"
         detailTitle={t('total')}
         detailTotal={totalInEth}
-        subTitle={t('transactionDetailMultiLayerTotalSubtitle')}
+        subTitle={`${t('transactionDetailMultiLayerTotalSubtitle')}test`}
         noBold={plainStyle}
         flexWidthValues={plainStyle}
       />

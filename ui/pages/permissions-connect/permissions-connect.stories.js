@@ -3,11 +3,33 @@ import { action } from '@storybook/addon-actions';
 import { PermissionPageContainerContent } from '../../components/app/permission-page-container';
 import PermissionsConnectFooter from '../../components/app/permissions-connect-footer';
 import { PageContainerFooter } from '../../components/ui/page-container';
+import AccountMenu from '../../components/app/account-menu';
 import ChooseAccount from './choose-account';
 
 export default {
   title: 'Permissions Connect',
   id: __filename,
+};
+
+export const AccountMenuComponent = () => {
+  return (
+    <AccountMenu
+      shouldShowAccountsSearch={false}
+      isAccountMenuOpen
+      accounts={[
+        {
+          address: '0x00',
+          name: 'Account 1',
+          balance: '0x0',
+        },
+        {
+          address: '0x1',
+          name: 'Imported Account 1',
+          balance: '0x0',
+        }
+      ]}
+    />
+  );
 };
 
 export const ChooseAccountComponent = () => {

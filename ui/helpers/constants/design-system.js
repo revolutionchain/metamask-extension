@@ -37,6 +37,7 @@ export const COLORS = {
   QTUMREGTEST: 'qtumRegtest',
   TRANSPARENT: 'transparent',
   LOCALHOST: 'localhost',
+  BLACK200: 'Black-200',
 };
 
 export const TYPOGRAPHY = {
