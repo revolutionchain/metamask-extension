@@ -12,13 +12,15 @@ import {
   formatDateWithYearContext,
   shortenAddress,
   stripHttpSchemes,
+  getHexAddressFromQtum,
+  getQtumAddressFromHex
 } from '../helpers/utils/util';
 
 import {
   PENDING_STATUS_HASH,
   TOKEN_CATEGORY_HASH,
 } from '../helpers/constants/transactions';
-import { getTokens } from '../ducks/metamask/metamask';
+import { getTokens, getCurrentProvider, isQtumAddressShow } from '../ducks/metamask/metamask';
 import {
   TRANSACTION_TYPES,
   TRANSACTION_GROUP_CATEGORIES,
@@ -63,6 +65,9 @@ export function useTransactionDisplayData(transactionGroup) {
   const dispatch = useDispatch();
   const currentAsset = useCurrentAsset();
   const knownTokens = useSelector(getTokens);
+  const isQtumAddressShowChk = useSelector(isQtumAddressShow);
+  const currentProvier = useSelector(getCurrentProvider);
+  const { chainId } = currentProvier;
   const t = useI18nContext();
   const { initialTransaction, primaryTransaction } = transactionGroup;
   // initialTransaction contains the data we need to derive the primary purpose of this transaction group
@@ -213,7 +218,7 @@ export function useTransactionDisplayData(transactionGroup) {
     category = TRANSACTION_GROUP_CATEGORIES.RECEIVE;
     title = t('receive');
     prefix = '';
-    subtitle = t('fromAddress', [shortenAddress(senderAddress)]);
+    subtitle = isQtumAddressShowChk ? t('fromAddress', [shortenAddress(getQtumAddressFromHex(senderAddress, chainId))]) : t('fromAddress', [shortenAddress(senderAddress)]);
   } else if (
     type === TRANSACTION_TYPES.TOKEN_METHOD_TRANSFER_FROM ||
     type === TRANSACTION_TYPES.TOKEN_METHOD_TRANSFER
@@ -221,11 +226,11 @@ export function useTransactionDisplayData(transactionGroup) {
     category = TRANSACTION_GROUP_CATEGORIES.SEND;
     title = t('sendSpecifiedTokens', [token?.symbol || t('token')]);
     recipientAddress = getTokenAddressParam(tokenData);
-    subtitle = t('toAddress', [shortenAddress(recipientAddress)]);
+    subtitle = isQtumAddressShowChk ? t('toAddress', [shortenAddress(getQtumAddressFromHex(recipientAddress, chainId))]) : t('toAddress', [shortenAddress(recipientAddress)]);
   } else if (type === TRANSACTION_TYPES.SIMPLE_SEND) {
     category = TRANSACTION_GROUP_CATEGORIES.SEND;
     title = t('send');
-    subtitle = t('toAddress', [shortenAddress(recipientAddress)]);
+    subtitle = isQtumAddressShowChk ? t('toAddress', [shortenAddress(getQtumAddressFromHex(recipientAddress, chainId))]) : t('toAddress', [shortenAddress(recipientAddress)]);
   } else {
     dispatch(
       captureSingleException(
