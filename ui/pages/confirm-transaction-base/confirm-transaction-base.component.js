@@ -445,6 +445,7 @@ export default class ConfirmTransactionBase extends Component {
       ) : (
         <TransactionDetailItem
           key="gas-item"
+          boldHeadings={false}
           detailTitle={
             txData.dappSuggestedGasFees ? (
               <>
@@ -455,7 +456,7 @@ export default class ConfirmTransactionBase extends Component {
                   contentText={t('transactionDetailDappGasTooltip')}
                   position="top"
                 >
-                  <i className="fa fa-info-circle" />
+                  <i className="far fa-info-circle" />
                 </InfoTooltip>
               </>
             ) : (
@@ -485,7 +486,7 @@ export default class ConfirmTransactionBase extends Component {
                   }
                   position="top"
                 >
-                  <i className="fa fa-info-circle" />
+                  <i className="far fa-info-circle" />
                 </InfoTooltip>
               </>
             )
@@ -517,9 +518,9 @@ export default class ConfirmTransactionBase extends Component {
           subText={
             !isMultiLayerFeeNetwork && (
               <>
-                <b key="editGasSubTextFeeLabel">
+                <div key="editGasSubTextFeeLabel">
                   {t('editGasSubTextFeeLabel')}
-                </b>
+                </div>
                 <div
                   key="editGasSubTextFeeValue"
                   className="confirm-page-container-content__currency-container"
@@ -612,9 +613,9 @@ export default class ConfirmTransactionBase extends Component {
                 subTitle={t('transactionDetailGasTotalSubtitle')}
                 subText={
                   <>
-                    <b key="editGasSubTextAmountLabel">
+                    <div key="editGasSubTextAmountLabel">
                       {t('editGasSubTextAmountLabel')}
-                    </b>
+                    </div>
                     {renderTotalMaxAmount()}
                   </>
                 }

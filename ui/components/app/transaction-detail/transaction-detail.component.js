@@ -83,7 +83,10 @@ export default function TransactionDetail({
     <div className="transaction-detail">
       {onEdit && (
         <div className="transaction-detail-edit">
-          <button onClick={onEdit}>{t('edit')}</button>
+          <button onClick={onEdit}>
+            <i className="fa fa-pencil-alt" />
+            &nbsp;{t('edit')}
+          </button>
         </div>
       )}
       <div className="transaction-detail-rows">{rows}</div>

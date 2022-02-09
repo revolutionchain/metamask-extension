@@ -58,7 +58,7 @@ function SenderAddress({
       <div className="sender-to-recipient__sender-icon">
         <Identicon
           address={toChecksumHexAddress(senderAddress)}
-          diameter={24}
+          diameter={38}
         />
       </div>
       <Tooltip
@@ -131,7 +131,7 @@ function RecipientWithAddress({
       }}
     >
       <div className="sender-to-recipient__sender-icon">
-        <Identicon address={checksummedRecipientAddress} diameter={24} />
+        <Identicon address={checksummedRecipientAddress} diameter={38} />
       </div>
       <Tooltip
         position="bottom"
@@ -174,7 +174,7 @@ function Arrow({ variant }) {
     </div>
   ) : (
     <div className="sender-to-recipient__arrow-container">
-      <img height="20" src="./images/caret-right.svg" alt="" />
+      <img height="14" src="./images/caret-right.svg" alt="" />
     </div>
   );
 }
@@ -210,7 +210,7 @@ export default function SenderToRecipient({
         senderAddress={senderAddress}
         warnUserOnAccountMismatch={warnUserOnAccountMismatch}
       />
-      <Arrow variant={variant} />
+      <Arrow />
       {recipientAddress ? (
         <RecipientWithAddress
           checksummedRecipientAddress={checksummedRecipientAddress}

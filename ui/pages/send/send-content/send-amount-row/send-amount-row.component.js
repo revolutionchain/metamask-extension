@@ -46,7 +46,7 @@ export default class SendAmountRow extends Component {
 
     return (
       <SendRowWrapper
-        label={`${this.context.t('amount')}:`}
+        label={`${this.context.t('amount')}`}
         showError={inError}
         errorType="amount"
       >

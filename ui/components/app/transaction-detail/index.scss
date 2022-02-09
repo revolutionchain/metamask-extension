@@ -8,7 +8,9 @@
     button {
       @include H7;
 
-      color: $primary-1;
+      color: $Black-200;
+      font-size: 20px;
+      line-height: 24px;
       background: transparent;
       border: 0;
       padding-inline-end: 0;

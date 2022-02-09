@@ -313,6 +313,9 @@
       }
     },
     "@ethersproject/signing-key": {
+      "globals": {
+        "console.log": true
+      },
       "packages": {
         "@ethersproject/bytes": true,
         "@ethersproject/logger": true,
@@ -1026,6 +1029,8 @@
       "packages": {
         "bech32": true,
         "bigi": true,
+        "bip174": true,
+        "bip32": true,
         "bip66": true,
         "bitcoin-ops": true,
         "bs58check": true,
@@ -1038,6 +1043,7 @@
         "pushdata-bitcoin": true,
         "randombytes": true,
         "safe-buffer": true,
+        "tiny-secp256k1": true,
         "typeforce": true,
         "varuint-bitcoin": true,
         "wif": true
@@ -2131,6 +2137,7 @@
     "hash-base": {
       "packages": {
         "inherits": true,
+        "readable-stream": true,
         "safe-buffer": true,
         "stream-browserify": true
       }
@@ -3936,6 +3943,7 @@
     },
     "qtum-ethers-wrapper": {
       "globals": {
+        "console.log": true,
         "setTimeout": true
       },
       "packages": {

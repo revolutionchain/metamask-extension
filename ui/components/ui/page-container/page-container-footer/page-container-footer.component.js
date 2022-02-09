@@ -42,21 +42,6 @@ export default class PageContainerFooter extends Component {
     return (
       <div className={classnames('page-container__footer', footerClassName)}>
         <footer>
-          {!hideCancel && (
-            <Button
-              type={cancelButtonType || 'secondary'}
-              large={buttonSizeLarge}
-              className={classnames(
-                'page-container__footer-button',
-                footerButtonClassName,
-              )}
-              onClick={(e) => onCancel(e)}
-              data-testid="page-container-footer-cancel"
-            >
-              {cancelText || this.context.t('cancel')}
-            </Button>
-          )}
-
           <Button
             type={submitButtonType || 'primary'}
             large={buttonSizeLarge}
@@ -67,9 +52,26 @@ export default class PageContainerFooter extends Component {
             disabled={disabled}
             onClick={(e) => onSubmit(e)}
             data-testid="page-container-footer-next"
+            rounded={false}
           >
             {submitText || this.context.t('next')}
           </Button>
+
+          {!hideCancel && (
+            <Button
+              type={cancelButtonType || 'secondary'}
+              large={buttonSizeLarge}
+              className={classnames(
+                'page-container__footer-button',
+                footerButtonClassName,
+              )}
+              onClick={(e) => onCancel(e)}
+              data-testid="page-container-footer-cancel"
+              rounded={false}
+            >
+              {cancelText || this.context.t('cancel')}
+            </Button>
+          )}
         </footer>
 
         {children && (

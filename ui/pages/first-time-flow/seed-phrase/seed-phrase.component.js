@@ -49,50 +49,52 @@ export default class SeedPhrase extends PureComponent {
 
     return (
       <DragDropContextProvider backend={HTML5Backend}>
-        <div className={`first-time-flow__wrapper ${introClass}`}>
+        <div className="first-time-flow__header-wrapper">
           <MetaFoxLogo />
-          <Switch>
-            <Route
-              exact
-              path={INITIALIZE_CONFIRM_SEED_PHRASE_ROUTE}
-              render={(routeProps) => (
-                <ConfirmSeedPhrase
-                  {...routeProps}
-                  seedPhrase={seedPhrase || verifiedSeedPhrase}
-                />
-              )}
-            />
-            <Route
-              exact
-              path={INITIALIZE_SEED_PHRASE_ROUTE}
-              render={(routeProps) => (
-                <RevealSeedPhrase
-                  {...routeProps}
-                  seedPhrase={seedPhrase || verifiedSeedPhrase}
-                />
-              )}
-            />
-            <Route
-              exact
-              path={INITIALIZE_BACKUP_SEED_PHRASE_ROUTE}
-              render={(routeProps) => (
-                <RevealSeedPhrase
-                  {...routeProps}
-                  seedPhrase={seedPhrase || verifiedSeedPhrase}
-                />
-              )}
-            />
-            <Route
-              exact
-              path={INITIALIZE_SEED_PHRASE_INTRO_ROUTE}
-              render={(routeProps) => (
-                <SeedPhraseIntro
-                  {...routeProps}
-                  seedPhrase={seedPhrase || verifiedSeedPhrase}
-                />
-              )}
-            />
-          </Switch>
+          <div className={`first-time-flow__wrapper ${introClass}`}>
+            <Switch>
+              <Route
+                exact
+                path={INITIALIZE_CONFIRM_SEED_PHRASE_ROUTE}
+                render={(routeProps) => (
+                  <ConfirmSeedPhrase
+                    {...routeProps}
+                    seedPhrase={seedPhrase || verifiedSeedPhrase}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={INITIALIZE_SEED_PHRASE_ROUTE}
+                render={(routeProps) => (
+                  <RevealSeedPhrase
+                    {...routeProps}
+                    seedPhrase={seedPhrase || verifiedSeedPhrase}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={INITIALIZE_BACKUP_SEED_PHRASE_ROUTE}
+                render={(routeProps) => (
+                  <RevealSeedPhrase
+                    {...routeProps}
+                    seedPhrase={seedPhrase || verifiedSeedPhrase}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={INITIALIZE_SEED_PHRASE_INTRO_ROUTE}
+                render={(routeProps) => (
+                  <SeedPhraseIntro
+                    {...routeProps}
+                    seedPhrase={seedPhrase || verifiedSeedPhrase}
+                  />
+                )}
+              />
+            </Switch>
+          </div>
         </div>
       </DragDropContextProvider>
     );
