@@ -10,7 +10,7 @@
   color: $white;
 
   @media screen and (max-width: $break-small) {
-    right: calc(((100vw - 100%) / 2) + 8px);
+    width: 375px;
   }
 
   @media screen and (min-width: $break-large) {
@@ -56,6 +56,12 @@
       height: 40px;
       width: 40px;
       margin-right: 42px;
+
+      @media screen and (max-width: $break-small) {
+        height: 25px;
+        width: 25px;
+        margin-right: 35px;
+      }
     }
 
     &__text {
@@ -111,14 +117,19 @@
     border-radius: 18px 18px 0px 0px;
     padding: 39px 39px 20px;
     color: $Black-200;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 45px;
+
+    @media screen and (max-width: $break-small) {
+      padding: 25px 25px 20px;
+    }
   }
 
   &__header-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 201;
   }
 
   & &__close-button {
@@ -136,6 +147,12 @@
     padding: 8px 30px;
     margin-top: 30px;
     cursor: pointer;
+
+    @media screen and (max-width: $break-small) {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 6px 25px;
+    }
   }
 
   &__item-icon {
@@ -303,11 +320,13 @@
     .btn-secondary {
       height: 60px;
       margin-left: 15px;
+      z-index: 201;
     }
 
     .btn-primary {
       height: 60px;
       margin-right: 15px;
+      z-index: 201;
     }
   }
 }

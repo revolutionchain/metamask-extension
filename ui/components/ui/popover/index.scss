@@ -18,6 +18,10 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     background: white;
+
+    @media screen and (max-width: $break-small) {
+      width: 375px;
+    }
   }
 
   &-header {

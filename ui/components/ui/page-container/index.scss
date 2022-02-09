@@ -8,6 +8,10 @@
   border-radius: 8px;
   overflow-y: auto;
 
+  @media screen and (max-width: $break-small) {
+    width: 375px;
+  }
+  
   .header-bg {
     background-color: #FBFBFB;
   }
