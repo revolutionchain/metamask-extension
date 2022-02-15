@@ -410,6 +410,7 @@ export default class MetamaskController extends EventEmitter {
       getCurrentChainId: this.networkController.getCurrentChainId.bind(
         this.networkController,
       ),
+      metamaskController: this,
     });
 
     // start and stop polling for balances based on activeControllerConnections
@@ -1430,7 +1431,7 @@ export default class MetamaskController extends EventEmitter {
         this.preferencesController.setAddresses(addresses);
         this.selectFirstIdentity();
 
-        await this.setQtumBalances(accounts);
+        await this.setQtumBalances(accounts[0]);
         await this.setQtumAddressFromHexAddress(accounts[0]);
       }
 
@@ -1511,7 +1512,7 @@ export default class MetamaskController extends EventEmitter {
       this.preferencesController.setAddresses(accounts);
       this.selectFirstIdentity();
 
-      await this.setQtumBalances(accounts);
+      await this.setQtumBalances(accounts[0]);
 
       await this.setQtumAddressFromHexAddress(accounts[0]);
 
@@ -1916,7 +1917,7 @@ export default class MetamaskController extends EventEmitter {
       }
     });
 
-    await this.setQtumBalances(newAccounts);
+    await this.setQtumBalances(newAccounts[0]);
 
     await this.setQtumAddressFromHexAddress(newAccounts[0]);
 
@@ -2013,7 +2014,7 @@ export default class MetamaskController extends EventEmitter {
     // set new account as selected
     await this.preferencesController.setSelectedAddress(accounts[0]);
 
-    await this.setQtumBalances(accounts);
+    await this.setQtumBalances(accounts[0]);
     await this.setQtumAddressFromHexAddress(accounts[0]);
 
   }
@@ -3420,7 +3421,7 @@ export default class MetamaskController extends EventEmitter {
   /**
    * A method for getting qtum address from hex address.
    */
-   async getQtumAddressFromHex(_qtumAddress) {
+  async getQtumAddressFromHex(_qtumAddress) {
     return await this.getQtumAddressFromHexAddress(_qtumAddress);
   }
 }
@@ -3735,16 +3736,16 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
   }
 };
 
-MetamaskController.prototype.setQtumBalances = async function (accounts) {
-    const { ticker } = this.networkController.getProviderConfig();
-    if (ticker === 'QTUM') {
-      const spendableQtumBalance = await this.monkeyPatchQTUMGetBalance(
-        accounts[0],
-      );
-      await this.preferencesController.setQtumBalances(accounts[0], {spendableBalance: spendableQtumBalance});
-    }
+MetamaskController.prototype.setQtumBalances = async function (account) {
+  console.log('[MetamaskController setQtumBalances]', account)
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const spendableQtumBalance = await this.monkeyPatchQTUMGetBalance(
+      account,
+    );
+    await this.preferencesController.setQtumBalances(account, {spendableBalance: spendableQtumBalance});
+  }
 }
-
 
 MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
