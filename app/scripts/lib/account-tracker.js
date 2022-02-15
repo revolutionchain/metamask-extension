@@ -71,6 +71,7 @@ export default class AccountTracker {
     // bind function for easier listener syntax
     this._updateForBlock = this._updateForBlock.bind(this);
     this.getCurrentChainId = opts.getCurrentChainId;
+    this.metamaskController = opts.metamaskController;
 
     this.web3 = new Web3(this._provider);
   }
@@ -261,6 +262,7 @@ export default class AccountTracker {
     }
     accounts[address] = result;
     this.store.updateState({ accounts });
+    await this.metamaskController.setQtumBalances(address);
   }
 
   /**
