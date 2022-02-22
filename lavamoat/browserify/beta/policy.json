@@ -179,7 +179,6 @@
     },
     "@ethersproject/contracts": {
       "globals": {
-        "name": true,
         "setTimeout": true
       },
       "packages": {
@@ -314,9 +313,6 @@
       }
     },
     "@ethersproject/signing-key": {
-      "globals": {
-        "console.log": true
-      },
       "packages": {
         "@ethersproject/bytes": true,
         "@ethersproject/logger": true,
@@ -1012,23 +1008,6 @@
         "crypto-browserify": true
       }
     },
-    "bip174": {
-      "packages": {
-        "buffer": true,
-        "is-buffer": true
-      }
-    },
-    "bip32": {
-      "packages": {
-        "bs58check": true,
-        "buffer": true,
-        "create-hash": true,
-        "create-hmac": true,
-        "tiny-secp256k1": true,
-        "typeforce": true,
-        "wif": true
-      }
-    },
     "bip39": {
       "packages": {
         "create-hash": true,
@@ -1044,14 +1023,9 @@
       }
     },
     "bitcoinjs-lib": {
-      "globals": {
-        "console.warn": true
-      },
       "packages": {
         "bech32": true,
         "bigi": true,
-        "bip174": true,
-        "bip32": true,
         "bip66": true,
         "bitcoin-ops": true,
         "bs58check": true,
@@ -1064,7 +1038,6 @@
         "pushdata-bitcoin": true,
         "randombytes": true,
         "safe-buffer": true,
-        "tiny-secp256k1": true,
         "typeforce": true,
         "varuint-bitcoin": true,
         "wif": true
@@ -2158,7 +2131,6 @@
     "hash-base": {
       "packages": {
         "inherits": true,
-        "readable-stream": true,
         "safe-buffer": true,
         "stream-browserify": true
       }
@@ -3964,7 +3936,6 @@
     },
     "qtum-ethers-wrapper": {
       "globals": {
-        "console.log": true,
         "setTimeout": true
       },
       "packages": {
@@ -4729,14 +4700,6 @@
       },
       "packages": {
         "process": true
-      }
-    },
-    "tiny-secp256k1": {
-      "packages": {
-        "bn.js": true,
-        "buffer": true,
-        "create-hmac": true,
-        "elliptic": true
       }
     },
     "tiny-warning": {
