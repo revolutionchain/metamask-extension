@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import AssetBreadcrumb from './asset-breadcrumb';
 
-const AssetNavigation = ({ accountName, assetName, onBack, optionsButton }) => {
+const AssetNavigation = ({ accountName, assetName, onBack, optionsButton, className }) => {
   return (
-    <div className="asset-navigation">
+    <div className={`asset-navigation ${className}`}>
       <AssetBreadcrumb
         accountName={accountName}
         assetName={assetName}

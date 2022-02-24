@@ -136,9 +136,21 @@
 
   &__button {
     margin-right: 24px;
+    color: #5364FF!important;
   }
 
   &__button:last-of-type {
     margin-right: 0;
+  }
+}
+
+.token {
+  &__overview {
+    background-color: #FBFBFB;
+  }
+
+  &__navigation {
+    padding: 38px 38px 0;
+    background-color: #FBFBFB;
   }
 }

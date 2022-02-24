@@ -68,8 +68,9 @@ export default function TokenAsset({ token }) {
             tokenSymbol={token.symbol}
           />
         }
+        className="token__navigation"
       />
-      <TokenOverview className="asset__overview" token={token} />
+      <TokenOverview className="asset__overview token__overview" token={token} />
       <TransactionList tokenAddress={token.address} />
     </>
   );
