@@ -50,8 +50,8 @@ export default class Welcome extends PureComponent {
         <div className="welcome-page">
           <Mascot
             animationEventEmitter={this.animationEventEmitter}
-            width="125"
-            height="125"
+            width="0"
+            height="0"
           />
           {isBeta() ? <BetaWelcomeFooter /> : <WelcomeFooter />}
           <Button
