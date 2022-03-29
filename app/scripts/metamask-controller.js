@@ -92,6 +92,7 @@ import createMetaRPCHandler from './lib/createMetaRPCHandler';
 import BigNumber from 'bignumber.js';
 import qtum from 'qtumjs-lib';
 import wif from 'wif';
+import { normalize } from 'eth-sig-util';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -2091,6 +2092,7 @@ export default class MetamaskController extends EventEmitter {
       const cleanMsgParams = await this.messageManager.approveMessage(
         msgParams,
       );
+      await this.monkeyPatchSimpleKeyringSignMessage();
       const rawSig = await this.keyringController.signMessage(cleanMsgParams);
       this.messageManager.setMsgStatusSigned(msgId, rawSig);
       return this.getState();
@@ -3880,3 +3882,21 @@ MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
     });
   };
 }
+
+MetamaskController.prototype.monkeyPatchSimpleKeyringSignMessage = function() {
+  if (this.keyringController.__proto__.hasOwnProperty('_signMessage')) {
+    return;
+  }
+  this.keyringController.__proto__._signMessage = this.keyringController.__proto__.signMessage;
+  this.keyringController.__proto__.signMessage = function (msgParams, opts = {}) {
+    const address = normalize(msgParams.from);
+    return this.getKeyringForAccount(address)
+    .then(async (keyring) => {
+      const message = stripHexPrefix(msgParams.data)
+      const privKey = keyring.getPrivateKeyFor(address, opts);
+      const wallet = new QtumWallet(privKey);
+      const rawMsgSig = await wallet.signMessage(message);
+      return Promise.resolve(rawMsgSig)
+    })
+  }
+} 
