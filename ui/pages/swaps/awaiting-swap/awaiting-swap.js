@@ -264,8 +264,8 @@ export default function AwaitingSwap({
         {!(swapComplete || errorKey) && (
           <Mascot
             animationEventEmitter={animationEventEmitter.current}
-            width="90"
-            height="90"
+            width="0"
+            height="0"
           />
         )}
         <div className="awaiting-swap__status-image">{statusImage}</div>

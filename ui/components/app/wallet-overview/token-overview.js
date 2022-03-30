@@ -25,9 +25,6 @@ import {
   getIsSwapsChain,
 } from '../../../selectors/selectors';
 
-import SwapIcon from '../../ui/icon/swap-icon.component';
-import SendIcon from '../../ui/icon/overview-send-icon.component';
-
 import IconButton from '../../ui/icon-button';
 import WalletOverview from './wallet-overview';
 
@@ -92,7 +89,13 @@ const TokenOverview = ({ className, token }) => {
                 history.push(SEND_ROUTE);
               });
             }}
-            Icon={SendIcon}
+            Icon={
+              <img
+                src="./images/icons/eth_send.svg"
+                alt=""
+                style={{ height: 26, width: 20 }}
+              />
+            }
             label={t('send')}
             data-testid="eth-overview-send"
             disabled={token.isERC721}
@@ -100,7 +103,13 @@ const TokenOverview = ({ className, token }) => {
           <IconButton
             className="token-overview__button"
             disabled={!isSwapsChain}
-            Icon={SwapIcon}
+            Icon={
+              <img
+                src="./images/icons/eth_swap.svg"
+                alt=""
+                style={{ height: 28, width: 28 }}
+              />
+            }
             onClick={() => {
               if (isSwapsChain) {
                 enteredSwapsEvent();

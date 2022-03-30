@@ -52,8 +52,8 @@ export function Demo() {
     >
       <Mascot
         animationEventEmitter={animationEventEmitter}
-        width="120"
-        height="120"
+        width="0"
+        height="0"
         followMouse={followMouseMode}
         lookAtTarget={clickedTarget}
         lookAtDirection={lookAtDirection}
