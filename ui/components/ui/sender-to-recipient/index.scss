@@ -8,6 +8,7 @@
 
   &--default {
     height: 42px;
+    margin-top: 38px;
 
     .sender-to-recipient {
       &__tooltip-wrapper {
@@ -23,11 +24,9 @@
         flex-direction: row;
         align-items: center;
         flex: 1;
-        padding: 0 16px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        border: 1px solid #d8d8d8;
 
         &--sender {
           padding-right: 30px;
@@ -36,7 +35,6 @@
 
         &--recipient {
           padding-left: 30px;
-          border-left: 1px solid $geyser;
 
           &-with-address {
             cursor: pointer;
@@ -50,6 +48,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        color: #000000;
 
         [dir="rtl"] & {
           transform: rotate(180deg);
@@ -75,6 +74,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        font-size: 20px;
+        line-height: 27px;
+        color: #272D3D;
 
         [dir="rtl"] & {
           /*rtl:ignore*/

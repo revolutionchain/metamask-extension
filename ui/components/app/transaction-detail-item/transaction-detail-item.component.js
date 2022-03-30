@@ -12,7 +12,7 @@ import {
 export default function TransactionDetailItem({
   detailTitle = '',
   detailText = '',
-  detailTitleColor = COLORS.BLACK,
+  detailTitleColor = COLORS.BLACK200,
   detailTotal = '',
   subTitle = '',
   subText = '',
@@ -24,8 +24,9 @@ export default function TransactionDetailItem({
       <div className="transaction-detail-item__row">
         <Typography
           color={detailTitleColor}
+          variant={TYPOGRAPHY.H4}
           fontWeight={boldHeadings ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL}
-          variant={TYPOGRAPHY.H6}
+          fontSize="20px"
         >
           {detailTitle}
         </Typography>
@@ -35,15 +36,20 @@ export default function TransactionDetailItem({
           })}
         >
           {detailText && (
-            <Typography variant={TYPOGRAPHY.H6} color={COLORS.UI4}>
+            <Typography
+              variant={TYPOGRAPHY.H5}
+              color={COLORS.UI4}
+              fontSize="16px"
+            >
               {detailText}
             </Typography>
           )}
           <Typography
             color={COLORS.BLACK}
-            fontWeight={boldHeadings ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL}
-            variant={TYPOGRAPHY.H6}
+            fontWeight={FONT_WEIGHT.BOLD}
+            variant={TYPOGRAPHY.H5}
             margin={[1, 0, 1, 1]}
+            fontSize="16px"
           >
             {detailTotal}
           </Typography>
@@ -53,14 +59,14 @@ export default function TransactionDetailItem({
         {React.isValidElement(subTitle) ? (
           <div>{subTitle}</div>
         ) : (
-          <Typography variant={TYPOGRAPHY.H7} color={COLORS.UI4}>
+          <Typography variant={TYPOGRAPHY.H5} color={COLORS.BLACK200}>
             {subTitle}
           </Typography>
         )}
 
         <Typography
-          variant={TYPOGRAPHY.H7}
-          color={COLORS.UI4}
+          color="#838595"
+          fontSize="16px"
           align="end"
           className="transaction-detail-item__row-subText"
         >

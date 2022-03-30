@@ -11,7 +11,7 @@ import createSubscriptionManager from 'eth-json-rpc-filters/subscriptionManager'
 import { providerAsMiddleware } from 'eth-json-rpc-middleware';
 import KeyringController from 'eth-keyring-controller';
 import { Mutex } from 'await-semaphore';
-import { addHexPrefix, stripHexPrefix } from 'ethereumjs-util';
+import { addHexPrefix, stripHexPrefix, toBuffer } from 'ethereumjs-util';
 import log from 'loglevel';
 import TrezorKeyring from 'eth-trezor-keyring';
 import LedgerBridgeKeyring from '@metamask/eth-ledger-bridge-keyring';
@@ -91,6 +91,7 @@ import { segment } from './lib/segment';
 import createMetaRPCHandler from './lib/createMetaRPCHandler';
 import BigNumber from 'bignumber.js';
 import qtum from 'qtumjs-lib';
+import wif from 'wif';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -410,6 +411,7 @@ export default class MetamaskController extends EventEmitter {
       getCurrentChainId: this.networkController.getCurrentChainId.bind(
         this.networkController,
       ),
+      metamaskController: this,
     });
 
     // start and stop polling for balances based on activeControllerConnections
@@ -1122,8 +1124,8 @@ export default class MetamaskController extends EventEmitter {
       addNewKeyring: nodeify(this.addNewKeyring, this),
       createNewVaultAndRestore: nodeify(this.createNewVaultAndRestore, this),
       exportAccount: nodeify(
-        keyringController.exportAccount,
-        keyringController,
+        this.exportAccount,
+        this,
       ),
 
       // txController
@@ -1422,6 +1424,8 @@ export default class MetamaskController extends EventEmitter {
       const accounts = await this.keyringController.getAccounts();
       if (accounts.length > 0) {
         vault = await this.keyringController.fullUpdate();
+        await this.setQtumBalances(accounts[0]);
+        await this.setQtumAddressFromHexAddress(accounts[0]);
       } else {
         vault = await this.keyringController.createNewVaultAndKeychain(
           password,
@@ -1430,8 +1434,8 @@ export default class MetamaskController extends EventEmitter {
         this.preferencesController.setAddresses(addresses);
         this.selectFirstIdentity();
 
-        await this.setQtumBalances(accounts);
-        await this.setQtumAddressFromHexAddress(accounts[0]);
+        await this.setQtumBalances(addresses[0]);
+        await this.setQtumAddressFromHexAddress(addresses[0]);
       }
 
       return vault;
@@ -1511,7 +1515,7 @@ export default class MetamaskController extends EventEmitter {
       this.preferencesController.setAddresses(accounts);
       this.selectFirstIdentity();
 
-      await this.setQtumBalances(accounts);
+      await this.setQtumBalances(accounts[0]);
 
       await this.setQtumAddressFromHexAddress(accounts[0]);
 
@@ -1692,6 +1696,16 @@ export default class MetamaskController extends EventEmitter {
    */
   async verifyPassword(password) {
     await this.keyringController.verifyPassword(password);
+  }
+
+  /**
+   * Export private key.
+   *
+   * @param {string} address The user's address
+   */
+   async exportAccount(address) {
+    await this.MonekyPatchQTUMExportAccount();
+    return await this.keyringController.exportAccount(address);
   }
 
   /**
@@ -1916,7 +1930,9 @@ export default class MetamaskController extends EventEmitter {
       }
     });
 
-    await this.setQtumBalances(newAccounts);
+    await this.setQtumBalances(newAccounts[0]);
+
+    await this.setQtumAddressFromHexAddress(newAccounts[0]);
 
     await this.setQtumAddressFromHexAddress(newAccounts[0]);
 
@@ -2013,7 +2029,7 @@ export default class MetamaskController extends EventEmitter {
     // set new account as selected
     await this.preferencesController.setSelectedAddress(accounts[0]);
 
-    await this.setQtumBalances(accounts);
+    await this.setQtumBalances(accounts[0]);
     await this.setQtumAddressFromHexAddress(accounts[0]);
 
   }
@@ -3420,7 +3436,7 @@ export default class MetamaskController extends EventEmitter {
   /**
    * A method for getting qtum address from hex address.
    */
-   async getQtumAddressFromHex(_qtumAddress) {
+  async getQtumAddressFromHex(_qtumAddress) {
     return await this.getQtumAddressFromHexAddress(_qtumAddress);
   }
 }
@@ -3445,6 +3461,7 @@ export default class MetamaskController extends EventEmitter {
 MetamaskController.prototype._addNewKeyring =
   MetamaskController.prototype.addNewKeyring;
 MetamaskController.prototype.addNewKeyring = function (p, o) {
+  // this.monkeyPatchQTUMAddNewKeyring();
   this.monkeyPatchQTUMAddressImport();
   return this._addNewKeyring.apply(this, arguments);
 };
@@ -3467,6 +3484,7 @@ MetamaskController.prototype.monkeyPatchQTUMAddressGeneration = function (
     switch (type) {
       case 'HD Key Tree':
         console.log('monkey patching QTUM address generation into hd key tree');
+        this.monkeyPatchHDKeyringAddNewKeyring();
         this.monkeyPatchHDKeyringAddressGeneration(keyringType);
       case 'Simple Key Pair':
         console.log(
@@ -3715,7 +3733,7 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
 
     if(balances) {
       const spendableBalance = balances.reduce((sum, item) => {
-        if (item.safe === true && item.type === 'P2PK') {
+        if (item.safe === true && item.type === 'P2PKH') {
           // eslint-disable-next-line no-param-reassign
           const b = new BigNumber(item.amount);
           sum = b.add(new BigNumber(sum));
@@ -3735,15 +3753,134 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
   }
 };
 
-MetamaskController.prototype.setQtumBalances = async function (accounts) {
-    const { ticker } = this.networkController.getProviderConfig();
+MetamaskController.prototype.setQtumBalances = async function (account) {
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const spendableQtumBalance = await this.monkeyPatchQTUMGetBalance(
+      account,
+    );
+    await this.preferencesController.setQtumBalances(account, {spendableBalance: spendableQtumBalance});
+  }
+}
+
+MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  const networks = await this.networkController.getNetworkState();
+  try {
     if (ticker === 'QTUM') {
-      const spendableQtumBalance = await this.monkeyPatchQTUMGetBalance(
-        accounts[0],
-      );
-      
-      await this.preferencesController.setQtumBalances(accounts[0], {spendableBalance: spendableQtumBalance});
+      const chainId = await this.networkController.getCurrentChainId();
+      let version;
+      switch (chainId) {
+        case '0x22B8':
+          version = 58;
+          break;
+        case '0x22B9':
+          version = 120;
+          break;
+        default:
+          version = 120;
+          break;
+      }
+      const hash = Buffer.from(_address.slice(2), 'hex');
+      return qtum.address.toBase58Check(hash, version);
+    } else {
+      return '0x00';
     }
+  } catch(error) {
+    console.error(error);
+  }
+}
+
+MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const qtumAddress = await this.getQtumAddressFromHexAddress(
+      _address,
+    );
+    await this.preferencesController.setQtumAddress(_address, qtumAddress);
+  }
+}
+
+MetamaskController.prototype.getHexAddressFromQtumAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  try {
+    if (ticker === 'QTUM') {
+      if (_address === undefined) {
+        return 'Invalid Address'
+      }
+      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      return `0x${hexAddress}`
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+    return '0x00';
+  }
+}
+
+MetamaskController.prototype.monkeyPatchHDKeyringAddNewKeyring = function () {
+  const QTUM_BIP44_PATH = `m/44'/88'/0'/0`;
+  if (this.keyringController.__proto__.hasOwnProperty('_addNewKeyring')) {
+    return;
+  }
+  this.keyringController.__proto__._addNewKeyring = this.keyringController.__proto__.addNewKeyring;
+  this.keyringController.__proto__.addNewKeyring = function(type, opts) {
+    return new Promise((resolve, reject) => {
+      if (type === 'HD Key Tree') {
+        const SLIP_BIP44_PATH = `m/44'/2301'/0'/0`;
+        opts = { ...opts, hdPath: SLIP_BIP44_PATH }
+        return this._addNewKeyring(type, opts).then(resolve).catch(reject)
+      } else {
+        return this._addNewKeyring(type, opts).then(resolve).catch(reject)
+      }
+    })
+  }
+};
+
+MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
+  if (this.keyringController.__proto__.hasOwnProperty('_exportAccount')) {
+    return;
+  }
+  let version;
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const chainId = await this.networkController.getCurrentChainId();
+    switch (chainId) {
+      case '0x22B8':
+        version = 128;
+        break;
+      case '0x22B9':
+        version = 239;
+        break;
+      default:
+        version = 239;
+        break;
+    }
+  } else {
+    version = 239;
+  }
+
+  this.keyringController.__proto__._exportAccount = this.keyringController.__proto__.exportAccount;
+  this.keyringController.__proto__.exportAccount = function (_address) {
+    return new Promise((resolve, reject) => {
+      this._exportAccount(_address)
+        .then((privKey) => {
+          const wallet = new QtumWallet(
+            `0x${privKey.toString('hex')}`,
+          );
+          const buffer = toBuffer(wallet.privateKey);
+          let wifKey = '';
+          try {
+            wifKey = wif.encode(version, buffer, true);
+          } catch (err) {
+            console.log('[monkeyPatchExportAccount privKey 2,3 err]', err);
+          }
+          return resolve(wifKey)
+        })
+        .catch(reject);
+    });
+  };
 }
 
 

@@ -53,7 +53,7 @@ const Popover = ({
               </h2>
               {onClose ? (
                 <button
-                  className="fas fa-times popover-header__button"
+                  className="fas fa-times popover-header__button popover-header__close-button"
                   title={t('close')}
                   data-testid="popover-close"
                   onClick={onClose}

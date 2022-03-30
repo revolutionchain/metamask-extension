@@ -88,8 +88,8 @@ const AssetList = ({ onClickAsset }) => {
         }
         tokenSymbol={primaryCurrencyProperties.suffix}
         secondary={showFiat ? secondaryCurrencyDisplay : undefined}
-        tokenImage={primaryTokenImage}
-        identiconBorder
+        // tokenImage="images/icons/eth_cell.svg"
+        tokenImage="images/icon-512.png"
       />
       <TokenList
         onTokenClick={(tokenAddress) => {

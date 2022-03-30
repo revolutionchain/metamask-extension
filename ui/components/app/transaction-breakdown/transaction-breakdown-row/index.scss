@@ -1,10 +1,10 @@
 .transaction-breakdown-row {
-  @include H7;
-
-  color: $scorpion;
+  font-size: 20px;
+  line-height: 24px;
+  color: $Black-200;
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
+  padding: 16px 0;
 
   &:not(:last-child) {
     border-bottom: 1px solid #d8d8d8;

@@ -13,7 +13,7 @@ import {
 } from '../../../selectors/selectors';
 import { showModal } from '../../../store/actions';
 import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
-import { getURLHostName } from '../../../helpers/utils/util';
+import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
 import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
 import AssetNavigation from './asset-navigation';
 import AssetOptions from './asset-options';
@@ -28,7 +28,7 @@ export default function NativeAsset({ nativeCurrency }) {
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
   const address = useSelector(getSelectedAddress);
   const history = useHistory();
-  const accountLink = getAccountLink(address, chainId, rpcPrefs);
+  const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
 
   const blockExplorerLinkClickedEvent = useNewMetricEvent({
     category: 'Navigation',
@@ -42,27 +42,29 @@ export default function NativeAsset({ nativeCurrency }) {
 
   return (
     <>
-      <AssetNavigation
-        accountName={selectedAccountName}
-        assetName={nativeCurrency}
-        onBack={() => history.push(DEFAULT_ROUTE)}
-        isEthNetwork={!rpcPrefs.blockExplorerUrl}
-        optionsButton={
-          <AssetOptions
-            isNativeAsset
-            onClickBlockExplorer={() => {
-              blockExplorerLinkClickedEvent();
-              global.platform.openTab({
-                url: accountLink,
-              });
-            }}
-            onViewAccountDetails={() => {
-              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-            }}
-          />
-        }
-      />
-      <EthOverview className="asset__overview" />
+      <div className="asset__header">
+        <AssetNavigation
+          accountName={selectedAccountName}
+          assetName={nativeCurrency}
+          onBack={() => history.push(DEFAULT_ROUTE)}
+          isEthNetwork={!rpcPrefs.blockExplorerUrl}
+          optionsButton={
+            <AssetOptions
+              isNativeAsset
+              onClickBlockExplorer={() => {
+                blockExplorerLinkClickedEvent();
+                global.platform.openTab({
+                  url: accountLink,
+                });
+              }}
+              onViewAccountDetails={() => {
+                dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              }}
+            />
+          }
+        />
+        <EthOverview className="asset__overview" />
+      </div>
       <TransactionList hideTokenTransactions />
     </>
   );

@@ -40,7 +40,9 @@ export default class TransactionActivityLogIcon extends PureComponent {
 
     return (
       <div className={classnames('transaction-activity-log-icon', className)}>
-        {imagePath ? <img src={imagePath} height="9" width="9" alt="" /> : null}
+        {imagePath ? (
+          <img src={imagePath} height="12" width="12" alt="" />
+        ) : null}
       </div>
     );
   }

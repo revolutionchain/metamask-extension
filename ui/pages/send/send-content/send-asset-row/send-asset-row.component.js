@@ -73,7 +73,7 @@ export default class SendAssetRow extends Component {
     const { t } = this.context;
 
     return (
-      <SendRowWrapper label={`${t('asset')}:`}>
+      <SendRowWrapper label={`${t('asset')}`}>
         <div className="send-v2__asset-dropdown">
           {this.renderSendToken()}
           {this.state.sendableTokens.length > 0
@@ -140,17 +140,7 @@ export default class SendAssetRow extends Component {
         }
         onClick={() => this.selectToken(ASSET_TYPES.NATIVE)}
       >
-        <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon
-            diameter={36}
-            image={nativeCurrencyImage}
-            address={nativeCurrency}
-          />
-        </div>
         <div className="send-v2__asset-dropdown__asset-data">
-          <div className="send-v2__asset-dropdown__symbol">
-            {nativeCurrency}
-          </div>
           <div className="send-v2__asset-dropdown__name">
             <span className="send-v2__asset-dropdown__name__label">
               {`${t('balance')}:`}
@@ -161,6 +151,16 @@ export default class SendAssetRow extends Component {
             />
           </div>
         </div>
+        <div className="send-v2__asset-dropdown__asset-icon">
+          <Identicon
+            diameter={36}
+            image={nativeCurrencyImage}
+            address={nativeCurrency}
+          />
+        </div>
+        <div className="send-v2__asset-dropdown__symbol">
+          {nativeCurrency}
+          </div>
         {!insideDropdown && this.state.sendableTokens.length > 0 && (
           <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
         )}
@@ -178,11 +178,7 @@ export default class SendAssetRow extends Component {
         className="send-v2__asset-dropdown__asset"
         onClick={() => this.selectToken(ASSET_TYPES.TOKEN, token)}
       >
-        <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon address={address} diameter={36} image={image} />
-        </div>
         <div className="send-v2__asset-dropdown__asset-data">
-          <div className="send-v2__asset-dropdown__symbol">{symbol}</div>
           <div className="send-v2__asset-dropdown__name">
             <span className="send-v2__asset-dropdown__name__label">
               {`${t('balance')}:`}
@@ -190,6 +186,10 @@ export default class SendAssetRow extends Component {
             <TokenBalance token={token} />
           </div>
         </div>
+        <div className="send-v2__asset-dropdown__asset-icon">
+          <Identicon address={address} diameter={36} image={image} />
+        </div>
+        <div className="send-v2__asset-dropdown__symbol">{symbol}</div>
         {!insideDropdown && (
           <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
         )}

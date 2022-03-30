@@ -2,9 +2,11 @@
 
 .transaction-breakdown {
   &__title {
-    border-bottom: 1px solid #d8d8d8;
-    padding-bottom: 4px;
+    padding-bottom: 15px;
     text-transform: capitalize;
+    font-size: 26px;
+    line-height: 24px;
+    color: $Black-200;
   }
 
   &__row-title {

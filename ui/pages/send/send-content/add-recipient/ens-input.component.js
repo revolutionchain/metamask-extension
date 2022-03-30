@@ -125,15 +125,15 @@ export default class EnsInput extends Component {
             'ens-input__wrapper--valid': hasSelectedAddress,
           })}
         >
-          <div
-            className={classnames('ens-input__wrapper__status-icon', {
-              'ens-input__wrapper__status-icon--valid': hasSelectedAddress,
-            })}
-          />
           {hasSelectedAddress ? (
             <>
               <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
                 <div className="ens-input__selected-input__title">
+                  <div
+                    className={classnames('ens-input__wrapper__status-icon', {
+                      'ens-input__wrapper__status-icon--valid': hasSelectedAddress,
+                    })}
+                  />
                   {this.convertAddress(selectedName) || (isQtumAddressShowCheck ? qtumAddressBook[selectedAddress] : this.convertAddress(selectedAddress))}
                 </div>
                 {selectedName !== selectedAddress && (
@@ -149,6 +149,11 @@ export default class EnsInput extends Component {
             </>
           ) : (
             <>
+              <div
+                className={classnames('ens-input__wrapper__status-icon', {
+                  'ens-input__wrapper__status-icon--valid': hasSelectedAddress,
+                })}
+              />
               <input
                 className="ens-input__wrapper__input"
                 type="text"

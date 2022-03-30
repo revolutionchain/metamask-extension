@@ -10,6 +10,9 @@ import { openAlert as displayInvalidCustomNetworkAlert } from '../../../ducks/al
 import {
   NETWORK_TYPE_RPC,
   LOCALHOST_RPC_URL,
+  QTUM_MAINNET_RPC_URL,
+  QTUM_TESTNET_RPC_URL,
+  QTUM_REGTEST_RPC_URL,
 } from '../../../../shared/constants/network';
 import { isPrefixedFormattedHexString } from '../../../../shared/modules/network.utils';
 
@@ -290,7 +293,7 @@ class NetworkDropdown extends Component {
     } = this.props;
     const rpcListDetail = this.props.frequentRpcListDetail;
     const rpcListDetailWithoutLocalHost = rpcListDetail.filter(
-      (rpc) => rpc.rpcUrl !== LOCALHOST_RPC_URL,
+      (rpc) => rpc.rpcUrl !== LOCALHOST_RPC_URL && rpc.rpcUrl !== QTUM_MAINNET_RPC_URL && rpc.rpcUrl !== QTUM_TESTNET_RPC_URL && rpc.rpcUrl !== QTUM_REGTEST_RPC_URL,
     );
     const rpcListDetailForLocalHost = rpcListDetail.filter(
       (rpc) => rpc.rpcUrl === LOCALHOST_RPC_URL,
@@ -358,7 +361,6 @@ class NetworkDropdown extends Component {
         {this.renderNetworkEntry('qtumRegtest')}
 
         <div className="network-dropdown-list">
-          {this.renderNetworkEntry('mainnet')}
 
           {this.renderCustomRpcList(
             rpcListDetailWithoutLocalHost,
@@ -370,10 +372,6 @@ class NetworkDropdown extends Component {
               'network-dropdown-testnets--no-visibility': !shouldShowTestNetworks,
             })}
           >
-            {this.renderNetworkEntry('ropsten')}
-            {this.renderNetworkEntry('kovan')}
-            {this.renderNetworkEntry('rinkeby')}
-            {this.renderNetworkEntry('goerli')}
             {this.renderCustomRpcList(
               rpcListDetailForLocalHost,
               this.props.provider,

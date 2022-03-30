@@ -253,6 +253,8 @@ export function updateTransactionGasFees({
 
 export const getCurrentLocale = (state) => state.metamask.currentLocale;
 
+export const getCurrentProvider = (state) => state.metamask.provider;
+
 export const getAlertEnabledness = (state) => state.metamask.alertEnabledness;
 
 export const getUnconnectedAccountAlertEnabledness = (state) =>

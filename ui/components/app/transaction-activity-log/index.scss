@@ -1,8 +1,10 @@
 .transaction-activity-log {
   &__title {
-    border-bottom: 1px solid #d8d8d8;
-    padding-bottom: 4px;
+    padding-bottom: 15px;
     text-transform: capitalize;
+    font-size: 26px;
+    line-height: 24px;
+    color: $Black-200;
   }
 
   &__activities-container {
@@ -22,8 +24,8 @@
       left: 0;
       top: 0;
       height: 100%;
-      width: 7px;
-      border-right: 1px solid #909090;
+      width: 20px;
+      border-right: 1px solid #D4E0FF;
     }
 
     &:first-child::after {
@@ -41,11 +43,11 @@
   }
 
   &__activity-icon {
-    width: 15px;
-    height: 15px;
-    margin-right: 6px;
+    width: 40px;
+    height: 40px;
+    margin-right: 21px;
     border-radius: 50%;
-    background: #909090;
+    background: #D5E0FF;
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
@@ -54,9 +56,9 @@
   }
 
   &__activity-text {
-    @include H7;
-
-    color: $dusty-gray;
+    font-size: 20px;
+    line-height: 24px;
+    color: $Black-200;
     cursor: pointer;
 
     &:hover {

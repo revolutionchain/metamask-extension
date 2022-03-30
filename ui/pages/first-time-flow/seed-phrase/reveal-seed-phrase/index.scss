@@ -1,4 +1,7 @@
 .reveal-seed-phrase {
+  max-width: 836px;
+  align-self: center;
+
   @media screen and (max-width: $break-small) {
     display: flex;
     flex-direction: column;

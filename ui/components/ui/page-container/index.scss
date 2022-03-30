@@ -1,5 +1,5 @@
 .page-container {
-  width: 408px;
+  width: 612px;
   background-color: $white;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
   z-index: 25;
@@ -7,6 +7,14 @@
   flex-flow: column;
   border-radius: 8px;
   overflow-y: auto;
+
+  @media screen and (max-width: $break-small) {
+    width: 375px;
+  }
+  
+  .header-bg {
+    background-color: #FBFBFB;
+  }
 
   &__header {
     display: flex;
@@ -53,14 +61,13 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    border-top: 1px solid $geyser;
     flex: 0 0 auto;
 
     footer {
       display: flex;
       flex-flow: row;
-      justify-content: center;
-      padding: 16px;
+      justify-content: flex-start;
+      padding: 32px 48px 46px;
       flex: 0 0 auto;
     }
 
@@ -84,7 +91,9 @@
   }
 
   &__footer-button {
-    margin-right: 16px;
+    width: 190px;
+    height: 60px;
+    margin-right: 24px;
 
     &:last-of-type {
       margin-right: 0;
@@ -201,7 +210,8 @@
 
 @media screen and (min-width: $break-large) {
   .page-container {
-    max-height: 82vh;
+    // max-height: 82vh;
+    margin-bottom: 20px;
     min-height: 570px;
     flex: 0 0 auto;
     margin-right: auto;
