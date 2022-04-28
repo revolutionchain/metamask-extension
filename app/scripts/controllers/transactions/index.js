@@ -1512,6 +1512,11 @@ TransactionController.prototype.signTransaction = async function(txId) {
 
   const txMeta = this.txStateManager.getTransaction(txId);
   const chainId = this.getChainId();
+
+  if (this.hasBug) {
+    txMeta.txParams.gasPrice = bnToHex(hexToBn(txMeta.txParams.gasPrice).div(hexToBn("0xa")));
+  }
+
   const txParams = {
     ...txMeta.txParams,
     chainId,
@@ -1543,7 +1548,7 @@ TransactionController.prototype.signTransaction = async function(txId) {
     }
   }, fromAddress)
 
-  const qtumWallet = new QtumWallet(key, qtumProvider);
+  const qtumWallet = new QtumWallet(key, qtumProvider, {filterDust: false});
   const signedEthTx = await qtumWallet.signTransaction(ethTx)
 
   // add r,s,v values for provider request purposes see createMetamaskMiddleware

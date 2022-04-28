@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { debounce } from 'lodash';
 import Tooltip from '../../../ui/tooltip';
+import {
+    conversionUtil,
+} from '../../../../../shared/modules/conversion.utils';
 
 export default class AdvancedGasInputs extends Component {
   static contextTypes = {
@@ -64,6 +67,7 @@ export default class AdvancedGasInputs extends Component {
   };
 
   onChangeGasPrice = (e) => {
+    e.target.value = toGwei(e.target.value);
     this.setState({ gasPrice: e.target.value });
     this.changeGasPrice({ target: { value: e.target.value } });
   };
@@ -204,7 +208,9 @@ export default class AdvancedGasInputs extends Component {
       customPriceIsExcessive,
       networkSupportsSettingGasPrice,
     } = this.props;
-    const { gasPrice, gasLimit } = this.state;
+    let { gasPrice, gasLimit } = this.state;
+
+    gasPrice = fromGwei(gasPrice);
 
     const {
       errorText: gasPriceErrorText,
@@ -248,7 +254,7 @@ export default class AdvancedGasInputs extends Component {
           label: this.context.t('gasPrice'),
           testId: 'gas-price',
           tooltipTitle: this.context.t('gasPriceInfoTooltipContent'),
-          value: this.state.gasPrice,
+          value: gasPrice,
           onChange: this.onChangeGasPrice,
           errorComponent: gasPriceErrorComponent,
           errorType: gasPriceErrorType,
@@ -258,7 +264,7 @@ export default class AdvancedGasInputs extends Component {
           label: this.context.t('gasLimit'),
           testId: 'gas-limit',
           tooltipTitle: this.context.t('gasLimitInfoTooltipContent'),
-          value: this.state.gasLimit,
+          value: gasLimit,
           onChange: this.onChangeGasLimit,
           errorComponent: gasLimitErrorComponent,
           customMessageComponent: gasLimitCustomMessageComponent,
@@ -267,4 +273,22 @@ export default class AdvancedGasInputs extends Component {
       </div>
     );
   }
+}
+
+function fromGwei(value) {
+    return conversionUtil(value, {
+        fromNumericBase: 'dec',
+        toNumericBase: 'dec',
+        fromDenomination: 'GWEI',
+        toDenomination: 'SATOSHI',
+    });
+}
+
+function toGwei(value) {
+    return conversionUtil(value, {
+        fromNumericBase: 'dec',
+        toNumericBase: 'dec',
+        fromDenomination: 'SATOSHI',
+        toDenomination: 'GWEI',
+    });
 }

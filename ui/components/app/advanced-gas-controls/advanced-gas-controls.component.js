@@ -6,6 +6,10 @@ import { I18nContext } from '../../../contexts/i18n';
 import FormField from '../../ui/form-field';
 import { GAS_ESTIMATE_TYPES } from '../../../../shared/constants/gas';
 import { getGasFormErrorText } from '../../../helpers/constants/gas';
+// import { conversionUtil } from '../../helpers/utils';
+import {
+    conversionUtil,
+} from '../../../../shared/modules/conversion.utils';
 import { getIsGasEstimatesLoading } from '../../../ducks/metamask/metamask';
 import { getNetworkSupportsSettingGasPrice } from '../../../selectors/selectors';
 
@@ -38,6 +42,8 @@ export default function AdvancedGasControls({
   const networkSupportsSettingGasPrice = useSelector(
     getNetworkSupportsSettingGasPrice,
   );
+
+  gasPrice = fromGwei(gasPrice);
 
   return (
     <div className="advanced-gas-controls">
@@ -98,10 +104,10 @@ export default function AdvancedGasControls({
         <>
           <FormField
             titleText={t('advancedGasPriceTitle')}
-            titleUnit="(GWEI)"
+            titleUnit="(SATOSHI)"
             onChange={(value) => {
               onManualChange?.();
-              setGasPrice(value);
+              setGasPrice(toGwei(value));
             }}
             tooltipText={t('editGasPriceTooltip')}
             value={gasPrice}
@@ -117,6 +123,24 @@ export default function AdvancedGasControls({
       )}
     </div>
   );
+}
+
+function fromGwei(value) {
+    return conversionUtil(value, {
+        fromNumericBase: 'dec',
+        toNumericBase: 'dec',
+        fromDenomination: 'GWEI',
+        toDenomination: 'SATOSHI',
+    });
+}
+
+function toGwei(value) {
+    return conversionUtil(value, {
+        fromNumericBase: 'dec',
+        toNumericBase: 'dec',
+        fromDenomination: 'SATOSHI',
+        toDenomination: 'GWEI',
+    });
 }
 
 AdvancedGasControls.propTypes = {
