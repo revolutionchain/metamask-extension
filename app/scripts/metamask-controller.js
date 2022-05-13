@@ -3779,7 +3779,7 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
 
     if(balances) {
       const spendableBalance = balances.reduce((sum, item) => {
-        if (item.safe === true && item.type === 'P2PKH') {
+        if (item.safe === true && (item.type === 'P2PKH' || item.type === 'P2PK')) {
           // eslint-disable-next-line no-param-reassign
           const b = new BigNumber(item.amount);
           sum = b.add(new BigNumber(sum));
