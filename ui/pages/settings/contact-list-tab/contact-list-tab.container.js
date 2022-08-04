@@ -10,8 +10,11 @@ import {
   CONTACT_EDIT_ROUTE,
   CONTACT_VIEW_ROUTE,
 } from '../../../helpers/constants/routes';
+import {
+  getQtumAddressBook,
+  isQtumAddressShow,
+} from '../../../ducks/metamask/metamask';
 import ContactListTab from './contact-list-tab.component';
-import { getQtumAddressBook, isQtumAddressShow } from '../../../ducks/metamask/metamask';
 
 const mapStateToProps = (state, ownProps) => {
   const { location } = ownProps;

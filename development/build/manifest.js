@@ -1,11 +1,14 @@
 const { promises: fs } = require('fs');
 const path = require('path');
-const { merge, cloneDeep } = require('lodash');
+const { mergeWith, cloneDeep } = require('lodash');
 
-const baseManifest = require('../../app/manifest/_base.json');
+const baseManifest = process.env.ENABLE_MV3
+  ? require('../../app/manifest/v3/_base.json')
+  : require('../../app/manifest/v2/_base.json');
+const { BuildType } = require('../lib/build-type');
 
+const { TASKS } = require('./constants');
 const { createTask, composeSeries } = require('./task');
-const { BuildType } = require('./utils');
 
 module.exports = createManifestTasks;
 
@@ -24,15 +27,16 @@ function createManifestTasks({
             '..',
             '..',
             'app',
-            'manifest',
+            process.env.ENABLE_MV3 ? 'manifest/v3' : 'manifest/v2',
             `${platform}.json`,
           ),
         );
-        const result = merge(
+        const result = mergeWith(
           cloneDeep(baseManifest),
           platformModifications,
           browserVersionMap[platform],
           await getBuildModifications(buildType, platform),
+          customArrayMerge,
         );
         const dir = path.join('.', 'dist', platform);
         await fs.mkdir(dir, { recursive: true });
@@ -65,19 +69,22 @@ function createManifestTasks({
   });
 
   // high level manifest tasks
-  const dev = createTask('manifest:dev', composeSeries(prepPlatforms, envDev));
+  const dev = createTask(
+    TASKS.MANIFEST_DEV,
+    composeSeries(prepPlatforms, envDev),
+  );
 
   const testDev = createTask(
-    'manifest:testDev',
+    TASKS.MANIFEST_TEST_DEV,
     composeSeries(prepPlatforms, envTestDev),
   );
 
   const test = createTask(
-    'manifest:test',
+    TASKS.MANIFEST_TEST,
     composeSeries(prepPlatforms, envTest),
   );
 
-  const prod = createTask('manifest:prod', prepPlatforms);
+  const prod = createTask(TASKS.MANIFEST_PROD, prepPlatforms);
 
   return { prod, dev, testDev, test };
 
@@ -98,6 +105,14 @@ function createManifestTasks({
         }),
       );
     };
+  }
+
+  // helper for merging obj value
+  function customArrayMerge(objValue, srcValue) {
+    if (Array.isArray(objValue)) {
+      return [...new Set([...objValue, ...srcValue])];
+    }
+    return undefined;
   }
 }
 

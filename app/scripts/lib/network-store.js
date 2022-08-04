@@ -1,8 +1,7 @@
 import log from 'loglevel';
-import { SECOND } from '../../../shared/constants/time';
 import getFetchWithTimeout from '../../../shared/modules/fetch-with-timeout';
 
-const fetchWithTimeout = getFetchWithTimeout(SECOND * 30);
+const fetchWithTimeout = getFetchWithTimeout();
 
 const FIXTURE_SERVER_HOST = 'localhost';
 const FIXTURE_SERVER_PORT = 12345;
@@ -41,6 +40,7 @@ export default class ReadOnlyNetworkStore {
 
   /**
    * Returns state
+   *
    * @returns {Promise<object>}
    */
   async get() {
@@ -52,6 +52,7 @@ export default class ReadOnlyNetworkStore {
 
   /**
    * Set state
+   *
    * @param {Object} state - The state to set
    * @returns {Promise<void>}
    */

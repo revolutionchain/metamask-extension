@@ -8,7 +8,10 @@ import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils
 import Tooltip from '../tooltip';
 import CopyIcon from '../icon/copy-icon.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import { getQtumAddressBook, isQtumAddressShow } from '../../../ducks/metamask/metamask';
+import {
+  getQtumAddressBook,
+  isQtumAddressShow,
+} from '../../../ducks/metamask/metamask';
 
 export default connect(mapStateToProps)(QrCodeView);
 
@@ -55,7 +58,7 @@ function QrCodeView(props) {
       ) : (
         header
       )}
-      {warning ? <span className="qr_code__error">{warning}</span> : null}
+      {warning ? <span className="qr-code__error">{warning}</span> : null}
       <div
         className="qr-code__wrapper"
         dangerouslySetInnerHTML={{
@@ -70,10 +73,18 @@ function QrCodeView(props) {
         <div
           className="qr-code__address-container"
           onClick={() => {
-            handleCopy(isQtumAddressShowCheck ? qtumAddressBook[data] : toChecksumHexAddress(data));
+            handleCopy(
+              isQtumAddressShowCheck
+                ? qtumAddressBook[data]
+                : toChecksumHexAddress(data),
+            );
           }}
         >
-          <div className="qr-code__address">{isQtumAddressShowCheck ? qtumAddressBook[data] : toChecksumHexAddress(data)}</div>
+          <div className="qr-code__address">
+            {isQtumAddressShowCheck
+              ? qtumAddressBook[data]
+              : toChecksumHexAddress(data)}
+          </div>
           <div className="qr-code__copy-icon">
             <CopyIcon size={11} className="qr-code__copy-icon__svg" color="" />
           </div>

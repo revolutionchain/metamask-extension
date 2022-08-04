@@ -1,6 +1,6 @@
 const { strict: assert } = require('assert');
 const { errorCodes } = require('eth-rpc-errors');
-const { withFixtures } = require('../helpers');
+const { convertToHexValue, withFixtures } = require('../helpers');
 
 describe('MetaMask', function () {
   const ganacheOptions = {
@@ -8,7 +8,7 @@ describe('MetaMask', function () {
       {
         secretKey:
           '0x7C9529A67102755B7E6102D6D950AC5D5863C98713805CEC576B945B15B71EAC',
-        balance: 25000000000000000000,
+        balance: convertToHexValue(25000000000000000000),
       },
     ],
   };
@@ -47,7 +47,7 @@ describe('MetaMask', function () {
         await driver.switchToWindowWithTitle('E2E Test Dapp', windowHandles);
         const switchedNetworkDiv = await driver.waitForSelector({
           css: '#network',
-          text: '1',
+          text: '0x1',
         });
         const switchedChainIdDiv = await driver.waitForSelector({
           css: '#chainId',
@@ -55,7 +55,7 @@ describe('MetaMask', function () {
         });
         const accountsDiv = await driver.findElement('#accounts');
 
-        assert.equal(await switchedNetworkDiv.getText(), '1');
+        assert.equal(await switchedNetworkDiv.getText(), '0x1');
         assert.equal(await switchedChainIdDiv.getText(), '0x1');
         assert.equal(
           await accountsDiv.getText(),

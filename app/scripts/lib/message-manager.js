@@ -5,13 +5,13 @@ import { ethErrors } from 'eth-rpc-errors';
 import { MESSAGE_TYPE } from '../../../shared/constants/app';
 import { METAMASK_CONTROLLER_EVENTS } from '../metamask-controller';
 import createId from '../../../shared/modules/random-id';
+import { EVENT } from '../../../shared/constants/metametrics';
 
 /**
  * Represents, and contains data about, an 'eth_sign' type signature request. These are created when a signature for
  * an eth_sign call is requested.
  *
  * @see {@link https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign}
- *
  * @typedef {Object} Message
  * @property {number} id An id to track and identify the message object
  * @property {Object} msgParams The parameters to pass to the eth_sign method once the signature request is approved.
@@ -21,19 +21,14 @@ import createId from '../../../shared/modules/random-id';
  * @property {string} status Indicates whether the signature request is 'unapproved', 'approved', 'signed' or 'rejected'
  * @property {string} type The json-prc signing method for which a signature request has been made. A 'Message' with
  * always have a 'eth_sign' type.
- *
  */
 
 export default class MessageManager extends EventEmitter {
   /**
    * Controller in charge of managing - storing, adding, removing, updating - Messages.
    *
-   * @typedef {Object} MessageManager
-   * @property {Object} memStore The observable store where Messages are saved.
-   * @property {Object} memStore.unapprovedMsgs A collection of all Messages in the 'unapproved' state
-   * @property {number} memStore.unapprovedMsgCount The count of all Messages in this.memStore.unapprovedMsgs
-   * @property {Array} messages Holds all messages that have been created by this MessageManager
-   *
+   * @param {object} opts - Controller options
+   * @param {Function} opts.metricsEvent - A function for emitting a metric event.
    */
   constructor({ metricsEvent }) {
     super();
@@ -49,7 +44,6 @@ export default class MessageManager extends EventEmitter {
    * A getter for the number of 'unapproved' Messages in this.messages
    *
    * @returns {number} The number of 'unapproved' Messages in this.messages
-   *
    */
   get unapprovedMsgCount() {
     return Object.keys(this.getUnapprovedMsgs()).length;
@@ -59,7 +53,6 @@ export default class MessageManager extends EventEmitter {
    * A getter for the 'unapproved' Messages in this.messages
    *
    * @returns {Object} An index of Message ids to Messages, for all 'unapproved' Messages in this.messages
-   *
    */
   getUnapprovedMsgs() {
     return this.messages
@@ -77,7 +70,6 @@ export default class MessageManager extends EventEmitter {
    * @param {Object} msgParams - The params for the eth_sign call to be made after the message is approved.
    * @param {Object} [req] - The original request object possibly containing the origin
    * @returns {promise} after signature has been
-   *
    */
   async addUnapprovedMessageAsync(msgParams, req) {
     const msgId = this.addUnapprovedMessage(msgParams, req);
@@ -117,7 +109,6 @@ export default class MessageManager extends EventEmitter {
    * @param {Object} msgParams - The params for the eth_sign call to be made after the message is approved.
    * @param {Object} [req] - The original request object where the origin may be specified
    * @returns {number} The id of the newly created message.
-   *
    */
   addUnapprovedMessage(msgParams, req) {
     // add origin from request
@@ -147,7 +138,6 @@ export default class MessageManager extends EventEmitter {
    * list to this.memStore.
    *
    * @param {Message} msg - The Message to add to this.messages
-   *
    */
   addMsg(msg) {
     this.messages.push(msg);
@@ -159,7 +149,6 @@ export default class MessageManager extends EventEmitter {
    *
    * @param {number} msgId - The id of the Message to get
    * @returns {Message|undefined} The Message with the id that matches the passed msgId, or undefined if no Message has that id.
-   *
    */
   getMsg(msgId) {
     return this.messages.find((msg) => msg.id === msgId);
@@ -170,9 +159,8 @@ export default class MessageManager extends EventEmitter {
    * any the message params modified for proper signing.
    *
    * @param {Object} msgParams - The msgParams to be used when eth_sign is called, plus data added by MetaMask.
-   * @param {Object} msgParams.metamaskId Added to msgParams for tracking and identification within MetaMask.
+   * @param {Object} msgParams.metamaskId - Added to msgParams for tracking and identification within MetaMask.
    * @returns {Promise<object>} Promises the msgParams object with metamaskId removed.
-   *
    */
   approveMessage(msgParams) {
     this.setMsgStatusApproved(msgParams.metamaskId);
@@ -183,7 +171,6 @@ export default class MessageManager extends EventEmitter {
    * Sets a Message status to 'approved' via a call to this._setMsgStatus.
    *
    * @param {number} msgId - The id of the Message to approve.
-   *
    */
   setMsgStatusApproved(msgId) {
     this._setMsgStatus(msgId, 'approved');
@@ -195,7 +182,6 @@ export default class MessageManager extends EventEmitter {
    *
    * @param {number} msgId - The id of the Message to sign.
    * @param {buffer} rawSig - The raw data of the signature request
-   *
    */
   setMsgStatusSigned(msgId, rawSig) {
     const msg = this.getMsg(msgId);
@@ -209,7 +195,6 @@ export default class MessageManager extends EventEmitter {
    *
    * @param {Object} msgParams - The msgParams to modify
    * @returns {Promise<object>} Promises the msgParams with the metamaskId property removed
-   *
    */
   prepMsgForSigning(msgParams) {
     delete msgParams.metamaskId;
@@ -220,14 +205,14 @@ export default class MessageManager extends EventEmitter {
    * Sets a Message status to 'rejected' via a call to this._setMsgStatus.
    *
    * @param {number} msgId - The id of the Message to reject.
-   *
+   * @param reason
    */
   rejectMsg(msgId, reason = undefined) {
     if (reason) {
       const msg = this.getMsg(msgId);
       this.metricsEvent({
         event: reason,
-        category: 'Transactions',
+        category: EVENT.CATEGORIES.TRANSACTIONS,
         properties: {
           action: 'Sign Request',
           type: msg.type,
@@ -241,7 +226,7 @@ export default class MessageManager extends EventEmitter {
    * Sets a Message status to 'errored' via a call to this._setMsgStatus.
    *
    * @param {number} msgId - The id of the Message to error
-   *
+   * @param error
    */
   errorMessage(msgId, error) {
     const msg = this.getMsg(msgId);
@@ -268,7 +253,6 @@ export default class MessageManager extends EventEmitter {
    * id equal to the passed msgId
    * @fires An event with a name equal to `${msgId}:${status}`. The Message is also fired.
    * @fires If status is 'rejected' or 'signed', an event with a name equal to `${msgId}:finished` is fired along with the message
-   *
    */
   _setMsgStatus(msgId, status) {
     const msg = this.getMsg(msgId);
@@ -288,8 +272,7 @@ export default class MessageManager extends EventEmitter {
    * storage via this._saveMsgList
    *
    * @private
-   * @param {msg} Message - A Message that will replace an existing Message (with the same id) in this.messages
-   *
+   * @param {Message} msg - A Message that will replace an existing Message (with the same id) in this.messages
    */
   _updateMsg(msg) {
     const index = this.messages.findIndex((message) => message.id === msg.id);
@@ -304,7 +287,6 @@ export default class MessageManager extends EventEmitter {
    *
    * @private
    * @fires 'updateBadge'
-   *
    */
   _saveMsgList() {
     const unapprovedMsgs = this.getUnapprovedMsgs();
@@ -319,7 +301,6 @@ export default class MessageManager extends EventEmitter {
  *
  * @param {any} data - The buffer data to convert to a hex
  * @returns {string} A hex string conversion of the buffer data
- *
  */
 export function normalizeMsgData(data) {
   if (data.slice(0, 2) === '0x') {

@@ -1,10 +1,5 @@
-import extension from 'extensionizer';
-import promisify from 'pify';
+import browser from 'webextension-polyfill';
 import allLocales from '../../_locales/index.json';
-
-const getPreferredLocales = extension.i18n
-  ? promisify(extension.i18n.getAcceptLanguages, { errorFirst: false })
-  : async () => [];
 
 // mapping some browsers return hyphen instead underscore in locale codes (e.g. zh_TW -> zh-tw)
 const existingLocaleCodes = {};
@@ -20,17 +15,18 @@ allLocales.forEach((locale) => {
  * users preferred locales, 'en' is returned.
  *
  * @returns {Promise<string>} Promises a locale code, either one from the user's preferred list that we have a translation for, or 'en'
- *
  */
 export default async function getFirstPreferredLangCode() {
   let userPreferredLocaleCodes;
 
   try {
-    userPreferredLocaleCodes = await getPreferredLocales();
+    userPreferredLocaleCodes = await browser.i18n.getAcceptLanguages();
   } catch (e) {
+    console.log('[user preferred localeCodes error]', e);
     // Brave currently throws when calling getAcceptLanguages, so this handles that.
     userPreferredLocaleCodes = [];
   }
+  console.log('[user preferred localeCodes]', userPreferredLocaleCodes);
 
   // safeguard for Brave Browser until they implement chrome.i18n.getAcceptLanguages
   // https://github.com/MetaMask/metamask-extension/issues/4270
@@ -55,6 +51,7 @@ export default async function getFirstPreferredLangCode() {
   ) {
     firstPreferredLangCode = firstPreferredLangCode.split('-')[0];
   }
+  console.log('[firstPreferredLangCode]', firstPreferredLangCode);
 
   return existingLocaleCodes[firstPreferredLangCode] || 'en';
 }

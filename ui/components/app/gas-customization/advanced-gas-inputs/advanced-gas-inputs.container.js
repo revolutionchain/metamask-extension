@@ -5,7 +5,7 @@ import {
   hexToDecimal,
   hexWEIToDecGWEI,
 } from '../../../../helpers/utils/conversions.util';
-import { getNetworkSupportsSettingGasPrice } from '../../../../selectors/selectors';
+import { getNetworkSupportsSettingGasFees } from '../../../../selectors/selectors';
 import { MIN_GAS_LIMIT_DEC } from '../../../../pages/send/send.constants';
 import AdvancedGasInputs from './advanced-gas-inputs.component';
 
@@ -23,7 +23,7 @@ function convertMinimumGasLimitForInputs(minimumGasLimit = MIN_GAS_LIMIT_DEC) {
 
 function mapStateToProps(state) {
   return {
-    networkSupportsSettingGasPrice: getNetworkSupportsSettingGasPrice(state),
+    networkSupportsSettingGasFees: getNetworkSupportsSettingGasFees(state),
   };
 }
 

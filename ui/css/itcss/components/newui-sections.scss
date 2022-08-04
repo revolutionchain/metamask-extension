@@ -22,7 +22,7 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
   left: 0;
   width: 1px;
   height: 1px;
-  background-color: $Grey-000;
+  background-color: var(--color-background-alternative);
   animation: emptySpinningDiv 1s infinite linear;
 }
 
@@ -63,7 +63,7 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
     width: 85vw;
     margin-bottom: 10vh;
     min-height: 90vh;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-size-xs) var(--color-shadow-default);
   }
 }
 
@@ -71,7 +71,7 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
   .main-container {
     width: 80vw;
     min-height: 82vh;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-size-xs) var(--color-shadow-default);
   }
 }
 
@@ -79,7 +79,7 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
   .main-container {
     width: 62vw;
     min-height: 82vh;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-size-xs) var(--color-shadow-default);
   }
 }
 
@@ -95,7 +95,7 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
   .main-container {
     width: 100%;
     overflow-y: auto;
-    background-color: $white;
+    background-color: var(--color-background-default);
   }
 
   .main-container-wrapper {
@@ -140,7 +140,7 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
   justify-content: center;
   align-items: center;
   flex: 1 0 auto;
-  background: #f7f7f7;
+  background: var(--color-background-alternative);
   width: 100%;
 }
 
@@ -158,5 +158,5 @@ $sub-mid-size-breakpoint-range: "screen and (min-width: #{$break-large}) and (ma
   height: 100%;
   justify-content: center;
   padding: 0 10px;
-  background: white;
+  background: var(--color-background-default);
 }

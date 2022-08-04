@@ -1,14 +1,24 @@
 import { createSelector } from 'reselect';
+///: BEGIN:ONLY_INCLUDE_IN(flask)
+import { memoize } from 'lodash';
+///: END:ONLY_INCLUDE_IN
 import { addHexPrefix } from '../../app/scripts/lib/util';
 import {
   MAINNET_CHAIN_ID,
   QTUM_CHAIN_ID,
-  BSC_CHAIN_ID,
   TEST_CHAINS,
   NETWORK_TYPE_RPC,
   NATIVE_CURRENCY_TOKEN_IMAGE_MAP,
   OPTIMISM_CHAIN_ID,
   OPTIMISM_TESTNET_CHAIN_ID,
+  BUYABLE_CHAINS_MAP,
+  MAINNET_DISPLAY_NAME,
+  BSC_CHAIN_ID,
+  POLYGON_CHAIN_ID,
+  AVALANCHE_CHAIN_ID,
+  BSC_DISPLAY_NAME,
+  POLYGON_DISPLAY_NAME,
+  AVALANCHE_DISPLAY_NAME,
 } from '../../shared/constants/network';
 import {
   KEYRING_TYPES,
@@ -18,17 +28,21 @@ import {
 } from '../../shared/constants/hardware-wallets';
 
 import {
-  SWAPS_CHAINID_DEFAULT_TOKEN_MAP,
-  ALLOWED_SWAPS_CHAIN_IDS,
-} from '../../shared/constants/swaps';
+  MESSAGE_TYPE,
+  ///: BEGIN:ONLY_INCLUDE_IN(flask)
+  SUBJECT_TYPES,
+  ///: END:ONLY_INCLUDE_IN
+} from '../../shared/constants/app';
 
 import { TRUNCATED_NAME_CHAR_LIMIT } from '../../shared/constants/labels';
 
 import {
-  shortenAddress,
-  getAccountByAddress,
-  isEqualCaseInsensitive,
-} from '../helpers/utils/util';
+  SWAPS_CHAINID_DEFAULT_TOKEN_MAP,
+  ALLOWED_PROD_SWAPS_CHAIN_IDS,
+  ALLOWED_DEV_SWAPS_CHAIN_IDS,
+} from '../../shared/constants/swaps';
+
+import { shortenAddress, getAccountByAddress } from '../helpers/utils/util';
 import {
   getValueFromWeiHex,
   hexToDecimal,
@@ -51,7 +65,10 @@ import {
   getLedgerWebHidConnectedStatus,
   getLedgerTransportStatus,
 } from '../ducks/app/app';
-import { MESSAGE_TYPE } from '../../shared/constants/app';
+import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
+///: BEGIN:ONLY_INCLUDE_IN(flask)
+import { SNAPS_VIEW_ROUTE } from '../helpers/constants/routes';
+///: END:ONLY_INCLUDE_IN
 
 /**
  * One of the only remaining valid uses of selecting the network subkey of the
@@ -59,6 +76,7 @@ import { MESSAGE_TYPE } from '../../shared/constants/app';
  *
  * This will be used for all cases where this state key is accessed only for that
  * purpose.
+ *
  * @param {Object} state - redux state object
  */
 export function isNetworkLoading(state) {
@@ -92,11 +110,15 @@ export function getCurrentQRHardwareState(state) {
 
 export function hasUnsignedQRHardwareTransaction(state) {
   const { txParams } = state.confirmTransaction.txData;
-  if (!txParams) return false;
+  if (!txParams) {
+    return false;
+  }
   const { from } = txParams;
   const { keyrings } = state.metamask;
   const qrKeyring = keyrings.find((kr) => kr.type === KEYRING_TYPES.QR);
-  if (!qrKeyring) return false;
+  if (!qrKeyring) {
+    return false;
+  }
   return Boolean(
     qrKeyring.accounts.find(
       (account) => account.toLowerCase() === from.toLowerCase(),
@@ -112,7 +134,9 @@ export function hasUnsignedQRHardwareMessage(state) {
   const { from } = msgParams;
   const { keyrings } = state.metamask;
   const qrKeyring = keyrings.find((kr) => kr.type === KEYRING_TYPES.QR);
-  if (!qrKeyring) return false;
+  if (!qrKeyring) {
+    return false;
+  }
   switch (type) {
     case MESSAGE_TYPE.ETH_SIGN_TYPED_DATA:
     case MESSAGE_TYPE.ETH_SIGN:
@@ -143,18 +167,15 @@ export function getParticipateInMetaMetrics(state) {
   return Boolean(state.metamask.participateInMetaMetrics);
 }
 
-export function isEIP1559Account(state) {
-  const keyring = getCurrentKeyring(state);
-
-  if (keyring?.type === KEYRING_TYPES.TREZOR) {
-    return state.metamask.trezorModel === 'T';
-  }
+export function isEIP1559Account() {
   return true;
 }
 
 /**
  * The function returns true if network and account details are fetched and
  * both of them support EIP-1559.
+ *
+ * @param state
  */
 export function checkNetworkAndAccountSupports1559(state) {
   const networkSupports1559 = isEIP1559Network(state);
@@ -166,6 +187,8 @@ export function checkNetworkAndAccountSupports1559(state) {
 /**
  * The function returns true if network and account details are fetched and
  * either of them do not support EIP-1559.
+ *
+ * @param state
  */
 export function checkNetworkOrAccountNotSupports1559(state) {
   const networkNotSupports1559 = isNotEIP1559Network(state);
@@ -176,8 +199,9 @@ export function checkNetworkOrAccountNotSupports1559(state) {
 
 /**
  * Checks if the current wallet is a hardware wallet.
+ *
  * @param {Object} state
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export function isHardwareWallet(state) {
   const keyring = getCurrentKeyring(state);
@@ -186,8 +210,9 @@ export function isHardwareWallet(state) {
 
 /**
  * Get a HW wallet type, e.g. "Ledger Hardware"
+ *
  * @param {Object} state
- * @returns {String|undefined}
+ * @returns {string | undefined}
  */
 export function getHardwareWalletType(state) {
   const keyring = getCurrentKeyring(state);
@@ -216,6 +241,7 @@ export function getAccountType(state) {
  * instead use chainId in most situations. There are a limited number of
  * use cases to use this method still, such as when comparing transaction
  * metadata that predates the switch to using chainId.
+ *
  * @deprecated - use getCurrentChainId instead
  * @param {Object} state - redux state object
  */
@@ -350,6 +376,10 @@ export function getAddressBook(state) {
   return Object.values(state.metamask.addressBook[chainId]);
 }
 
+export function getEnsResolutionByAddress(state, address) {
+  return state.metamask.ensResolutionsByAddress[address] || '';
+}
+
 export function getAddressBookEntry(state, address) {
   const addressBook = getAddressBook(state);
   const entry = addressBook.find((contact) =>
@@ -415,6 +445,10 @@ export function getGasIsLoading(state) {
   return state.appState.gasIsLoading;
 }
 
+export function getAppIsLoading(state) {
+  return state.appState.isLoading;
+}
+
 export function getCurrentCurrency(state) {
   return state.metamask.currentCurrency;
 }
@@ -441,6 +475,24 @@ export function getTotalUnapprovedCount(state) {
   );
 }
 
+export function getTotalUnapprovedMessagesCount(state) {
+  const {
+    unapprovedMsgCount = 0,
+    unapprovedPersonalMsgCount = 0,
+    unapprovedDecryptMsgCount = 0,
+    unapprovedEncryptionPublicKeyMsgCount = 0,
+    unapprovedTypedMessagesCount = 0,
+  } = state.metamask;
+
+  return (
+    unapprovedMsgCount +
+    unapprovedPersonalMsgCount +
+    unapprovedDecryptMsgCount +
+    unapprovedEncryptionPublicKeyMsgCount +
+    unapprovedTypedMessagesCount
+  );
+}
+
 function getUnapprovedTxCount(state) {
   const { unapprovedTxs = {} } = state.metamask;
   return Object.keys(unapprovedTxs).length;
@@ -461,6 +513,10 @@ export function getUnapprovedTemplatedConfirmations(state) {
 function getSuggestedAssetCount(state) {
   const { suggestedAssets = [] } = state.metamask;
   return suggestedAssets.length;
+}
+
+export function getSuggestedAssets(state) {
+  return state.metamask.suggestedAssets;
 }
 
 export function getIsMainnet(state) {
@@ -510,8 +566,33 @@ export function getCustomNonceValue(state) {
   return String(state.metamask.customNonceValue);
 }
 
-export function getDomainMetadata(state) {
-  return state.metamask.domainMetadata;
+export function getSubjectMetadata(state) {
+  return state.metamask.subjectMetadata;
+}
+
+///: BEGIN:ONLY_INCLUDE_IN(flask)
+/**
+ * @param {string} svgString - The raw SVG string to make embeddable.
+ * @returns {string} The embeddable SVG string.
+ */
+const getEmbeddableSvg = memoize(
+  (svgString) => `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`,
+);
+///: END:ONLY_INCLUDE_IN
+
+export function getTargetSubjectMetadata(state, origin) {
+  const metadata = getSubjectMetadata(state)[origin];
+
+  ///: BEGIN:ONLY_INCLUDE_IN(flask)
+  if (metadata?.subjectType === SUBJECT_TYPES.SNAP) {
+    const { svgIcon, ...remainingMetadata } = metadata;
+    return {
+      ...remainingMetadata,
+      iconUrl: svgIcon ? getEmbeddableSvg(svgIcon) : null,
+    };
+  }
+  ///: END:ONLY_INCLUDE_IN
+  return metadata;
 }
 
 export function getRpcPrefsForCurrentProvider(state) {
@@ -612,7 +693,36 @@ export function getSwapsDefaultToken(state) {
 
 export function getIsSwapsChain(state) {
   const chainId = getCurrentChainId(state);
-  return ALLOWED_SWAPS_CHAIN_IDS[chainId];
+  const isNotDevelopment =
+    process.env.METAMASK_ENVIRONMENT !== 'development' &&
+    process.env.METAMASK_ENVIRONMENT !== 'testing';
+  return isNotDevelopment
+    ? ALLOWED_PROD_SWAPS_CHAIN_IDS.includes(chainId)
+    : ALLOWED_DEV_SWAPS_CHAIN_IDS.includes(chainId);
+}
+
+export function getIsBuyableChain(state) {
+  const chainId = getCurrentChainId(state);
+  return Object.keys(BUYABLE_CHAINS_MAP).includes(chainId);
+}
+
+export function getIsBuyableTransakChain(state) {
+  const chainId = getCurrentChainId(state);
+  return Boolean(BUYABLE_CHAINS_MAP?.[chainId]?.transakCurrencies);
+}
+
+export function getIsBuyableMoonPayChain(state) {
+  const chainId = getCurrentChainId(state);
+  return Boolean(BUYABLE_CHAINS_MAP?.[chainId]?.moonPay);
+}
+
+export function getIsBuyableWyreChain(state) {
+  const chainId = getCurrentChainId(state);
+  return Boolean(BUYABLE_CHAINS_MAP?.[chainId]?.wyre);
+}
+export function getIsBuyableCoinbasePayChain(state) {
+  const chainId = getCurrentChainId(state);
+  return Boolean(BUYABLE_CHAINS_MAP?.[chainId]?.coinbasePayCurrencies);
 }
 
 export function getNativeCurrencyImage(state) {
@@ -628,12 +738,76 @@ export function getShowWhatsNewPopup(state) {
   return state.appState.showWhatsNewPopup;
 }
 
+///: BEGIN:ONLY_INCLUDE_IN(flask)
+export function getSnaps(state) {
+  return state.metamask.snaps;
+}
+
+export const getSnapsRouteObjects = createSelector(getSnaps, (snaps) => {
+  return Object.values(snaps).map((snap) => {
+    return {
+      id: snap.id,
+      tabMessage: () => snap.manifest.proposedName,
+      descriptionMessage: () => snap.manifest.description,
+      sectionMessage: () => snap.manifest.description,
+      route: `${SNAPS_VIEW_ROUTE}/${encodeURIComponent(snap.id)}`,
+      icon: 'fa fa-flask',
+    };
+  });
+});
+
 /**
- * Get an object of notification IDs and if they are allowed or not.
+ * @typedef {Object} Notification
+ * @property {string} id - A unique identifier for the notification
+ * @property {string} origin - A string identifing the snap origin
+ * @property {EpochTimeStamp} createdDate - A date in epochTimeStramps, identifying when the notification was first committed
+ * @property {EpochTimeStamp} readDate - A date in epochTimeStramps, identifying when the notification was read by the user
+ * @property {string} message - A string containing the notification message
+ */
+
+/**
+ * Notifications are managed by the notification controller and referenced by
+ * `state.metamask.notifications`. This function returns a list of notifications
+ * the can be shown to the user.
+ *
+ * The returned notifications are sorted by date.
+ *
+ * @param {Object} state - the redux state object
+ * @returns {Notification[]} An array of notifications that can be shown to the user
+ */
+
+export function getNotifications(state) {
+  const notifications = Object.values(state.metamask.notifications);
+
+  const notificationsSortedByDate = notifications.sort(
+    (a, b) => new Date(b.createdDate) - new Date(a.createdDate),
+  );
+  return notificationsSortedByDate;
+}
+
+export function getUnreadNotifications(state) {
+  const notifications = getNotifications(state);
+
+  const unreadNotificationCount = notifications.filter(
+    (notification) => notification.readDate === null,
+  );
+
+  return unreadNotificationCount;
+}
+
+export const getUnreadNotificationsCount = createSelector(
+  getUnreadNotifications,
+  (notifications) => notifications.length,
+);
+///: END:ONLY_INCLUDE_IN
+
+/**
+ * Get an object of announcement IDs and if they are allowed or not.
+ *
  * @param {Object} state
  * @returns {Object}
  */
-function getAllowedNotificationIds(state) {
+function getAllowedAnnouncementIds(state) {
   const currentKeyring = getCurrentKeyring(state);
   const currentKeyringIsLedger = currentKeyring?.type === KEYRING_TYPES.LEDGER;
   const supportsWebHid = window.navigator.hid !== undefined;
@@ -649,38 +823,43 @@ function getAllowedNotificationIds(state) {
     6: false,
     7: false,
     8: supportsWebHid && currentKeyringIsLedger && currentlyUsingLedgerLive,
+    9: false,
+    10: Boolean(process.env.TOKEN_DETECTION_V2) && !process.env.IN_TEST,
+    11: Boolean(process.env.TOKEN_DETECTION_V2) && !process.env.IN_TEST,
+    12: false,
+    13: true,
   };
 }
 
 /**
- * @typedef {Object} Notification
- * @property {number} id - A unique identifier for the notification
+ * @typedef {Object} Announcement
+ * @property {number} id - A unique identifier for the announcement
  * @property {string} date - A date in YYYY-MM-DD format, identifying when the notification was first committed
  */
 
 /**
- * Notifications are managed by the notification controller and referenced by
- * `state.metamask.notifications`. This function returns a list of notifications
- * the can be shown to the user. This list includes all notifications that do not
+ * Announcements are managed by the announcement controller and referenced by
+ * `state.metamask.announcements`. This function returns a list of announcements
+ * the can be shown to the user. This list includes all announcements that do not
  * have a truthy `isShown` property.
  *
- * The returned notifications are sorted by date.
+ * The returned announcements are sorted by date.
  *
  * @param {Object} state - the redux state object
- * @returns {Notification[]} An array of notifications that can be shown to the user
+ * @returns {Announcement[]} An array of announcements that can be shown to the user
  */
 
-export function getSortedNotificationsToShow(state) {
-  const notifications = Object.values(state.metamask.notifications);
-  const allowedNotificationIds = getAllowedNotificationIds(state);
-  const notificationsToShow = notifications.filter(
-    (notification) =>
-      !notification.isShown && allowedNotificationIds[notification.id],
+export function getSortedAnnouncementsToShow(state) {
+  const announcements = Object.values(state.metamask.announcements);
+  const allowedAnnouncementIds = getAllowedAnnouncementIds(state);
+  const announcementsToShow = announcements.filter(
+    (announcement) =>
+      !announcement.isShown && allowedAnnouncementIds[announcement.id],
   );
-  const notificationsSortedByDate = notificationsToShow.sort(
+  const announcementsSortedByDate = announcementsToShow.sort(
     (a, b) => new Date(b.date) - new Date(a.date),
   );
-  return notificationsSortedByDate;
+  return announcementsSortedByDate;
 }
 
 export function getShowRecoveryPhraseReminder(state) {
@@ -697,6 +876,7 @@ export function getShowRecoveryPhraseReminder(state) {
 
 /**
  * To get the useTokenDetection flag which determines whether a static or dynamic token list is used
+ *
  * @param {*} state
  * @returns Boolean
  */
@@ -706,6 +886,7 @@ export function getUseTokenDetection(state) {
 
 /**
  * To get the useCollectibleDetection flag which determines whether we autodetect NFTs
+ *
  * @param {*} state
  * @returns Boolean
  */
@@ -714,7 +895,28 @@ export function getUseCollectibleDetection(state) {
 }
 
 /**
+ * To get the openSeaEnabled flag which determines whether we use OpenSea's API
+ *
+ * @param {*} state
+ * @returns Boolean
+ */
+export function getOpenSeaEnabled(state) {
+  return Boolean(state.metamask.openSeaEnabled);
+}
+
+/**
+ * To get the `theme` value which determines which theme is selected
+ *
+ * @param {*} state
+ * @returns Boolean
+ */
+export function getTheme(state) {
+  return state.metamask.theme;
+}
+
+/**
  * To retrieve the tokenList produced by TokenListcontroller
+ *
  * @param {*} state
  * @returns {Object}
  */
@@ -746,6 +948,7 @@ export function getNewCollectibleAddedMessage(state) {
 
 /**
  * To retrieve the name of the new Network added using add network form
+ *
  * @param {*} state
  * @returns string
  */
@@ -772,7 +975,7 @@ export function getIsOptimism(state) {
   );
 }
 
-export function getNetworkSupportsSettingGasPrice(state) {
+export function getNetworkSupportsSettingGasFees(state) {
   return !getIsOptimism(state);
 }
 
@@ -781,21 +984,93 @@ export function getIsMultiLayerFeeNetwork(state) {
 }
 /**
  *  To retrieve the maxBaseFee and priotitFee teh user has set as default
- *  @param {*} state
- *  @returns Boolean
+ *
+ * @param {*} state
+ * @returns Boolean
  */
 export function getAdvancedGasFeeValues(state) {
   return state.metamask.advancedGasFee;
 }
 
+export function getEIP1559V2Enabled(state) {
+  return state.metamask.eip1559V2Enabled;
+}
+
 /**
  *  To check if the user has set advanced gas fee settings as default with a non empty  maxBaseFee and priotityFee.
- *  @param {*} state
- *  @returns Boolean
+ *
+ * @param {*} state
+ * @returns Boolean
  */
 export function getIsAdvancedGasFeeDefault(state) {
   const { advancedGasFee } = state.metamask;
   return (
     Boolean(advancedGasFee?.maxBaseFee) && Boolean(advancedGasFee?.priorityFee)
   );
+}
+
+/**
+ * @param state
+ * @returns string e.g. ethereum, bsc or polygon
+ */
+export const getTokenDetectionSupportNetworkByChainId = (state) => {
+  const chainId = getCurrentChainId(state);
+  switch (chainId) {
+    case MAINNET_CHAIN_ID:
+      return MAINNET_DISPLAY_NAME;
+    case BSC_CHAIN_ID:
+      return BSC_DISPLAY_NAME;
+    case POLYGON_CHAIN_ID:
+      return POLYGON_DISPLAY_NAME;
+    case AVALANCHE_CHAIN_ID:
+      return AVALANCHE_DISPLAY_NAME;
+    default:
+      return '';
+  }
+};
+/**
+ * To check for the chainId that supports token detection ,
+ * currently it returns true for Ethereum Mainnet, Polygon, BSC and Avalanche
+ *
+ * @param {*} state
+ * @returns Boolean
+ */
+export function getIsTokenDetectionSupported(state) {
+  const chainId = getCurrentChainId(state);
+  return [
+    MAINNET_CHAIN_ID,
+    BSC_CHAIN_ID,
+    POLYGON_CHAIN_ID,
+    AVALANCHE_CHAIN_ID,
+  ].includes(chainId);
+}
+
+/**
+ * To retrieve the list of tokens detected and saved on the state to detectedToken object.
+ *
+ * @param {*} state
+ * @returns list of token objects
+ */
+export function getDetectedTokensInCurrentNetwork(state) {
+  return state.metamask.detectedTokens;
+}
+
+/**
+ * To fetch the name of the tokens that are imported from tokens found page
+ *
+ * @param {*} state
+ * @returns
+ */
+export function getNewTokensImported(state) {
+  return state.appState.newTokensImported;
+}
+
+/**
+ * To get the `customNetworkListEnabled` value which determines whether we use the custom network list
+ *
+ * @param {*} state
+ * @returns Boolean
+ */
+export function getIsCustomNetworkListEnabled(state) {
+  return state.metamask.customNetworkListEnabled;
 }

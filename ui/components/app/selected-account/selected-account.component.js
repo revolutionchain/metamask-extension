@@ -54,16 +54,20 @@ class SelectedAccount extends Component {
                 () => this.setState({ copied: false }),
                 SECOND * 3,
               );
-              copyToClipboard(isQtumAddressShow ? qtumAddress : checksummedAddress);
+              copyToClipboard(
+                isQtumAddressShow ? qtumAddress : checksummedAddress,
+              );
             }}
           >
             <div className="selected-account__name">
               {selectedIdentity.name}
             </div>
             <div className="selected-account__address">
-              {isQtumAddressShow ? shortenAddress(qtumAddress) : shortenAddress(checksummedAddress)}
+              {isQtumAddressShow
+                ? shortenAddress(qtumAddress)
+                : shortenAddress(checksummedAddress)}
               <div className="selected-account__copy">
-                <CopyIcon size={11} color="#989a9b" />
+                <CopyIcon size={11} color="var(--color-icon-alternative)" />
               </div>
             </div>
           </button>

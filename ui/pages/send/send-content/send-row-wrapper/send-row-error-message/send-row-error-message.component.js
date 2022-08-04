@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {
-  getValueFromWeiHex,
-} from '../../../../../helpers/utils/conversions.util';
+import { getValueFromWeiHex } from '../../../../../helpers/utils/conversions.util';
 import { QTUM } from '../../../../../helpers/constants/common';
 
 export default class SendRowErrorMessage extends Component {
@@ -40,7 +38,12 @@ export default class SendRowErrorMessage extends Component {
           'send-v2__error-amount': errorType === 'amount',
         })}
       >
-        {this.context.t(errorMessage)} {qtumBalance !== null && inErrorQtum ? `${this.context.t(errors.qtumBalances)} ${this.getDecimalValue(this.props)} ${QTUM}` : ''}
+        {this.context.t(errorMessage)}{' '}
+        {qtumBalance !== null && inErrorQtum
+          ? `${this.context.t(errors.qtumBalances)} ${this.getDecimalValue(
+              this.props,
+            )} ${QTUM}`
+          : ''}
       </div>
     ) : null;
   }

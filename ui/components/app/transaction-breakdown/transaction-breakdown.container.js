@@ -9,10 +9,8 @@ import { subtractHexes } from '../../../helpers/utils/conversions.util';
 import { sumHexes } from '../../../helpers/utils/transactions.util';
 import { isEIP1559Transaction } from '../../../../shared/modules/transaction.utils';
 
+import { conversionUtil } from '../../../../shared/modules/conversion.utils';
 import TransactionBreakdown from './transaction-breakdown.component';
-import {
-  conversionUtil
-} from '../../../../shared/modules/conversion.utils';
 
 const mapStateToProps = (state, ownProps) => {
   const { transaction, isTokenApprove } = ownProps;

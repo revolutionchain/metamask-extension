@@ -34,19 +34,18 @@ const metamaskrc = require('rc')('metamask', {
   INFURA_PROD_PROJECT_ID: process.env.INFURA_PROD_PROJECT_ID,
   ONBOARDING_V2: process.env.ONBOARDING_V2,
   COLLECTIBLES_V1: process.env.COLLECTIBLES_V1,
-  EIP_1559_V2: process.env.EIP_1559_V2,
+  PHISHING_WARNING_PAGE_URL: process.env.PHISHING_WARNING_PAGE_URL,
+  TOKEN_DETECTION_V2: process.env.TOKEN_DETECTION_V2,
   SEGMENT_HOST: process.env.SEGMENT_HOST,
   SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
   SEGMENT_BETA_WRITE_KEY: process.env.SEGMENT_BETA_WRITE_KEY,
   SEGMENT_FLASK_WRITE_KEY: process.env.SEGMENT_FLASK_WRITE_KEY,
   SEGMENT_PROD_WRITE_KEY: process.env.SEGMENT_PROD_WRITE_KEY,
-  SENTRY_DSN_DEV:
-    process.env.SENTRY_DSN_DEV ||
-    '',
+  SENTRY_DSN_DEV: process.env.SENTRY_DSN_DEV || '',
 });
 
 const { streamFlatMap } = require('../stream-flat-map.js');
-const { version } = require('../../package.json');
+const { BuildType } = require('../lib/build-type');
 
 const {
   createTask,
@@ -57,7 +56,6 @@ const {
 const {
   createRemoveFencedCodeTransform,
 } = require('./transforms/remove-fenced-code');
-const { BuildType } = require('./utils');
 
 /**
  * The build environment. This describes the environment this build was produced in.
@@ -117,7 +115,7 @@ function getInfuraProjectId({ buildType, environment, testing }) {
  *
  * @param {object} options - The Segment write key options.
  * @param {BuildType} options.buildType - The current build type.
- * @param {keyof ENVIRONMENT} options.enviroment - The current build environment.
+ * @param {keyof ENVIRONMENT} options.environment - The current build environment.
  * @returns {string} The Segment write key.
  */
 function getSegmentWriteKey({ buildType, environment }) {
@@ -134,6 +132,48 @@ function getSegmentWriteKey({ buildType, environment }) {
   throw new Error(`Invalid build type: '${buildType}'`);
 }
 
+/**
+ * Get the URL for the phishing warning page, if it has been set.
+ *
+ * @param {object} options - The phishing warning page options.
+ * @param {boolean} options.testing - Whether this is a test build or not.
+ * @returns {string} The URL for the phishing warning page, or `undefined` if no URL is set.
+ */
+function getPhishingWarningPageUrl({ testing }) {
+  let phishingWarningPageUrl = metamaskrc.PHISHING_WARNING_PAGE_URL;
+
+  if (!phishingWarningPageUrl) {
+    phishingWarningPageUrl = testing
+      ? 'http://localhost:9999/'
+      : 'https://metamask.github.io/phishing-warning/v1.1.0/';
+  }
+
+  // We add a hash/fragment to the URL dynamically, so we need to ensure it
+  // has a valid pathname to append a hash to.
+  const normalizedUrl = phishingWarningPageUrl.endsWith('/')
+    ? phishingWarningPageUrl
+    : `${phishingWarningPageUrl}/`;
+
+  let phishingWarningPageUrlObject;
+  try {
+    // eslint-disable-next-line no-new
+    phishingWarningPageUrlObject = new URL(normalizedUrl);
+  } catch (error) {
+    throw new Error(
+      `Invalid phishing warning page URL: '${normalizedUrl}'`,
+      error,
+    );
+  }
+  if (phishingWarningPageUrlObject.hash) {
+    // The URL fragment must be set dynamically
+    throw new Error(
+      `URL fragment not allowed in phishing warning page URL: '${normalizedUrl}'`,
+    );
+  }
+
+  return normalizedUrl;
+}
+
 const noopWriteStream = through.obj((_file, _fileEncoding, callback) =>
   callback(),
 );
@@ -141,6 +181,7 @@ const noopWriteStream = through.obj((_file, _fileEncoding, callback) =>
 module.exports = createScriptTasks;
 
 function createScriptTasks({
+  applyLavaMoat,
   browserPlatforms,
   buildType,
   ignoredFiles,
@@ -148,26 +189,27 @@ function createScriptTasks({
   livereload,
   shouldLintFenceFiles,
   policyOnly,
+  version,
 }) {
   // internal tasks
   const core = {
     // dev tasks (live reload)
-    dev: createTasksForBuildJsExtension({
+    dev: createTasksForScriptBundles({
       taskPrefix: 'scripts:core:dev',
       devMode: true,
     }),
-    testDev: createTasksForBuildJsExtension({
+    testDev: createTasksForScriptBundles({
       taskPrefix: 'scripts:core:test-live',
       devMode: true,
       testing: true,
     }),
     // built for CI tests
-    test: createTasksForBuildJsExtension({
+    test: createTasksForScriptBundles({
       taskPrefix: 'scripts:core:test',
       testing: true,
     }),
     // production
-    prod: createTasksForBuildJsExtension({ taskPrefix: 'scripts:core:prod' }),
+    prod: createTasksForScriptBundles({ taskPrefix: 'scripts:core:prod' }),
   };
 
   // high level tasks
@@ -175,11 +217,16 @@ function createScriptTasks({
   const { dev, test, testDev, prod } = core;
   return { dev, test, testDev, prod };
 
-  function createTasksForBuildJsExtension({ taskPrefix, devMode, testing }) {
+  function createTasksForScriptBundles({
+    taskPrefix,
+    devMode = false,
+    testing = false,
+  }) {
     const standardEntryPoints = ['background', 'ui', 'content-script'];
     const standardSubtask = createTask(
       `${taskPrefix}:standardEntryPoints`,
       createFactoredBuild({
+        applyLavaMoat,
         browserPlatforms,
         buildType,
         devMode,
@@ -193,6 +240,7 @@ function createScriptTasks({
         policyOnly,
         shouldLintFenceFiles,
         testing,
+        version,
       }),
     );
 
@@ -200,24 +248,19 @@ function createScriptTasks({
     // because inpage bundle result is included inside contentscript
     const contentscriptSubtask = createTask(
       `${taskPrefix}:contentscript`,
-      createTaskForBundleContentscript({ devMode, testing }),
+      createContentscriptBundle({ devMode, testing }),
     );
 
     // this can run whenever
     const disableConsoleSubtask = createTask(
       `${taskPrefix}:disable-console`,
-      createTaskForBundleDisableConsole({ devMode, testing }),
+      createDisableConsoleBundle({ devMode, testing }),
     );
 
     // this can run whenever
     const installSentrySubtask = createTask(
       `${taskPrefix}:sentry`,
-      createTaskForBundleSentry({ devMode, testing }),
-    );
-
-    const phishingDetectSubtask = createTask(
-      `${taskPrefix}:phishing-detect`,
-      createTaskForBundlePhishingDetect({ devMode, testing }),
+      createSentryBundle({ devMode, testing }),
     );
 
     // task for initiating browser livereload
@@ -242,9 +285,9 @@ function createScriptTasks({
       contentscriptSubtask,
       disableConsoleSubtask,
       installSentrySubtask,
-      phishingDetectSubtask,
     ].map((subtask) =>
       runInChildProcess(subtask, {
+        applyLavaMoat,
         buildType,
         isLavaMoat,
         policyOnly,
@@ -255,7 +298,7 @@ function createScriptTasks({
     return composeParallel(initiateLiveReload, ...allSubtasks);
   }
 
-  function createTaskForBundleDisableConsole({ devMode, testing }) {
+  function createDisableConsoleBundle({ devMode, testing }) {
     const label = 'disable-console';
     return createNormalBundle({
       browserPlatforms,
@@ -268,10 +311,11 @@ function createScriptTasks({
       testing,
       policyOnly,
       shouldLintFenceFiles,
+      version,
     });
   }
 
-  function createTaskForBundleSentry({ devMode, testing }) {
+  function createSentryBundle({ devMode, testing }) {
     const label = 'sentry-install';
     return createNormalBundle({
       browserPlatforms,
@@ -284,27 +328,12 @@ function createScriptTasks({
       testing,
       policyOnly,
       shouldLintFenceFiles,
-    });
-  }
-
-  function createTaskForBundlePhishingDetect({ devMode, testing }) {
-    const label = 'phishing-detect';
-    return createNormalBundle({
-      buildType,
-      browserPlatforms,
-      destFilepath: `${label}.js`,
-      devMode,
-      entryFilepath: `./app/scripts/${label}.js`,
-      ignoredFiles,
-      label,
-      testing,
-      policyOnly,
-      shouldLintFenceFiles,
+      version,
     });
   }
 
   // the "contentscript" bundle contains the "inpage" bundle
-  function createTaskForBundleContentscript({ devMode, testing }) {
+  function createContentscriptBundle({ devMode, testing }) {
     const inpage = 'inpage';
     const contentscript = 'contentscript';
     return composeSeries(
@@ -319,6 +348,7 @@ function createScriptTasks({
         policyOnly,
         shouldLintFenceFiles,
         testing,
+        version,
       }),
       createNormalBundle({
         buildType,
@@ -331,12 +361,110 @@ function createScriptTasks({
         policyOnly,
         shouldLintFenceFiles,
         testing,
+        version,
       }),
     );
   }
 }
 
+const postProcessServiceWorker = (
+  mv3BrowserPlatforms,
+  fileList,
+  applyLavaMoat,
+  testing,
+) => {
+  mv3BrowserPlatforms.forEach((browser) => {
+    const appInitFile = `./dist/${browser}/app-init.js`;
+    const fileContent = readFileSync('./app/scripts/app-init.js', 'utf8');
+    let fileOutput = fileContent.replace('/** FILE NAMES */', fileList);
+    if (testing) {
+      fileOutput = fileOutput.replace('testMode = false', 'testMode = true');
+    } else {
+      // Setting applyLavaMoat to true in testing mode
+      // This is to enable capturing initialisation time stats using e2e with lavamoat statsMode enabled
+      fileOutput = fileOutput.replace(
+        'const applyLavaMoat = true;',
+        `const applyLavaMoat = ${applyLavaMoat};`,
+      );
+    }
+    writeFileSync(appInitFile, fileOutput);
+  });
+};
+
+// Function generates app-init.js for browsers chrome, brave and opera.
+// It dynamically injects list of files generated in the build.
+async function createManifestV3AppInitializationBundle({
+  jsBundles,
+  browserPlatforms,
+  buildType,
+  devMode,
+  ignoredFiles,
+  testing,
+  policyOnly,
+  shouldLintFenceFiles,
+  applyLavaMoat,
+  version,
+}) {
+  const label = 'app-init';
+  // TODO: remove this filter for firefox once MV3 is supported in it
+  const mv3BrowserPlatforms = browserPlatforms.filter(
+    (platform) => platform !== 'firefox',
+  );
+  const fileList = jsBundles.reduce(
+    (result, file) => `${result}'${file}',\n    `,
+    '',
+  );
+
+  await createNormalBundle({
+    browserPlatforms: mv3BrowserPlatforms,
+    buildType,
+    destFilepath: 'app-init.js',
+    devMode,
+    entryFilepath: './app/scripts/app-init.js',
+    ignoredFiles,
+    label,
+    testing,
+    policyOnly,
+    shouldLintFenceFiles,
+    version,
+  })();
+
+  postProcessServiceWorker(
+    mv3BrowserPlatforms,
+    fileList,
+    applyLavaMoat,
+    testing,
+  );
+
+  // If the application is running in development mode, we watch service worker file to
+  // in case the file is changes we need to process it again to replace "/** FILE NAMES */", "testMode" etc.
+  if (devMode && !testing) {
+    let prevChromeFileContent;
+    watch('./dist/chrome/app-init.js', () => {
+      const chromeFileContent = readFileSync(
+        './dist/chrome/app-init.js',
+        'utf8',
+      );
+      if (chromeFileContent !== prevChromeFileContent) {
+        prevChromeFileContent = chromeFileContent;
+        postProcessServiceWorker(mv3BrowserPlatforms, fileList, applyLavaMoat);
+      }
+    });
+  }
+
+  // Code below is used to set statsMode to true when testing in MV3
+  // This is used to capture module initialisation stats using lavamoat.
+  if (testing) {
+    const content = readFileSync('./dist/chrome/runtime-lavamoat.js', 'utf8');
+    const fileOutput = content.replace('statsMode = false', 'statsMode = true');
+    writeFileSync('./dist/chrome/runtime-lavamoat.js', fileOutput);
+  }
+
+  console.log(`Bundle end: service worker app-init.js`);
+}
+
 function createFactoredBuild({
+  applyLavaMoat,
   browserPlatforms,
   buildType,
   devMode,
@@ -345,6 +473,7 @@ function createFactoredBuild({
   policyOnly,
   shouldLintFenceFiles,
   testing,
+  version,
 }) {
   return async function () {
     // create bundler setup and apply defaults
@@ -356,7 +485,12 @@ function createFactoredBuild({
     const reloadOnChange = Boolean(devMode);
     const minify = Boolean(devMode) === false;
 
-    const envVars = getEnvironmentVariables({ buildType, devMode, testing });
+    const envVars = getEnvironmentVariables({
+      buildType,
+      devMode,
+      testing,
+      version,
+    });
     setupBundlerDefaults(buildConfiguration, {
       buildType,
       devMode,
@@ -366,6 +500,7 @@ function createFactoredBuild({
       minify,
       reloadOnChange,
       shouldLintFenceFiles,
+      testing,
     });
 
     // set bundle entries
@@ -382,7 +517,7 @@ function createFactoredBuild({
       policyName: buildType,
       policyOverride: path.resolve(
         __dirname,
-        `../../lavamoat/browserify/${buildType}/policy-override.json`,
+        `../../lavamoat/browserify/policy-override.json`,
       ),
       writeAutoPolicy: process.env.WRITE_AUTO_POLICY,
     };
@@ -440,7 +575,7 @@ function createFactoredBuild({
     });
 
     // wait for bundle completion for postprocessing
-    events.on('bundleDone', () => {
+    events.on('bundleDone', async () => {
       // Skip HTML generation if nothing is to be written to disk
       if (policyOnly) {
         return;
@@ -449,7 +584,9 @@ function createFactoredBuild({
       // create entry points for each file
       for (const [groupLabel, groupSet] of sizeGroupMap.entries()) {
         // skip "common" group, they are added to all other groups
-        if (groupSet === commonSet) continue;
+        if (groupSet === commonSet) {
+          continue;
+        }
 
         switch (groupLabel) {
           case 'ui': {
@@ -458,21 +595,21 @@ function createFactoredBuild({
               groupSet,
               commonSet,
               browserPlatforms,
-              useLavamoat: false,
+              applyLavaMoat,
             });
             renderHtmlFile({
               htmlName: 'notification',
               groupSet,
               commonSet,
               browserPlatforms,
-              useLavamoat: false,
+              applyLavaMoat,
             });
             renderHtmlFile({
               htmlName: 'home',
               groupSet,
               commonSet,
               browserPlatforms,
-              useLavamoat: false,
+              applyLavaMoat,
             });
             break;
           }
@@ -482,8 +619,26 @@ function createFactoredBuild({
               groupSet,
               commonSet,
               browserPlatforms,
-              useLavamoat: true,
+              applyLavaMoat,
             });
+            if (process.env.ENABLE_MV3) {
+              const jsBundles = [
+                ...commonSet.values(),
+                ...groupSet.values(),
+              ].map((label) => `./${label}.js`);
+              await createManifestV3AppInitializationBundle({
+                jsBundles,
+                browserPlatforms,
+                buildType,
+                devMode,
+                ignoredFiles,
+                testing,
+                policyOnly,
+                shouldLintFenceFiles,
+                applyLavaMoat,
+                version,
+              });
+            }
             break;
           }
           case 'content-script': {
@@ -492,7 +647,7 @@ function createFactoredBuild({
               groupSet,
               commonSet,
               browserPlatforms,
-              useLavamoat: false,
+              applyLavaMoat: false,
             });
             break;
           }
@@ -505,7 +660,7 @@ function createFactoredBuild({
       }
     });
 
-    await bundleIt(buildConfiguration);
+    await createBundle(buildConfiguration, { reloadOnChange });
   };
 }
 
@@ -515,13 +670,12 @@ function createNormalBundle({
   destFilepath,
   devMode,
   entryFilepath,
-  extraEntries = [],
   ignoredFiles,
   label,
   policyOnly,
-  modulesToExpose,
   shouldLintFenceFiles,
   testing,
+  version,
 }) {
   return async function () {
     // create bundler setup and apply defaults
@@ -533,7 +687,12 @@ function createNormalBundle({
     const reloadOnChange = Boolean(devMode);
     const minify = Boolean(devMode) === false;
 
-    const envVars = getEnvironmentVariables({ buildType, devMode, testing });
+    const envVars = getEnvironmentVariables({
+      buildType,
+      devMode,
+      testing,
+      version,
+    });
     setupBundlerDefaults(buildConfiguration, {
       buildType,
       devMode,
@@ -543,17 +702,11 @@ function createNormalBundle({
       minify,
       reloadOnChange,
       shouldLintFenceFiles,
+      testing,
     });
 
     // set bundle entries
-    bundlerOpts.entries = [...extraEntries];
-    if (entryFilepath) {
-      bundlerOpts.entries.push(entryFilepath);
-    }
-
-    if (modulesToExpose) {
-      bundlerOpts.require = bundlerOpts.require.concat(modulesToExpose);
-    }
+    bundlerOpts.entries = [entryFilepath];
 
     // instrument pipeline
     events.on('configurePipeline', ({ pipeline }) => {
@@ -569,7 +722,7 @@ function createNormalBundle({
       });
     });
 
-    await bundleIt(buildConfiguration);
+    await createBundle(buildConfiguration, { reloadOnChange });
   };
 }
 
@@ -599,9 +752,11 @@ function setupBundlerDefaults(
     minify,
     reloadOnChange,
     shouldLintFenceFiles,
+    testing,
   },
 ) {
   const { bundlerOpts } = buildConfiguration;
+  const extensions = ['.js', '.ts', '.tsx'];
 
   Object.assign(bundlerOpts, {
     // Source transforms
@@ -609,19 +764,26 @@ function setupBundlerDefaults(
       // Remove code that should be excluded from builds of the current type
       createRemoveFencedCodeTransform(buildType, shouldLintFenceFiles),
       // Transpile top-level code
-      babelify,
+      [
+        babelify,
+        // Run TypeScript files through Babel
+        { extensions },
+      ],
       // Inline `fs.readFileSync` files
       brfs,
     ],
+    // Look for TypeScript files when walking the dependency tree
+    extensions,
     // Use entryFilepath for moduleIds, easier to determine origin file
-    fullPaths: devMode,
+    fullPaths: devMode || testing,
     // For sourcemaps
     debug: true,
   });
 
   // Ensure react-devtools are not included in non-dev builds
-  if (!devMode) {
+  if (!devMode || testing) {
     bundlerOpts.manualIgnore.push('react-devtools');
+    bundlerOpts.manualIgnore.push('remote-redux-devtools');
   }
 
   // Inject environment variables via node-style `process.env`
@@ -715,7 +877,7 @@ function setupSourcemaps(buildConfiguration, { devMode }) {
   });
 }
 
-async function bundleIt(buildConfiguration) {
+async function createBundle(buildConfiguration, { reloadOnChange }) {
   const { label, bundlerOpts, events } = buildConfiguration;
   const bundler = browserify(bundlerOpts);
 
@@ -754,6 +916,13 @@ async function bundleIt(buildConfiguration) {
       [],
     ]);
     const bundleStream = bundler.bundle();
+    if (!reloadOnChange) {
+      bundleStream.on('error', (error) => {
+        console.error('Bundling failed! See details below.');
+        console.error(error.stack || error);
+        process.exit(1);
+      });
+    }
     // trigger build pipeline instrumentations
     events.emit('configurePipeline', { pipeline, bundleStream });
     // start bundle, send into pipeline
@@ -768,7 +937,7 @@ async function bundleIt(buildConfiguration) {
   }
 }
 
-function getEnvironmentVariables({ buildType, devMode, testing }) {
+function getEnvironmentVariables({ buildType, devMode, testing, version }) {
   const environment = getEnvironment({ devMode, testing });
   if (environment === ENVIRONMENT.PRODUCTION && !process.env.SENTRY_DSN) {
     throw new Error('Missing SENTRY_DSN environment variable');
@@ -779,7 +948,8 @@ function getEnvironmentVariables({ buildType, devMode, testing }) {
     METAMASK_VERSION: version,
     METAMASK_BUILD_TYPE: buildType,
     NODE_ENV: devMode ? ENVIRONMENT.DEVELOPMENT : ENVIRONMENT.PRODUCTION,
-    IN_TEST: testing ? 'true' : false,
+    IN_TEST: testing,
+    PHISHING_WARNING_PAGE_URL: getPhishingWarningPageUrl({ testing }),
     PUBNUB_SUB_KEY: process.env.PUBNUB_SUB_KEY || '',
     PUBNUB_PUB_KEY: process.env.PUBNUB_PUB_KEY || '',
     CONF: devMode ? metamaskrc : {},
@@ -791,7 +961,7 @@ function getEnvironmentVariables({ buildType, devMode, testing }) {
     SWAPS_USE_DEV_APIS: process.env.SWAPS_USE_DEV_APIS === '1',
     ONBOARDING_V2: metamaskrc.ONBOARDING_V2 === '1',
     COLLECTIBLES_V1: metamaskrc.COLLECTIBLES_V1 === '1',
-    EIP_1559_V2: metamaskrc.EIP_1559_V2 === '1',
+    TOKEN_DETECTION_V2: metamaskrc.TOKEN_DETECTION_V2 === '1',
   };
 }
 
@@ -820,11 +990,11 @@ function renderHtmlFile({
   groupSet,
   commonSet,
   browserPlatforms,
-  useLavamoat,
+  applyLavaMoat,
 }) {
-  if (useLavamoat === undefined) {
+  if (applyLavaMoat === undefined) {
     throw new Error(
-      'build/scripts/renderHtmlFile - must specify "useLavamoat" option',
+      'build/scripts/renderHtmlFile - must specify "applyLavaMoat" option',
     );
   }
   const htmlFilePath = `./app/${htmlName}.html`;
@@ -832,7 +1002,7 @@ function renderHtmlFile({
   const jsBundles = [...commonSet.values(), ...groupSet.values()].map(
     (label) => `./${label}.js`,
   );
-  const htmlOutput = Sqrl.render(htmlTemplate, { jsBundles, useLavamoat });
+  const htmlOutput = Sqrl.render(htmlTemplate, { jsBundles, applyLavaMoat });
   browserPlatforms.forEach((platform) => {
     const dest = `./dist/${platform}/${htmlName}.html`;
     // we dont have a way of creating async events atm

@@ -68,25 +68,10 @@ export const SENTRY_STATE = {
 };
 
 export default function setupSentry({ release, getState }) {
-  let sentryTarget;
-
-  if (METAMASK_DEBUG) {
+  if (!release) {
+    throw new Error('Missing release');
+  } else if (METAMASK_DEBUG) {
     return undefined;
-  } else if (METAMASK_ENVIRONMENT === 'production') {
-    if (!process.env.SENTRY_DSN) {
-      throw new Error(
-        `Missing SENTRY_DSN environment variable in production environment`,
-      );
-    }
-    console.log(
-      `Setting up Sentry Remote Error Reporting for '${METAMASK_ENVIRONMENT}': SENTRY_DSN`,
-    );
-    sentryTarget = process.env.SENTRY_DSN;
-  } else {
-    console.log(
-      `Setting up Sentry Remote Error Reporting for '${METAMASK_ENVIRONMENT}': SENTRY_DSN_DEV`,
-    );
-    sentryTarget = SENTRY_DSN_DEV;
   }
 
   const environment =
@@ -94,13 +79,41 @@ export default function setupSentry({ release, getState }) {
       ? METAMASK_ENVIRONMENT
       : `${METAMASK_ENVIRONMENT}-${METAMASK_BUILD_TYPE}`;
 
+  let sentryTarget;
+  if (METAMASK_ENVIRONMENT === 'production') {
+    if (!process.env.SENTRY_DSN) {
+      throw new Error(
+        `Missing SENTRY_DSN environment variable in production environment`,
+      );
+    }
+    console.log(
+      `Setting up Sentry Remote Error Reporting for '${environment}': SENTRY_DSN`,
+    );
+    sentryTarget = process.env.SENTRY_DSN;
+  } else {
+    console.log(
+      `Setting up Sentry Remote Error Reporting for '${environment}': SENTRY_DSN_DEV`,
+    );
+    sentryTarget = SENTRY_DSN_DEV;
+  }
+
   Sentry.init({
     dsn: sentryTarget,
     debug: METAMASK_DEBUG,
     environment,
     integrations: [new Dedupe(), new ExtraErrorData()],
     release,
-    beforeSend: (report) => rewriteReport(report),
+    beforeSend: (report) => {
+      if (getState) {
+        const appState = getState();
+        if (!appState?.store?.metamask?.participateInMetaMetrics) {
+          return null;
+        }
+      } else {
+        return null;
+      }
+      return rewriteReport(report);
+    },
   });
 
   function rewriteReport(report) {

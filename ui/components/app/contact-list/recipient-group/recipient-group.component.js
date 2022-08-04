@@ -20,7 +20,6 @@ export default function RecipientGroup({
     return null;
   }
 
-
   return (
     <div
       className="send__select-recipient-wrapper__group"
@@ -52,11 +51,16 @@ export default function RecipientGroup({
             data-testid="recipient"
           >
             <div className="send__select-recipient-wrapper__group-item__title">
-              {name || (isQtumAddressShowCheck ? qtumAddressBook[address] : ellipsify(address))}
+              {name ||
+                (isQtumAddressShowCheck
+                  ? qtumAddressBook[address]
+                  : ellipsify(address))}
             </div>
             {name && (
               <div className="send__select-recipient-wrapper__group-item__subtitle">
-                {isQtumAddressShowCheck ? qtumAddressBook[address] : ellipsify(address)}
+                {isQtumAddressShowCheck
+                  ? qtumAddressBook[address]
+                  : ellipsify(address)}
               </div>
             )}
           </div>

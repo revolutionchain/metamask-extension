@@ -5,6 +5,7 @@ import {
   renderWithProvider,
   createSwapsMockStore,
 } from '../../../../test/jest';
+import { SLIPPAGE } from '../../../../shared/constants/swaps';
 import AwaitingSwap from '.';
 
 const createProps = (customProps = {}) => {
@@ -14,7 +15,7 @@ const createProps = (customProps = {}) => {
     tokensReceived: 'tokens received:',
     submittingSwap: true,
     inputValue: 5,
-    maxSlippage: 3,
+    maxSlippage: SLIPPAGE.DEFAULT,
     ...customProps,
   };
 };
@@ -30,7 +31,7 @@ describe('AwaitingSwap', () => {
     expect(getByText('ETH')).toBeInTheDocument();
     expect(getByText('View in activity')).toBeInTheDocument();
     expect(
-      document.querySelector('.awaiting-swap__main-descrption'),
+      document.querySelector('.awaiting-swap__main-description'),
     ).toMatchSnapshot();
     expect(getByText('View in activity')).toBeInTheDocument();
   });
