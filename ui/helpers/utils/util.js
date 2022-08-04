@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js';
 import * as ethUtil from 'ethereumjs-util';
 import qtum from 'qtumjs-lib';
 import { DateTime } from 'luxon';
-import { util } from '@metamask/controllers';
+import { getFormattedIpfsUrl } from '@metamask/controllers/dist/util';
 import slip44 from '@metamask/slip44';
 import { addHexPrefix } from '../../../app/scripts/lib/util';
 import {
@@ -357,7 +357,7 @@ export function addHexPrefixToObjectValues(obj) {
  * @param {string} options.from - A hex address of the tx sender address
  * @param {string} options.gas - A hex representation of the gas value for the transaction
  * @param {string} options.gasPrice - A hex representation of the gas price for the transaction
- * @returns {Object} An object ready for submission to the blockchain, with all values appropriately hex prefixed
+ * @returns {object} An object ready for submission to the blockchain, with all values appropriately hex prefixed
  */
 export function constructTxParams({
   sendToken,
@@ -581,7 +581,7 @@ export function getAssetImageURL(image, ipfsGateway) {
   }
 
   if (image.startsWith('ipfs://')) {
-    return util.getFormattedIpfsUrl(ipfsGateway, image, true);
+    return getFormattedIpfsUrl(ipfsGateway, image, true);
   }
   return image;
 }

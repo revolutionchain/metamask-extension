@@ -186,6 +186,7 @@ class NetworkDropdown extends Component {
           />
           <span
             className="network-name-item"
+            data-testid={`${nickname}-network-item`}
             style={{
               color: isCurrentRpcTarget
                 ? 'var(--color-text-default)'
@@ -259,6 +260,7 @@ class NetworkDropdown extends Component {
         />
         <span
           className="network-name-item"
+          data-testid={`${network}-network-item`}
           style={{
             color:
               providerType === network
@@ -296,9 +298,8 @@ class NetworkDropdown extends Component {
         onClickOutside={(event) => {
           const { classList } = event.target;
           const isInClassList = (className) => classList.contains(className);
-          const notToggleElementIndex = notToggleElementClassnames.findIndex(
-            isInClassList,
-          );
+          const notToggleElementIndex =
+            notToggleElementClassnames.findIndex(isInClassList);
 
           if (notToggleElementIndex === -1) {
             event.stopPropagation();
