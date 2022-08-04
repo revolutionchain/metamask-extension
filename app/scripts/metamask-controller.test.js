@@ -6,13 +6,19 @@ import { pubToAddress, bufferToHex } from 'ethereumjs-util';
 import { obj as createThoughStream } from 'through2';
 import EthQuery from 'eth-query';
 import proxyquire from 'proxyquire';
+import browser from 'webextension-polyfill';
 import { TRANSACTION_STATUSES } from '../../shared/constants/transaction';
 import createTxMeta from '../../test/lib/createTxMeta';
 import { NETWORK_TYPE_RPC } from '../../shared/constants/network';
-import { KEYRING_TYPES } from '../../shared/constants/hardware-wallets';
+import {
+  KEYRING_TYPES,
+  DEVICE_NAMES,
+} from '../../shared/constants/hardware-wallets';
 import { addHexPrefix } from './lib/util';
 
 const Ganache = require('../../test/e2e/ganache');
+
+const NOTIFICATION_ID = 'NHL8f2eSSTn9TKBamRLiU';
 
 const firstTimeState = {
   config: {},
@@ -28,34 +34,58 @@ const firstTimeState = {
       },
     },
   },
+  NotificationController: {
+    notifications: {
+      [NOTIFICATION_ID]: {
+        id: NOTIFICATION_ID,
+        origin: 'local:http://localhost:8086/',
+        createdDate: 1652967897732,
+        readDate: null,
+        message: 'Hello, http://localhost:8086!',
+      },
+    },
+  },
 };
 
 const ganacheServer = new Ganache();
 
 const threeBoxSpies = {
-  init: sinon.stub(),
-  getThreeBoxSyncingState: sinon.stub().returns(true),
-  turnThreeBoxSyncingOn: sinon.stub(),
   _registerUpdates: sinon.spy(),
+  init: sinon.stub(),
+  getLastUpdated: sinon.stub(),
+  getThreeBoxSyncingState: sinon.stub().returns(true),
+  restoreFromThreeBox: sinon.stub(),
+  setShowRestorePromptToFalse: sinon.stub(),
+  setThreeBoxSyncingPermission: sinon.stub(),
+  turnThreeBoxSyncingOn: sinon.stub(),
 };
 
 class ThreeBoxControllerMock {
   constructor() {
+    this._registerUpdates = threeBoxSpies._registerUpdates;
+    this.init = threeBoxSpies.init;
+    this.getLastUpdated = threeBoxSpies.getLastUpdated;
+    this.getThreeBoxSyncingState = threeBoxSpies.getThreeBoxSyncingState;
+    this.restoreFromThreeBox = threeBoxSpies.restoreFromThreeBox;
+    this.setShowRestorePromptToFalse =
+      threeBoxSpies.setShowRestorePromptToFalse;
+    this.setThreeBoxSyncingPermission =
+      threeBoxSpies.setThreeBoxSyncingPermission;
     this.store = {
       subscribe: () => undefined,
       getState: () => ({}),
     };
-    this.init = threeBoxSpies.init;
-    this.getThreeBoxSyncingState = threeBoxSpies.getThreeBoxSyncingState;
     this.turnThreeBoxSyncingOn = threeBoxSpies.turnThreeBoxSyncingOn;
-    this._registerUpdates = threeBoxSpies._registerUpdates;
   }
 }
 
-const ExtensionizerMock = {
+const browserPolyfillMock = {
   runtime: {
     id: 'fake-extension-id',
     onInstalled: {
+      addListener: () => undefined,
+    },
+    onMessageExternal: {
       addListener: () => undefined,
     },
     getPlatformInfo: async () => 'mac',
@@ -118,6 +148,10 @@ describe('MetaMaskController', function () {
       .get(/.*/u)
       .reply(200, '{"JPY":12415.9}');
 
+    sandbox.replace(browser, 'runtime', {
+      sendMessage: sandbox.stub().rejects(),
+    });
+
     metamaskController = new MetaMaskController({
       showUserConfirmation: noop,
       encryptor: {
@@ -135,7 +169,7 @@ describe('MetaMaskController', function () {
         showTransactionNotification: () => undefined,
         getVersion: () => 'foo',
       },
-      extension: ExtensionizerMock,
+      browser: browserPolyfillMock,
       infuraProjectId: 'foo',
     });
 
@@ -423,35 +457,10 @@ describe('MetaMaskController', function () {
   });
 
   describe('#getApi', function () {
-    it('getState', function (done) {
-      let state;
+    it('getState', function () {
       const getApi = metamaskController.getApi();
-      getApi.getState((err, res) => {
-        if (err) {
-          done(err);
-        } else {
-          state = res;
-        }
-      });
+      const state = getApi.getState();
       assert.deepEqual(state, metamaskController.getState());
-      done();
-    });
-  });
-
-  describe('preferencesController', function () {
-    it('defaults useBlockie to false', function () {
-      assert.equal(
-        metamaskController.preferencesController.store.getState().useBlockie,
-        false,
-      );
-    });
-
-    it('setUseBlockie to true', function () {
-      metamaskController.setUseBlockie(true, noop);
-      assert.equal(
-        metamaskController.preferencesController.store.getState().useBlockie,
-        true,
-      );
     });
   });
 
@@ -505,7 +514,9 @@ describe('MetaMaskController', function () {
 
     it('should add the Trezor Hardware keyring', async function () {
       sinon.spy(metamaskController.keyringController, 'addNewKeyring');
-      await metamaskController.connectHardware('trezor', 0).catch(() => null);
+      await metamaskController
+        .connectHardware(DEVICE_NAMES.TREZOR, 0)
+        .catch(() => null);
       const keyrings = await metamaskController.keyringController.getKeyringsByType(
         KEYRING_TYPES.TREZOR,
       );
@@ -518,7 +529,9 @@ describe('MetaMaskController', function () {
 
     it('should add the Ledger Hardware keyring', async function () {
       sinon.spy(metamaskController.keyringController, 'addNewKeyring');
-      await metamaskController.connectHardware('ledger', 0).catch(() => null);
+      await metamaskController
+        .connectHardware(DEVICE_NAMES.LEDGER, 0)
+        .catch(() => null);
       const keyrings = await metamaskController.keyringController.getKeyringsByType(
         KEYRING_TYPES.LEDGER,
       );
@@ -546,8 +559,12 @@ describe('MetaMaskController', function () {
     });
 
     it('should be locked by default', async function () {
-      await metamaskController.connectHardware('trezor', 0).catch(() => null);
-      const status = await metamaskController.checkHardwareStatus('trezor');
+      await metamaskController
+        .connectHardware(DEVICE_NAMES.TREZOR, 0)
+        .catch(() => null);
+      const status = await metamaskController.checkHardwareStatus(
+        DEVICE_NAMES.TREZOR,
+      );
       assert.equal(status, false);
     });
   });
@@ -565,8 +582,10 @@ describe('MetaMaskController', function () {
     });
 
     it('should wipe all the keyring info', async function () {
-      await metamaskController.connectHardware('trezor', 0).catch(() => null);
-      await metamaskController.forgetDevice('trezor');
+      await metamaskController
+        .connectHardware(DEVICE_NAMES.TREZOR, 0)
+        .catch(() => null);
+      await metamaskController.forgetDevice(DEVICE_NAMES.TREZOR);
       const keyrings = await metamaskController.keyringController.getKeyringsByType(
         KEYRING_TYPES.TREZOR,
       );
@@ -607,11 +626,11 @@ describe('MetaMaskController', function () {
       sinon.spy(metamaskController.preferencesController, 'setSelectedAddress');
       sinon.spy(metamaskController.preferencesController, 'setAccountLabel');
       await metamaskController
-        .connectHardware('trezor', 0, `m/44'/1'/0'/0`)
+        .connectHardware(DEVICE_NAMES.TREZOR, 0, `m/44'/1'/0'/0`)
         .catch(() => null);
       await metamaskController.unlockHardwareWalletAccount(
         accountToUnlock,
-        'trezor',
+        DEVICE_NAMES.TREZOR,
         `m/44'/1'/0'/0`,
       );
     });
@@ -763,15 +782,20 @@ describe('MetaMaskController', function () {
   describe('#removeAccount', function () {
     let ret;
     const addressToRemove = '0x1';
+    let mockKeyring;
 
     beforeEach(async function () {
+      mockKeyring = {
+        getAccounts: sinon.stub().returns(Promise.resolve([])),
+        destroy: sinon.stub(),
+      };
       sinon.stub(metamaskController.preferencesController, 'removeAddress');
       sinon.stub(metamaskController.accountTracker, 'removeAccount');
       sinon.stub(metamaskController.keyringController, 'removeAccount');
-      sinon.stub(
-        metamaskController.permissionsController,
-        'removeAllAccountPermissions',
-      );
+      sinon.stub(metamaskController, 'removeAllAccountPermissions');
+      sinon
+        .stub(metamaskController.keyringController, 'getKeyringForAccount')
+        .returns(Promise.resolve(mockKeyring));
 
       ret = await metamaskController.removeAccount(addressToRemove);
     });
@@ -780,7 +804,10 @@ describe('MetaMaskController', function () {
       metamaskController.keyringController.removeAccount.restore();
       metamaskController.accountTracker.removeAccount.restore();
       metamaskController.preferencesController.removeAddress.restore();
-      metamaskController.permissionsController.removeAllAccountPermissions.restore();
+      metamaskController.removeAllAccountPermissions.restore();
+
+      mockKeyring.getAccounts.resetHistory();
+      mockKeyring.destroy.resetHistory();
     });
 
     it('should call preferencesController.removeAddress', async function () {
@@ -804,9 +831,9 @@ describe('MetaMaskController', function () {
         ),
       );
     });
-    it('should call permissionsController.removeAllAccountPermissions', async function () {
+    it('should call metamaskController.removeAllAccountPermissions', async function () {
       assert(
-        metamaskController.permissionsController.removeAllAccountPermissions.calledWith(
+        metamaskController.removeAllAccountPermissions.calledWith(
           addressToRemove,
         ),
       );
@@ -814,20 +841,15 @@ describe('MetaMaskController', function () {
     it('should return address', async function () {
       assert.equal(ret, '0x1');
     });
-  });
-
-  describe('#setCurrentLocale', function () {
-    it('checks the default currentLocale', function () {
-      const preferenceCurrentLocale = metamaskController.preferencesController.store.getState()
-        .currentLocale;
-      assert.equal(preferenceCurrentLocale, 'en_US');
+    it('should call keyringController.getKeyringForAccount', async function () {
+      assert(
+        metamaskController.keyringController.getKeyringForAccount.calledWith(
+          addressToRemove,
+        ),
+      );
     });
-
-    it('sets current locale in preferences controller', function () {
-      metamaskController.setCurrentLocale('ja', noop);
-      const preferenceCurrentLocale = metamaskController.preferencesController.store.getState()
-        .currentLocale;
-      assert.equal(preferenceCurrentLocale, 'ja');
+    it('should call keyring.destroy', async function () {
+      assert(mockKeyring.destroy.calledOnce);
     });
   });
 
@@ -1028,10 +1050,10 @@ describe('MetaMaskController', function () {
         cb();
       });
 
-      metamaskController.setupUntrustedCommunication(
-        streamTest,
-        phishingMessageSender,
-      );
+      metamaskController.setupUntrustedCommunication({
+        connectionStream: streamTest,
+        sender: phishingMessageSender,
+      });
       await promise;
       streamTest.end();
     });
@@ -1049,7 +1071,10 @@ describe('MetaMaskController', function () {
         cb();
       });
 
-      metamaskController.setupUntrustedCommunication(streamTest, messageSender);
+      metamaskController.setupUntrustedCommunication({
+        connectionStream: streamTest,
+        sender: messageSender,
+      });
 
       const message = {
         id: 1999133338649204,
@@ -1088,7 +1113,10 @@ describe('MetaMaskController', function () {
         cb();
       });
 
-      metamaskController.setupUntrustedCommunication(streamTest, messageSender);
+      metamaskController.setupUntrustedCommunication({
+        connectionStream: streamTest,
+        sender: messageSender,
+      });
 
       const message = {
         id: 1999133338649204,
@@ -1216,6 +1244,27 @@ describe('MetaMaskController', function () {
       assert.deepEqual(syncAddresses.args, [[['0x1', '0x2']]]);
       assert.deepEqual(syncWithAddresses.args, [[['0x1', '0x2']]]);
       assert.deepEqual(metamaskController.getState(), oldState);
+    });
+  });
+
+  describe('markNotificationsAsRead', function () {
+    it('marks the notification as read', function () {
+      metamaskController.markNotificationsAsRead([NOTIFICATION_ID]);
+      const readNotification = metamaskController.getState().notifications[
+        NOTIFICATION_ID
+      ];
+      assert.notEqual(readNotification.readDate, null);
+    });
+  });
+
+  describe('dismissNotifications', function () {
+    it('deletes the notification from state', function () {
+      metamaskController.dismissNotifications([NOTIFICATION_ID]);
+      const state = metamaskController.getState().notifications;
+      assert.ok(
+        !Object.values(state).includes(NOTIFICATION_ID),
+        'Object should not include the deleted notification',
+      );
     });
   });
 });

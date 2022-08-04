@@ -27,8 +27,8 @@ import {
   QTUM_REGTEST_RPC_URL,
   QTUM_REGTEST_CHAIN_ID,
   QTUM_TESTNET,
+  TEST_NETWORK_TICKER_MAP,
 } from '../../../../shared/constants/network';
-import { SECOND } from '../../../../shared/constants/time';
 import {
   isPrefixedFormattedHexString,
   isSafeChainId,
@@ -39,10 +39,10 @@ import createInfuraClient from './createInfuraClient';
 import createJsonRpcClient from './createJsonRpcClient';
 
 const env = process.env.METAMASK_ENV;
-const fetchWithTimeout = getFetchWithTimeout(SECOND * 30);
+const fetchWithTimeout = getFetchWithTimeout();
 
 let defaultProviderConfigOpts;
-if (process.env.IN_TEST === 'true') {
+if (process.env.IN_TEST) {
   defaultProviderConfigOpts = {
     type: NETWORK_TYPE_RPC,
     rpcUrl: 'http://localhost:8545',
@@ -50,12 +50,26 @@ if (process.env.IN_TEST === 'true') {
     nickname: 'Localhost 8545',
   };
 } else if (process.env.METAMASK_DEBUG || env === 'test') {
-  defaultProviderConfigOpts = { type: RINKEBY, chainId: RINKEBY_CHAIN_ID };
-  defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_TESTNET_CHAIN_ID, rpcUrl: QTUM_TESTNET_RPC_URL, nickname: QTUM_TESTNET };
+  defaultProviderConfigOpts = {
+    type: RINKEBY,
+    chainId: RINKEBY_CHAIN_ID,
+    ticker: TEST_NETWORK_TICKER_MAP.rinkeby,
+  };
+  defaultProviderConfigOpts = {
+    type: NETWORK_TYPE_RPC,
+    chainId: QTUM_TESTNET_CHAIN_ID,
+    rpcUrl: QTUM_TESTNET_RPC_URL,
+    nickname: QTUM_TESTNET,
+  };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
 } else {
   defaultProviderConfigOpts = { type: MAINNET, chainId: MAINNET_CHAIN_ID };
-  defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_TESTNET_CHAIN_ID, rpcUrl: QTUM_TESTNET_RPC_URL, nickname: QTUM_TESTNET };
+  defaultProviderConfigOpts = {
+    type: NETWORK_TYPE_RPC,
+    chainId: QTUM_TESTNET_CHAIN_ID,
+    rpcUrl: QTUM_TESTNET_RPC_URL,
+    nickname: QTUM_TESTNET,
+  };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_MAINNET_CHAIN_ID, rpcUrl: QTUM_MAINNET_RPC_URL };
 }
 
@@ -124,8 +138,7 @@ export default class NetworkController extends EventEmitter {
    * Sets the Infura project ID
    *
    * @param {string} projectId - The Infura project ID
-   * @throws {Error} if the project ID is not a valid string
-   * @return {void}
+   * @throws {Error} If the project ID is not a valid string.
    */
   setInfuraProjectId(projectId) {
     if (!projectId || typeof projectId !== 'string') {
@@ -151,6 +164,7 @@ export default class NetworkController extends EventEmitter {
 
   /**
    * Method to return the latest block for the current network
+   *
    * @returns {Object} Block header
    */
   getLatestBlock() {
@@ -172,6 +186,7 @@ export default class NetworkController extends EventEmitter {
   /**
    * Method to check if the block header contains fields that indicate EIP 1559
    * support (baseFeePerGas).
+   *
    * @returns {Promise<boolean>} true if current network supports EIP 1559
    */
   async getEIP1559Compatibility() {
@@ -203,6 +218,7 @@ export default class NetworkController extends EventEmitter {
 
   /**
    * Set EIP support indication in the networkDetails store
+   *
    * @param {number} EIPNumber - The number of the EIP to mark support for
    * @param {boolean} isSupported - True if the EIP is supported
    */
@@ -249,7 +265,9 @@ export default class NetworkController extends EventEmitter {
     const ethQuery = new EthQuery(this._provider);
     const initialNetwork = this.getNetworkState();
     const { type } = this.getProviderConfig();
-    const isInfura = INFURA_PROVIDER_TYPES.includes(type) && !QTUM_PROVIDER_TYPES.includes(type);
+    const isInfura =
+      INFURA_PROVIDER_TYPES.includes(type) &&
+      !QTUM_PROVIDER_TYPES.includes(type);
 
     if (isInfura) {
       this._checkInfuraAvailability(type);
@@ -277,6 +295,11 @@ export default class NetworkController extends EventEmitter {
   getCurrentChainId() {
     const { type, chainId: configChainId } = this.getProviderConfig();
     return NETWORK_TYPE_TO_ID_MAP[type]?.chainId || configChainId;
+  }
+
+  getCurrentRpcUrl() {
+    const { rpcUrl } = this.getProviderConfig();
+    return rpcUrl;
   }
 
   setRpcTarget(rpcUrl, chainId, ticker = 'QTUM', nickname = '', rpcPrefs) {
@@ -320,9 +343,9 @@ export default class NetworkController extends EventEmitter {
     this.setProviderConfig({
       labelKey: providerType,
       type,
-      rpcUrl: rpcUrl,
+      rpcUrl,
       chainId,
-      ticker: ticker,
+      ticker,
       networkType: providerType,
       nickname: providerType,
     });
@@ -334,6 +357,8 @@ export default class NetworkController extends EventEmitter {
 
   /**
    * Sets the provider config and switches the network.
+   *
+   * @param config
    */
   setProviderConfig(config) {
     this.previousProviderStore.updateState(this.getProviderConfig());
@@ -413,12 +438,16 @@ export default class NetworkController extends EventEmitter {
   }
 
   _configureProvider({ type, rpcUrl, chainId }) {
+    console.log('[configure provider]', type, rpcUrl, chainId);
     // infura type-based endpoints
-    const isInfura = INFURA_PROVIDER_TYPES.includes(type) && !QTUM_PROVIDER_TYPES.includes(type);
+    const isInfura =
+      INFURA_PROVIDER_TYPES.includes(type) &&
+      !QTUM_PROVIDER_TYPES.includes(type);
     if (isInfura) {
       this._configureInfuraProvider(type, this._infuraProjectId);
       // url-based rpc endpoints
     } else if (type === NETWORK_TYPE_RPC) {
+      console.log('[configure provider type check]', type, rpcUrl, chainId);
       this._configureStandardProvider(rpcUrl, chainId);
     } else {
       throw new Error(

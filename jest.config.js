@@ -1,14 +1,31 @@
 module.exports = {
-  collectCoverageFrom: ['<rootDir>/ui/**/*.js', '<rootDir>/shared/**/*.js'],
+  collectCoverageFrom: [
+    '<rootDir>/app/scripts/controllers/permissions/**/*.js',
+    '<rootDir>/app/scripts/lib/createRPCMethodTrackingMiddleware.js',
+    '<rootDir>/shared/**/*.js',
+    '<rootDir>/ui/**/*.js',
+  ],
   coverageDirectory: './jest-coverage/main',
   coveragePathIgnorePatterns: ['.stories.js', '.snap'],
-  coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  coverageReporters: ['html', 'text-summary', 'json-summary'],
   coverageThreshold: {
     global: {
-      branches: 35,
-      functions: 37,
-      lines: 43,
-      statements: 43,
+      branches: 44,
+      functions: 42,
+      lines: 52,
+      statements: 52,
+    },
+    './app/scripts/controllers/permissions/**/*.js': {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+    './app/scripts/lib/createRPCMethodTrackingMiddleware.js': {
+      branches: 95.65,
+      functions: 100,
+      lines: 100,
+      statements: 100,
     },
   },
   // TODO: enable resetMocks
@@ -19,8 +36,12 @@ module.exports = {
   testMatch: [
     '<rootDir>/ui/**/*.test.js',
     '<rootDir>/shared/**/*.test.js',
+    '<rootDir>/app/scripts/lib/**/*.test.js',
     '<rootDir>/app/scripts/migrations/*.test.js',
     '<rootDir>/app/scripts/platforms/*.test.js',
+    '<rootDir>app/scripts/controllers/network/**/*.test.js',
+    '<rootDir>/app/scripts/controllers/permissions/**/*.test.js',
+    '<rootDir>/app/scripts/lib/createRPCMethodTrackingMiddleware.test.js',
   ],
   testTimeout: 2500,
   transform: {

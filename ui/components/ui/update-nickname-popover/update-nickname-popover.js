@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Popover from '../popover';
@@ -8,18 +9,21 @@ import TextField from '../text-field';
 import { I18nContext } from '../../../contexts/i18n';
 
 import Identicon from '../identicon/identicon.component';
+import { getUseTokenDetection, getTokenList } from '../../../selectors';
 
 export default function UpdateNicknamePopover({
-  nickname,
   address,
+  nickname = '',
+  memo = '',
   onAdd,
-  memo,
   onClose,
 }) {
   const t = useContext(I18nContext);
 
-  const [nicknameInput, setNicknameInput] = useState(nickname);
-  const [memoInput, setMemoInput] = useState(memo);
+  const [nicknameInput, setNicknameInput] = useState(
+    nickname === null ? '' : nickname,
+  );
+  const [memoInput, setMemoInput] = useState(memo === null ? '' : memo);
 
   const handleNicknameChange = (event) => {
     setNicknameInput(event.target.value);
@@ -42,14 +46,12 @@ export default function UpdateNicknamePopover({
     onClose();
   };
 
-  let title = t('addANickname');
-  if (nickname) {
-    title = t('editAddressNickname');
-  }
+  const useTokenDetection = useSelector(getUseTokenDetection);
+  const tokenList = useSelector(getTokenList);
 
   return (
     <Popover
-      title={title}
+      title={nickname ? t('editAddressNickname') : t('addANickname')}
       onClose={closePopover}
       className="update-nickname__wrapper"
       footer={
@@ -61,7 +63,12 @@ export default function UpdateNicknamePopover({
           >
             {t('cancel')}
           </Button>
-          <Button type="primary" onClick={onSubmit} disabled={!nickname}>
+          <Button
+            className="update-nickname__save"
+            type="primary"
+            onClick={onSubmit}
+            disabled={!nicknameInput}
+          >
             {t('save')}
           </Button>
         </>
@@ -72,6 +79,8 @@ export default function UpdateNicknamePopover({
           className="update-nickname__content__indenticon"
           address={address}
           diameter={36}
+          useTokenDetection={useTokenDetection}
+          tokenList={tokenList}
         />
         <label className="update-nickname__content__label--capitalized">
           {t('address')}

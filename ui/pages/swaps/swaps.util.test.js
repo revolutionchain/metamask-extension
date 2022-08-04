@@ -7,6 +7,8 @@ import {
   LOCALHOST_CHAIN_ID,
   RINKEBY_CHAIN_ID,
   KOVAN_CHAIN_ID,
+  AVALANCHE_CHAIN_ID,
+  ETH_SYMBOL,
 } from '../../../shared/constants/network';
 import {
   SWAPS_CHAINID_CONTRACT_ADDRESS_MAP,
@@ -18,6 +20,7 @@ import {
   POLYGON,
   BSC,
   RINKEBY,
+  AVALANCHE,
 } from '../../../shared/constants/swaps';
 import {
   TOKENS,
@@ -36,6 +39,8 @@ import {
   getSwapsLivenessForNetwork,
   countDecimals,
   shouldEnableDirectWrapping,
+  showRemainingTimeInMinAndSec,
+  getSwapsTokensReceivedFromTxMeta,
 } from './swaps.util';
 
 jest.mock('../../helpers/utils/storage-helpers.js', () => ({
@@ -91,8 +96,8 @@ describe('Swaps Util', () => {
       },
     };
     it('should fetch trade info on prod', async () => {
-      nock('https://api.metaswap.codefi.network')
-        .get('/trades')
+      nock('https://swap.metaswap.codefi.network')
+        .get('/networks/1/trades')
         .query(true)
         .reply(200, MOCK_TRADE_RESPONSE_2);
 
@@ -117,9 +122,9 @@ describe('Swaps Util', () => {
 
   describe('fetchTokens', () => {
     beforeAll(() => {
-      nock('https://api.metaswap.codefi.network')
+      nock('https://swap.metaswap.codefi.network')
         .persist()
-        .get('/tokens')
+        .get('/networks/1/tokens')
         .reply(200, TOKENS);
     });
 
@@ -136,9 +141,9 @@ describe('Swaps Util', () => {
 
   describe('fetchAggregatorMetadata', () => {
     beforeAll(() => {
-      nock('https://api.metaswap.codefi.network')
+      nock('https://swap.metaswap.codefi.network')
         .persist()
-        .get('/aggregatorMetadata')
+        .get('/networks/1/aggregatorMetadata')
         .reply(200, AGGREGATOR_METADATA);
     });
 
@@ -155,9 +160,9 @@ describe('Swaps Util', () => {
 
   describe('fetchTopAssets', () => {
     beforeAll(() => {
-      nock('https://api.metaswap.codefi.network')
+      nock('https://swap.metaswap.codefi.network')
         .persist()
-        .get('/topAssets')
+        .get('/networks/1/topAssets')
         .reply(200, TOP_ASSETS);
     });
 
@@ -318,6 +323,10 @@ describe('Swaps Util', () => {
       expect(getNetworkNameByChainId(RINKEBY_CHAIN_ID)).toBe(RINKEBY);
     });
 
+    it('returns "avalanche" for Avalanche chain ID', () => {
+      expect(getNetworkNameByChainId(AVALANCHE_CHAIN_ID)).toBe(AVALANCHE);
+    });
+
     it('returns an empty string for an unsupported network', () => {
       expect(getNetworkNameByChainId(KOVAN_CHAIN_ID)).toBe('');
     });
@@ -327,7 +336,6 @@ describe('Swaps Util', () => {
     it('returns info that Swaps are enabled and cannot use API v2 for localhost chain ID', () => {
       const expectedSwapsLiveness = {
         swapsFeatureIsLive: true,
-        useNewSwapsApi: false,
       };
       expect(
         getSwapsLivenessForNetwork(
@@ -340,7 +348,6 @@ describe('Swaps Util', () => {
     it('returns info that Swaps are enabled and cannot use API v2 for Rinkeby chain ID', () => {
       const expectedSwapsLiveness = {
         swapsFeatureIsLive: true,
-        useNewSwapsApi: false,
       };
       expect(
         getSwapsLivenessForNetwork(
@@ -353,7 +360,6 @@ describe('Swaps Util', () => {
     it('returns info that Swaps are disabled and cannot use API v2 if network name is not found', () => {
       const expectedSwapsLiveness = {
         swapsFeatureIsLive: false,
-        useNewSwapsApi: false,
       };
       expect(
         getSwapsLivenessForNetwork(
@@ -366,7 +372,6 @@ describe('Swaps Util', () => {
     it('returns info that Swaps are enabled and can use API v2 for mainnet chain ID', () => {
       const expectedSwapsLiveness = {
         swapsFeatureIsLive: true,
-        useNewSwapsApi: true,
       };
       expect(
         getSwapsLivenessForNetwork(
@@ -379,7 +384,6 @@ describe('Swaps Util', () => {
     it('returns info that Swaps are enabled but can only use API v1 for mainnet chain ID', () => {
       const expectedSwapsLiveness = {
         swapsFeatureIsLive: true,
-        useNewSwapsApi: false,
       };
       const swapsFeatureFlags = MOCKS.createFeatureFlagsResponse();
       swapsFeatureFlags[ETHEREUM].extension_active = false;
@@ -542,6 +546,129 @@ describe('Swaps Util', () => {
       expect(
         shouldEnableDirectWrapping(MAINNET_CHAIN_ID, WETH_CONTRACT_ADDRESS),
       ).toBe(false);
+    });
+  });
+
+  describe('showRemainingTimeInMinAndSec', () => {
+    it('returns 0:00 if we do not pass an integer', () => {
+      expect(showRemainingTimeInMinAndSec('5')).toBe('0:00');
+    });
+
+    it('returns 0:05 if 5 seconds are remaining', () => {
+      expect(showRemainingTimeInMinAndSec(5)).toBe('0:05');
+    });
+
+    it('returns 2:59', () => {
+      expect(showRemainingTimeInMinAndSec(179)).toBe('2:59');
+    });
+  });
+
+  describe('getFeeForSmartTransaction', () => {
+    it('returns estimated for for STX', () => {
+      // TODO: Implement tests for this function.
+      expect(true).toBe(true);
+    });
+  });
+
+  describe('getSwapsTokensReceivedFromTxMeta', () => {
+    const createProps = () => {
+      return {
+        tokenSymbol: ETH_SYMBOL,
+        txMeta: {
+          swapMetaData: {
+            token_to_amount: 5,
+          },
+          txReceipt: {
+            status: '0x0',
+          },
+          preTxBalance: '8b11',
+          postTxBalance: '8b11',
+        },
+        tokenAddress: '0x881d40237659c251811cec9c364ef91234567890',
+        accountAddress: '0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f',
+        tokenDecimals: 6,
+        approvalTxMeta: null,
+        chainId: MAINNET_CHAIN_ID,
+      };
+    };
+
+    it('returns an estimated amount if preTxBalance and postTxBalance are the same for ETH', () => {
+      const props = createProps();
+      expect(
+        getSwapsTokensReceivedFromTxMeta(
+          props.tokenSymbol,
+          props.txMeta,
+          props.tokenAddress,
+          props.accountAddress,
+          props.tokenDecimals,
+          props.approvalTxMeta,
+          props.chainId,
+        ),
+      ).toBe(props.txMeta.swapMetaData.token_to_amount);
+    });
+
+    it('returns null if there is no txMeta', () => {
+      const props = createProps();
+      props.txMeta = undefined;
+      expect(
+        getSwapsTokensReceivedFromTxMeta(
+          props.tokenSymbol,
+          props.txMeta,
+          props.tokenAddress,
+          props.accountAddress,
+          props.tokenDecimals,
+          props.approvalTxMeta,
+          props.chainId,
+        ),
+      ).toBeNull();
+    });
+
+    it('returns null if there is no txMeta.txReceipt', () => {
+      const props = createProps();
+      props.txMeta.txReceipt = undefined;
+      expect(
+        getSwapsTokensReceivedFromTxMeta(
+          props.tokenSymbol,
+          props.txMeta,
+          props.tokenAddress,
+          props.accountAddress,
+          props.tokenDecimals,
+          props.approvalTxMeta,
+          props.chainId,
+        ),
+      ).toBeNull();
+    });
+
+    it('returns null if there is no txMeta.postTxBalance', () => {
+      const props = createProps();
+      props.txMeta.postTxBalance = undefined;
+      expect(
+        getSwapsTokensReceivedFromTxMeta(
+          props.tokenSymbol,
+          props.txMeta,
+          props.tokenAddress,
+          props.accountAddress,
+          props.tokenDecimals,
+          props.approvalTxMeta,
+          props.chainId,
+        ),
+      ).toBeNull();
+    });
+
+    it('returns null if there is no txMeta.preTxBalance', () => {
+      const props = createProps();
+      props.txMeta.preTxBalance = undefined;
+      expect(
+        getSwapsTokensReceivedFromTxMeta(
+          props.tokenSymbol,
+          props.txMeta,
+          props.tokenAddress,
+          props.accountAddress,
+          props.tokenDecimals,
+          props.approvalTxMeta,
+          props.chainId,
+        ),
+      ).toBeNull();
     });
   });
 });

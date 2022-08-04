@@ -41,12 +41,15 @@ describe('Confirm Page Container Container Test', () => {
       chainId: 'test',
       identities: [],
       featureFlags: {},
+      enableEIP1559V2NoticeDismissed: true,
+      tokenList: {},
     },
   };
 
   const store = configureMockStore()(mockStore);
 
   const props = {
+    title: 'Title',
     fromAddress: '0xd8f6a2ffb0fc5952d16c9768b71cfd35b6399aa5',
     toAddress: '0x7a1A4Ad9cc746a70ee58568466f7996dD0aCE4E8',
     origin: 'testOrigin', // required
@@ -58,7 +61,6 @@ describe('Confirm Page Container Container Test', () => {
     handleCloseEditGas: sinon.spy(),
     // Gas Popover
     currentTransaction: {},
-    showAddToAddressBookModal: sinon.spy(),
     contact: undefined,
     isOwnedAccount: false,
   };
@@ -116,12 +118,6 @@ describe('Confirm Page Container Container Test', () => {
     expect(wrapper.find(Dialog).getElements()[0].props.children).toStrictEqual(
       'newAccountDetectedDialogMessage',
     );
-  });
-
-  it('should simulate click on Dialog', () => {
-    const DialogWrapper = wrapper.find(Dialog);
-    DialogWrapper.first().simulate('click');
-    expect(props.showAddToAddressBookModal.calledOnce).toStrictEqual(true);
   });
 
   it('should not show add to address dialog if contact is not undefined', () => {

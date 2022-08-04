@@ -5,8 +5,12 @@
 //
 const path = require('path');
 const livereload = require('gulp-livereload');
-const minimist = require('minimist');
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
 const { sync: globby } = require('globby');
+const { getVersion } = require('../lib/get-version');
+const { BuildType } = require('../lib/build-type');
+const { TASKS } = require('./constants');
 const {
   createTask,
   composeSeries,
@@ -18,11 +22,12 @@ const createScriptTasks = require('./scripts');
 const createStyleTasks = require('./styles');
 const createStaticAssetTasks = require('./static');
 const createEtcTasks = require('./etc');
-const { BuildType, getBrowserVersionMap } = require('./utils');
+const { getBrowserVersionMap } = require('./utils');
 
 // Packages required dynamically via browserify configuration in dependencies
 // Required for LavaMoat policy generation
 require('loose-envify');
+require('globalthis');
 require('@babel/plugin-proposal-object-rest-spread');
 require('@babel/plugin-transform-runtime');
 require('@babel/plugin-proposal-class-properties');
@@ -30,25 +35,31 @@ require('@babel/plugin-proposal-optional-chaining');
 require('@babel/plugin-proposal-nullish-coalescing-operator');
 require('@babel/preset-env');
 require('@babel/preset-react');
+require('@babel/preset-typescript');
 require('@babel/core');
 // ESLint-related
 require('@babel/eslint-parser');
 require('@babel/eslint-plugin');
 require('@metamask/eslint-config');
 require('@metamask/eslint-config-nodejs');
+require('@typescript-eslint/parser');
 require('eslint');
 require('eslint-config-prettier');
 require('eslint-import-resolver-node');
+require('eslint-import-resolver-typescript');
 require('eslint-plugin-import');
+require('eslint-plugin-jsdoc');
 require('eslint-plugin-node');
 require('eslint-plugin-prettier');
 require('eslint-plugin-react');
 require('eslint-plugin-react-hooks');
+require('eslint-plugin-jest');
 
 defineAndRunBuildTasks();
 
 function defineAndRunBuildTasks() {
   const {
+    applyLavaMoat,
     buildType,
     entryTask,
     isLavaMoat,
@@ -56,11 +67,12 @@ function defineAndRunBuildTasks() {
     shouldIncludeLockdown,
     shouldLintFenceFiles,
     skipStats,
+    version,
   } = parseArgv();
 
   const browserPlatforms = ['firefox', 'chrome', 'brave', 'opera'];
 
-  const browserVersionMap = getBrowserVersionMap(browserPlatforms);
+  const browserVersionMap = getBrowserVersionMap(browserPlatforms, version);
 
   const ignoredFiles = getIgnoredFiles(buildType);
 
@@ -80,6 +92,7 @@ function defineAndRunBuildTasks() {
   const styleTasks = createStyleTasks({ livereload });
 
   const scriptTasks = createScriptTasks({
+    applyLavaMoat,
     browserPlatforms,
     buildType,
     ignoredFiles,
@@ -87,17 +100,19 @@ function defineAndRunBuildTasks() {
     livereload,
     policyOnly,
     shouldLintFenceFiles,
+    version,
   });
 
   const { clean, reload, zip } = createEtcTasks({
     livereload,
     browserPlatforms,
     buildType,
+    version,
   });
 
   // build for development (livereload)
   createTask(
-    'dev',
+    TASKS.DEV,
     composeSeries(
       clean,
       styleTasks.dev,
@@ -112,7 +127,7 @@ function defineAndRunBuildTasks() {
 
   // build for test development (livereload)
   createTask(
-    'testDev',
+    TASKS.TEST_DEV,
     composeSeries(
       clean,
       styleTasks.dev,
@@ -127,7 +142,7 @@ function defineAndRunBuildTasks() {
 
   // build for prod release
   createTask(
-    'prod',
+    TASKS.PROD,
     composeSeries(
       clean,
       styleTasks.prod,
@@ -137,11 +152,11 @@ function defineAndRunBuildTasks() {
   );
 
   // build just production scripts, for LavaMoat policy generation purposes
-  createTask('scripts:prod', scriptTasks.prod);
+  createTask(TASKS.SCRIPTS_PROD, scriptTasks.prod);
 
   // build for CI testing
   createTask(
-    'test',
+    TASKS.TEST,
     composeSeries(
       clean,
       styleTasks.prod,
@@ -151,78 +166,116 @@ function defineAndRunBuildTasks() {
   );
 
   // special build for minimal CI testing
-  createTask('styles', styleTasks.prod);
+  createTask(TASKS.styles, styleTasks.prod);
 
   // Finally, start the build process by running the entry task.
   runTask(entryTask, { skipStats });
 }
 
 function parseArgv() {
-  const NamedArgs = {
-    BuildType: 'build-type',
-    LintFenceFiles: 'lint-fence-files',
-    Lockdown: 'lockdown',
-    PolicyOnly: 'policy-only',
-    SkipStats: 'skip-stats',
-  };
+  const { argv } = yargs(hideBin(process.argv))
+    .usage('$0 <task> [options]', 'Build the MetaMask extension.', (_yargs) =>
+      _yargs
+        .positional('task', {
+          description: `The task to run. There are a number of main tasks, each of which calls other tasks internally. The main tasks are:
 
-  const argv = minimist(process.argv.slice(2), {
-    boolean: [
-      NamedArgs.LintFenceFiles,
-      NamedArgs.Lockdown,
-      NamedArgs.PolicyOnly,
-      NamedArgs.SkipStats,
-    ],
-    string: [NamedArgs.BuildType],
-    default: {
-      [NamedArgs.BuildType]: BuildType.main,
-      [NamedArgs.LintFenceFiles]: true,
-      [NamedArgs.Lockdown]: true,
-      [NamedArgs.PolicyOnly]: false,
-      [NamedArgs.SkipStats]: false,
-    },
-  });
+prod: Create an optimized build for a production environment.
 
-  if (argv._.length !== 1) {
-    throw new Error(
-      `Metamask build: Expected a single positional argument, but received "${argv._.length}" arguments.`,
-    );
-  }
+dev: Create an unoptimized, live-reloading build for local development.
 
-  const entryTask = argv._[0];
-  if (!entryTask) {
-    throw new Error('MetaMask build: No entry task specified.');
-  }
+test: Create an optimized build for running e2e tests.
 
-  const buildType = argv[NamedArgs.BuildType];
-  if (!(buildType in BuildType)) {
-    throw new Error(`MetaMask build: Invalid build type: "${buildType}"`);
-  }
+testDev: Create an unoptimized, live-reloading build for debugging e2e tests.`,
+          type: 'string',
+        })
+        .option('apply-lavamoat', {
+          default: true,
+          description:
+            'Whether to use LavaMoat. Setting this to `false` can be useful during development if you want to handle LavaMoat errors later.',
+          type: 'boolean',
+        })
+        .option('build-type', {
+          default: BuildType.main,
+          description: 'The type of build to create.',
+          choices: Object.keys(BuildType),
+        })
+        .option('build-version', {
+          default: 0,
+          description:
+            'The build version. This is set only for non-main build types. The build version is used in the "prerelease" segment of the extension version, e.g. `[major].[minor].[patch]-[build-type].[build-version]`',
+          type: 'number',
+        })
+        .option('lint-fence-files', {
+          description:
+            'Whether files with code fences should be linted after fences have been removed. The build will fail if linting fails. This defaults to `false` if the entry task is `dev` or `testDev`. Otherwise this defaults to `true`.',
+          type: 'boolean',
+        })
+        .option('lockdown', {
+          default: true,
+          description:
+            'Whether to include SES lockdown files in the extension bundle. Setting this to `false` can be useful during development if you want to handle lockdown errors later.',
+          type: 'boolean',
+        })
+        .option('policy-only', {
+          default: false,
+          description:
+            'Stop the build after generating the LavaMoat policy, skipping any writes to disk other than the LavaMoat policy itself.',
+          type: 'boolean',
+        })
+        .option('skip-stats', {
+          default: false,
+          description:
+            'Whether to skip logging the time to completion for each task to the console. This is meant primarily for internal use, to prevent duplicate logging.',
+          hidden: true,
+          type: 'boolean',
+        })
+        .check((args) => {
+          if (!Number.isInteger(args.buildVersion)) {
+            throw new Error(
+              `Expected integer for 'build-version', got '${args.buildVersion}'`,
+            );
+          } else if (!Object.values(TASKS).includes(args.task)) {
+            throw new Error(`Invalid task: '${args.task}'`);
+          }
+          return true;
+        }),
+    )
+    // TODO: Enable `.strict()` after this issue is resolved: https://github.com/LavaMoat/LavaMoat/issues/344
+    .help('help');
+
+  const {
+    applyLavamoat: applyLavaMoat,
+    buildType,
+    buildVersion,
+    lintFenceFiles,
+    lockdown,
+    policyOnly,
+    skipStats,
+    task,
+  } = argv;
 
   // Manually default this to `false` for dev builds only.
-  const shouldLintFenceFiles = process.argv.includes(
-    `--${NamedArgs.LintFenceFiles}`,
-  )
-    ? argv[NamedArgs.LintFenceFiles]
-    : !/dev/iu.test(entryTask);
+  const shouldLintFenceFiles = lintFenceFiles ?? !/dev/iu.test(task);
 
-  const policyOnly = argv[NamedArgs.PolicyOnly];
+  const version = getVersion(buildType, buildVersion);
 
   return {
+    applyLavaMoat,
     buildType,
-    entryTask,
+    entryTask: task,
     isLavaMoat: process.argv[0].includes('lavamoat'),
     policyOnly,
-    shouldIncludeLockdown: argv[NamedArgs.Lockdown],
+    shouldIncludeLockdown: lockdown,
     shouldLintFenceFiles,
-    skipStats: argv[NamedArgs.SkipStats],
+    skipStats,
+    version,
   };
 }
 
 /**
  * Gets the files to be ignored by the current build, if any.
  *
- * @param {string} buildType - The type of the current build.
+ * @param {string} currentBuildType - The type of the current build.
  * @returns {string[] | null} The array of files to be ignored by the current
  * build, or `null` if no files are to be ignored.
  */

@@ -5,8 +5,11 @@ import {
   initializeEnsSlice,
   resetEnsResolution,
 } from '../../../../ducks/ens';
+import {
+  getQtumAddressBook,
+  isQtumAddressShow,
+} from '../../../../ducks/metamask/metamask';
 import EnsInput from './ens-input.component';
-import { getQtumAddressBook, isQtumAddressShow } from '../../../../ducks/metamask/metamask';
 
 function mapStateToProps(state) {
   const qtumAddressBook = getQtumAddressBook(state);

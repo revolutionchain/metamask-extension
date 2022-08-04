@@ -8,10 +8,11 @@ import {
   getValueFromWeiHex,
 } from '../../../helpers/utils/conversions.util';
 import { formatDate, getURLHostName } from '../../../helpers/utils/util';
+import { EVENT } from '../../../../shared/constants/metametrics';
 import TransactionActivityLogIcon from './transaction-activity-log-icon';
 import { CONFIRMED_STATUS } from './transaction-activity-log.constants';
 
-const enableSpeedUp = false
+const enableSpeedUp = false;
 
 export default class TransactionActivityLog extends PureComponent {
   static contextTypes = {
@@ -38,7 +39,7 @@ export default class TransactionActivityLog extends PureComponent {
     const etherscanUrl = getBlockExplorerLink(activity, rpcPrefs);
 
     this.context.trackEvent({
-      category: 'Transactions',
+      category: EVENT.CATEGORIES.TRANSACTIONS,
       event: 'Clicked Block Explorer Link',
       properties: {
         link_type: 'Transaction Block Explorer',

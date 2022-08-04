@@ -6,13 +6,13 @@ import InfoTooltipIcon from '../info-tooltip/info-tooltip-icon';
 
 const CLASSNAME_WARNING = 'actionable-message--warning';
 const CLASSNAME_DANGER = 'actionable-message--danger';
-const CLASSNAME_INFO = 'actionable-message--info';
+const CLASSNAME_SUCCESS = 'actionable-message--success';
 const CLASSNAME_WITH_RIGHT_BUTTON = 'actionable-message--with-right-button';
 
-const typeHash = {
+export const typeHash = {
   warning: CLASSNAME_WARNING,
   danger: CLASSNAME_DANGER,
-  info: CLASSNAME_INFO,
+  success: CLASSNAME_SUCCESS,
   default: '',
 };
 
@@ -28,6 +28,7 @@ export default function ActionableMessage({
   useIcon = false,
   iconFillColor = '',
   roundedButtons,
+  dataTestId,
 }) {
   const actionableMessageClassName = classnames(
     'actionable-message',
@@ -41,7 +42,7 @@ export default function ActionableMessage({
     (primaryAction && !secondaryAction) || (secondaryAction && !primaryAction);
 
   return (
-    <div className={actionableMessageClassName}>
+    <div className={actionableMessageClassName} data-testid={dataTestId}>
       {useIcon ? <InfoTooltipIcon fillColor={iconFillColor} /> : null}
       {infoTooltipText && (
         <InfoTooltip
@@ -102,24 +103,59 @@ export default function ActionableMessage({
 }
 
 ActionableMessage.propTypes = {
+  /**
+   * Text inside actionable message
+   */
   message: PropTypes.node.isRequired,
+  /**
+   * First button props that have label and onClick props
+   */
   primaryAction: PropTypes.shape({
     label: PropTypes.string,
     onClick: PropTypes.func,
   }),
+  /**
+   * Another style of primary action.
+   * This probably shouldn't have been added. A `children` prop might have been more appropriate.
+   */
   primaryActionV2: PropTypes.shape({
     label: PropTypes.string,
     onClick: PropTypes.func,
   }),
+  /**
+   * Second button props that have label and onClick props
+   */
   secondaryAction: PropTypes.shape({
     label: PropTypes.string,
     onClick: PropTypes.func,
   }),
+  /**
+   * Additional css className for the component based on the parent css
+   */
   className: PropTypes.string,
-  type: PropTypes.string,
+  /**
+   * change color theme for the component that already predefined in css
+   */
+  type: PropTypes.oneOf(Object.keys(typeHash)),
+  /**
+   * change text align to left and button to bottom right
+   */
   withRightButton: PropTypes.bool,
+  /**
+   * Add tooltip and custom message
+   */
   infoTooltipText: PropTypes.string,
+  /**
+   * Add tooltip icon in the left component without message
+   */
   useIcon: PropTypes.bool,
+  /**
+   * change tooltip icon color
+   */
   iconFillColor: PropTypes.string,
+  /**
+   * Whether the buttons are rounded
+   */
   roundedButtons: PropTypes.bool,
+  dataTestId: PropTypes.string,
 };

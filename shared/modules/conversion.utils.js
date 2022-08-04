@@ -1,4 +1,5 @@
-/* Currency Conversion Utility
+/**
+ * Currency Conversion Utility
  * This utility function can be used for converting currency related values within metamask.
  * The caller should be able to pass it a value, along with information about the value's
  * numeric base, denomination and currency, and the desired numeric base, denomination and
@@ -62,7 +63,8 @@ const toSpecifiedDenomination = {
     const maximumPrecision = wei.times(1e-8).round();
     return maximumPrecision.times(1e-18);
   },
-  SATOSHI: (bigNumber) => bigNumber.times(BIG_NUMBER_SATOSHI_MULTIPLIER).round(9),
+  SATOSHI: (bigNumber) =>
+    bigNumber.times(BIG_NUMBER_SATOSHI_MULTIPLIER).round(9),
 };
 const baseChange = {
   hex: (n) => n.toString(16),
@@ -77,16 +79,19 @@ const isValidBase = (base) => {
 
 /**
  * Defines the base type of numeric value
+ *
  * @typedef {('hex' | 'dec' | 'BN')} NumericBase
  */
 
 /**
  * Defines which type of denomination a value is in
+ *
  * @typedef {('WEI' | 'GWEI' | 'ETH')} EthDenomination
  */
 
 /**
  * Utility method to convert a value between denominations, formats and currencies.
+ *
  * @param {Object} input
  * @param {string | BigNumber} input.value
  * @param {NumericBase} input.fromNumericBase
@@ -138,7 +143,7 @@ const converter = ({
     convertedValue = toSpecifiedDenomination[toDenomination](convertedValue);
   }
 
-  if (numberOfDecimals) {
+  if (numberOfDecimals !== undefined && numberOfDecimals !== null) {
     convertedValue = convertedValue.round(
       numberOfDecimals,
       BigNumber.ROUND_HALF_DOWN,
@@ -188,7 +193,7 @@ const conversionUtil = (
 
 const getBigNumber = (value, base) => {
   if (!isValidBase(base)) {
-    throw new Error('Must specificy valid base');
+    throw new Error('Must specify valid base');
   }
 
   // We don't include 'number' here, because BigNumber will throw if passed

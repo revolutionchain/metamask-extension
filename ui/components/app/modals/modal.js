@@ -10,7 +10,6 @@ import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 
 // Modal Components
 import ConfirmCustomizeGasModal from '../gas-customization/gas-modal-page-container';
-import SwapsGasCustomizationModal from '../../../pages/swaps/swaps-gas-customization-modal';
 import DepositEtherModal from './deposit-ether-modal';
 import AccountDetailsModal from './account-details-modal';
 import ExportPrivateKeyModal from './export-private-key-modal';
@@ -26,17 +25,17 @@ import FadeModal from './fade-modal';
 import MetaMetricsOptInModal from './metametrics-opt-in-modal';
 import RejectTransactions from './reject-transactions';
 import ConfirmDeleteNetwork from './confirm-delete-network';
-import AddToAddressBookModal from './add-to-addressbook-modal';
 import EditApprovalPermission from './edit-approval-permission';
 import NewAccountModal from './new-account-modal';
 import CustomizeNonceModal from './customize-nonce';
+import ConvertTokenToNftModal from './convert-token-to-nft-modal/convert-token-to-nft-modal';
 
 const modalContainerBaseStyle = {
   transform: 'translate3d(-50%, 0, 0px)',
-  border: '1px solid #CCCFD1',
+  border: '1px solid var(--color-border-default)',
   borderRadius: '8px',
-  backgroundColor: '#FFFFFF',
-  boxShadow: '0 2px 22px 0 rgba(0,0,0,0.2)',
+  backgroundColor: 'var(--color-background-default)',
+  boxShadow: 'var(--shadow-size-sm) var(--color-shadow-default)',
 };
 
 const modalContainerLaptopStyle = {
@@ -55,7 +54,7 @@ const accountModalStyle = {
   mobileModalStyle: {
     width: '95%',
     // top: isPopupOrNotification() === 'popup' ? '52vh' : '36.5vh',
-    boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+    boxShadow: 'var(--shadow-size-xs) var(--color-shadow-default)',
     borderRadius: '4px',
     top: '10%',
     transform: 'none',
@@ -66,7 +65,7 @@ const accountModalStyle = {
   laptopModalStyle: {
     width: '335px',
     // top: 'calc(33% + 45px)',
-    boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+    boxShadow: 'var(--shadow-size-xs) var(--color-shadow-default)',
     borderRadius: '4px',
     top: '10%',
     transform: 'none',
@@ -90,7 +89,7 @@ const MODALS = {
       left: '0',
       right: '0',
       margin: '0 auto',
-      boxShadow: '0 0 7px 0 rgba(0,0,0,0.08)',
+      boxShadow: 'var(--shadow-size-sm) var(--color-shadow-default)',
       top: '0',
       display: 'flex',
     },
@@ -101,7 +100,7 @@ const MODALS = {
       left: '0',
       right: '0',
       margin: '0 auto',
-      boxShadow: '0 0 6px 0 rgba(0,0,0,0.3)',
+      boxShadow: 'var(--shadow-size-sm) var(--color-shadow-default)',
       borderRadius: '7px',
       transform: 'none',
       height: 'calc(80% - 20px)',
@@ -113,39 +112,12 @@ const MODALS = {
     },
   },
 
-  ADD_TO_ADDRESSBOOK: {
-    contents: <AddToAddressBookModal />,
-    mobileModalStyle: {
-      width: '95%',
-      top: '10%',
-      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
-      transform: 'none',
-      left: '0',
-      right: '0',
-      margin: '0 auto',
-      borderRadius: '10px',
-    },
-    laptopModalStyle: {
-      width: '375px',
-      top: '10%',
-      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
-      transform: 'none',
-      left: '0',
-      right: '0',
-      margin: '0 auto',
-      borderRadius: '10px',
-    },
-    contentStyle: {
-      borderRadius: '10px',
-    },
-  },
-
   NEW_ACCOUNT: {
     contents: <NewAccountModal />,
     mobileModalStyle: {
       width: '95%',
       top: '10%',
-      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      boxShadow: 'var(--shadow-size-xs) var(--color-shadow-default)',
       transform: 'none',
       left: '0',
       right: '0',
@@ -155,7 +127,7 @@ const MODALS = {
     laptopModalStyle: {
       width: '375px',
       top: '10%',
-      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      boxShadow: 'var(--shadow-size-xs) var(--color-shadow-default)',
       transform: 'none',
       left: '0',
       right: '0',
@@ -237,6 +209,19 @@ const MODALS = {
     },
   },
 
+  CONVERT_TOKEN_TO_NFT: {
+    contents: <ConvertTokenToNftModal />,
+    mobileModalStyle: {
+      ...modalContainerMobileStyle,
+    },
+    laptopModalStyle: {
+      ...modalContainerLaptopStyle,
+    },
+    contentStyle: {
+      borderRadius: '8px',
+    },
+  },
+
   CONFIRM_DELETE_NETWORK: {
     contents: <ConfirmDeleteNetwork />,
     mobileModalStyle: {
@@ -276,31 +261,6 @@ const MODALS = {
     customOnHideOpts: {
       action: resetCustomGasData,
       args: [],
-    },
-  },
-
-  CUSTOMIZE_METASWAP_GAS: {
-    contents: <SwapsGasCustomizationModal />,
-    mobileModalStyle: {
-      width: '100vw',
-      height: '100vh',
-      top: '0',
-      transform: 'none',
-      left: '0',
-      right: '0',
-      margin: '0 auto',
-    },
-    laptopModalStyle: {
-      width: 'auto',
-      height: '0px',
-      top: '80px',
-      left: '0px',
-      transform: 'none',
-      margin: '0 auto',
-      position: 'relative',
-    },
-    contentStyle: {
-      borderRadius: '8px',
     },
   },
 
@@ -403,7 +363,7 @@ const MODALS = {
 };
 
 const BACKDROPSTYLE = {
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  backgroundColor: 'var(--color-overlay-default)',
 };
 
 function mapStateToProps(state) {

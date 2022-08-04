@@ -19,6 +19,13 @@ import {
   RINKEBY_CHAIN_ID,
   ROPSTEN_CHAIN_ID,
   KOVAN_CHAIN_ID,
+  GOERLI_CHAIN_ID,
+  BSC_CHAIN_ID,
+  OPTIMISM_CHAIN_ID,
+  POLYGON_CHAIN_ID,
+  AVALANCHE_CHAIN_ID,
+  FANTOM_CHAIN_ID,
+  ARBITRUM_CHAIN_ID,
 } from '../../../shared/constants/network';
 
 import {
@@ -26,6 +33,13 @@ import {
   SINGLE_CALL_BALANCES_ADDRESS_RINKEBY,
   SINGLE_CALL_BALANCES_ADDRESS_ROPSTEN,
   SINGLE_CALL_BALANCES_ADDRESS_KOVAN,
+  SINGLE_CALL_BALANCES_ADDRESS_GOERLI,
+  SINGLE_CALL_BALANCES_ADDRESS_BSC,
+  SINGLE_CALL_BALANCES_ADDRESS_OPTIMISM,
+  SINGLE_CALL_BALANCES_ADDRESS_POLYGON,
+  SINGLE_CALL_BALANCES_ADDRESS_AVALANCHE,
+  SINGLE_CALL_BALANCES_ADDRESS_FANTOM,
+  SINGLE_CALL_BALANCES_ADDRESS_ARBITRUM,
 } from '../constants/contracts';
 import { bnToHex } from './util';
 
@@ -44,7 +58,6 @@ import { bnToHex } from './util';
  * @property {BlockTracker} _blockTracker A BlockTracker instance. Needed to ensure that accounts and their info updates
  * when a new block is created.
  * @property {Object} _currentBlockNumber Reference to a property on the _blockTracker: the number (i.e. an id) of the the current block
- *
  */
 export default class AccountTracker {
   /**
@@ -96,9 +109,8 @@ export default class AccountTracker {
    * Once this AccountTracker's accounts are up to date with those referenced by the passed addresses, each
    * of these accounts are given an updated balance via EthQuery.
    *
-   * @param {Array} address - The array of hex addresses for accounts with which this AccountTracker's accounts should be
+   * @param {Array} addresses - The array of hex addresses for accounts with which this AccountTracker's accounts should be
    * in sync
-   *
    */
   syncWithAddresses(addresses) {
     const { accounts } = this.store.getState();
@@ -127,7 +139,6 @@ export default class AccountTracker {
    * given a balance as long this._currentBlockNumber is defined.
    *
    * @param {Array} addresses - An array of hex addresses of new accounts to track
-   *
    */
   addAccounts(addresses) {
     const { accounts } = this.store.getState();
@@ -147,8 +158,7 @@ export default class AccountTracker {
   /**
    * Removes accounts from being tracked
    *
-   * @param {Array} an - array of hex addresses to stop tracking
-   *
+   * @param {Array} addresses - An array of hex addresses to stop tracking.
    */
   removeAccount(addresses) {
     const { accounts } = this.store.getState();
@@ -175,7 +185,6 @@ export default class AccountTracker {
    * @private
    * @param {number} blockNumber - the block number to update to.
    * @fires 'block' The updated state, if all account updates are successful
-   *
    */
   async _updateForBlock(blockNumber) {
     this._currentBlockNumber = blockNumber;
@@ -200,7 +209,6 @@ export default class AccountTracker {
    * for all other networks, calls this._updateAccount for each account in this.store
    *
    * @returns {Promise} after all account balances updated
-   *
    */
   async _updateAccounts() {
     const { accounts } = this.store.getState();
@@ -236,6 +244,55 @@ export default class AccountTracker {
         );
         break;
 
+      case GOERLI_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_GOERLI,
+        );
+        break;
+
+      case BSC_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_BSC,
+        );
+        break;
+
+      case OPTIMISM_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_OPTIMISM,
+        );
+        break;
+
+      case POLYGON_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_POLYGON,
+        );
+        break;
+
+      case AVALANCHE_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_AVALANCHE,
+        );
+        break;
+
+      case FANTOM_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_FANTOM,
+        );
+        break;
+
+      case ARBITRUM_CHAIN_ID:
+        await this._updateAccountsViaBalanceChecker(
+          addresses,
+          SINGLE_CALL_BALANCES_ADDRESS_ARBITRUM,
+        );
+        break;
+
       default:
         await Promise.all(addresses.map(this._updateAccount.bind(this)));
     }
@@ -247,11 +304,19 @@ export default class AccountTracker {
    * @private
    * @param {string} address - A hex address of a the account to be updated
    * @returns {Promise} after the account balance is updated
-   *
    */
   async _updateAccount(address) {
+    let balance = '0x0';
+
     // query balance
-    const balance = await this._query.getBalance(address);
+    try {
+      balance = await this._query.getBalance(address);
+    } catch (error) {
+      if (error.data.request.method !== 'eth_getBalance') {
+        throw error;
+      }
+    }
+
     const result = { address, balance };
     // update accounts state
     const { accounts } = this.store.getState();
@@ -265,6 +330,7 @@ export default class AccountTracker {
 
   /**
    * Updates current address balances from balanceChecker deployed contract instance
+   *
    * @param {*} addresses
    * @param {*} deployedContractAddress
    */
