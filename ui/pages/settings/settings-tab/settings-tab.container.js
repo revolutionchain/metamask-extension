@@ -8,7 +8,7 @@ import {
   setParticipateInMetaMetrics,
   setPrimaryAddressPreference,
 } from '../../../store/actions';
-import { getPreferences } from '../../../selectors';
+import { getTokenList, getPreferences } from '../../../selectors';
 import SettingsTab from './settings-tab.component';
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,8 +22,6 @@ const mapStateToProps = (state, ownProps) => {
     useBlockie,
     currentLocale,
     selectedAddress,
-    useTokenDetection,
-    tokenList,
   } = metamask;
   const {
     useNativeCurrencyAsPrimaryCurrency,
@@ -32,6 +30,7 @@ const mapStateToProps = (state, ownProps) => {
   } = getPreferences(state);
 
   const { lastFetchedConversionDate } = ownProps;
+  const tokenList = getTokenList(state);
 
   return {
     warning,
@@ -44,7 +43,6 @@ const mapStateToProps = (state, ownProps) => {
     isQtumAddressShow,
     lastFetchedConversionDate,
     selectedAddress,
-    useTokenDetection,
     tokenList,
   };
 };

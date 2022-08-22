@@ -354,7 +354,9 @@ export function addNewAccount() {
 
     let newIdentities;
     try {
-      const { identities } = await promisifiedBackground.addNewAccount();
+      const { identities } = await promisifiedBackground.addNewAccount(
+        Object.keys(oldIdentities).length,
+      );
       newIdentities = identities;
     } catch (error) {
       dispatch(displayWarning(error.message));
@@ -815,6 +817,29 @@ export function updateTransactionSendFlowHistory(txId, sendFlowHistory) {
 
     return updatedTransaction;
   };
+}
+
+export async function backupUserData() {
+  let backedupData;
+  try {
+    backedupData = await promisifiedBackground.backupUserData();
+  } catch (error) {
+    log.error(error.message);
+    throw error;
+  }
+
+  return backedupData;
+}
+
+export async function restoreUserData(jsonString) {
+  try {
+    await promisifiedBackground.restoreUserData(jsonString);
+  } catch (error) {
+    log.error(error.message);
+    throw error;
+  }
+
+  return true;
 }
 
 export function updateTransactionGasFees(txId, txGasFees) {
@@ -3643,6 +3668,10 @@ export async function setSmartTransactionsOptInStatus(
   await promisifiedBackground.setSmartTransactionsOptInStatus(optInState);
 }
 
+export function clearSmartTransactionFees() {
+  promisifiedBackground.clearSmartTransactionFees();
+}
+
 export function fetchSmartTransactionFees(
   unsignedTransaction,
   approveTxParams,
@@ -3652,17 +3681,23 @@ export function fetchSmartTransactionFees(
       approveTxParams.value = '0x0';
     }
     try {
-      return await promisifiedBackground.fetchSmartTransactionFees(
-        unsignedTransaction,
-        approveTxParams,
-      );
+      const smartTransactionFees =
+        await promisifiedBackground.fetchSmartTransactionFees(
+          unsignedTransaction,
+          approveTxParams,
+        );
+      dispatch({
+        type: actionConstants.SET_SMART_TRANSACTIONS_ERROR,
+        payload: null,
+      });
+      return smartTransactionFees;
     } catch (e) {
       log.error(e);
       if (e.message.startsWith('Fetch error:')) {
         const errorObj = parseSmartTransactionsError(e.message);
         dispatch({
           type: actionConstants.SET_SMART_TRANSACTIONS_ERROR,
-          payload: errorObj.type,
+          payload: errorObj,
         });
       }
       throw e;
@@ -3725,7 +3760,7 @@ export function signAndSendSmartTransaction({
         const errorObj = parseSmartTransactionsError(e.message);
         dispatch({
           type: actionConstants.SET_SMART_TRANSACTIONS_ERROR,
-          payload: errorObj.type,
+          payload: errorObj,
         });
       }
       throw e;
@@ -3746,7 +3781,7 @@ export function updateSmartTransaction(uuid, txData) {
         const errorObj = parseSmartTransactionsError(e.message);
         dispatch({
           type: actionConstants.SET_SMART_TRANSACTIONS_ERROR,
-          payload: errorObj.type,
+          payload: errorObj,
         });
       }
       throw e;
@@ -3774,7 +3809,7 @@ export function cancelSmartTransaction(uuid) {
         const errorObj = parseSmartTransactionsError(e.message);
         dispatch({
           type: actionConstants.SET_SMART_TRANSACTIONS_ERROR,
-          payload: errorObj.type,
+          payload: errorObj,
         });
       }
       throw e;

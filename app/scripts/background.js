@@ -22,6 +22,9 @@ import { SECOND } from '../../shared/constants/time';
 import {
   REJECT_NOTFICIATION_CLOSE,
   REJECT_NOTFICIATION_CLOSE_SIG,
+  EVENT,
+  EVENT_NAMES,
+  TRAITS,
 } from '../../shared/constants/metametrics';
 import { isManifestV3 } from '../../shared/modules/mv3.utils';
 import { maskObject } from '../../shared/modules/object.utils';
@@ -69,6 +72,7 @@ let notificationIsOpen = false;
 let uiIsTriggering = false;
 const openMetamaskTabsIDs = {};
 const requestAccountTabIds = {};
+let controller;
 
 // state persistence
 const inTest = process.env.IN_TEST;
@@ -96,7 +100,7 @@ const initApp = async (remotePort) => {
   log.info('MetaMask initialization complete.');
 };
 
-if (isManifestV3()) {
+if (isManifestV3) {
   browser.runtime.onConnect.addListener(initApp);
 } else {
   // initialization flow
@@ -316,7 +320,7 @@ function setupController(initState, initLangCode, remoteSourcePort) {
   // MetaMask Controller
   //
 
-  const controller = new MetamaskController({
+  controller = new MetamaskController({
     infuraProjectId: process.env.INFURA_PROJECT_ID,
     // User confirmation callbacks:
     showUserConfirmation: triggerUi,
@@ -358,7 +362,7 @@ function setupController(initState, initLangCode, remoteSourcePort) {
     },
   );
 
-  setupSentryGetStateGlobal(controller.store);
+  setupSentryGetStateGlobal(controller);
 
   /**
    * Assigns the given state to the versioned object (with metadata), and returns that.
@@ -400,7 +404,7 @@ function setupController(initState, initLangCode, remoteSourcePort) {
   //
   // connect to other contexts
   //
-  if (isManifestV3() && remoteSourcePort) {
+  if (isManifestV3 && remoteSourcePort) {
     connectRemote(remoteSourcePort);
   }
 
@@ -474,7 +478,7 @@ function setupController(initState, initLangCode, remoteSourcePort) {
       controller.isClientOpen = true;
       controller.setupTrustedCommunication(portStream, remotePort.sender);
 
-      if (isManifestV3()) {
+      if (isManifestV3) {
         // Message below if captured by UI code in app/scripts/ui.js which will trigger UI initialisation
         // This ensures that UI is initialised only after background is ready
         // It fixes the issue of blank screen coming when extension is loaded, the issue is very frequent in MV3
@@ -603,7 +607,7 @@ function setupController(initState, initLangCode, remoteSourcePort) {
       label = String(count);
     }
     // browserAction has been replaced by action in MV3
-    if (isManifestV3()) {
+    if (isManifestV3) {
       browser.action.setBadgeText({ text: label });
       browser.action.setBadgeBackgroundColor({ color: '#037DD6' });
     } else {
@@ -753,12 +757,32 @@ async function openPopup() {
   });
 }
 
+// It adds the "App Installed" event into a queue of events, which will be tracked only after a user opts into metrics.
+const addAppInstalledEvent = () => {
+  if (controller) {
+    controller.metaMetricsController.updateTraits({
+      [TRAITS.INSTALL_DATE_EXT]: new Date().toISOString().split('T')[0], // yyyy-mm-dd
+    });
+    controller.metaMetricsController.addEventBeforeMetricsOptIn({
+      category: EVENT.CATEGORIES.APP,
+      event: EVENT_NAMES.APP_INSTALLED,
+      properties: {},
+    });
+    return;
+  }
+  setTimeout(() => {
+    // If the controller is not set yet, we wait and try to add the "App Installed" event again.
+    addAppInstalledEvent();
+  }, 1000);
+};
+
 // On first install, open a new tab with MetaMask
 browser.runtime.onInstalled.addListener(({ reason }) => {
   if (
     reason === 'install' &&
     !(process.env.METAMASK_DEBUG || process.env.IN_TEST)
   ) {
+    addAppInstalledEvent();
     platform.openExtensionInBrowser();
   }
 });
@@ -766,11 +790,11 @@ browser.runtime.onInstalled.addListener(({ reason }) => {
 function setupSentryGetStateGlobal(store) {
   global.getSentryState = function () {
     const fullState = store.getState();
-    const debugState = maskObject(fullState, SENTRY_STATE);
+    const debugState = maskObject({ metamask: fullState }, SENTRY_STATE);
     return {
       browser: window.navigator.userAgent,
       store: debugState,
-      version: global.platform.getVersion(),
+      version: platform.getVersion(),
     };
   };
 }

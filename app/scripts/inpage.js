@@ -34,6 +34,7 @@ cleanContextForImports();
 import log from 'loglevel';
 import { WindowPostMessageStream } from '@metamask/post-message-stream';
 import { initializeProvider } from '@metamask/providers/dist/initializeInpageProvider';
+import shouldInjectProvider from '../../shared/modules/provider-injection';
 
 restoreContextAfterImports();
 
@@ -43,22 +44,26 @@ log.setDefaultLevel(process.env.METAMASK_DEBUG ? 'debug' : 'warn');
 // setup plugin communication
 //
 
-// setup background connection
-const metamaskStream = new WindowPostMessageStream({
-  name: 'qnekt-inpage',
-  target: 'qnekt-contentscript',
-});
-const jsonRpcStreamName = 'qnekt-provider';
+if (shouldInjectProvider()) {
+  // setup background connection
+  const metamaskStream = new WindowPostMessageStream({
+    name: 'qnekt-inpage',
+    target: 'qnekt-contentscript',
+  });
 
-const inPageProvider = initializeProvider({
-  connectionStream: metamaskStream,
-  jsonRpcStreamName,
-  logger: log,
-  // since we are using the official metamask initializeProvider implementation
-  // we need to not set the global provider as it will be a name collision with official Metamask
-  shouldSetOnWindow: false,
-  shouldShimWeb3: false,
-});
+  const jsonRpcStreamName = 'qnekt-provider';
+  const inPageProvider = initializeProvider({
+    connectionStream: metamaskStream,
+    jsonRpcStreamName,
+    logger: log,
+    // since we are using the official metamask initializeProvider implementation
+    // we need to not set the global provider as it will be a name collision with official Metamask
+    shouldSetOnWindow: false,
+    shouldShimWeb3: false,
+  });
+
+  setGlobalProvider(inPageProvider);
+}
 
 /**
  * Sets the given provider instance as window.ethereum and dispatches the
@@ -70,5 +75,3 @@ function setGlobalProvider(providerInstance) {
   window.qtum = providerInstance;
   window.dispatchEvent(new Event('qtum#initialized'));
 }
-
-setGlobalProvider(inPageProvider);

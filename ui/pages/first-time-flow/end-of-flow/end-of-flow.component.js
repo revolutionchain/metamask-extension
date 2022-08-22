@@ -6,7 +6,11 @@ import MetaFoxLogo from '../../../components/ui/metafox-logo';
 import { SUPPORT_REQUEST_LINK } from '../../../helpers/constants/common';
 import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
 import { returnToOnboardingInitiatorTab } from '../onboarding-initiator-util';
-import { EVENT } from '../../../../shared/constants/metametrics';
+import {
+  EVENT,
+  EVENT_NAMES,
+  CONTEXT_PROPS,
+} from '../../../../shared/constants/metametrics';
 
 export default class EndOfFlowScreen extends PureComponent {
   static contextTypes = {
@@ -16,7 +20,6 @@ export default class EndOfFlowScreen extends PureComponent {
 
   static propTypes = {
     history: PropTypes.object,
-    completionMetaMetricsName: PropTypes.string,
     setCompletedOnboarding: PropTypes.func,
     setNativeCurrency: PropTypes.func,
     onboardingInitiator: PropTypes.exact({
@@ -34,16 +37,8 @@ export default class EndOfFlowScreen extends PureComponent {
   }
 
   async _onOnboardingComplete() {
-    const { setCompletedOnboarding, completionMetaMetricsName } = this.props;
+    const { setCompletedOnboarding } = this.props;
     await setCompletedOnboarding();
-    this.context.trackEvent({
-      category: EVENT.CATEGORIES.ONBOARDING,
-      event: completionMetaMetricsName,
-      properties: {
-        action: 'Onboarding Complete',
-        legacy_event: true,
-      },
-    });
   }
 
   onComplete = async () => {
@@ -71,7 +66,7 @@ export default class EndOfFlowScreen extends PureComponent {
     const { onboardingInitiator } = this.props;
 
     return (
-      <div className="end-of-flow">
+      <div className="end-of-flow" data-testid="end-of-flow">
         <MetaFoxLogo />
         <div className="end-of-flow__emoji">🎉</div>
         <div className="first-time-flow__header">{t('congratulations')}</div>
@@ -101,6 +96,20 @@ export default class EndOfFlowScreen extends PureComponent {
               key="metamaskSupportLink"
               rel="noopener noreferrer"
               href={SUPPORT_REQUEST_LINK}
+              onClick={() => {
+                this.context.trackEvent(
+                  {
+                    category: EVENT.CATEGORIES.ONBOARDING,
+                    event: EVENT_NAMES.SUPPORT_LINK_CLICKED,
+                    properties: {
+                      url: SUPPORT_REQUEST_LINK,
+                    },
+                  },
+                  {
+                    contextPropsIntoEventProperties: [CONTEXT_PROPS.PAGE_TITLE],
+                  },
+                );
+              }}
             >
               <span className="first-time-flow__link-text">
                 {this.context.t('here')}
@@ -124,6 +133,7 @@ export default class EndOfFlowScreen extends PureComponent {
           type="primary"
           className="first-time-flow__button"
           onClick={this.onComplete}
+          data-testid="EOF-complete-button"
         >
           {t('endOfFlowMessage10')}
         </Button>
