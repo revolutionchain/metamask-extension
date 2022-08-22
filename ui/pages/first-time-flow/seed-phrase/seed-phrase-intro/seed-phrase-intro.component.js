@@ -82,7 +82,7 @@ export default function SeedPhraseIntro() {
             </video>
           </Box>
           <Box width={BLOCK_SIZES.ONE_THIRD}>
-            <Button type="primary" onClick={handleNextStep}>
+            <Button type="primary" onClick={handleNextStep} rounded={false}>
               {t('next')}
             </Button>
           </Box>

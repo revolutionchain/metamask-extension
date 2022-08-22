@@ -3,15 +3,14 @@
  */
 
 .button {
-  @include H6;
-
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 500;
   padding: 0.75rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  border-radius: 6px;
   width: 100%;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 
@@ -138,6 +137,7 @@
 }
 
 .btn-primary {
+<<<<<<< HEAD
   color: var(--color-primary-inverse);
   border: 1px solid var(--color-primary-default);
   background-color: var(--color-primary-default);
@@ -156,6 +156,20 @@
   &[disabled] {
     border-color: var(--color-primary-disabled);
     background-color: var(--color-primary-disabled);
+=======
+  color: black;
+  border: 1px solid $primary-cyan;
+  background-color: $primary-cyan;
+
+  &:hover {
+    border-color: $primary-cyan-highlight;
+    background-color: $primary-cyan-highlight;
+  }
+
+  &:active {
+    background: $primary-cyan-highlight;
+    border-color: $primary-cyan-highlight;
+>>>>>>> qnekt
   }
 }
 
@@ -290,6 +304,7 @@ input[type="submit"][disabled] {
   }
 
   &.btn-primary {
+<<<<<<< HEAD
     background-color: var(--color-primary-default);
 
     &:hover {
@@ -303,6 +318,12 @@ input[type="submit"][disabled] {
 
     &:active {
       background-color: var(--color-primary-alternative);
+=======
+    background-color: $primary-cyan;
+
+    &:active {
+      background-color: $primary-cyan-highlight;
+>>>>>>> qnekt
     }
   }
 

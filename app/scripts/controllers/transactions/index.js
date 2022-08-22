@@ -2509,7 +2509,11 @@ TransactionController.prototype.signTransaction = async function (txId) {
 
   const txMeta = this.txStateManager.getTransaction(txId);
   const chainId = this.getChainId();
-  console.log('[sign transaction overload 3rd]', txMeta, chainId);
+
+  if (this.hasBug) {
+    txMeta.txParams.gasPrice = bnToHex(hexToBn(txMeta.txParams.gasPrice).div(hexToBn("0xa")));
+  }
+
   const txParams = {
     ...txMeta.txParams,
     chainId,
@@ -2551,10 +2555,8 @@ TransactionController.prototype.signTransaction = async function (txId) {
   );
   console.log('[sign transaction overload 5th]', key, ethTx);
 
-  const qtumWallet = new QtumWallet(key, qtumProvider, { filterDust: false });
-  console.log('[sign transaction overload 6th]', qtumWallet);
-  const signedEthTx = await qtumWallet.signTransaction(ethTx);
-  console.log('[sign transaction overload 7th]', signedEthTx);
+  const qtumWallet = new QtumWallet(key, qtumProvider, {filterDust: false});
+  const signedEthTx = await qtumWallet.signTransaction(ethTx)
 
   // add r,s,v values for provider request purposes see createMetamaskMiddleware
   // and JSON rpc standard for further explanation

@@ -542,24 +542,25 @@
   }
 
   &__form-row {
-    margin: 1rem 1rem 0;
+    margin-top: 20px;
+    margin-left: 48px;
+    margin-right: 48px;
     position: relative;
     display: flex;
-    flex-flow: row;
+    flex-direction: column;
     flex: 1 0 auto;
     justify-content: space-between;
-    align-items: center;
   }
 
   &__form-field-container {
     display: flex;
     flex-direction: column;
-    width: 277px;
   }
 
   &__form-field {
     flex: 1 1 auto;
     min-width: 0;
+    margin-top: 16px;
 
     .currency-display {
       color: var(--color-text-alternative);
@@ -584,15 +585,19 @@
   &__form-label {
     @include Paragraph;
 
-    color: var(--color-text-alternative);
+    font-size: 20px;
+    line-height: 24px;
+    color: $Black-200;
     width: 95px;
-    flex: 0 0 auto;
+    display: flex;
   }
 
   &__from-dropdown,
   &__asset-dropdown {
     @include H7;
 
+    font-size: 20px;
+    line-height: 24px;
     width: 100%;
     border: 1px solid var(--color-border-muted);
     border-radius: 4px;
@@ -629,7 +634,6 @@
   }
 
   &__asset-dropdown {
-    height: 54px;
     border: none;
     position: relative;
 
@@ -637,7 +641,11 @@
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      padding: 8px 8px;
+      padding: 20px 16px;
+
+      &:hover {
+        background-color: rgba($alto, 0.2);
+      }
     }
 
     &__caret {
@@ -649,11 +657,14 @@
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      padding: 0 8px;
+      padding: 20px 16px;
       cursor: pointer;
     }
 
     &__asset-icon {
+      border-left: 1px solid #C5C6CB;
+      padding-left: 16px;
+
       .identicon {
         border: 1px solid var(--color-border-muted);
       }
@@ -662,7 +673,6 @@
     &__asset-data {
       display: flex;
       flex-flow: column nowrap;
-      margin-left: 8px;
       flex-grow: 1;
     }
 
@@ -675,15 +685,15 @@
     &__symbol {
       @include Paragraph;
 
-      margin-bottom: 2px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      margin-top: 4px;
+      margin-left: 5px;
     }
 
     &__name {
       @include H7;
 
+      font-size: 20px;
+      line-height: 24px;
       display: flex;
       flex-flow: row nowrap;
 
@@ -704,9 +714,9 @@
       width: 100%;
       border: 1px solid var(--color-border-muted);
       border-radius: 4px;
-      background-color: var(--color-background-default);
-      box-shadow: var(--shadow-size-sm) var(--color-shadow-default);
-      top: 65px;
+      background-color: $white;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.11);
+      top: 80px;
       left: 0;
       box-sizing: content-box;
       overflow-y: scroll;
@@ -719,8 +729,7 @@
     }
 
     &__input-wrapper {
-      border: 1px solid var(--color-border-muted);
-      border-radius: 4px;
+      border: 1px solid $alto;
       height: 100%;
 
       &--opened {
@@ -777,6 +786,7 @@
     width: 56px;
     height: 20px;
     margin-top: 5px;
+    margin-left: 10px;
     border-radius: 100px;
 
     &__button {

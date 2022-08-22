@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import copyToClipboard from 'copy-to-clipboard';
 import { getBlockExplorerLink } from '@metamask/etherscan-link';
+import { stripHexPrefix } from 'ethereumjs-util';
 import SenderToRecipient from '../../ui/sender-to-recipient';
 import { DEFAULT_VARIANT } from '../../ui/sender-to-recipient/sender-to-recipient.constants';
 import Disclosure from '../../ui/disclosure';
@@ -64,8 +65,9 @@ export default class TransactionListItemDetails extends PureComponent {
       history,
       onClose,
     } = this.props;
+    console.log('[stripHexPrefix]', stripHexPrefix(primaryTransaction.hash));
     const blockExplorerLink = getBlockExplorerLink(
-      primaryTransaction,
+      { hash: stripHexPrefix(primaryTransaction.hash), chainId: primaryTransaction.chainId},
       rpcPrefs,
     );
 
@@ -158,7 +160,11 @@ export default class TransactionListItemDetails extends PureComponent {
     return (
       <Popover title={title} onClose={onClose}>
         <div className="transaction-list-item-details">
+<<<<<<< HEAD
           <div className="transaction-list-item-details__operations">
+=======
+          <div className="transaction-list-item-details__header">
+>>>>>>> qnekt
             <div className="transaction-list-item-details__header-buttons">
               {showSpeedUp && (
                 <Button
@@ -176,6 +182,48 @@ export default class TransactionListItemDetails extends PureComponent {
                   detailsModal
                 />
               )}
+<<<<<<< HEAD
+=======
+              <Tooltip
+                wrapperClassName="transaction-list-item-details__header-button"
+                containerClassName="transaction-list-item-details__header-button-tooltip-container"
+                title={
+                  justCopied ? t('copiedTransactionId') : t('copyTransactionId')
+                }
+              >
+                <Button
+                  type="raised"
+                  onClick={this.handleCopyTxId}
+                  disabled={!hash}
+                  className="transaction-list-item-details__header-rounded-button"
+                >
+                  <img src="./images/icons/copy-line.svg" alt="" />
+                </Button>
+              </Tooltip>
+              <Tooltip
+                wrapperClassName="transaction-list-item-details__header-button"
+                containerClassName="transaction-list-item-details__header-button-tooltip-container"
+                title={
+                  blockExplorerUrl
+                    ? t('viewOnCustomBlockExplorer', [
+                        t('blockExplorerTransactionAction'),
+                        blockExplorerUrl,
+                      ])
+                    : t('viewOnEtherscan', [
+                        t('blockExplorerTransactionAction'),
+                      ])
+                }
+              >
+                <Button
+                  type="raised"
+                  onClick={this.handleBlockExplorerClick}
+                  disabled={!hash}
+                  className="transaction-list-item-details__header-rounded-button"
+                >
+                  <img src="./images/icons/send-alt.svg" alt="" />
+                </Button>
+              </Tooltip>
+>>>>>>> qnekt
               {showRetry && (
                 <Tooltip title={t('retryTransaction')}>
                   <Button

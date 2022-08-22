@@ -1,7 +1,13 @@
 .transaction-detail-item {
+<<<<<<< HEAD
   color: var(--color-text-alternative);
   padding: 20px 0;
   border-bottom: 1px solid var(--color-border-default);
+=======
+  color: $ui-4;
+  padding: 30px 0 66px;
+  border-bottom: 1px solid $ui-3;
+>>>>>>> qnekt
 
   &__row {
     display: flex;
@@ -22,7 +28,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: end;
+<<<<<<< HEAD
     width: 52%;
+=======
+    width: 55%;
+    font-size: 16px;
+    font-weight: 24px;
+>>>>>>> qnekt
 
     &--flex-width {
       width: auto;
@@ -47,7 +59,7 @@
   }
 
   &:last-of-type {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
   &:first-child {

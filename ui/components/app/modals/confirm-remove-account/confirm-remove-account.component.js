@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAccountLink } from '@metamask/etherscan-link';
 import Modal from '../../modal';
-import { addressSummary, getURLHostName } from '../../../../helpers/utils/util';
+import { addressSummary, getQtumAddressFromHex, getURLHostName } from '../../../../helpers/utils/util';
 import Identicon from '../../../ui/identicon';
 import { EVENT } from '../../../../../shared/constants/metametrics';
 
@@ -56,7 +56,7 @@ export default class ConfirmRemoveAccount extends Component {
           <a
             onClick={() => {
               const accountLink = getAccountLink(
-                identity.address,
+                getQtumAddressFromHex(identity.address, chainId),
                 chainId,
                 rpcPrefs,
               );

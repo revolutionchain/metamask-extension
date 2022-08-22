@@ -29,6 +29,12 @@
     overflow: hidden;
   }
 
+  &__secondary-value {
+    font-size: 14px;
+    line-height: 24px;
+    color: #555555;
+  }
+
   &__chevron-right {
     color: var(--color-icon-default);
   }

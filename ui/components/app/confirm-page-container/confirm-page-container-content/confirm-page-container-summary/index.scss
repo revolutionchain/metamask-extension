@@ -1,6 +1,14 @@
 .confirm-page-container-summary {
+<<<<<<< HEAD
   padding: 16px 24px;
   background-color: var(--color-background-alternative);
+=======
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 54px 38px 33px;
+  background-color: #FBFBFB;
+>>>>>>> qnekt
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -23,6 +31,7 @@
   &__action {
     @include H7;
 
+<<<<<<< HEAD
     color: var(--color-text-alternative);
     padding: 3px 8px;
     border: 1px solid var(--color-border-default);
@@ -53,6 +62,15 @@
       margin-inline-end: 4px;
       color: var(--color-primary-default);
     }
+=======
+    text-transform: uppercase;
+    color: $oslo-gray;
+    padding: 5px 20px;
+    border: 1px solid #B6B6B6;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 24px;
+>>>>>>> qnekt
   }
 
   &__nonce {
@@ -71,6 +89,10 @@
 
   &__title-text {
     @include H1;
+
+    font-size: 45px;
+    line-height: 45px;
+    color: #0B0F33;
 
     white-space: nowrap;
     overflow: hidden;

@@ -6,7 +6,7 @@ import AccountModalContainer from '../account-modal-container';
 import QrView from '../../../ui/qr-code';
 import EditableLabel from '../../../ui/editable-label';
 import Button from '../../../ui/button';
-import { getURLHostName } from '../../../../helpers/utils/util';
+import { getURLHostName, getQtumAddressFromHex } from '../../../../helpers/utils/util';
 import { isHardwareKeyring } from '../../../../helpers/utils/hardware';
 import {
   EVENT,
@@ -105,11 +105,29 @@ export default class AccountDetailsModal extends Component {
         <Button
           type="secondary"
           className="account-details-modal__button"
+<<<<<<< HEAD
           onClick={
             blockExplorerLinkText.firstPart === 'addBlockExplorer'
               ? routeToAddBlockExplorerUrl
               : openBlockExplorer
           }
+=======
+          onClick={() => {
+            const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
+            this.context.trackEvent({
+              category: 'Navigation',
+              event: 'Clicked Block Explorer Link',
+              properties: {
+                link_type: 'Account Tracker',
+                action: 'Account Details Modal',
+                block_explorer_domain: getURLHostName(accountLink),
+              },
+            });
+            global.platform.openTab({
+              url: accountLink,
+            });
+          }}
+>>>>>>> qnekt
         >
           {this.context.t(
             blockExplorerLinkText.firstPart,

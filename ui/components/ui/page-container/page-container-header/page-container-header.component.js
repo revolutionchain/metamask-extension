@@ -39,7 +39,7 @@ export default class PageContainerHeader extends Component {
             className="page-container__header-close-text"
             onClick={() => onClose()}
           >
-            {headerCloseText}
+            {/* {headerCloseText} */}
           </Button>
         )
       );

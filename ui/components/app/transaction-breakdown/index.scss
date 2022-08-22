@@ -2,12 +2,19 @@
 
 .transaction-breakdown {
   &__title {
+<<<<<<< HEAD
     padding-bottom: 4px;
     padding-top: 8px;
     font-size: 14px;
     color: var(--color-text-default);
     font-weight: bold;
+=======
+    padding-bottom: 15px;
+>>>>>>> qnekt
     text-transform: capitalize;
+    font-size: 26px;
+    line-height: 24px;
+    color: $Black-200;
   }
 
   &__row-title {

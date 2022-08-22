@@ -135,8 +135,9 @@ export default class NewAccount extends PureComponent {
     } = this.state;
 
     return (
-      <div>
+      <form className="first-time-flow__form" onSubmit={this.handleCreate}>
         <div className="first-time-flow__create-back">
+<<<<<<< HEAD
           <a
             onClick={(e) => {
               e.preventDefault();
@@ -146,9 +147,29 @@ export default class NewAccount extends PureComponent {
           >
             {`< ${t('back')}`}
           </a>
+=======
+          <div className="first-time-flow__create-back-wrapper">
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                this.context.metricsEvent({
+                  eventOpts: {
+                    category: 'Onboarding',
+                    action: 'Create Password',
+                    name: 'Go Back from Onboarding Create',
+                  },
+                });
+                this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE);
+              }}
+              href="#"
+            >
+              {`< ${t('back')}`}
+            </a>
+            {t('createPassword')}
+          </div>
+>>>>>>> qnekt
         </div>
-        <div className="first-time-flow__header">{t('createPassword')}</div>
-        <form className="first-time-flow__form" onSubmit={this.handleCreate}>
+        <div className="first-time-flow__form-content">
           <TextField
             id="create-password"
             label={t('newPassword')}
@@ -216,11 +237,12 @@ export default class NewAccount extends PureComponent {
             className="first-time-flow__button"
             disabled={!this.isValid() || !termsChecked}
             onClick={this.handleCreate}
+            rounded={false}
           >
             {t('create')}
           </Button>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }

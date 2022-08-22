@@ -10,6 +10,9 @@ import { openAlert as displayInvalidCustomNetworkAlert } from '../../../ducks/al
 import {
   NETWORK_TYPE_RPC,
   LOCALHOST_RPC_URL,
+  QTUM_MAINNET_RPC_URL,
+  QTUM_TESTNET_RPC_URL,
+  QTUM_REGTEST_RPC_URL,
 } from '../../../../shared/constants/network';
 import { isPrefixedFormattedHexString } from '../../../../shared/modules/network.utils';
 
@@ -282,7 +285,7 @@ class NetworkDropdown extends Component {
     } = this.props;
     const rpcListDetail = this.props.frequentRpcListDetail;
     const rpcListDetailWithoutLocalHost = rpcListDetail.filter(
-      (rpc) => rpc.rpcUrl !== LOCALHOST_RPC_URL,
+      (rpc) => rpc.rpcUrl !== LOCALHOST_RPC_URL && rpc.rpcUrl !== QTUM_MAINNET_RPC_URL && rpc.rpcUrl !== QTUM_TESTNET_RPC_URL && rpc.rpcUrl !== QTUM_REGTEST_RPC_URL,
     );
     const rpcListDetailForLocalHost = rpcListDetail.filter(
       (rpc) => rpc.rpcUrl === LOCALHOST_RPC_URL,
@@ -349,6 +352,10 @@ class NetworkDropdown extends Component {
         {this.renderNetworkEntry('qtumRegtest')}
 
         <div className="network-dropdown-list">
+<<<<<<< HEAD
+=======
+
+>>>>>>> qnekt
           {this.renderCustomRpcList(
             rpcListDetailWithoutLocalHost,
             this.props.provider,

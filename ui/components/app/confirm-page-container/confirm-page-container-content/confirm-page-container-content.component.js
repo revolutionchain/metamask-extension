@@ -60,7 +60,8 @@ export default class ConfirmPageContainerContent extends Component {
     const { detailsComponent, dataComponent } = this.props;
 
     if (detailsComponent && dataComponent) {
-      return this.renderTabs();
+      // TODO: - review in other views
+      // return this.renderTabs();
     }
     return detailsComponent || dataComponent;
   }

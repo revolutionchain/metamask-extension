@@ -31,7 +31,7 @@ async function getConfig() {
     SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
     SENTRY_DSN_DEV:
       process.env.SENTRY_DSN_DEV ??
-      'https://f59f3dd640d2429d9d0e2445a87ea8e1@sentry.io/273496',
+      'https://506404ce0b0249bb94be74daa5ec754c@o1178117.ingest.sentry.io/6289046',
     SIWE_V1: process.env.SIWE_V1,
     SWAPS_USE_DEV_APIS: process.env.SWAPS_USE_DEV_APIS,
     ...ini.parse(configContents),

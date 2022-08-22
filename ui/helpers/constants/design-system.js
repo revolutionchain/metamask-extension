@@ -57,6 +57,7 @@ export const COLORS = {
   LOCALHOST: 'localhost',
   TRANSPARENT: 'transparent',
   INHERIT: 'inherit',
+  BLACK200: 'Black-200',
 };
 export const BACKGROUND_COLORS = pick(COLORS, [
   'BACKGROUND_DEFAULT',

@@ -11,16 +11,22 @@ import {
   getRpcPrefsForCurrentProvider,
   getIsCustomNetwork,
 } from '../../../selectors/selectors';
+<<<<<<< HEAD
 import {
   DEFAULT_ROUTE,
   TOKEN_DETAILS,
 } from '../../../helpers/constants/routes';
 import { getURLHostName } from '../../../helpers/utils/util';
+=======
+import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
+import { getQRCTokenTrackerLink, getURLHostName } from '../../../helpers/utils/util';
+>>>>>>> qnekt
 import { showModal } from '../../../store/actions';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT } from '../../../../shared/constants/metametrics';
 import AssetNavigation from './asset-navigation';
 import AssetOptions from './asset-options';
+import { stripHexPrefix } from 'ethereumjs-util';
 
 export default function TokenAsset({ token }) {
   const dispatch = useDispatch();
@@ -31,15 +37,29 @@ export default function TokenAsset({ token }) {
   const selectedAddress = selectedIdentity.address;
   const history = useHistory();
   const tokenTrackerLink = getTokenTrackerLink(
-    token.address,
+    stripHexPrefix(token.address).toLowerCase(),
     chainId,
     null,
     selectedAddress,
     rpcPrefs,
   );
+<<<<<<< HEAD
   const trackEvent = useContext(MetaMetricsContext);
 
   const isCustomNetwork = useSelector(getIsCustomNetwork);
+=======
+  const qrcTokenTrackerLink = getQRCTokenTrackerLink(tokenTrackerLink);
+
+  const blockExplorerLinkClickedEvent = useNewMetricEvent({
+    category: 'Navigation',
+    event: 'Clicked Block Explorer Link',
+    properties: {
+      link_type: 'Token Tracker',
+      action: 'Token Options',
+      block_explorer_domain: getURLHostName(qrcTokenTrackerLink),
+    },
+  });
+>>>>>>> qnekt
 
   return (
     <>
@@ -56,6 +76,7 @@ export default function TokenAsset({ token }) {
             }
             isCustomNetwork={isCustomNetwork}
             onClickBlockExplorer={() => {
+<<<<<<< HEAD
               trackEvent({
                 event: 'Clicked Block Explorer Link',
                 category: EVENT.CATEGORIES.NAVIGATION,
@@ -66,6 +87,10 @@ export default function TokenAsset({ token }) {
                 },
               });
               global.platform.openTab({ url: tokenTrackerLink });
+=======
+              blockExplorerLinkClickedEvent();
+              global.platform.openTab({ url: qrcTokenTrackerLink });
+>>>>>>> qnekt
             }}
             onViewAccountDetails={() => {
               dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
@@ -76,8 +101,9 @@ export default function TokenAsset({ token }) {
             tokenSymbol={token.symbol}
           />
         }
+        className="token__navigation"
       />
-      <TokenOverview className="asset__overview" token={token} />
+      <TokenOverview className="asset__overview token__overview" token={token} />
       <TransactionList tokenAddress={token.address} />
     </>
   );

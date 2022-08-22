@@ -4,6 +4,7 @@ import { getTokenTrackerLink } from '@metamask/etherscan-link';
 import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
 import {
   checkExistingAddresses,
+  getQRCTokenTrackerLink,
   getURLHostName,
 } from '../../helpers/utils/util';
 import { tokenInfoGetter } from '../../helpers/utils/token-util';
@@ -25,6 +26,7 @@ import { TOKEN_STANDARDS } from '../../../shared/constants/transaction';
 import { STATIC_MAINNET_TOKEN_LIST } from '../../../shared/constants/tokens';
 import TokenSearch from './token-search';
 import TokenList from './token-list';
+import { stripHexPrefix } from 'ethereumjs-util';
 
 const emptyAddr = '0x0000000000000000000000000000000000000000';
 
@@ -414,15 +416,21 @@ class ImportToken extends Component {
       history,
     } = this.props;
     const blockExplorerTokenLink = getTokenTrackerLink(
-      customAddress,
+      stripHexPrefix(customAddress).toLowerCase(),
       chainId,
       null,
       null,
       { blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null },
     );
+    const qrcTokenLink = getQRCTokenTrackerLink(blockExplorerTokenLink);
     const blockExplorerLabel = rpcPrefs?.blockExplorerUrl
+<<<<<<< HEAD
       ? getURLHostName(blockExplorerTokenLink)
       : t('etherscan');
+=======
+      ? getURLHostName(qrcTokenLink)
+      : this.context.t('etherscan');
+>>>>>>> qnekt
 
     return (
       <div className="import-token__custom-token-form">
@@ -556,7 +564,7 @@ class ImportToken extends Component {
                       className="import-token__link"
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={blockExplorerTokenLink}
+                      href={qrcTokenLink}
                     >
                       {blockExplorerLabel}
                     </Button>,

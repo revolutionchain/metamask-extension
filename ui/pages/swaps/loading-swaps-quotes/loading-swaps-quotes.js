@@ -144,8 +144,14 @@ export default function LoadingSwapsQuotes({
           >
             <Mascot
               animationEventEmitter={animationEventEmitter.current}
+<<<<<<< HEAD
               width="90"
               height="90"
+=======
+              width="0"
+              height="0"
+              followMouse={false}
+>>>>>>> qnekt
               lookAtTarget={midPointTarget}
             />
           </div>

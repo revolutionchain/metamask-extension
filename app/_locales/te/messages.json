@@ -12,15 +12,15 @@
     "message": "ఆధునిక"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Qnekt",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Qnekt Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Qnekt Flask",
     "description": "The name of the application (Flask)"
   },
   "back": {

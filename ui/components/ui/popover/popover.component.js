@@ -103,7 +103,42 @@ const Popover = ({
         ref={popoverRef}
       >
         {showArrow ? <div className="popover-arrow" /> : null}
+<<<<<<< HEAD
         {showHeader && <Header />}
+=======
+        {showHeader && (
+          <header className="popover-header">
+            <div
+              className={classnames(
+                'popover-header__title',
+                centerTitle ? 'center' : '',
+              )}
+            >
+              <h2 title={title}>
+                {onBack ? (
+                  <button
+                    className="fas fa-chevron-left popover-header__button"
+                    title={t('back')}
+                    onClick={onBack}
+                  />
+                ) : null}
+                {title}
+              </h2>
+              {onClose ? (
+                <button
+                  className="fas fa-times popover-header__button popover-header__close-button"
+                  title={t('close')}
+                  data-testid="popover-close"
+                  onClick={onClose}
+                />
+              ) : null}
+            </div>
+            {subtitle ? (
+              <p className="popover-header__subtitle">{subtitle}</p>
+            ) : null}
+          </header>
+        )}
+>>>>>>> qnekt
         {children ? (
           <Box
             className={classnames('popover-content', contentClassName)}

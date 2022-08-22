@@ -207,7 +207,7 @@ export default class ConfirmPageContainer extends Component {
               />
             )}
           </ConfirmPageContainerHeader>
-          <div>
+          <div className="header-bg">
             {showAddToAddressDialog && (
               <>
                 <Dialog

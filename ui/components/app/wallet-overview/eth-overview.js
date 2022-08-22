@@ -104,8 +104,19 @@ const EthOverview = ({ className }) => {
         <>
           <IconButton
             className="eth-overview__button"
+<<<<<<< HEAD
             Icon={BuyIcon}
             disabled={!isBuyableChain}
+=======
+            Icon={
+              <img
+                src="./images/icons/eth_buy.svg"
+                alt=""
+                style={{ height: 26, width: 20 }}
+              />
+            }
+            disabled={!(isMainnetChain || isTestnetChain)}
+>>>>>>> qnekt
             label={t('buy')}
             onClick={() => {
               trackEvent({
@@ -122,7 +133,13 @@ const EthOverview = ({ className }) => {
           <IconButton
             className="eth-overview__button"
             data-testid="eth-overview-send"
-            Icon={SendIcon}
+            Icon={
+              <img
+                src="./images/icons/eth_send.svg"
+                alt=""
+                style={{ height: 26, width: 20 }}
+              />
+            }
             label={t('send')}
             onClick={() => {
               trackEvent({
@@ -144,6 +161,7 @@ const EthOverview = ({ className }) => {
           <IconButton
             className="eth-overview__button"
             disabled={!isSwapsChain}
+<<<<<<< HEAD
             Icon={SwapIcon}
             onClick={() => {
               if (isSwapsChain) {
@@ -157,6 +175,18 @@ const EthOverview = ({ className }) => {
                     text: 'Swap',
                   },
                 });
+=======
+            Icon={
+              <img
+                src="./images/icons/eth_swap.svg"
+                alt=""
+                style={{ height: 28, width: 28 }}
+              />
+            }
+            onClick={() => {
+              if (isSwapsChain) {
+                enteredSwapsEvent();
+>>>>>>> qnekt
                 dispatch(setSwapsFromToken(defaultSwapsToken));
                 if (usingHardwareWallet) {
                   global.platform.openExtensionInBrowser(BUILD_QUOTE_ROUTE);
@@ -179,7 +209,7 @@ const EthOverview = ({ className }) => {
         </>
       }
       className={className}
-      icon={<Identicon diameter={32} image={primaryTokenImage} imageBorder />}
+      icon={<Identicon diameter={32} image={primaryTokenImage} />}
     />
   );
 };

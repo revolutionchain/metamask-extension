@@ -10,22 +10,34 @@
   }
 
   &__name {
-    @include H5;
-
-    width: 100%;
+    font-size: 20px;
+    line-height: 27px;
     font-weight: 500;
+<<<<<<< HEAD
     color: var(--color-text-default);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
+=======
+    color: white;
+>>>>>>> qnekt
     margin-bottom: 4px;
+    width: 100%;
+    text-align: left;
   }
 
   &__address {
+<<<<<<< HEAD
     @include H7;
 
     color: var(--color-text-alternative);
+=======
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: light;
+    color: #EBEBEB;
+>>>>>>> qnekt
     display: flex;
     align-items: center;
   }
@@ -33,24 +45,28 @@
   &__clickable {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 4px 0;
-    padding: 6px 1px;
-    border-radius: 10px;
     cursor: pointer;
     width: 100%;
     background-color: unset;
 
+<<<<<<< HEAD
     &:hover,
     &:active {
       background-color: var(--color-background-alternative);
+=======
+    &:hover {
+      
+    }
+
+    &:active {
+      
+>>>>>>> qnekt
     }
   }
 
   &__copy {
-    height: 13px;
     display: inline-block;
     margin-inline-start: 3px;
+    margin-left: 10px;
   }
 }

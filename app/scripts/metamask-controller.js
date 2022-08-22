@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { computeAddress, QtumWallet } from 'qtum-ethers-wrapper';
+import { QtumWallet } from 'qtum-ethers-wrapper';
 import pump from 'pump';
 import { ObservableStore } from '@metamask/obs-store';
 import { storeAsStream } from '@metamask/obs-store/dist/asStream';
@@ -16,7 +16,7 @@ import {
   ethErrors,
 } from 'eth-rpc-errors';
 import { Mutex } from 'await-semaphore';
-import { addHexPrefix, stripHexPrefix } from 'ethereumjs-util';
+import { addHexPrefix, stripHexPrefix, toBuffer } from 'ethereumjs-util';
 import log from 'loglevel';
 import TrezorKeyring from 'eth-trezor-keyring';
 import LedgerBridgeKeyring from '@metamask/eth-ledger-bridge-keyring';
@@ -156,6 +156,11 @@ import {
   ///: END:ONLY_INCLUDE_IN
 } from './controllers/permissions';
 import createRPCMethodTrackingMiddleware from './lib/createRPCMethodTrackingMiddleware';
+
+import BigNumber from 'bignumber.js';
+import qtum from 'qtumjs-lib';
+import wif from 'wif';
+import { typedSignatureHash, TypedDataUtils, normalize } from 'eth-sig-util';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -442,6 +447,43 @@ export default class MetamaskController extends EventEmitter {
       },
     });
 
+    const self = this;
+    const gasFeeController = this.gasFeeController;
+    this.gasFeeController._fetchEthGasPriceEstimate = this.gasFeeController.fetchEthGasPriceEstimate;
+    this.gasFeeController.fetchEthGasPriceEstimate = (ethQuery) => {
+        return new Promise((resolve, reject) => {
+            // check web3_clientVersion
+            ethQuery.sendAsync({
+                method: "web3_clientVersion",
+            }, function(err, result) {
+                if (err) {
+                    reject(err);
+                } else {
+                    const hasBug = result === "QTUM ETHTestRPC/ethereum-js";
+                    self.txController.hasBug = hasBug;
+                    gasFeeController._fetchEthGasPriceEstimate(ethQuery)
+                        .then((result) => {
+                            if (hasBug) {
+                                if (result.hasOwnProperty("gasPrice")) {
+                                    if (result.gasPrice === '40') {
+                                        result.gasPrice = '400';
+                                    }
+                                }
+                            } else if ((typeof result) == "string" && result.startsWith("MetaMask")) {
+                                throw new Error("MetaMask web3_clientVersion isn't passed through to rpc endpoint")
+                            }
+
+                            resolve(result);
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                            reject(err);
+                        });
+                }
+            });
+        });
+    };
+
     this.qrHardwareKeyring = new QRHardwareKeyring();
 
     this.appStateController = new AppStateController({
@@ -526,6 +568,7 @@ export default class MetamaskController extends EventEmitter {
       getCurrentChainId: this.networkController.getCurrentChainId.bind(
         this.networkController,
       ),
+      metamaskController: this,
     });
 
     // start and stop polling for balances based on activeControllerConnections
@@ -1755,8 +1798,8 @@ export default class MetamaskController extends EventEmitter {
       addNewKeyring: nodeify(this.addNewKeyring, this),
       createNewVaultAndRestore: nodeify(this.createNewVaultAndRestore, this),
       exportAccount: nodeify(
-        keyringController.exportAccount,
-        keyringController,
+        this.exportAccount,
+        this,
       ),
 
       // txController
@@ -2062,6 +2105,8 @@ export default class MetamaskController extends EventEmitter {
       const accounts = await this.keyringController.getAccounts();
       if (accounts.length > 0) {
         vault = await this.keyringController.fullUpdate();
+        await this.setQtumBalances(accounts[0]);
+        await this.setQtumAddressFromHexAddress(accounts[0]);
       } else {
         vault = await this.keyringController.createNewVaultAndKeychain(
           password,
@@ -2070,8 +2115,8 @@ export default class MetamaskController extends EventEmitter {
         this.preferencesController.setAddresses(addresses);
         this.selectFirstIdentity();
 
-        await this.setQtumBalances(accounts);
-        await this.setQtumAddressFromHexAddress(accounts[0]);
+        await this.setQtumBalances(addresses[0]);
+        await this.setQtumAddressFromHexAddress(addresses[0]);
       }
 
       return vault;
@@ -2218,7 +2263,7 @@ export default class MetamaskController extends EventEmitter {
       this.preferencesController.setAddresses(accounts);
       this.selectFirstIdentity();
 
-      await this.setQtumBalances(accounts);
+      await this.setQtumBalances(accounts[0]);
 
       await this.setQtumAddressFromHexAddress(accounts[0]);
 
@@ -2382,7 +2427,7 @@ export default class MetamaskController extends EventEmitter {
         this.threeBoxController.turnThreeBoxSyncingOn();
       } else if (threeBoxSyncingAllowed && this.threeBoxController.box) {
         this.threeBoxController.turnThreeBoxSyncingOn();
-      }
+      } 
     } catch (error) {
       log.error('Error while unlocking extension.', error);
     }
@@ -2409,6 +2454,16 @@ export default class MetamaskController extends EventEmitter {
   }
 
   /**
+   * Export private key.
+   *
+   * @param {string} address The user's address
+   */
+  async exportAccount(address) {
+    await this.MonekyPatchQTUMExportAccount();
+    return await this.keyringController.exportAccount(address);
+  }
+
+  /**
    * Submits a user's password to check its validity.
    *
    * @param {string} type - The type of keyring to add.
@@ -2419,7 +2474,7 @@ export default class MetamaskController extends EventEmitter {
     // let accounts;
     const { keyringController } = this;
     const vault = await keyringController.addNewKeyring(type, opts);
-    const accounts = await keyringController.getAccounts();
+    // const accounts = await keyringController.getAccounts();
     return vault;
   }
 
@@ -2696,8 +2751,6 @@ export default class MetamaskController extends EventEmitter {
       const newAccounts = await keyringController.getAccounts();
 
       await this.verifySeedPhrase();
-      await this.setQtumBalances(newAccounts);
-      await this.setQtumAddressFromHexAddress(newAccounts[0]);
 
       this.preferencesController.setAddresses(newAccounts);
       newAccounts.forEach((address) => {
@@ -2705,6 +2758,9 @@ export default class MetamaskController extends EventEmitter {
           this.preferencesController.setSelectedAddress(address);
         }
       });
+
+      await this.setQtumBalances(newAccounts);
+      await this.setQtumAddressFromHexAddress(newAccounts[0]);
 
       const { identities } = this.preferencesController.store.getState();
       return { ...keyState, identities };
@@ -2858,7 +2914,7 @@ export default class MetamaskController extends EventEmitter {
     // set new account as selected
     await this.preferencesController.setSelectedAddress(accounts[0]);
 
-    await this.setQtumBalances(accounts);
+    await this.setQtumBalances(accounts[0]);
     await this.setQtumAddressFromHexAddress(accounts[0]);
   }
 
@@ -2947,6 +3003,7 @@ export default class MetamaskController extends EventEmitter {
       const cleanMsgParams = await this.messageManager.approveMessage(
         msgParams,
       );
+      this.monkeyPatchSimpleKeyringSignMessage();
       const rawSig = await this.keyringController.signMessage(cleanMsgParams);
       this.messageManager.setMsgStatusSigned(msgId, rawSig);
       return this.getState();
@@ -3006,6 +3063,7 @@ export default class MetamaskController extends EventEmitter {
       const cleanMsgParams = await this.personalMessageManager.approveMessage(
         msgParams,
       );
+      await this.monkeyPatchSimpleKeyringSignPersonalMessage();
       const rawSig = await this.keyringController.signPersonalMessage(
         cleanMsgParams,
       );
@@ -3252,6 +3310,8 @@ export default class MetamaskController extends EventEmitter {
    */
   async signTypedMessage(msgParams) {
     log.info('MetaMaskController - eth_signTypedData');
+    console.log("MetaMaskController - eth_signTypedData");
+    this.monkeyPatchSimpleKeyringSignTypedMessage();
     const msgId = msgParams.metamaskId;
     const { version } = msgParams;
     try {
@@ -3450,7 +3510,7 @@ export default class MetamaskController extends EventEmitter {
 
     // messages between inpage and background
     this.setupProviderConnection(
-      mux.createStream('metamask-provider'),
+      mux.createStream('qnekt-provider'),
       sender,
       _subjectType,
     );
@@ -4484,6 +4544,7 @@ export default class MetamaskController extends EventEmitter {
 MetamaskController.prototype._addNewKeyring =
   MetamaskController.prototype.addNewKeyring;
 MetamaskController.prototype.addNewKeyring = function (p, o) {
+  // this.monkeyPatchQTUMAddNewKeyring();
   this.monkeyPatchQTUMAddressImport();
   return this._addNewKeyring.apply(this, arguments);
 };
@@ -4506,6 +4567,7 @@ MetamaskController.prototype.monkeyPatchQTUMAddressGeneration = function (
     switch (type) {
       case 'HD Key Tree':
         console.log('monkey patching QTUM address generation into hd key tree');
+        this.monkeyPatchHDKeyringAddNewKeyring();
         this.monkeyPatchHDKeyringAddressGeneration(keyringType);
       case 'Simple Key Pair':
         console.log(
@@ -4545,6 +4607,10 @@ MetamaskController.prototype.monkeyPatchQTUMAddressImport = function () {
   }
 };
 
+const qtumWalletOpts = {
+    filterDust: true,
+};
+
 MetamaskController.prototype.monkeyPatchHDKeyringAddressGeneration = function (
   keyringType,
 ) {
@@ -4572,10 +4638,14 @@ MetamaskController.prototype.monkeyPatchHDKeyringAddressGeneration = function (
 
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                const wallet = new QtumWallet(
-                  `0x${this.privKey.toString('hex')}`,
-                );
-                return Buffer.from(stripHexPrefix(wallet.address), 'hex');
+                if (!this._qtumWallet) {
+                    this._qtumWallet = new QtumWallet(
+                        `0x${this.privKey.toString('hex')}`,
+                        qtumWalletOpts,
+                    );
+                }
+
+                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4617,10 +4687,14 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressGeneration = functio
               }
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                const wallet = new QtumWallet(
-                  `0x${this.privKey.toString('hex')}`,
-                );
-                return Buffer.from(stripHexPrefix(wallet.address), 'hex');
+                if (!this._qtumWallet) {
+                    this._qtumWallet = new QtumWallet(
+                        `0x${this.privKey.toString('hex')}`,
+                        qtumWalletOpts,
+                    );
+                }
+
+                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4663,10 +4737,14 @@ MetamaskController.prototype.monkeyPatchHDKeyringAddressImport = function (
 
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                const wallet = new QtumWallet(
-                  `0x${this.privKey.toString('hex')}`,
-                );
-                return Buffer.from(stripHexPrefix(wallet.address), 'hex');
+                if (!this._qtumWallet) {
+                    this._qtumWallet = new QtumWallet(
+                        `0x${this.privKey.toString('hex')}`,
+                        qtumWalletOpts,
+                    );
+                }
+
+                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4708,10 +4786,14 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressImport = function (
               }
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                const wallet = new QtumWallet(
-                  `0x${this.privKey.toString('hex')}`,
-                );
-                return Buffer.from(stripHexPrefix(wallet.address), 'hex');
+                if (!this._qtumWallet) {
+                    this._qtumWallet = new QtumWallet(
+                        `0x${this.privKey.toString('hex')}`,
+                        qtumWalletOpts,
+                    );
+                }
+
+                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4750,7 +4832,7 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
 
     if (balances) {
       const spendableBalance = balances.reduce((sum, item) => {
-        if (item.safe === true && item.type === 'P2PK') {
+        if (item.safe === true && (item.type === 'P2PKH' || item.type === 'P2PK')) {
           // eslint-disable-next-line no-param-reassign
           const b = new BigNumber(item.amount);
           sum = b.add(new BigNumber(sum));
@@ -4770,18 +4852,136 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
   }
 };
 
-MetamaskController.prototype.setQtumBalances = async function (accounts) {
+MetamaskController.prototype.setQtumBalances = async function (account) {
   const { ticker } = this.networkController.getProviderConfig();
   if (ticker === 'QTUM') {
     const spendableQtumBalance = await this.monkeyPatchQTUMGetBalance(
-      accounts[0],
+      account,
     );
-    console.log('[qtum spendable balance]', spendableQtumBalance, accounts);
-    await this.preferencesController.setQtumBalances(accounts[0], {
-      spendableBalance: spendableQtumBalance,
-    });
+    await this.preferencesController.setQtumBalances(account, {spendableBalance: spendableQtumBalance});
+  }
+}
+
+MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  const networks = await this.networkController.getNetworkState();
+  try {
+    if (ticker === 'QTUM') {
+      const chainId = await this.networkController.getCurrentChainId();
+      let version;
+      switch (chainId) {
+        case '0x22B8':
+          version = 58;
+          break;
+        case '0x22B9':
+          version = 120;
+          break;
+        default:
+          version = 120;
+          break;
+      }
+      const hash = Buffer.from(_address.slice(2), 'hex');
+      return qtum.address.toBase58Check(hash, version);
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+  }
+}
+
+MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const qtumAddress = await this.getQtumAddressFromHexAddress(
+      _address,
+    );
+    await this.preferencesController.setQtumAddress(_address, qtumAddress);
+  }
+}
+
+MetamaskController.prototype.getHexAddressFromQtumAddress = async function (_address) {
+  const { ticker } = this.networkController.getProviderConfig();
+  try {
+    if (ticker === 'QTUM') {
+      if (_address === undefined) {
+        return 'Invalid Address'
+      }
+      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      return `0x${hexAddress}`
+    } else {
+      return '0x00';
+    }
+  } catch(error) {
+    console.error(error);
+    return '0x00';
+  }
+}
+
+MetamaskController.prototype.monkeyPatchHDKeyringAddNewKeyring = function () {
+  const QTUM_BIP44_PATH = `m/44'/88'/0'/0`;
+  if (this.keyringController.__proto__.hasOwnProperty('_addNewKeyring')) {
+    return;
+  }
+  this.keyringController.__proto__._addNewKeyring = this.keyringController.__proto__.addNewKeyring;
+  this.keyringController.__proto__.addNewKeyring = function(type, opts) {
+    return new Promise((resolve, reject) => {
+      if (type === 'HD Key Tree') {
+        const SLIP_BIP44_PATH = `m/44'/2301'/0'/0`;
+        opts = { ...opts, hdPath: SLIP_BIP44_PATH }
+        return this._addNewKeyring(type, opts).then(resolve).catch(reject)
+      } else {
+        return this._addNewKeyring(type, opts).then(resolve).catch(reject)
+      }
+    })
   }
 };
+
+MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
+  if (this.keyringController.__proto__.hasOwnProperty('_exportAccount')) {
+    return;
+  }
+  let version;
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const chainId = await this.networkController.getCurrentChainId();
+    switch (chainId) {
+      case '0x22B8':
+        version = 128;
+        break;
+      case '0x22B9':
+        version = 239;
+        break;
+      default:
+        version = 239;
+        break;
+    }
+  } else {
+    version = 239;
+  }
+
+  this.keyringController.__proto__._exportAccount = this.keyringController.__proto__.exportAccount;
+  this.keyringController.__proto__.exportAccount = function (_address) {
+    return new Promise((resolve, reject) => {
+      this._exportAccount(_address)
+        .then((privKey) => {
+          const wallet = new QtumWallet(
+            `0x${privKey.toString('hex')}`,
+            qtumWalletOpts,
+          );
+          const buffer = toBuffer(wallet.privateKey);
+          let wifKey = '';
+          try {
+            wifKey = wif.encode(version, buffer, true);
+          } catch (err) {
+            console.log('[monkeyPatchExportAccount privKey 2,3 err]', err);
+          }
+          return resolve(wifKey)
+        })
+        .catch(reject);
+    });
+  };
+}
 
 MetamaskController.prototype.getQtumAddressFromHexAddress = async function (
   _address
@@ -4831,16 +5031,167 @@ MetamaskController.prototype.getHexAddressFromQtumAddress = async function (
       if (_address === undefined) {
         return 'Invalid Address';
       }
-      console.log('[qtum address pass]', _address);
-      const hexAddress = qtum.address
-        .fromBase58Check(_address)
-        .hash.toString('hex');
-      console.log('[from hash to hex]', hexAddress);
-      return `0x${hexAddress}`;
+      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      return `0x${hexAddress}`
+    } else {
+      return '0x00';
     }
     return '0x00';
   } catch (error) {
     console.error(error);
     return '0x00';
   }
+}
+
+MetamaskController.prototype.monkeyPatchHDKeyringAddNewKeyring = function () {
+  const QTUM_BIP44_PATH = `m/44'/88'/0'/0`;
+  if (this.keyringController.__proto__.hasOwnProperty('_addNewKeyring')) {
+    return;
+  }
+  this.keyringController.__proto__._addNewKeyring = this.keyringController.__proto__.addNewKeyring;
+  this.keyringController.__proto__.addNewKeyring = function(type, opts) {
+    return new Promise((resolve, reject) => {
+      if (type === 'HD Key Tree') {
+        const SLIP_BIP44_PATH = `m/44'/2301'/0'/0`;
+        opts = { ...opts, hdPath: SLIP_BIP44_PATH }
+        return this._addNewKeyring(type, opts).then(resolve).catch(reject)
+      } else {
+        return this._addNewKeyring(type, opts).then(resolve).catch(reject)
+      }
+    })
+  }
 };
+
+MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
+  if (this.keyringController.__proto__.hasOwnProperty('_exportAccount')) {
+    return;
+  }
+  let version;
+  const { ticker } = this.networkController.getProviderConfig();
+  if (ticker === 'QTUM') {
+    const chainId = await this.networkController.getCurrentChainId();
+    switch (chainId) {
+      case '0x22B8':
+        version = 128;
+        break;
+      case '0x22B9':
+        version = 239;
+        break;
+      default:
+        version = 239;
+        break;
+    }
+  } else {
+    version = 239;
+  }
+
+  this.keyringController.__proto__._exportAccount = this.keyringController.__proto__.exportAccount;
+  this.keyringController.__proto__.exportAccount = function (_address) {
+    return new Promise((resolve, reject) => {
+      this._exportAccount(_address)
+        .then((privKey) => {
+          const wallet = new QtumWallet(
+            `0x${privKey.toString('hex')}`,
+            qtumWalletOpts,
+          );
+          const buffer = toBuffer(wallet.privateKey);
+          let wifKey = '';
+          try {
+            wifKey = wif.encode(version, buffer, true);
+          } catch (err) {
+            console.log('[monkeyPatchExportAccount privKey 2,3 err]', err);
+          }
+          return resolve(wifKey)
+        })
+        .catch(reject);
+    });
+  };
+}
+
+MetamaskController.prototype.monkeyPatchSimpleKeyringSignMessage = function() {
+  if (this.keyringController.__proto__.hasOwnProperty('_signMessage')) {
+    return;
+  }
+  this.keyringController.__proto__._signMessage = this.keyringController.__proto__.signMessage;
+  this.keyringController.__proto__.signMessage = function (msgParams, opts = {}) {
+    const address = normalize(msgParams.from);
+    return this.getKeyringForAccount(address)
+      .then(async (keyring) => {
+        const message = stripHexPrefix(msgParams.data)
+        const privKey = keyring.getPrivateKeyFor(address, opts);
+        const wallet = new QtumWallet(privKey, qtumWalletOpts);
+        const rawMsgSig = await wallet.signHash(Buffer.from(message, "hex"));
+        return Promise.resolve('0x' + rawMsgSig.toString('hex'));
+      });
+  }
+}
+
+MetamaskController.prototype.monkeyPatchSimpleKeyringSignPersonalMessage = function() {
+  if (this.keyringController.__proto__.hasOwnProperty('_signPersonalMessage')) {
+    return;
+  }
+  this.keyringController.__proto__._signPersonalMessage = this.keyringController.__proto__.signPersonalMessage;
+  this.keyringController.__proto__.signPersonalMessage = function (msgParams, opts = {}) {
+    const address = normalize(msgParams.from);
+    return this.getKeyringForAccount(address)
+      .then(async (keyring) => {
+        const message = stripHexPrefix(msgParams.data)
+        const privKey = keyring.getPrivateKeyFor(address, opts);
+        const wallet = new QtumWallet(privKey, qtumWalletOpts);
+        const rawMsgSig = await wallet.signMessage(Buffer.from(message, "hex"));
+        return Promise.resolve('0x' + rawMsgSig.toString('hex'));
+      });
+  }
+}
+
+MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function() {
+    if (this.keyringController.__proto__.hasOwnProperty('_signTypedData')) {
+      return;
+    }
+    this.keyringController.__proto__._signTypedData = true;
+
+    for (let i = 0; i < this.keyringController.keyrings.length; i++) {
+        const keyringType = this.keyringController.keyrings[i];
+        if (!keyringType['_signTypedData_v1'] && keyringType.__proto__.signTypedData_v1) {
+            keyringType.__proto__._signTypedData_v1 = keyringType.__proto__.signTypedData_v1;
+            keyringType.__proto__.signTypedData_v1 = async function(withAccount, typedData, opts = {}) {
+                const privKey = this.getPrivateKeyFor(withAccount, opts);
+                const hash = typedSignatureHash(typedData);
+                const wallet = new QtumWallet(
+                    `0x${privKey.toString('hex')}`,
+                    qtumWalletOpts,
+                );
+                const sig = await wallet.signHash(hash);
+                return sig.toString('hex');
+            }
+        }
+
+        if (!keyringType['_signTypedData_v3'] && keyringType.__proto__.signTypedData_v3) {
+            keyringType.__proto__._signTypedData_v3 = keyringType.__proto__.signTypedData_v3;
+            keyringType.__proto__.signTypedData_v3 = async function(withAccount, typedData, opts = {}) {
+                const privKey = this.getPrivateKeyFor(withAccount, opts);
+                const message = TypedDataUtils.sign(typedData, false);
+                const wallet = new QtumWallet(
+                    `0x${privKey.toString('hex')}`,
+                    qtumWalletOpts,
+                );
+                const sig = await wallet.signHash(message);
+                return sig.toString('hex');
+            }
+        }
+
+        if (!keyringType['_signTypedData_v4'] && keyringType.__proto__.signTypedData_v4) {
+            keyringType.__proto__._signTypedData_v4 = keyringType.__proto__.signTypedData_v4;
+            keyringType.__proto__.signTypedData_v4 = async function(withAccount, typedData, opts = {}) {
+                const privKey = this.getPrivateKeyFor(withAccount, opts);
+                const message = TypedDataUtils.sign(typedData);
+                const wallet = new QtumWallet(
+                    `0x${privKey.toString('hex')}`,
+                    qtumWalletOpts,
+                );
+                const sig = await wallet.signHash(message);
+                return sig.toString('hex');
+            }
+        }
+    }
+}

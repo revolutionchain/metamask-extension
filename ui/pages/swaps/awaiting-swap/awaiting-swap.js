@@ -65,6 +65,11 @@ import ViewOnBlockExplorer from '../view-on-block-explorer';
 import SwapFailureIcon from './swap-failure-icon';
 import SwapSuccessIcon from './swap-success-icon';
 import QuotesTimeoutIcon from './quotes-timeout-icon';
+<<<<<<< HEAD
+=======
+import ViewOnEtherScanLink from './view-on-ether-scan-link';
+import { stripHexPrefix } from 'ethereumjs-util';
+>>>>>>> qnekt
 
 export default function AwaitingSwap({
   swapComplete,
@@ -139,7 +144,7 @@ export default function AwaitingSwap({
     SWAPS_CHAINID_DEFAULT_BLOCK_EXPLORER_URL_MAP[chainId] ??
     null;
   const blockExplorerUrl = getBlockExplorerLink(
-    { hash: txHash, chainId },
+    { hash: stripHexPrefix(txHash), chainId },
     { blockExplorerUrl: baseNetworkUrl },
   );
 
@@ -269,8 +274,8 @@ export default function AwaitingSwap({
         {!(swapComplete || errorKey) && (
           <Mascot
             animationEventEmitter={animationEventEmitter.current}
-            width="90"
-            height="90"
+            width="0"
+            height="0"
           />
         )}
         <div className="awaiting-swap__status-image">{statusImage}</div>

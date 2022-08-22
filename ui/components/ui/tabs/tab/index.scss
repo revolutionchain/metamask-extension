@@ -12,7 +12,12 @@
   }
 
   &--active {
+<<<<<<< HEAD
     color: var(--color-text-default);
     border-bottom: 2px solid var(--color-primary-default);
+=======
+    color: $black;
+    border-bottom: 2px solid $ui-bg;
+>>>>>>> qnekt
   }
 }

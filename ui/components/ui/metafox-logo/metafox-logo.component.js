@@ -27,7 +27,13 @@ export default class MetaFoxLogo extends PureComponent {
           'app-header__logo-container--clickable': Boolean(onClick),
         })}
       >
+<<<<<<< HEAD
         <MetaFoxHorizontalLogo
+=======
+        <img
+          height="60"
+          src="./images/logo/qtum-logo.svg"
+>>>>>>> qnekt
           className={classnames({
             'app-header__metafox-logo--horizontal': !isOnboarding,
             'onboarding-app-header__metafox-logo--horizontal': isOnboarding,
@@ -35,7 +41,7 @@ export default class MetaFoxLogo extends PureComponent {
         />
         <img
           {...iconProps}
-          src="./images/logo/metamask-fox.svg"
+          src="./images/logo/qtum-logo.svg"
           className={classnames({
             'app-header__metafox-logo--icon': !isOnboarding,
             'onboarding-app-header__metafox-logo--icon': isOnboarding,

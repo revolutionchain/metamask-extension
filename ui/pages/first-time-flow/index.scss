@@ -8,15 +8,26 @@
   width: 100%;
   background-color: var(--color-background-default);
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__header-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__wrapper {
+<<<<<<< HEAD
     @include screen-sm-min {
       max-width: 742px;
+=======
+    @media screen and (min-width: $break-large) {
+>>>>>>> qnekt
       display: flex;
       flex-direction: column;
       width: 100%;
-      margin-top: 2%;
     }
 
     .app-header__metafox-logo {
@@ -32,23 +43,110 @@
   &__form {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   &__create-back {
-    margin-bottom: 16px;
+    @include H1;
+
+    display: flex;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+
+    background: $ui-bg;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 340px;
+    margin-bottom: -310px;
+
+    a {
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+      line-height: 24px;
+      margin-top: 15px;
+    }
+  }
+
+  &__create-back-wrapper {
+    width: 836px;
+    position: relative;
+  }
+
+<<<<<<< HEAD
+    margin-bottom: 24px;
+    color: var(--color-text-default);
+=======
+  &__form-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    max-width: 836px;
+    padding: 40px 110px;
+    box-shadow: 0px 4px 63px -9px rgba(174, 177, 213, 0.25);
+    margin-bottom: 40px;
   }
 
   &__header {
-    @include H1;
+    font-size: 30px;
+    line-height: 45px;
+    color: $Black-200;
+  }
 
-    margin-bottom: 24px;
-    color: var(--color-text-default);
+  &__subheader {
+    margin-bottom: 16px;
+>>>>>>> qnekt
   }
 
   &__input {
     max-width: 350px;
   }
 
+<<<<<<< HEAD
+=======
+  &__textarea-wrapper {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    max-width: 350px;
+    font-size: 14px;
+    line-height: 24px;
+    color: $Black-300;
+  }
+
+  &__textarea-label {
+    @include H4;
+
+    margin-bottom: 9px;
+    color: #1b344d;
+  }
+
+  &__textarea {
+    @include Paragraph;
+
+    /*rtl:ignore*/
+    direction: ltr;
+    border: 1px solid #C5C6CB;
+    background-color: #fff;
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  &__seedphrase {
+    margin-top: 9px !important;
+  }
+
+  &__breadcrumbs {
+    margin: 36px 0;
+  }
+
+>>>>>>> qnekt
   &__text-block {
     margin-bottom: 24px;
     color: var(--color-text-default);
@@ -62,22 +160,27 @@
 
   &__button {
     margin: 35px 0 14px;
-    width: 170px;
-    height: 44px;
+    width: 160px;
+    height: 60px;
   }
 
   &__checkbox-container {
     display: flex;
     align-items: center;
-    margin-top: 24px;
+    margin-top: 12px;
   }
 
   &__checkbox {
+<<<<<<< HEAD
     background: var(--color-background-default);
     border: 1px solid var(--color-border-muted);
+=======
+    background: #fff;
+    border: 1px solid #C5C6CB;
+>>>>>>> qnekt
     box-sizing: border-box;
-    height: 34px;
-    width: 34px;
+    height: 28px;
+    width: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,10 +195,16 @@
   }
 
   &__checkbox-label {
-    @include H4;
+    font-size: 14px;
+    line-height: 24px;
 
+<<<<<<< HEAD
     color: var(--color-text-alternative);
     margin-left: 18px;
+=======
+    color: #0B0F33;
+    margin-left: 14px;
+>>>>>>> qnekt
   }
 
   &__link-text {

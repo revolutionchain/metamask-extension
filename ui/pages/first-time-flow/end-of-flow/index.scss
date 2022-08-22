@@ -4,7 +4,8 @@
 
   .app-header__logo-container {
     width: 742px;
-    margin-top: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 
     @include screen-sm-max {
       width: 100%;

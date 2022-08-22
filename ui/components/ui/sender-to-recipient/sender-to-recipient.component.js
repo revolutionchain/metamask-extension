@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import copyToClipboard from 'copy-to-clipboard';
 import Tooltip from '../tooltip';
 import IconCaretRight from '../icon/icon-caret-right';
 import Identicon from '../identicon';
-import { shortenAddress } from '../../../helpers/utils/util';
+import { shortenAddress, getQtumAddressFromHex } from '../../../helpers/utils/util';
 import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch-warning.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
+<<<<<<< HEAD
 import NicknamePopovers from '../../app/modals/nickname-popovers';
+=======
+import { isQtumAddressShow, getCurrentProvider } from '../../../ducks/metamask/metamask';
+>>>>>>> qnekt
 import {
   DEFAULT_VARIANT,
   CARDS_VARIANT,
@@ -29,6 +34,8 @@ function SenderAddress({
   onSenderClick,
   senderAddress,
   warnUserOnAccountMismatch,
+  isQtumAddressShowCheck,
+  chainId,
 }) {
   const t = useI18nContext();
   const [addressCopied, setAddressCopied] = useState(false);
@@ -38,7 +45,7 @@ function SenderAddress({
       <p>{t('copyAddress')}</p>
     ) : (
       <p>
-        {shortenAddress(checksummedSenderAddress)}
+        {shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress)}
         <br />
         {t('copyAddress')}
       </p>
@@ -51,7 +58,7 @@ function SenderAddress({
       )}
       onClick={() => {
         setAddressCopied(true);
-        copyToClipboard(checksummedSenderAddress);
+        copyToClipboard(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress);
         if (onSenderClick) {
           onSenderClick();
         }
@@ -60,7 +67,7 @@ function SenderAddress({
       <div className="sender-to-recipient__sender-icon">
         <Identicon
           address={toChecksumHexAddress(senderAddress)}
-          diameter={24}
+          diameter={38}
         />
       </div>
       <Tooltip
@@ -73,7 +80,7 @@ function SenderAddress({
         <div className="sender-to-recipient__name">
           {addressOnly ? (
             <span>
-              {`${senderName || shortenAddress(checksummedSenderAddress)}`}
+              {`${senderName || shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress)}`}
             </span>
           ) : (
             senderName
@@ -94,6 +101,8 @@ SenderAddress.propTypes = {
   senderAddress: PropTypes.string,
   onSenderClick: PropTypes.func,
   warnUserOnAccountMismatch: PropTypes.bool,
+  isQtumAddressShowCheck: PropTypes.bool,
+  chainId: PropTypes.string,
 };
 
 export function RecipientWithAddress({
@@ -103,10 +112,13 @@ export function RecipientWithAddress({
   recipientNickname,
   recipientEns,
   recipientName,
+  isQtumAddressShowCheck,
+  chainId,
 }) {
   const t = useI18nContext();
   const [showNicknamePopovers, setShowNicknamePopovers] = useState(false);
 
+<<<<<<< HEAD
   return (
     <>
       <div
@@ -117,6 +129,43 @@ export function RecipientWithAddress({
             onRecipientClick();
           }
         }}
+=======
+  let tooltipHtml = <p>{t('copiedExclamation')}</p>;
+  if (!addressCopied) {
+    if (addressOnly && !recipientNickname && !recipientEns) {
+      tooltipHtml = <p>{t('copyAddress')}</p>;
+    } else {
+      tooltipHtml = (
+        <p>
+          {shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress)}
+          <br />
+          {t('copyAddress')}
+        </p>
+      );
+    }
+  }
+  return (
+    <div
+      className="sender-to-recipient__party sender-to-recipient__party--recipient sender-to-recipient__party--recipient-with-address"
+      onClick={() => {
+        setAddressCopied(true);
+        copyToClipboard(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress);
+        if (onRecipientClick) {
+          onRecipientClick();
+        }
+      }}
+    >
+      <div className="sender-to-recipient__sender-icon">
+        <Identicon address={checksummedRecipientAddress} diameter={38} />
+      </div>
+      <Tooltip
+        position="bottom"
+        html={tooltipHtml}
+        offset={-10}
+        wrapperClassName="sender-to-recipient__tooltip-wrapper"
+        containerClassName="sender-to-recipient__tooltip-container"
+        onHidden={() => setAddressCopied(false)}
+>>>>>>> qnekt
       >
         <div className="sender-to-recipient__sender-icon">
           <Identicon address={checksummedRecipientAddress} diameter={24} />
@@ -125,7 +174,7 @@ export function RecipientWithAddress({
           {addressOnly
             ? recipientNickname ||
               recipientEns ||
-              shortenAddress(checksummedRecipientAddress)
+              shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress)
             : recipientNickname ||
               recipientEns ||
               recipientName ||
@@ -149,6 +198,8 @@ RecipientWithAddress.propTypes = {
   recipientNickname: PropTypes.string,
   addressOnly: PropTypes.bool,
   onRecipientClick: PropTypes.func,
+  isQtumAddressShowCheck: PropTypes.bool,
+  chainId: PropTypes.string,
 };
 
 function Arrow({ variant }) {
@@ -160,7 +211,11 @@ function Arrow({ variant }) {
     </div>
   ) : (
     <div className="sender-to-recipient__arrow-container">
+<<<<<<< HEAD
       <IconCaretRight />
+=======
+      <img height="14" src="./images/caret-right.svg" alt="" />
+>>>>>>> qnekt
     </div>
   );
 }
@@ -169,7 +224,7 @@ Arrow.propTypes = {
   variant: PropTypes.oneOf([DEFAULT_VARIANT, CARDS_VARIANT, FLAT_VARIANT]),
 };
 
-export default function SenderToRecipient({
+function SenderToRecipient({
   senderAddress,
   addressOnly,
   senderName,
@@ -181,11 +236,12 @@ export default function SenderToRecipient({
   recipientAddress,
   variant,
   warnUserOnAccountMismatch,
+  ...props
 }) {
   const t = useI18nContext();
   const checksummedSenderAddress = toChecksumHexAddress(senderAddress);
   const checksummedRecipientAddress = toChecksumHexAddress(recipientAddress);
-
+  const { isQtumAddressShowCheck, chainId } = props;
   return (
     <div className={classnames('sender-to-recipient', variantHash[variant])}>
       <SenderAddress
@@ -195,8 +251,9 @@ export default function SenderToRecipient({
         onSenderClick={onSenderClick}
         senderAddress={senderAddress}
         warnUserOnAccountMismatch={warnUserOnAccountMismatch}
+        isQtumAddressShowCheck={isQtumAddressShowCheck}
       />
-      <Arrow variant={variant} />
+      <Arrow />
       {recipientAddress ? (
         <RecipientWithAddress
           checksummedRecipientAddress={checksummedRecipientAddress}
@@ -205,6 +262,7 @@ export default function SenderToRecipient({
           recipientNickname={recipientNickname}
           recipientEns={recipientEns}
           recipientName={recipientName}
+          isQtumAddressShowCheck={isQtumAddressShowCheck}
         />
       ) : (
         <div className="sender-to-recipient__party sender-to-recipient__party--recipient">
@@ -215,6 +273,23 @@ export default function SenderToRecipient({
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  const isQtumAddressShowCheck = isQtumAddressShow(state);
+  const {
+    metamask: {
+      provider: { chainId },
+    },
+  } = state;
+
+  return {
+    chainId,
+    isQtumAddressShowCheck,
+  };
+}
+
+export default connect(mapStateToProps)(SenderToRecipient);
+
 
 SenderToRecipient.defaultProps = {
   variant: DEFAULT_VARIANT,
@@ -233,4 +308,6 @@ SenderToRecipient.propTypes = {
   onRecipientClick: PropTypes.func,
   onSenderClick: PropTypes.func,
   warnUserOnAccountMismatch: PropTypes.bool,
+  isQtumAddressShowCheck: PropTypes.bool,
+  chainId: PropTypes.string,
 };

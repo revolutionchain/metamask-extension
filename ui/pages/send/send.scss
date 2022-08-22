@@ -5,34 +5,40 @@
     position: relative;
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
     background-color: var(--color-background-alternative);
+=======
+    background-color: $Grey-001;
+>>>>>>> qnekt
     border-bottom: none;
-    padding: 14px 0 3px 0;
+    padding: 48px 48px 0px 48px;
 
     .page-container__title {
       @include H4;
-
-      text-align: center;
+      font-size: 30px;
+      line-height: 45px;
+      color: $Black-200;
     }
 
     .page-container__header-close-text {
-      @include H5;
+      background: url(/images/close.svg) no-repeat center;
+      width: 28px;
+      height: 28px;
 
       position: absolute;
-      right: 1rem;
-      width: min-content;
-      font-size: 0.75rem;
-      white-space: nowrap;
+      right: 30px;
+      top: 30px;
+      padding: 0;
     }
   }
 
   &__dialog {
-    margin: 1rem;
+    margin: 1rem 3rem;
     cursor: pointer;
   }
 
   &__error-dialog {
-    margin: 1rem;
+    margin: 1rem 3rem;
   }
 
   &__warning-container {
@@ -46,10 +52,14 @@
 
   &__to-row {
     margin: 0;
-    padding: 0.5rem;
+    padding: 8px 48px 16px;
     flex: 0 0 auto;
+<<<<<<< HEAD
     background-color: var(--color-background-alternative);
     border-bottom: 1px solid var(--color-border-muted);
+=======
+    background-color: $Grey-001;
+>>>>>>> qnekt
   }
 
   &__select-recipient-wrapper {
@@ -175,8 +185,13 @@
     align-items: center;
     background: var(--color-background-default);
     border-radius: 0.5rem;
+<<<<<<< HEAD
     padding: 0.75rem 0.5rem;
     border: 1px solid var(--color-border-muted);
+=======
+    padding: 13px 16px 11px;
+    border: 1px solid $Grey-100;
+>>>>>>> qnekt
     transition: border-color 150ms ease-in-out;
 
     &:focus-within {
@@ -214,7 +229,11 @@
     }
 
     &--valid {
+<<<<<<< HEAD
       border-color: var(--color-primary-default);
+=======
+      border-color: $Grey-101;
+>>>>>>> qnekt
 
       .ens-input__wrapper {
         &__input {
@@ -230,18 +249,27 @@
 
   &__selected-input {
     &__title {
-      @include H6;
-
       @extend %ellipsify;
+
+      display: flex;
+      font-size: 16px;
+      line-height: 27px;
+      color: $Black-300;
 
       word-wrap: break-word;
       white-space: inherit !important;
     }
 
     &__subtitle {
+<<<<<<< HEAD
       @include H7;
 
       color: var(--color-text-default);
+=======
+      font-size: 16px;
+      line-height: 27px;
+      color: $Black-300;
+>>>>>>> qnekt
       margin-top: 0.25rem;
     }
   }

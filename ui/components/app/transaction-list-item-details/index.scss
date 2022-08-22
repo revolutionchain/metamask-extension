@@ -66,11 +66,16 @@
   }
 
   &__header {
+<<<<<<< HEAD
     font-size: 12px;
     margin: 8px 16px;
+=======
+>>>>>>> qnekt
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    margin-right: 34px;
+    background-color: $Grey-001;
   }
 
   &__body {
@@ -101,7 +106,15 @@
     }
   }
 
+  &__header-rounded-button {
+    width: 40px!important;
+    height: 40px!important;
+    border-radius: 20px!important;
+    background-color: #D4DFFF!important;
+  }
+
   &__sender-to-recipient-container {
+<<<<<<< HEAD
     margin-bottom: 8px;
 
     .sender-to-recipient {
@@ -116,19 +129,31 @@
           padding-right: 0;
         }
       }
+=======
+    background-color: $Grey-001;
+    padding-bottom: 22px;
+
+    .sender-to-recipient--default {
+      margin-top: 0px;
+      padding: 0 48px;
+>>>>>>> qnekt
     }
   }
 
   &__cards-container {
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
+=======
+    padding: 16px 48px 44px;
+>>>>>>> qnekt
   }
 
   &__transaction-breakdown {
     flex: 1;
     margin-right: 8px;
     min-width: 0;
-    margin: 0 0 8px 0;
+    margin: 0 0 11px 0;
   }
 
   &__transaction-activity-log {

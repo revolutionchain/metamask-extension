@@ -53,7 +53,7 @@ export default function ConfirmPageContainerHeader({
               className="confirm-page-container-header__back-button"
               onClick={() => onEdit()}
             >
-              {t('edit')}
+              {t('back')}
             </span>
           </div>
         )}

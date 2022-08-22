@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import copyToClipboard from 'copy-to-clipboard';
 import { getTokenTrackerLink, getAccountLink } from '@metamask/etherscan-link';
 import UrlIcon from '../../../components/ui/url-icon';
-import { addressSummary, getURLHostName } from '../../../helpers/utils/util';
+import { addressSummary, getQRCTokenTrackerLink, getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
 import { formatCurrency } from '../../../helpers/utils/confirm-tx.util';
 import { isBeta } from '../../../helpers/utils/build-types';
 import { ellipsify } from '../../send/send.utils';
@@ -28,6 +28,7 @@ import { SECOND } from '../../../../shared/constants/time';
 import { ConfirmPageContainerWarning } from '../../../components/app/confirm-page-container/confirm-page-container-content';
 import GasDetailsItem from '../../../components/app/gas-details-item';
 import LedgerInstructionField from '../../../components/app/ledger-instruction-field';
+<<<<<<< HEAD
 import {
   ERC1155,
   ERC20,
@@ -37,6 +38,9 @@ import {
   MAINNET_CHAIN_ID,
   TEST_CHAINS,
 } from '../../../../shared/constants/network';
+=======
+import { stripHexPrefix } from 'ethereumjs-util';
+>>>>>>> qnekt
 
 export default class ConfirmApproveContent extends Component {
   static contextTypes = {
@@ -681,11 +685,15 @@ export default class ConfirmApproveContent extends Component {
               className="confirm-approve-content__etherscan-link"
               onClick={() => {
                 const blockExplorerTokenLink = isContract
+<<<<<<< HEAD
                   ? getTokenTrackerLink(toAddress, chainId, null, userAddress, {
+=======
+                  ? getQRCTokenTrackerLink(getTokenTrackerLink(stripHexPrefix(toAddress).toLowerCase(), chainId, null, null, {
+>>>>>>> qnekt
                       blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null,
-                    })
+                    }))
                   : getAccountLink(
-                      toAddress,
+                      getQtumAddressFromHex(toAddress, chainId),
                       chainId,
                       {
                         blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null,

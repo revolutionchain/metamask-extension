@@ -48,8 +48,8 @@ export default function OnboardingWelcome() {
           <div className="onboarding-welcome__mascot">
             <Mascot
               animationEventEmitter={eventEmitter}
-              width="250"
-              height="250"
+              width="0"
+              height="0"
             />
           </div>
         </div>

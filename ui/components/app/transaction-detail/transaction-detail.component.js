@@ -28,7 +28,10 @@ export default function TransactionDetail({
       )}
       {!supportsEIP1559V2 && onEdit && (
         <div className="transaction-detail-edit">
-          <button onClick={onEdit}>{t('edit')}</button>
+          <button onClick={onEdit}>
+            <i className="fa fa-pencil-alt" />
+            &nbsp;{t('edit')}
+          </button>
         </div>
       )}
       <div className="transaction-detail-rows">{rows}</div>

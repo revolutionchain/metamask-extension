@@ -59,6 +59,7 @@ export default class PermissionsConnectHeader extends Component {
 
     return (
       <div className="permissions-connect-header__icon">
+<<<<<<< HEAD
         <SiteOrigin
           chip
           siteOrigin={siteOrigin}
@@ -66,6 +67,10 @@ export default class PermissionsConnectHeader extends Component {
           name={iconName}
           rightIcon={rightIcon}
         />
+=======
+        <SiteIcon icon={icon} name={iconName} size={102} />
+        {/* <div className="permissions-connect-header__text">{siteOrigin}</div> */}
+>>>>>>> qnekt
       </div>
     );
   }
