@@ -35,20 +35,16 @@ export default function PermissionsRedirect({ subjectMetadata }) {
           >
             <i className="fa fa-check fa-lg permissions-redirect__check" />
             <div className="permissions-redirect__dashed-line" />
+            {
+              // TODO: NOT NEEDED?
+              renderBrokenLine()
+            }
           </Box>
           <SiteIcon
-            icon="/images/logo/metamask-fox.svg"
+            icon="/images/logo/qtum-logo.svg"
             size={64}
             className="permissions-redirect__site-icon"
           />
-<<<<<<< HEAD
-=======
-          <div className="permissions-redirect__center-icon">
-            <span className="permissions-redirect__check" />
-            {renderBrokenLine()}
-          </div>
-          <SiteIcon icon="/images/logo/qtum-logo.svg" size={64} />
->>>>>>> qnekt
         </div>
       </div>
     </div>

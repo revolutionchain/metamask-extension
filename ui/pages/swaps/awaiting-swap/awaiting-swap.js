@@ -65,11 +65,7 @@ import ViewOnBlockExplorer from '../view-on-block-explorer';
 import SwapFailureIcon from './swap-failure-icon';
 import SwapSuccessIcon from './swap-success-icon';
 import QuotesTimeoutIcon from './quotes-timeout-icon';
-<<<<<<< HEAD
-=======
-import ViewOnEtherScanLink from './view-on-ether-scan-link';
 import { stripHexPrefix } from 'ethereumjs-util';
->>>>>>> qnekt
 
 export default function AwaitingSwap({
   swapComplete,

@@ -28,7 +28,6 @@ import { SECOND } from '../../../../shared/constants/time';
 import { ConfirmPageContainerWarning } from '../../../components/app/confirm-page-container/confirm-page-container-content';
 import GasDetailsItem from '../../../components/app/gas-details-item';
 import LedgerInstructionField from '../../../components/app/ledger-instruction-field';
-<<<<<<< HEAD
 import {
   ERC1155,
   ERC20,
@@ -38,9 +37,7 @@ import {
   MAINNET_CHAIN_ID,
   TEST_CHAINS,
 } from '../../../../shared/constants/network';
-=======
 import { stripHexPrefix } from 'ethereumjs-util';
->>>>>>> qnekt
 
 export default class ConfirmApproveContent extends Component {
   static contextTypes = {
@@ -685,11 +682,7 @@ export default class ConfirmApproveContent extends Component {
               className="confirm-approve-content__etherscan-link"
               onClick={() => {
                 const blockExplorerTokenLink = isContract
-<<<<<<< HEAD
-                  ? getTokenTrackerLink(toAddress, chainId, null, userAddress, {
-=======
                   ? getQRCTokenTrackerLink(getTokenTrackerLink(stripHexPrefix(toAddress).toLowerCase(), chainId, null, null, {
->>>>>>> qnekt
                       blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null,
                     }))
                   : getAccountLink(

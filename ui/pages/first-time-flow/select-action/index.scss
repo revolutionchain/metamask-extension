@@ -15,17 +15,6 @@
     @include H1;
 
     text-align: center;
-<<<<<<< HEAD
-    margin-top: 65px;
-    color: var(--color-text-default);
-  }
-
-  &__select-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: 40px;
-=======
     color: white;
 
     background: $ui-bg;
@@ -38,22 +27,12 @@
   &__select-buttons {
     display: flex;
     flex-direction: row;
->>>>>>> qnekt
   }
 
   &__select-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
-    justify-content: space-evenly;
-    width: 388px;
-    height: 278px;
-    border: 1px solid var(--color-border-muted);
-    box-sizing: border-box;
-    border-radius: 10px;
-    padding: 8px;
-=======
     justify-content: space-between;
     width: 511px;
     height: 399px;
@@ -62,7 +41,6 @@
     background-color: white;
     box-shadow: 0px 4px 63px -9px rgba(174, 177, 213, 0.25);
     padding: 32px 67px;
->>>>>>> qnekt
 
     .first-time-flow__button {
       width: 100%;
@@ -75,12 +53,7 @@
   }
 
   &__button-symbol {
-<<<<<<< HEAD
-    color: var(--color-icon-muted);
-    margin-top: 41px;
-=======
     color: #c4c4c4;
->>>>>>> qnekt
   }
 
   &__button-content {
@@ -91,33 +64,19 @@
   }
 
   &__button-text-big {
-<<<<<<< HEAD
-    @include H4;
-
-    color: var(--color-text-default);
-    margin-top: 12px;
-=======
     font-size: 30px;
     line-height: 45px;
     color: $Black-200;
     margin-top: 10px;
->>>>>>> qnekt
     text-align: center;
   }
 
   &__button-text-small {
-<<<<<<< HEAD
-    @include H6;
-
-    color: var(--color-text-alternative);
-    margin-top: 10px;
-=======
     font-size: 16px;
     line-height: 27px;
     font-weight: light;
     color: $Black-300;
     margin-top: 16px;
->>>>>>> qnekt
     text-align: center;
   }
 

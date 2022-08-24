@@ -11,7 +11,6 @@ import {
   CONTEXT_PROPS,
 } from '../../../../shared/constants/metametrics';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
-import Button from '../../ui/button';
 import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
@@ -33,16 +32,12 @@ import {
   ///: END:ONLY_INCLUDE_IN
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
-<<<<<<< HEAD
 import IconCheck from '../../ui/icon/icon-check';
 import IconSpeechBubbles from '../../ui/icon/icon-speech-bubbles';
 import IconConnect from '../../ui/icon/icon-connect';
 import IconCog from '../../ui/icon/icon-cog';
 import IconPlus from '../../ui/icon/icon-plus';
 import IconImport from '../../ui/icon/icon-import';
-=======
-import SearchIcon from '../../ui/search-icon';
->>>>>>> qnekt
 
 import Button from '../../ui/button';
 import SearchIcon from '../../ui/icon/search-icon';
@@ -59,20 +54,16 @@ export function AccountMenuItem(props) {
       {children}
     </div>
   ) : (
-<<<<<<< HEAD
-    <button className={itemClassName} onClick={onClick}>
-=======
     <div
       className={`${itemClassName} account-menu__item--settings`}
       onClick={onClick}
     >
->>>>>>> qnekt
       {icon ? <div className="account-menu__item__icon">{icon}</div> : null}
       {text ? <div className="account-menu__item__text">{text}</div> : null}
       {subText ? (
         <div className="account-menu__item__subtext">{subText}</div>
       ) : null}
-    </button>
+    </div>
   );
 }
 
@@ -237,13 +228,7 @@ export default class AccountMenu extends Component {
           data-testid="account-menu__account"
         >
           <div className="account-menu__check-mark">
-<<<<<<< HEAD
-            {isSelected ? (
-              <IconCheck color="var(--color-success-default)" />
-            ) : null}
-=======
             {isSelected ? <i className="fa fa-check" /> : null}
->>>>>>> qnekt
           </div>
           <Identicon address={identity.address} diameter={64} />
           <div className="account-menu__account-info">
@@ -346,20 +331,6 @@ export default class AccountMenu extends Component {
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <div className="account-menu__header">
           {t('myAccounts')}
-<<<<<<< HEAD
-          <Button
-            className="account-menu__lock-button"
-            type="secondary"
-            onClick={() => {
-              lockMetamask();
-              history.push(DEFAULT_ROUTE);
-            }}
-          >
-            {t('lock')}
-          </Button>
-        </AccountMenuItem>
-        <div className="account-menu__divider" />
-=======
           <div className="account-menu__header-right">
             <div
               className="account-menu__close-button"
@@ -378,7 +349,6 @@ export default class AccountMenu extends Component {
             </div>
           </div>
         </div>
->>>>>>> qnekt
         <div className="account-menu__accounts-container">
           {shouldShowAccountsSearch ? this.renderAccountsSearch() : null}
           <div
@@ -392,42 +362,6 @@ export default class AccountMenu extends Component {
           </div>
           {this.renderScrollButton()}
         </div>
-<<<<<<< HEAD
-        <div className="account-menu__divider" />
-        <AccountMenuItem
-          onClick={() => {
-            toggleAccountMenu();
-            trackEvent({
-              category: EVENT.CATEGORIES.NAVIGATION,
-              event: EVENT_NAMES.ACCOUNT_ADD_SELECTED,
-              properties: {
-                account_type: EVENT.ACCOUNT_TYPES.DEFAULT,
-                location: 'Main Menu',
-              },
-            });
-            history.push(NEW_ACCOUNT_ROUTE);
-          }}
-          icon={<IconPlus color="var(--color-icon-alternative)" />}
-          text={t('createAccount')}
-        />
-        <AccountMenuItem
-          onClick={() => {
-            toggleAccountMenu();
-            trackEvent({
-              category: EVENT.CATEGORIES.NAVIGATION,
-              event: EVENT_NAMES.ACCOUNT_ADD_SELECTED,
-              properties: {
-                account_type: EVENT.ACCOUNT_TYPES.IMPORTED,
-                location: 'Main Menu',
-              },
-            });
-            history.push(IMPORT_ACCOUNT_ROUTE);
-          }}
-          icon={
-            <IconImport
-              color="var(--color-icon-alternative)"
-              ariaLabel={t('importAccount')}
-=======
         <AccountMenuItem
           onClick={() => {
             global.platform.openTab({ url: supportLink });
@@ -438,16 +372,11 @@ export default class AccountMenu extends Component {
               alt={supportText}
               width={40}
               height={40}
->>>>>>> qnekt
             />
           }
           text={supportText}
         />
-<<<<<<< HEAD
-        <AccountMenuItem
-=======
         {/* <AccountMenuItem
->>>>>>> qnekt
           className="hide-component"
           onClick={() => {
             toggleAccountMenu();
@@ -472,61 +401,7 @@ export default class AccountMenu extends Component {
             />
           }
           text={t('connectHardwareWallet')}
-<<<<<<< HEAD
-        />
-        <div className="account-menu__divider" />
-        {
-          ///: BEGIN:ONLY_INCLUDE_IN(flask)
-          <>
-            <AccountMenuItem
-              onClick={() => {
-                toggleAccountMenu();
-                history.push(NOTIFICATIONS_ROUTE);
-              }}
-              icon={
-                <div className="account-menu__notifications">
-                  <i className="fa fa-bell fa-xl" />
-                  {unreadNotificationsCount > 0 && (
-                    <div className="account-menu__notifications__count">
-                      {unreadNotificationsCount}
-                    </div>
-                  )}
-                </div>
-              }
-              text={t('notifications')}
-            />
-            <div className="account-menu__divider" />
-          </>
-          ///: END:ONLY_INCLUDE_IN
-        }
-        <AccountMenuItem
-          onClick={() => {
-            trackEvent(
-              {
-                category: EVENT.CATEGORIES.NAVIGATION,
-                event: EVENT_NAMES.SUPPORT_LINK_CLICKED,
-                properties: {
-                  url: supportLink,
-                },
-              },
-              {
-                contextPropsIntoEventProperties: [CONTEXT_PROPS.PAGE_TITLE],
-              },
-            );
-            global.platform.openTab({ url: supportLink });
-          }}
-          icon={
-            <IconSpeechBubbles
-              color="var(--color-icon-alternative)"
-              ariaLabel={supportText}
-            />
-          }
-          text={supportText}
-        />
-
-=======
         /> */}
->>>>>>> qnekt
         <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
@@ -539,53 +414,47 @@ export default class AccountMenu extends Component {
               },
             });
           }}
-<<<<<<< HEAD
-          icon={
-            <IconCog
-              color="var(--color-icon-alternative)"
-              ariaLabel={t('settings')}
-            />
-          }
-=======
           icon={<img src="images/icons/settings.svg" width={35} height={35} />}
->>>>>>> qnekt
           text={t('settings')}
         />
         <div className="account-menu__bottom-buttons">
-          <Button
+          <AccountMenuItem
             onClick={() => {
               toggleAccountMenu();
-              metricsEvent({
-                eventOpts: {
-                  category: 'Navigation',
-                  action: 'Main Menu',
-                  name: 'Clicked Create Account',
+              trackEvent({
+                category: EVENT.CATEGORIES.NAVIGATION,
+                event: EVENT_NAMES.ACCOUNT_ADD_SELECTED,
+                properties: {
+                  account_type: EVENT.ACCOUNT_TYPES.DEFAULT,
+                  location: 'Main Menu',
                 },
               });
               history.push(NEW_ACCOUNT_ROUTE);
             }}
-            type="primary"
-            rounded={false}
-          >
-            + {t('createAccount')}
-          </Button>
-          <Button
+            icon={<IconPlus color="var(--color-icon-alternative)" />}
+            text={t('createAccount')}
+          />
+          <AccountMenuItem
             onClick={() => {
               toggleAccountMenu();
-              metricsEvent({
-                eventOpts: {
-                  category: 'Navigation',
-                  action: 'Main Menu',
-                  name: 'Clicked Import Account',
+              trackEvent({
+                category: EVENT.CATEGORIES.NAVIGATION,
+                event: EVENT_NAMES.ACCOUNT_ADD_SELECTED,
+                properties: {
+                  account_type: EVENT.ACCOUNT_TYPES.IMPORTED,
+                  location: 'Main Menu',
                 },
               });
               history.push(IMPORT_ACCOUNT_ROUTE);
             }}
-            rounded={false}
-            type="secondary"
-          >
-            {t('importAccount')}
-          </Button>
+            icon={
+              <IconImport
+                color="var(--color-icon-alternative)"
+                ariaLabel={t('importAccount')}
+              />
+            }
+            text={t('importAccount')}
+          />
         </div>
       </div>
     );

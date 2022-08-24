@@ -17,12 +17,6 @@
     max-height: 94vh;
     box-shadow: var(--shadow-size-lg) var(--color-shadow-default);
     border-radius: 10px;
-<<<<<<< HEAD
-    background: var(--color-background-default);
-  }
-
-  &-header {
-=======
     background: white;
 
     @media screen and (max-width: $break-small) {
@@ -35,7 +29,6 @@
     padding: 48px 48px 0;
     flex-direction: column;
     background: $Grey-001;
->>>>>>> qnekt
     position: relative;
 
     &__title {

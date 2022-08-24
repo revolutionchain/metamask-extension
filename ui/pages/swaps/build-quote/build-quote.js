@@ -76,15 +76,10 @@ import {
   hexToDecimal,
 } from '../../../helpers/utils/conversions.util';
 import { calcTokenAmount } from '../../../helpers/utils/token-util';
-<<<<<<< HEAD
-import { getURLHostName } from '../../../helpers/utils/util';
-=======
 import {
   getQRCTokenTrackerLink,
   getURLHostName,
-  isEqualCaseInsensitive,
 } from '../../../helpers/utils/util';
->>>>>>> qnekt
 import { usePrevious } from '../../../hooks/usePrevious';
 import { useTokenTracker } from '../../../hooks/useTokenTracker';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
@@ -117,11 +112,8 @@ import {
   shouldEnableDirectWrapping,
 } from '../swaps.util';
 import SwapsFooter from '../swaps-footer';
-<<<<<<< HEAD
 import { isEqualCaseInsensitive } from '../../../../shared/modules/string-utils';
-=======
 import { stripHexPrefix } from 'ethereumjs-util';
->>>>>>> qnekt
 
 const fuseSearchKeys = [
   { name: 'name', weight: 0.499 },
@@ -367,19 +359,6 @@ export default function BuildQuote({
     ? getURLHostName(qrcTokenTrackerLink)
     : t('etherscan');
 
-<<<<<<< HEAD
-=======
-  const blockExplorerLinkClickedEvent = useNewMetricEvent({
-    category: 'Swaps',
-    event: 'Clicked Block Explorer Link',
-    properties: {
-      link_type: 'Token Tracker',
-      action: 'Swaps Confirmation',
-      block_explorer_domain: getURLHostName(qrcTokenTrackerLink),
-    },
-  });
-
->>>>>>> qnekt
   const { destinationTokenAddedForSwap } = fetchParams || {};
   const { address: toAddress } = toToken || {};
   const onToSelect = useCallback(

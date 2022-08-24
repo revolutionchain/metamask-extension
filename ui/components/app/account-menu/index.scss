@@ -2,27 +2,16 @@
   position: absolute;
   z-index: 100;
   top: 58px;
-<<<<<<< HEAD
-  width: 320px;
-  border-radius: 4px;
-  background: var(--color-background-default);
-  box-shadow: var(--shadow-size-sm) var(--color-shadow-default);
-=======
   width: 612px;
   border-radius: 18px;
   background: white;
   box-shadow: rgba($black, 0.15) 0 2px 2px 2px;
->>>>>>> qnekt
   min-width: 150px;
   color: var(--color-text-default);
 
-<<<<<<< HEAD
   @include screen-sm-max {
     right: 16px;
-=======
-  @media screen and (max-width: $break-small) {
     width: 375px;
->>>>>>> qnekt
   }
 
   @include screen-sm-min {
@@ -57,61 +46,36 @@
       cursor: pointer;
 
       &:hover {
-<<<<<<< HEAD
-        background-color: var(--color-background-alternative);
-      }
-
-      &:active {
-        background-color: var(--color-background-alternative);
-=======
+        // TODO: VAR?
         background-color: rgba($white, 0.85);
       }
 
       &:active {
+        // TODO: VAR?
         background-color: rgba($white, 0.9);
->>>>>>> qnekt
       }
     }
 
     &__icon {
-<<<<<<< HEAD
-      margin-right: 8px;
-      display: flex;
-      color: var(--color-icon-alternative);
-
-      i {
-        text-align: center;
-        width: 24px;
-=======
+      margin-right: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 40px;
       width: 40px;
-      margin-right: 42px;
+      
 
       @media screen and (max-width: $break-small) {
         height: 25px;
         width: 25px;
         margin-right: 35px;
->>>>>>> qnekt
       }
     }
 
     &__text {
-<<<<<<< HEAD
-      @include H6;
-
-      @include screen-md-min {
-        @include Paragraph;
-      }
-
-      color: var(--color-text-default);
-=======
       font-size: 20px;
       line-height: 27px;
       color: $Black-300;
->>>>>>> qnekt
     }
 
     &__subtext {
@@ -182,11 +146,6 @@
     cursor: pointer;
   }
 
-<<<<<<< HEAD
-    padding: 0.25rem 0.5rem;
-    min-width: 59px;
-    width: auto;
-=======
   & &__lock-button {
     font-size: 16px;
     line-height: 24px;
@@ -207,7 +166,6 @@
   &__item-icon {
     width: 16px;
     height: 16px;
->>>>>>> qnekt
   }
 
   &__accounts-container {
@@ -215,14 +173,11 @@
     position: relative;
     flex-direction: column;
     z-index: 200;
-<<<<<<< HEAD
-=======
     margin-bottom: 17px;
 
     @media (max-height: 600px) {
       max-height: 236px;
     }
->>>>>>> qnekt
   }
 
   &__accounts {
@@ -290,13 +245,7 @@
     align-items: center;
     padding: 24px;
     flex: 0 0 auto;
-<<<<<<< HEAD
-    background: none;
-    border: 0;
-    width: 100%;
-=======
     border-bottom: 1px solid #C5C6CB;
->>>>>>> qnekt
 
     @include screen-sm-max {
       padding: 12px 14px;
@@ -327,15 +276,10 @@
   }
 
   &__check-mark {
-<<<<<<< HEAD
-    margin-right: 8px;
-    flex: 0 0 auto;
-    min-width: 24px;
-=======
-    width: 14px;
-    height: 100%;
     margin-right: 19px;
     flex: 0 0 auto;
+    width: 14px;
+    height: 100%;
     color: $Black-200;
   }
 
@@ -347,7 +291,6 @@
     background-position: center;
     background-size: contain;
     margin: 3px 0;
->>>>>>> qnekt
   }
 
   .identicon {
@@ -356,19 +299,9 @@
   }
 
   &__name {
-<<<<<<< HEAD
-    @include H6;
-
-    @include screen-md-min {
-      @include Paragraph;
-    }
-
-    color: var(--color-text-default);
-=======
     font-size: 20px;
     line-height: 27px;
     color: $Black-300;
->>>>>>> qnekt
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -377,16 +310,10 @@
   }
 
   &__balance {
-<<<<<<< HEAD
-    @include H6;
-
-    color: var(--color-text-alternative);
-=======
     margin-top: 8px;
     font-size: 16px;
     line-height: 24px;
     color: $Black-200;
->>>>>>> qnekt
   }
 
   &__action {

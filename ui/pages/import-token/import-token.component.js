@@ -424,13 +424,8 @@ class ImportToken extends Component {
     );
     const qrcTokenLink = getQRCTokenTrackerLink(blockExplorerTokenLink);
     const blockExplorerLabel = rpcPrefs?.blockExplorerUrl
-<<<<<<< HEAD
-      ? getURLHostName(blockExplorerTokenLink)
-      : t('etherscan');
-=======
       ? getURLHostName(qrcTokenLink)
-      : this.context.t('etherscan');
->>>>>>> qnekt
+      : t('etherscan');
 
     return (
       <div className="import-token__custom-token-form">

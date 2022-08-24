@@ -19,12 +19,8 @@
   }
 
   &__wrapper {
-<<<<<<< HEAD
     @include screen-sm-min {
       max-width: 742px;
-=======
-    @media screen and (min-width: $break-large) {
->>>>>>> qnekt
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -75,10 +71,6 @@
     position: relative;
   }
 
-<<<<<<< HEAD
-    margin-bottom: 24px;
-    color: var(--color-text-default);
-=======
   &__form-content {
     display: flex;
     flex-direction: column;
@@ -97,15 +89,12 @@
 
   &__subheader {
     margin-bottom: 16px;
->>>>>>> qnekt
   }
 
   &__input {
     max-width: 350px;
   }
 
-<<<<<<< HEAD
-=======
   &__textarea-wrapper {
     margin-top: 20px;
     margin-bottom: 8px;
@@ -146,7 +135,6 @@
     margin: 36px 0;
   }
 
->>>>>>> qnekt
   &__text-block {
     margin-bottom: 24px;
     color: var(--color-text-default);
@@ -171,13 +159,8 @@
   }
 
   &__checkbox {
-<<<<<<< HEAD
-    background: var(--color-background-default);
-    border: 1px solid var(--color-border-muted);
-=======
     background: #fff;
     border: 1px solid #C5C6CB;
->>>>>>> qnekt
     box-sizing: border-box;
     height: 28px;
     width: 28px;
@@ -198,13 +181,8 @@
     font-size: 14px;
     line-height: 24px;
 
-<<<<<<< HEAD
-    color: var(--color-text-alternative);
-    margin-left: 18px;
-=======
     color: #0B0F33;
     margin-left: 14px;
->>>>>>> qnekt
   }
 
   &__link-text {

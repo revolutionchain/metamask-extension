@@ -1,14 +1,9 @@
 .confirm-page-container-summary {
-<<<<<<< HEAD
-  padding: 16px 24px;
-  background-color: var(--color-background-alternative);
-=======
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 54px 38px 33px;
   background-color: #FBFBFB;
->>>>>>> qnekt
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -31,12 +26,11 @@
   &__action {
     @include H7;
 
-<<<<<<< HEAD
-    color: var(--color-text-alternative);
-    padding: 3px 8px;
-    border: 1px solid var(--color-border-default);
+    // color: var(--color-text-alternative);
+    // padding: 3px 8px;
+    // border: 1px solid var(--color-border-default);
     border-radius: 4px;
-    display: inline-flex;
+    // display: inline-flex;
     align-items: center;
 
     &__name {
@@ -62,15 +56,14 @@
       margin-inline-end: 4px;
       color: var(--color-primary-default);
     }
-=======
+
     text-transform: uppercase;
-    color: $oslo-gray;
+    color: var(--color-text-alternative);
     padding: 5px 20px;
     border: 1px solid #B6B6B6;
     display: inline-block;
     font-size: 16px;
     line-height: 24px;
->>>>>>> qnekt
   }
 
   &__nonce {

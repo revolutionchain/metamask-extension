@@ -70,7 +70,7 @@ export default class AccountDetailsModal extends Component {
     };
 
     const openBlockExplorer = () => {
-      const accountLink = getAccountLink(address, chainId, rpcPrefs);
+      const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
       this.context.trackEvent({
         category: EVENT.CATEGORIES.NAVIGATION,
         event: EVENT_NAMES.EXTERNAL_LINK_CLICKED,
@@ -105,29 +105,11 @@ export default class AccountDetailsModal extends Component {
         <Button
           type="secondary"
           className="account-details-modal__button"
-<<<<<<< HEAD
           onClick={
             blockExplorerLinkText.firstPart === 'addBlockExplorer'
               ? routeToAddBlockExplorerUrl
               : openBlockExplorer
           }
-=======
-          onClick={() => {
-            const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
-            this.context.trackEvent({
-              category: 'Navigation',
-              event: 'Clicked Block Explorer Link',
-              properties: {
-                link_type: 'Account Tracker',
-                action: 'Account Details Modal',
-                block_explorer_domain: getURLHostName(accountLink),
-              },
-            });
-            global.platform.openTab({
-              url: accountLink,
-            });
-          }}
->>>>>>> qnekt
         >
           {this.context.t(
             blockExplorerLinkText.firstPart,

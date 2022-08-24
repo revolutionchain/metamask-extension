@@ -137,26 +137,6 @@
 }
 
 .btn-primary {
-<<<<<<< HEAD
-  color: var(--color-primary-inverse);
-  border: 1px solid var(--color-primary-default);
-  background-color: var(--color-primary-default);
-
-  &:hover {
-    border-color: var(--color-primary-alternative);
-    background-color: var(--color-primary-alternative);
-  }
-
-  &:active {
-    background: var(--color-primary-alternative);
-    border-color: var(--color-primary-alternative);
-  }
-
-  &--disabled,
-  &[disabled] {
-    border-color: var(--color-primary-disabled);
-    background-color: var(--color-primary-disabled);
-=======
   color: black;
   border: 1px solid $primary-cyan;
   background-color: $primary-cyan;
@@ -169,7 +149,12 @@
   &:active {
     background: $primary-cyan-highlight;
     border-color: $primary-cyan-highlight;
->>>>>>> qnekt
+  }
+
+  &--disabled,
+  &[disabled] {
+    border-color: var(--color-primary-disabled);
+    background-color: var(--color-primary-disabled);
   }
 }
 
@@ -304,8 +289,7 @@ input[type="submit"][disabled] {
   }
 
   &.btn-primary {
-<<<<<<< HEAD
-    background-color: var(--color-primary-default);
+    background-color: $primary-cyan;
 
     &:hover {
       box-shadow: var(--shadow-size-sm) var(--color-primary-shadow);
@@ -317,13 +301,7 @@ input[type="submit"][disabled] {
     }
 
     &:active {
-      background-color: var(--color-primary-alternative);
-=======
-    background-color: $primary-cyan;
-
-    &:active {
       background-color: $primary-cyan-highlight;
->>>>>>> qnekt
     }
   }
 

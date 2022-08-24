@@ -160,11 +160,7 @@ export default class TransactionListItemDetails extends PureComponent {
     return (
       <Popover title={title} onClose={onClose}>
         <div className="transaction-list-item-details">
-<<<<<<< HEAD
-          <div className="transaction-list-item-details__operations">
-=======
           <div className="transaction-list-item-details__header">
->>>>>>> qnekt
             <div className="transaction-list-item-details__header-buttons">
               {showSpeedUp && (
                 <Button
@@ -182,8 +178,6 @@ export default class TransactionListItemDetails extends PureComponent {
                   detailsModal
                 />
               )}
-<<<<<<< HEAD
-=======
               <Tooltip
                 wrapperClassName="transaction-list-item-details__header-button"
                 containerClassName="transaction-list-item-details__header-button-tooltip-container"
@@ -203,16 +197,7 @@ export default class TransactionListItemDetails extends PureComponent {
               <Tooltip
                 wrapperClassName="transaction-list-item-details__header-button"
                 containerClassName="transaction-list-item-details__header-button-tooltip-container"
-                title={
-                  blockExplorerUrl
-                    ? t('viewOnCustomBlockExplorer', [
-                        t('blockExplorerTransactionAction'),
-                        blockExplorerUrl,
-                      ])
-                    : t('viewOnEtherscan', [
-                        t('blockExplorerTransactionAction'),
-                      ])
-                }
+                title={justCopied ? t('copiedExclamation') : null}
               >
                 <Button
                   type="raised"
@@ -223,7 +208,6 @@ export default class TransactionListItemDetails extends PureComponent {
                   <img src="./images/icons/send-alt.svg" alt="" />
                 </Button>
               </Tooltip>
->>>>>>> qnekt
               {showRetry && (
                 <Tooltip title={t('retryTransaction')}>
                   <Button

@@ -66,11 +66,8 @@
   }
 
   &__header {
-<<<<<<< HEAD
     font-size: 12px;
     margin: 8px 16px;
-=======
->>>>>>> qnekt
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -114,39 +111,19 @@
   }
 
   &__sender-to-recipient-container {
-<<<<<<< HEAD
-    margin-bottom: 8px;
-
-    .sender-to-recipient {
-      .sender-to-recipient__party {
-        border: none;
-
-        &--sender {
-          padding-left: 0;
-        }
-
-        &--recipient {
-          padding-right: 0;
-        }
-      }
-=======
     background-color: $Grey-001;
     padding-bottom: 22px;
 
     .sender-to-recipient--default {
       margin-top: 0px;
       padding: 0 48px;
->>>>>>> qnekt
     }
   }
 
   &__cards-container {
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
-=======
     padding: 16px 48px 44px;
->>>>>>> qnekt
   }
 
   &__transaction-breakdown {

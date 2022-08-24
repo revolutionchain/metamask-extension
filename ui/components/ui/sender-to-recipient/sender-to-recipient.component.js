@@ -10,11 +10,8 @@ import { shortenAddress, getQtumAddressFromHex } from '../../../helpers/utils/ut
 import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch-warning.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
-<<<<<<< HEAD
 import NicknamePopovers from '../../app/modals/nickname-popovers';
-=======
 import { isQtumAddressShow, getCurrentProvider } from '../../../ducks/metamask/metamask';
->>>>>>> qnekt
 import {
   DEFAULT_VARIANT,
   CARDS_VARIANT,
@@ -118,7 +115,6 @@ export function RecipientWithAddress({
   const t = useI18nContext();
   const [showNicknamePopovers, setShowNicknamePopovers] = useState(false);
 
-<<<<<<< HEAD
   return (
     <>
       <div
@@ -129,43 +125,6 @@ export function RecipientWithAddress({
             onRecipientClick();
           }
         }}
-=======
-  let tooltipHtml = <p>{t('copiedExclamation')}</p>;
-  if (!addressCopied) {
-    if (addressOnly && !recipientNickname && !recipientEns) {
-      tooltipHtml = <p>{t('copyAddress')}</p>;
-    } else {
-      tooltipHtml = (
-        <p>
-          {shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress)}
-          <br />
-          {t('copyAddress')}
-        </p>
-      );
-    }
-  }
-  return (
-    <div
-      className="sender-to-recipient__party sender-to-recipient__party--recipient sender-to-recipient__party--recipient-with-address"
-      onClick={() => {
-        setAddressCopied(true);
-        copyToClipboard(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress);
-        if (onRecipientClick) {
-          onRecipientClick();
-        }
-      }}
-    >
-      <div className="sender-to-recipient__sender-icon">
-        <Identicon address={checksummedRecipientAddress} diameter={38} />
-      </div>
-      <Tooltip
-        position="bottom"
-        html={tooltipHtml}
-        offset={-10}
-        wrapperClassName="sender-to-recipient__tooltip-wrapper"
-        containerClassName="sender-to-recipient__tooltip-container"
-        onHidden={() => setAddressCopied(false)}
->>>>>>> qnekt
       >
         <div className="sender-to-recipient__sender-icon">
           <Identicon address={checksummedRecipientAddress} diameter={24} />
@@ -211,11 +170,7 @@ function Arrow({ variant }) {
     </div>
   ) : (
     <div className="sender-to-recipient__arrow-container">
-<<<<<<< HEAD
       <IconCaretRight />
-=======
-      <img height="14" src="./images/caret-right.svg" alt="" />
->>>>>>> qnekt
     </div>
   );
 }

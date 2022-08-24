@@ -11,16 +11,11 @@ import {
   getRpcPrefsForCurrentProvider,
   getIsCustomNetwork,
 } from '../../../selectors/selectors';
-<<<<<<< HEAD
 import {
   DEFAULT_ROUTE,
   TOKEN_DETAILS,
 } from '../../../helpers/constants/routes';
-import { getURLHostName } from '../../../helpers/utils/util';
-=======
-import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
 import { getQRCTokenTrackerLink, getURLHostName } from '../../../helpers/utils/util';
->>>>>>> qnekt
 import { showModal } from '../../../store/actions';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT } from '../../../../shared/constants/metametrics';
@@ -43,23 +38,10 @@ export default function TokenAsset({ token }) {
     selectedAddress,
     rpcPrefs,
   );
-<<<<<<< HEAD
   const trackEvent = useContext(MetaMetricsContext);
-
-  const isCustomNetwork = useSelector(getIsCustomNetwork);
-=======
   const qrcTokenTrackerLink = getQRCTokenTrackerLink(tokenTrackerLink);
 
-  const blockExplorerLinkClickedEvent = useNewMetricEvent({
-    category: 'Navigation',
-    event: 'Clicked Block Explorer Link',
-    properties: {
-      link_type: 'Token Tracker',
-      action: 'Token Options',
-      block_explorer_domain: getURLHostName(qrcTokenTrackerLink),
-    },
-  });
->>>>>>> qnekt
+  const isCustomNetwork = useSelector(getIsCustomNetwork);
 
   return (
     <>
@@ -76,21 +58,16 @@ export default function TokenAsset({ token }) {
             }
             isCustomNetwork={isCustomNetwork}
             onClickBlockExplorer={() => {
-<<<<<<< HEAD
               trackEvent({
                 event: 'Clicked Block Explorer Link',
                 category: EVENT.CATEGORIES.NAVIGATION,
                 properties: {
                   link_type: 'Token Tracker',
                   action: 'Token Options',
-                  block_explorer_domain: getURLHostName(tokenTrackerLink),
+                  block_explorer_domain: getURLHostName(qrcTokenTrackerLink),
                 },
               });
-              global.platform.openTab({ url: tokenTrackerLink });
-=======
-              blockExplorerLinkClickedEvent();
               global.platform.openTab({ url: qrcTokenTrackerLink });
->>>>>>> qnekt
             }}
             onViewAccountDetails={() => {
               dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));

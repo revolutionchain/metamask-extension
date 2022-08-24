@@ -1,11 +1,6 @@
 .transaction-activity-log {
   &__title {
-<<<<<<< HEAD
-    border-bottom: 1px solid var(--color-border-muted);
-    padding-bottom: 4px;
-=======
     padding-bottom: 15px;
->>>>>>> qnekt
     text-transform: capitalize;
     font-size: 26px;
     line-height: 24px;
@@ -29,13 +24,8 @@
       left: 0;
       top: 0;
       height: 100%;
-<<<<<<< HEAD
-      width: 7px;
-      border-right: 1px solid var(--color-border-muted);
-=======
       width: 20px;
       border-right: 1px solid #D4E0FF;
->>>>>>> qnekt
     }
 
     &:first-child::after {
@@ -57,11 +47,7 @@
     height: 40px;
     margin-right: 21px;
     border-radius: 50%;
-<<<<<<< HEAD
-    background: var(--color-icon-default);
-=======
     background: #D5E0FF;
->>>>>>> qnekt
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
@@ -70,15 +56,9 @@
   }
 
   &__activity-text {
-<<<<<<< HEAD
-    @include H7;
-
-    color: var(--color-text-alternate);
-=======
     font-size: 20px;
     line-height: 24px;
     color: $Black-200;
->>>>>>> qnekt
     cursor: pointer;
 
     &:hover {

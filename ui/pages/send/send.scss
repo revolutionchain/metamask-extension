@@ -5,11 +5,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
-    background-color: var(--color-background-alternative);
-=======
     background-color: $Grey-001;
->>>>>>> qnekt
     border-bottom: none;
     padding: 48px 48px 0px 48px;
 
@@ -54,12 +50,7 @@
     margin: 0;
     padding: 8px 48px 16px;
     flex: 0 0 auto;
-<<<<<<< HEAD
-    background-color: var(--color-background-alternative);
-    border-bottom: 1px solid var(--color-border-muted);
-=======
     background-color: $Grey-001;
->>>>>>> qnekt
   }
 
   &__select-recipient-wrapper {
@@ -185,13 +176,8 @@
     align-items: center;
     background: var(--color-background-default);
     border-radius: 0.5rem;
-<<<<<<< HEAD
-    padding: 0.75rem 0.5rem;
-    border: 1px solid var(--color-border-muted);
-=======
     padding: 13px 16px 11px;
     border: 1px solid $Grey-100;
->>>>>>> qnekt
     transition: border-color 150ms ease-in-out;
 
     &:focus-within {
@@ -229,11 +215,7 @@
     }
 
     &--valid {
-<<<<<<< HEAD
-      border-color: var(--color-primary-default);
-=======
       border-color: $Grey-101;
->>>>>>> qnekt
 
       .ens-input__wrapper {
         &__input {
@@ -261,15 +243,9 @@
     }
 
     &__subtitle {
-<<<<<<< HEAD
-      @include H7;
-
-      color: var(--color-text-default);
-=======
       font-size: 16px;
       line-height: 27px;
       color: $Black-300;
->>>>>>> qnekt
       margin-top: 0.25rem;
     }
   }
