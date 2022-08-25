@@ -214,21 +214,7 @@ export default class SendAssetRow extends Component {
             />
           </div>
         </div>
-<<<<<<< HEAD
         {!insideDropdown && sendableAssets.length > 0 && (
-=======
-        <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon
-            diameter={36}
-            image={nativeCurrencyImage}
-            address={nativeCurrency}
-          />
-        </div>
-        <div className="send-v2__asset-dropdown__symbol">
-          {nativeCurrency}
-          </div>
-        {!insideDropdown && this.state.sendableTokens.length > 0 && (
->>>>>>> qnekt
           <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
         )}
       </div>

@@ -80,13 +80,9 @@ const AssetList = ({ onClickAsset }) => {
         }
         tokenSymbol={primaryCurrencyProperties.suffix}
         secondary={showFiat ? secondaryCurrencyDisplay : undefined}
-<<<<<<< HEAD
         tokenImage={balanceIsLoading ? null : primaryTokenImage}
+        // TODO: REMOVE?
         identiconBorder
-=======
-        // tokenImage="images/icons/eth_cell.svg"
-        tokenImage="images/icon-512.png"
->>>>>>> qnekt
       />
       <TokenList
         onTokenClick={(tokenAddress) => {

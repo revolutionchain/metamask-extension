@@ -1,15 +1,11 @@
 .permissions-connect-header {
   flex: 0;
-<<<<<<< HEAD
-  width: 100%;
-=======
   flex-direction: column;
   justify-content: center;
   width: 100%;
   background: #FBFBFB;
   border-radius: 18px 18px 0px 0px;
   padding: 39px 39px 21px;
->>>>>>> qnekt
 
   &__icon {
     width: 100%;
@@ -23,22 +19,14 @@
     font-size: 30px;
     line-height: 45px;
     text-align: center;
-<<<<<<< HEAD
-    color: var(--color-text-default);
-    font-weight: bold;
-=======
     color: $Black-200;
     margin-top: 16px;
->>>>>>> qnekt
   }
 
   &__subtitle {
     font-size: 20px;
     line-height: 24px;
     text-align: center;
-<<<<<<< HEAD
-    color: var(--color-text-default);
-=======
     color: $Black-200;
   }
 
@@ -50,7 +38,6 @@
 
     /*rtl:ignore*/
     direction: rtl;
->>>>>>> qnekt
   }
 
   &__subtitle {

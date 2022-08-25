@@ -14,14 +14,9 @@ import {
 } from '../../../selectors/selectors';
 import { showModal } from '../../../store/actions';
 import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
-<<<<<<< HEAD
-import { getURLHostName } from '../../../helpers/utils/util';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT } from '../../../../shared/constants/metametrics';
-=======
 import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
-import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
->>>>>>> qnekt
 import AssetNavigation from './asset-navigation';
 import AssetOptions from './asset-options';
 
@@ -35,8 +30,7 @@ export default function NativeAsset({ nativeCurrency }) {
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
   const address = useSelector(getSelectedAddress);
   const history = useHistory();
-<<<<<<< HEAD
-  const accountLink = getAccountLink(address, chainId, rpcPrefs);
+  const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
   const trackEvent = useContext(MetaMetricsContext);
   const isCustomNetwork = useSelector(getIsCustomNetwork);
 
@@ -46,6 +40,7 @@ export default function NativeAsset({ nativeCurrency }) {
         accountName={selectedAccountName}
         assetName={nativeCurrency}
         onBack={() => history.push(DEFAULT_ROUTE)}
+        isEthNetwork={!rpcPrefs.blockExplorerUrl}
         optionsButton={
           <AssetOptions
             isNativeAsset
@@ -71,45 +66,6 @@ export default function NativeAsset({ nativeCurrency }) {
         }
       />
       <EthOverview className="asset__overview" />
-=======
-  const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
-
-  const blockExplorerLinkClickedEvent = useNewMetricEvent({
-    category: 'Navigation',
-    event: 'Clicked Block Explorer Link',
-    properties: {
-      link_type: 'Account Tracker',
-      action: 'Asset Options',
-      block_explorer_domain: getURLHostName(accountLink),
-    },
-  });
-
-  return (
-    <>
-      <div className="asset__header">
-        <AssetNavigation
-          accountName={selectedAccountName}
-          assetName={nativeCurrency}
-          onBack={() => history.push(DEFAULT_ROUTE)}
-          isEthNetwork={!rpcPrefs.blockExplorerUrl}
-          optionsButton={
-            <AssetOptions
-              isNativeAsset
-              onClickBlockExplorer={() => {
-                blockExplorerLinkClickedEvent();
-                global.platform.openTab({
-                  url: accountLink,
-                });
-              }}
-              onViewAccountDetails={() => {
-                dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-              }}
-            />
-          }
-        />
-        <EthOverview className="asset__overview" />
-      </div>
->>>>>>> qnekt
       <TransactionList hideTokenTransactions />
     </>
   );

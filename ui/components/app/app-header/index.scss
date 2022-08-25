@@ -1,10 +1,6 @@
 .app-header {
   align-items: center;
-<<<<<<< HEAD
   background: var(--color-background-alternative);
-=======
-  background: white;
->>>>>>> qnekt
   position: relative;
   z-index: $header-z-index;
   display: flex;
@@ -44,7 +40,7 @@
     flex-flow: row nowrap;
     width: 100%;
 
-<<<<<<< HEAD
+    /*
     @include screen-sm-max {
       height: 100%;
     }
@@ -59,27 +55,12 @@
 
     @include screen-lg-min {
       width: 62vw;
-=======
-    // @media screen and (max-width: $break-small) {
-    //   height: 100%;
-    // }
-
-    // @media screen and (min-width: $break-large) {
-    //   width: 85vw;
-    // }
-
-    // @media screen and (min-width: 769px) {
-    //   width: 80vw;
-    // }
-
-    // @media screen and (min-width: 1281px) {
-    //   width: 62vw;
-    // }
+    }
+    */
     
     .app-header__logo-container {
       width: auto;
       padding: 0;
->>>>>>> qnekt
     }
   }
 

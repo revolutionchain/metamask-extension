@@ -1,12 +1,7 @@
 .reveal-seed-phrase {
-<<<<<<< HEAD
-  @include screen-sm-max {
-=======
   max-width: 836px;
   align-self: center;
-
-  @media screen and (max-width: $break-small) {
->>>>>>> qnekt
+  @include screen-sm-max {
     display: flex;
     flex-direction: column;
     width: 96%;

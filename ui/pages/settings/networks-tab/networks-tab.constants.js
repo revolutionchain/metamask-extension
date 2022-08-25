@@ -27,41 +27,25 @@ import {
 
 const defaultNetworksData = [
   {
-<<<<<<< HEAD
-    labelKey: 'qtumMainnet',
-    iconColor: '#29B6AF',
-    providerType: 'qtumMainnet',
-=======
     labelKey: QTUM_MAINNET,
     iconColor: '#29B6AF',
     providerType: QTUM_MAINNET,
->>>>>>> qnekt
     rpcUrl: QTUM_MAINNET_RPC_URL,
     chainId: QTUM_MAINNET_CHAIN_ID,
     ticker: 'QTUM',
     blockExplorerUrl: 'https://qtum.info/',
   },
   {
-<<<<<<< HEAD
-    labelKey: 'qtumTestnet',
-    iconColor: '#29B6AF',
-    providerType: 'qtumTestnet',
-=======
     labelKey: QTUM_TESTNET,
     iconColor: '#29B6AF',
     providerType: QTUM_TESTNET,
->>>>>>> qnekt
     rpcUrl: QTUM_TESTNET_RPC_URL,
     chainId: QTUM_TESTNET_CHAIN_ID,
     ticker: 'QTUM',
     blockExplorerUrl: 'https://testnet.qtum.info/',
   },
   {
-<<<<<<< HEAD
-    labelKey: 'qtumRegtest',
-=======
     labelKey: QTUM_REGTEST,
->>>>>>> qnekt
     iconColor: '#29B6AF',
     providerType: NETWORK_TYPE_RPC,
     rpcUrl: QTUM_REGTEST_RPC_URL,

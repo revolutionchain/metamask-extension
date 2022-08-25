@@ -352,10 +352,6 @@ class NetworkDropdown extends Component {
         {this.renderNetworkEntry('qtumRegtest')}
 
         <div className="network-dropdown-list">
-<<<<<<< HEAD
-=======
-
->>>>>>> qnekt
           {this.renderCustomRpcList(
             rpcListDetailWithoutLocalHost,
             this.props.provider,

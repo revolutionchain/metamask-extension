@@ -5,16 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAccountLink } from '@metamask/etherscan-link';
 
 import { showModal } from '../../../store/actions';
-<<<<<<< HEAD
 import {
   CONNECTED_ROUTE,
   NETWORKS_ROUTE,
 } from '../../../helpers/constants/routes';
-import { getURLHostName } from '../../../helpers/utils/util';
-=======
-import { CONNECTED_ROUTE } from '../../../helpers/constants/routes';
 import { getURLHostName, getQtumAddressFromHex } from '../../../helpers/utils/util';
->>>>>>> qnekt
 import { Menu, MenuItem } from '../../ui/menu';
 import {
   getBlockExplorerLinkText,

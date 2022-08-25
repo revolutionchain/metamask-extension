@@ -27,10 +27,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-<<<<<<< HEAD
         border-bottom: 1px solid var(--color-border-muted);
-=======
->>>>>>> qnekt
 
         &--sender {
           padding-right: 30px;
@@ -39,10 +36,7 @@
 
         &--recipient {
           padding-left: 30px;
-<<<<<<< HEAD
           border-left: 1px solid var(--color-border-muted);
-=======
->>>>>>> qnekt
 
           &-with-address {
             cursor: pointer;
@@ -87,15 +81,11 @@
         text-overflow: ellipsis;
         white-space: nowrap;
 
-<<<<<<< HEAD
-        [dir='rtl'] & {
-=======
         font-size: 20px;
         line-height: 27px;
         color: #272D3D;
 
         [dir="rtl"] & {
->>>>>>> qnekt
           /*rtl:ignore*/
           direction: ltr;
 

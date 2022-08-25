@@ -1,6 +1,4 @@
 .permissions-connect-choose-account {
-<<<<<<< HEAD
-=======
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,15 +23,14 @@
   }
 
 
->>>>>>> qnekt
   &__title {
     @include H4;
   }
 
-<<<<<<< HEAD
   &__cancel {
     color: var(--color-error-default);
-=======
+  }
+
   &__text,
   &__text-blue,
   &__text-grey {
@@ -59,19 +56,10 @@
     width: 100%;
     box-sizing: border-box;
     margin-top: 7px;
->>>>>>> qnekt
   }
 
   &__content {
     display: flex;
-<<<<<<< HEAD
-    overflow-y: auto;
-    flex-direction: column;
-    width: 100%;
-    padding-left: 24px;
-    padding-right: 24px;
-    margin-top: 2px;
-=======
     flex: 0;
     width: 100%;
     padding: 16px 34px 16px 24px;
@@ -159,7 +147,6 @@
 
   &__cancel {
     color: $Red-400;
->>>>>>> qnekt
   }
 
   &__footer-container {
@@ -167,7 +154,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
     justify-content: flex-end;
 
     @include screen-sm-min {
@@ -175,23 +161,14 @@
       justify-content: space-between;
       padding-bottom: 20px;
     }
-=======
     padding: 26px 48px 46px;
->>>>>>> qnekt
   }
 
   &__bottom-buttons {
     display: flex;
     width: 100%;
-<<<<<<< HEAD
-    padding-top: 16px;
-    padding-bottom: 16px;
-    margin-top: 12px;
-    border-top: 1px solid var(--color-border-muted);
-=======
     border-top: 1px solid #d6d9dc;
     margin-top: 40px;
->>>>>>> qnekt
 
     @include screen-sm-min {
       border-top: none;
@@ -202,12 +179,8 @@
     }
 
     .btn-secondary {
-<<<<<<< HEAD
-      margin-left: 16px;
-=======
       background: white;
       margin-left: 12px;
->>>>>>> qnekt
     }
 
     .btn-primary {

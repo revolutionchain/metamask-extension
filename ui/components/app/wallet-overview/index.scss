@@ -58,11 +58,7 @@
     line-height: 45px;
     font-weight: bold;
 
-<<<<<<< HEAD
-    color: var(--color-text-default);
-=======
     color: white;
->>>>>>> qnekt
     width: 100%;
     justify-content: center;
   }
@@ -83,17 +79,11 @@
   }
 
   &__secondary-balance {
-<<<<<<< HEAD
-    @include Paragraph;
-
-    color: var(--color-text-alternative);
-=======
     margin-top: 5px;
     font-size: 20px;
     line-height: 27px;
     font-weight: light;
     color: white;
->>>>>>> qnekt
   }
 
   &__button {
@@ -137,17 +127,11 @@
   }
 
   &__secondary-balance {
-<<<<<<< HEAD
-    @include H5;
-
-    color: var(--color-text-alternative);
-=======
     margin-top: 5px;
     font-size: 20px;
     line-height: 27px;
     font-weight: lighter;
     color: white;
->>>>>>> qnekt
   }
 
   &__button {

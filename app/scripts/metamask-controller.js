@@ -52,8 +52,6 @@ import {
   IframeExecutionService,
 } from '@metamask/snap-controllers';
 import { satisfies as satisfiesSemver } from 'semver';
-import BigNumber from 'bignumber.js';
-import qtum from 'qtumjs-lib';
 import { jsonRpcRequest } from '../../shared/modules/rpc.utils';
 import {
   ASSET_TYPES,

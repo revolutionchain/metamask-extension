@@ -617,47 +617,59 @@ export default class Home extends PureComponent {
 
     return (
       <>
-        <div className="home__balance-wrapper">
-          <MenuBar />
-          <EthOverview />
-        </div>
-        <div className="main-container">
-          <Route path={CONNECTED_ROUTE} component={ConnectedSites} exact />
-          <Route
-            path={CONNECTED_ACCOUNTS_ROUTE}
-            component={ConnectedAccounts}
-            exact
-          />
-          <div className="home__container">
-            {showWhatsNew ? <WhatsNewPopup onClose={hideWhatsNewPopup} /> : null}
-            {!showWhatsNew && showRecoveryPhraseReminder ? (
-              <RecoveryPhraseReminder
-                hasBackedUp={seedPhraseBackedUp}
-                onConfirm={this.onRecoveryPhraseReminderClose}
-              />
-            ) : null}
-            {isPopup && !connectedStatusPopoverHasBeenShown
-              ? this.renderPopover()
-              : null}
-            <div className="home__main-view">
-              <Tabs
-                defaultActiveTabName={defaultHomeActiveTabName}
-                onTabClick={onTabClick}
-                tabsClassName="home__tabs"
+      <div className="home__balance-wrapper">
+        <MenuBar />
+        <EthOverview />
+      </div>
+      <div className="main-container">
+        <Route path={CONNECTED_ROUTE} component={ConnectedSites} exact />
+        <Route
+          path={CONNECTED_ACCOUNTS_ROUTE}
+          component={ConnectedAccounts}
+          exact
+        />
+        <div className="home__container">
+          {showWhatsNew ? <WhatsNewPopup onClose={hideWhatsNewPopup} /> : null}
+          {!showWhatsNew && showRecoveryPhraseReminder ? (
+            <RecoveryPhraseReminder
+              hasBackedUp={seedPhraseBackedUp}
+              onConfirm={this.onRecoveryPhraseReminderClose}
+            />
+          ) : null}
+          {isPopup && !connectedStatusPopoverHasBeenShown
+            ? this.renderPopover()
+            : null}
+          <div className="home__main-view">
+            <Tabs
+              defaultActiveTabName={defaultHomeActiveTabName}
+              onTabClick={onTabClick}
+              tabsClassName="home__tabs"
+            >
+              <Tab
+                activeClassName="home__tab--active"
+                className="home__tab"
+                data-testid="home__asset-tab"
+                name={t('assets')}
               >
+                <AssetList
+                  onClickAsset={(asset) =>
+                    history.push(`${ASSET_ROUTE}/${asset}`)
+                  }
+                />
+              </Tab>
+              {process.env.COLLECTIBLES_V1 ? (
                 <Tab
                   activeClassName="home__tab--active"
                   className="home__tab"
-                  data-testid="home__asset-tab"
-                  name={t('assets')}
+                  data-testid="home__nfts-tab"
+                  name={t('nfts')}
                 >
-                  <AssetList
-                    onClickAsset={(asset) =>
-                      history.push(`${ASSET_ROUTE}/${asset}`)
-                    }
+                  <CollectiblesTab
+                    onAddNFT={() => {
+                      history.push(ADD_COLLECTIBLE_ROUTE);
+                    }}
                   />
                 </Tab>
-<<<<<<< HEAD
               ) : null}
               <Tab
                 activeClassName="home__tab--active"
@@ -709,52 +721,12 @@ export default class Home extends PureComponent {
                 <FlaskHomeFooter />
                 ///: END:ONLY_INCLUDE_IN
               }
-=======
-                {process.env.COLLECTIBLES_V1 ? (
-                  <Tab
-                    activeClassName="home__tab--active"
-                    className="home__tab"
-                    data-testid="home__nfts-tab"
-                    name={t('nfts')}
-                  >
-                    <CollectiblesTab
-                      onAddNFT={() => {
-                        history.push(ADD_COLLECTIBLE_ROUTE);
-                      }}
-                    />
-                  </Tab>
-                ) : null}
-                <Tab
-                  activeClassName="home__tab--active"
-                  className="home__tab"
-                  data-testid="home__activity-tab"
-                  name={t('activity')}
-                >
-                  <TransactionList />
-                </Tab>
-              </Tabs>
-              {/* <div className="home__support">
-                {isBeta() ? (
-                  <BetaHomeFooter />
-                ) : (
-                  t('needHelp', [
-                    <a
-                      href="https://support.metamask.io"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      key="need-help-link"
-                    >
-                      {t('needHelpLinkText')}
-                    </a>,
-                  ])
-                )}
-              </div> */}
->>>>>>> qnekt
             </div>
-
-            {this.renderNotifications()}
           </div>
+
+          {this.renderNotifications()}
         </div>
+      </div>
       </>
     );
   }

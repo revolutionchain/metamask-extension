@@ -7,11 +7,7 @@ const inputLabelBase = {
   transform: 'none',
   transition: 'none',
   position: 'initial',
-<<<<<<< HEAD
-  color: 'var(--color-text-default)',
-=======
   color: '#0B0F33',
->>>>>>> qnekt
 };
 
 const styles = {
@@ -56,17 +52,10 @@ const styles = {
   // Non-material styles
   formLabel: {
     '&$formLabelFocused': {
-<<<<<<< HEAD
-      color: 'var(--color-text-alternative)',
-    },
-    '&$materialError': {
-      color: 'var(--color-text-alternative)',
-=======
       color: '#0B0F33',
     },
     '&$materialError': {
       color: '#0B0F33',
->>>>>>> qnekt
     },
   },
   formLabelFocused: {},
@@ -75,22 +64,11 @@ const styles = {
     'label + &': {
       marginTop: '9px',
     },
-<<<<<<< HEAD
-    backgroundColor: 'var(--color-background-default)',
-    border: '1px solid var(--color-border-default)',
-    color: 'var(--color-text-default)',
+    border: '1px solid #C5C6CB',
     height: '48px',
-    borderRadius: '6px',
     padding: '0 16px',
     display: 'flex',
     alignItems: 'center',
-=======
-    'border': '1px solid #C5C6CB',
-    'height': '48px',
-    'padding': '0 16px',
-    'display': 'flex',
-    'alignItems': 'center',
->>>>>>> qnekt
     '&$inputFocused': {
       border: '1px solid var(--color-primary-default)',
     },

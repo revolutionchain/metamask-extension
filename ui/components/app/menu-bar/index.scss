@@ -1,35 +1,15 @@
 .menu-bar {
-<<<<<<< HEAD
-  display: grid;
-  grid-template-columns: 30% minmax(30%, 1fr) 30%;
-  column-gap: 5px;
-  padding: 0 8px;
-  border-bottom: 1px solid var(--color-border-muted);
-  height: 64px;
-=======
   display: flex;
   position: absolute;
   right: 5%;
   align-items: flex-start;
->>>>>>> qnekt
 
   .menu-bar__account-options {
     background: none;
     font-size: inherit;
-<<<<<<< HEAD
-    padding: 0 8px 0 5px;
-    place-self: center end;
-    color: var(--color-text-default);
-  }
-
-  .selected-account {
-    grid-column: 2 / span 1;
-    place-self: center stretch;
-=======
     padding: 7px 8px 0 5px;
     margin-left: 15px;
     color: white;
->>>>>>> qnekt
   }
 }
 

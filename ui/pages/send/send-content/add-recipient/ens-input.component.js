@@ -139,7 +139,6 @@ export default class EnsInput extends Component {
             'ens-input__wrapper--valid': hasSelectedAddress,
           })}
         >
-<<<<<<< HEAD
           <i
             className={classnames('ens-input__wrapper__status-icon', 'fa', {
               'fa-check-circle': hasSelectedAddress,
@@ -151,25 +150,14 @@ export default class EnsInput extends Component {
                 : 'var(--color-icon-muted)',
             }}
           />
-=======
->>>>>>> qnekt
           {hasSelectedAddress ? (
             <>
               <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
                 <div className="ens-input__selected-input__title">
-<<<<<<< HEAD
                   {this.convertAddress(selectedName) ||
                     (isQtumAddressShowCheck
                       ? qtumAddressBook[selectedAddress]
                       : this.convertAddress(selectedAddress))}
-=======
-                  <div
-                    className={classnames('ens-input__wrapper__status-icon', {
-                      'ens-input__wrapper__status-icon--valid': hasSelectedAddress,
-                    })}
-                  />
-                  {this.convertAddress(selectedName) || (isQtumAddressShowCheck ? qtumAddressBook[selectedAddress] : this.convertAddress(selectedAddress))}
->>>>>>> qnekt
                 </div>
                 {selectedName !== selectedAddress && (
                   <div className="ens-input__selected-input__subtitle">

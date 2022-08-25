@@ -2495,11 +2495,18 @@ TransactionController.prototype.signTransaction = async function (txId) {
     nickname,
   );
   const qtumProvider = new QtumFunctionProvider(async (method, params) => {
-    console.log('[qtum provider]', this._nextId);
-    const result = await this.provider.sendAsync({
-      method,
-      params,
+    const result = await new Promise((resolve, reject) => {
+      this.provider.sendAsync({
+        method,
+        params,
+      }, (err, response) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(response);
+      });
     });
+    console.log('[qtum provider]', method, params, " => ", result);
     if (result && result.error) {
       throw new Error(result.error.message);
     }

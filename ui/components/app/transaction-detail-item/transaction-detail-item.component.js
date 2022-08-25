@@ -16,11 +16,7 @@ import {
 export default function TransactionDetailItem({
   detailTitle = '',
   detailText = '',
-<<<<<<< HEAD
-  detailTitleColor = COLORS.TEXT_DEFAULT,
-=======
   detailTitleColor = COLORS.BLACK200,
->>>>>>> qnekt
   detailTotal = '',
   subTitle = '',
   subText = '',
@@ -34,16 +30,13 @@ export default function TransactionDetailItem({
           color={detailTitleColor}
           variant={TYPOGRAPHY.H4}
           fontWeight={boldHeadings ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL}
-<<<<<<< HEAD
           variant={TYPOGRAPHY.H6}
           boxProps={{
             display: DISPLAY.FLEX,
             flexWrap: FLEX_WRAP.NO_WRAP,
             alignItems: ALIGN_ITEMS.CENTER,
           }}
-=======
           fontSize="20px"
->>>>>>> qnekt
         >
           {detailTitle}
         </Typography>
@@ -54,34 +47,21 @@ export default function TransactionDetailItem({
           })}
         >
           {detailText && (
-<<<<<<< HEAD
-            <Typography variant={TYPOGRAPHY.H6} color={COLORS.TEXT_ALTERNATIVE}>
-=======
             <Typography
               variant={TYPOGRAPHY.H5}
               color={COLORS.UI4}
               fontSize="16px"
             >
->>>>>>> qnekt
               {detailText}
             </Typography>
           )}
           <Typography
-<<<<<<< HEAD
-            color={COLORS.TEXT_DEFAULT}
-            fontWeight={boldHeadings ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL}
-            variant={TYPOGRAPHY.H6}
-            marginTop={1}
-            marginBottom={1}
-            marginLeft={1}
-            boxProps={{ textAlign: TEXT_ALIGN.RIGHT }}
-=======
             color={COLORS.BLACK}
-            fontWeight={FONT_WEIGHT.BOLD}
+            fontWeight={boldHeadings ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL}
             variant={TYPOGRAPHY.H5}
             margin={[1, 0, 1, 1]}
             fontSize="16px"
->>>>>>> qnekt
+            boxProps={{ textAlign: TEXT_ALIGN.RIGHT }}
           >
             {detailTotal}
           </Typography>
@@ -91,23 +71,14 @@ export default function TransactionDetailItem({
         {React.isValidElement(subTitle) ? (
           <div>{subTitle}</div>
         ) : (
-<<<<<<< HEAD
-          <Typography variant={TYPOGRAPHY.H7} color={COLORS.TEXT_ALTERNATIVE}>
-=======
           <Typography variant={TYPOGRAPHY.H5} color={COLORS.BLACK200}>
->>>>>>> qnekt
             {subTitle}
           </Typography>
         )}
 
         <Typography
-<<<<<<< HEAD
-          variant={TYPOGRAPHY.H7}
-          color={COLORS.TEXT_ALTERNATIVE}
-=======
           color="#838595"
           fontSize="16px"
->>>>>>> qnekt
           align="end"
           className="transaction-detail-item__row-subText"
         >

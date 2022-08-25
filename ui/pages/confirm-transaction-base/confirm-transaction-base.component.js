@@ -516,25 +516,6 @@ export default class ConfirmTransactionBase extends Component {
             </div>
           }
           subText={
-<<<<<<< HEAD
-            <>
-              <strong key="editGasSubTextFeeLabel">
-                {t('editGasSubTextFeeLabel')}
-              </strong>
-              <div
-                key="editGasSubTextFeeValue"
-                className="confirm-page-container-content__currency-container"
-              >
-                {renderHeartBeatIfNotInTest()}
-                <UserPreferencedCurrencyDisplay
-                  key="editGasSubTextFeeAmount"
-                  type={PRIMARY}
-                  value={hexMaximumTransactionFee}
-                  hideLabel={!useNativeCurrencyAsPrimaryCurrency}
-                />
-              </div>
-            </>
-=======
             !isMultiLayerFeeNetwork && (
               <>
                 <div key="editGasSubTextFeeLabel">
@@ -554,7 +535,6 @@ export default class ConfirmTransactionBase extends Component {
                 </div>
               </>
             )
->>>>>>> qnekt
           }
           subTitle={
             <>
@@ -648,7 +628,6 @@ export default class ConfirmTransactionBase extends Component {
                 detailTotal={renderTotalDetailTotal()}
                 subTitle={t('transactionDetailGasTotalSubtitle')}
                 subText={
-<<<<<<< HEAD
                   <div className="confirm-page-container-content__total-amount">
                     <LoadingHeartBeat
                       estimateUsed={this.props.txData?.userFeeLevel}
@@ -656,12 +635,6 @@ export default class ConfirmTransactionBase extends Component {
                     <strong key="editGasSubTextAmountLabel">
                       {t('editGasSubTextAmountLabel')}
                     </strong>{' '}
-=======
-                  <>
-                    <div key="editGasSubTextAmountLabel">
-                      {t('editGasSubTextAmountLabel')}
-                    </div>
->>>>>>> qnekt
                     {renderTotalMaxAmount()}
                   </div>
                 }
