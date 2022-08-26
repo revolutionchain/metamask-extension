@@ -83,7 +83,7 @@
 
         font-size: 20px;
         line-height: 27px;
-        color: #272D3D;
+        color: var(--color-text-muted);
 
         [dir="rtl"] & {
           /*rtl:ignore*/

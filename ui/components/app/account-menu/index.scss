@@ -246,6 +246,7 @@
     padding: 24px;
     flex: 0 0 auto;
     border-bottom: 1px solid #C5C6CB;
+    width: 100%;
 
     @include screen-sm-max {
       padding: 12px 14px;
@@ -354,16 +355,36 @@
     padding: 0 48px 48px;
     margin-top: 25px;
 
-    .btn-secondary {
-      height: 60px;
-      margin-left: 15px;
-      z-index: 201;
-    }
-
-    .btn-primary {
+    .button {
       height: 60px;
       margin-right: 15px;
       z-index: 201;
+
+      padding: 0px;
+
+      .account-menu__item__icon {
+        margin-right: 0px;
+        height: fit-content;
+      }
+
+      .account-menu__item__text {
+        font-size: 16px;
+      }
+    }
+
+    .btn-secondary {
+      color: #037dd6;
+      border: 1px solid #b0d7f2;
+      background-color: #fff;
+
+      .account-menu__item__text {
+        color: #037dd6;
+      }
+    }
+
+    .btn-primary {
+      border: 1px solid #3EE1BF;
+      background-color: #3EE1BF;
     }
   }
 }

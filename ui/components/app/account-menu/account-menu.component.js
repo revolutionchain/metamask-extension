@@ -433,6 +433,7 @@ export default class AccountMenu extends Component {
             }}
             icon={<IconPlus color="var(--color-icon-alternative)" />}
             text={t('createAccount')}
+            className="button btn-primary"
           />
           <AccountMenuItem
             onClick={() => {
@@ -454,6 +455,7 @@ export default class AccountMenu extends Component {
               />
             }
             text={t('importAccount')}
+            className="button btn-secondary"
           />
         </div>
       </div>

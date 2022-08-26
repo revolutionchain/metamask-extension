@@ -44,7 +44,7 @@ const notToggleElementClassnames = [
 const DROP_DOWN_MENU_ITEM_STYLE = {
   fontSize: '16px',
   lineHeight: '20px',
-  padding: '16px',
+  padding: '12px 0px',
 };
 
 function mapStateToProps(state) {
@@ -172,7 +172,7 @@ class NetworkDropdown extends Component {
           style={{
             fontSize: '16px',
             lineHeight: '20px',
-            padding: '16px',
+            padding: '16px 0px',
           }}
         >
           {isCurrentRpcTarget ? (
@@ -189,9 +189,11 @@ class NetworkDropdown extends Component {
             className="network-name-item"
             data-testid={`${nickname}-network-item`}
             style={{
+              /*
               color: isCurrentRpcTarget
                 ? 'var(--color-text-default)'
                 : 'var(--color-text-alternative)',
+                */
             }}
           >
             {nickname || rpcUrl}
@@ -263,10 +265,12 @@ class NetworkDropdown extends Component {
           className="network-name-item"
           data-testid={`${network}-network-item`}
           style={{
+            /*
             color:
               providerType === network
                 ? 'var(--color-text-default)'
                 : 'var(--color-text-alternative)',
+                */
           }}
         >
           {this.context.t(network)}
@@ -341,6 +345,9 @@ class NetworkDropdown extends Component {
               <Button
                 onClick={hideTestNetMessage}
                 className="network-dropdown-content--dismiss"
+                style={{
+                  color: "inherit"
+                }}
               >
                 {t('dismiss')}
               </Button>

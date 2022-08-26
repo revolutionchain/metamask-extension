@@ -51,7 +51,7 @@ export const COLORS = {
   RINKEBY: 'rinkeby',
   GOERLI: 'goerli',
   QTUMMAINNET: 'qtumMainnet',
-  QTUMRTESTNET: 'qtumTestnet',
+  QTUMTESTNET: 'qtumTestnet',
   QTUMREGTEST: 'qtumRegtest',
   TRANSPARENT: 'transparent',
   LOCALHOST: 'localhost',

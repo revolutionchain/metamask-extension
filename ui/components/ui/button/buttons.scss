@@ -235,7 +235,9 @@ input[type="submit"][disabled] {
   }
 
   &.btn-default {
-    border: 1px solid var(--color-icon-default);
+    // border: 1px solid var(--color-icon-default);
+    border: 1px solid #9b9b9b;
+    border-radius: 10px;
 
     &:hover {
       box-shadow: var(--shadow-size-sm) var(--color-shadow-default);

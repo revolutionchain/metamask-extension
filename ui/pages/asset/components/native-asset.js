@@ -36,6 +36,7 @@ export default function NativeAsset({ nativeCurrency }) {
 
   return (
     <>
+      <div className="asset__header">
       <AssetNavigation
         accountName={selectedAccountName}
         assetName={nativeCurrency}
@@ -66,6 +67,7 @@ export default function NativeAsset({ nativeCurrency }) {
         }
       />
       <EthOverview className="asset__overview" />
+      </div>
       <TransactionList hideTokenTransactions />
     </>
   );

@@ -56,7 +56,7 @@
 }
 
 .network-droppo {
-  background-color: var(--color-background-default);
+  // background-color: var(--color-background-default);
   border-radius: 4px;
   right: 2px;
 
@@ -82,6 +82,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  color: rgb(155, 155, 155);
 }
 
 .network-check__transparent {
@@ -121,6 +122,10 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  .network-dropdown-content {
+    color: #9b9b9b;
+  }
 }
 
 .network-dropdown-list {
@@ -133,7 +138,7 @@
   width: 100%;
   height: 1px;
   margin: 10px 0;
-  background-color: var(--color-border-default);
+  background-color: #5d5d5d;
 }
 
 .network-dropdown-title {
@@ -141,7 +146,7 @@
 
   height: 25px;
   width: 120px;
-  color: var(--color-text-default);
+  color: var(--color-text-alternative);
   text-align: center;
 }
 
@@ -153,7 +158,7 @@
   color: var(--color-text-default);
 
   &--link {
-    color: var(--color-primary-default);
+    color: white;
     cursor: pointer;
     text-decoration: underline;
 
@@ -166,8 +171,16 @@
     position: absolute;
     top: 63px;
     right: 10px;
-    padding: 2px 8px;
+    padding: 1px 8px;
     width: auto;
+    height: 18.25px;
+    font-size: 13.3333px;
+
+    border: 1px solid #9b9b9b;
+    border-radius: 10px;
+
+    position: absolute;
+    background: inherit;
   }
 }
 
