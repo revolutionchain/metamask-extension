@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const concurrently = require('concurrently');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
@@ -36,7 +37,7 @@ async function start() {
   await concurrently(
     (Array.isArray(buildTypes) ? buildTypes : [buildTypes]).map(
       (buildType) => ({
-        command: `yarn build scripts:prod --policy-only --build-type=${buildType}`,
+        command: `yarn build scripts:dist --policy-only --build-type=${buildType}`,
         env: {
           WRITE_AUTO_POLICY: 1,
         },
