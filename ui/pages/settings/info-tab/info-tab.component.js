@@ -178,7 +178,7 @@ export default class InfoTab extends PureComponent {
         </div>
         <div className="info-tab__logo-wrapper">
           <img
-            src="./images/qtum-logo.svg"
+            src="./images/logo/qtum-logo.svg"
             className="info-tab__logo"
             alt="Qnekt Logo"
           />

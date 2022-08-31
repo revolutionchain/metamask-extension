@@ -207,4 +207,15 @@
 
 .network__add-network-button {
   padding: 0 16px;
+  color: white;
+  
+  .btn--rounded.btn-secondary {
+    color: white;
+    width: 100%;
+    left: 40px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid #6a737d;
+    border-radius: 20px;
+    text-transform: none;
+  }
 }
