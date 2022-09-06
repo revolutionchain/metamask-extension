@@ -22,10 +22,10 @@ const inpageBundle = inpageContent + inpageSuffix;
 // contexts
 const CONTENT_SCRIPT = 'qnekt-contentscript';
 const INPAGE = 'qnekt-inpage';
-const PHISHING_WARNING_PAGE = 'metamask-phishing-warning-page';
+const PHISHING_WARNING_PAGE = 'qnekt-phishing-warning-page';
 
 // stream channels
-const PHISHING_SAFELIST = 'metamask-phishing-safelist';
+const PHISHING_SAFELIST = 'qnekt-phishing-safelist';
 const PROVIDER = 'qnekt-provider';
 
 // For more information about these legacy streams, see here:

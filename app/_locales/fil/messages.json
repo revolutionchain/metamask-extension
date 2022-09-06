@@ -354,7 +354,7 @@
     "message": "Ang limitasyon sa gas ay ang maximum na dami ng mga unit ng gas na handa kang gastusin."
   },
   "gasLimitTooLow": {
-    "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa 21000"
+    "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa 22000"
   },
   "gasPrice": {
     "message": "Presyo ng Gas (GWEI)"

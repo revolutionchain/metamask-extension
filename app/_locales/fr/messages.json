@@ -1321,7 +1321,7 @@
     "message": "La limite recommandée de gas est de $1. Si la limite de gas est inférieure à cette valeur, l’opération peut échouer."
   },
   "gasLimitTooLow": {
-    "message": "La limite de carburant doit être d’au moins 21000"
+    "message": "La limite de carburant doit être d’au moins 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "La limite de carburant doit être d’au moins $1",

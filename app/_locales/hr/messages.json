@@ -381,7 +381,7 @@
     "message": "Ograničenje za gorivo predstavlja najveći broj jedinica goriva koje ste spremi potrošiti."
   },
   "gasLimitTooLow": {
-    "message": "Ograničenje za gorivo mora biti najmanje 21000"
+    "message": "Ograničenje za gorivo mora biti najmanje 22000"
   },
   "gasPrice": {
     "message": "Cijena goriva (GWEI)"

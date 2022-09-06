@@ -1122,7 +1122,7 @@
     "message": "O limite de gás é o valor máximo das unidades de gás que você está disposto a gastar."
   },
   "gasLimitTooLow": {
-    "message": "O limite de gás deve ser de pelo menos 21000"
+    "message": "O limite de gás deve ser de pelo menos 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "O limite de gás deve ser de pelo menos $1",

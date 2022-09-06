@@ -61,6 +61,7 @@ module.exports = {
  * any errors, or if the linted file is ignored.
  */
 async function lintTransformedFile(content, filePath) {
+  return;
   initializeESLint();
 
   const lintResult = (

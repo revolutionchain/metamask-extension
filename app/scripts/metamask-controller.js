@@ -169,7 +169,7 @@ export const METAMASK_CONTROLLER_EVENTS = {
 };
 
 // stream channels
-const PHISHING_SAFELIST = 'metamask-phishing-safelist';
+const PHISHING_SAFELIST = 'qnekt-phishing-safelist';
 
 export default class MetamaskController extends EventEmitter {
   /**
@@ -4369,6 +4369,7 @@ export default class MetamaskController extends EventEmitter {
     const newValue =
       this.preferencesController.setLedgerTransportPreference(transportType);
 
+    /*
     const keyring = await this.getKeyringForDevice(DEVICE_NAMES.LEDGER);
     if (keyring?.updateTransportMethod) {
       return keyring.updateTransportMethod(newValue).catch((e) => {
@@ -4378,6 +4379,7 @@ export default class MetamaskController extends EventEmitter {
         throw e;
       });
     }
+    */
 
     return undefined;
   }

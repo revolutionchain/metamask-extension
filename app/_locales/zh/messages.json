@@ -1324,7 +1324,7 @@
     "message": "建议的燃料上限是$1。如果燃料上限低于此值，则可能会失败。"
   },
   "gasLimitTooLow": {
-    "message": "燃料上限至少为21000"
+    "message": "燃料上限至少为22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "燃料上限至少为 $1",

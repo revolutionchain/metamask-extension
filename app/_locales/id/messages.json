@@ -1321,7 +1321,7 @@
     "message": "Batas gas yang disarankan adalah $1. Jika batas gas kurang dari itu, maka berpotensi gagal."
   },
   "gasLimitTooLow": {
-    "message": "Batas gas minimum adalah 21000"
+    "message": "Batas gas minimum adalah 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "Batas gas minimum adalah $1",

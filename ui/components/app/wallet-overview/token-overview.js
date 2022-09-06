@@ -114,54 +114,6 @@ const TokenOverview = ({ className, token }) => {
             data-testid="eth-overview-send"
             disabled={token.isERC721}
           />
-          <IconButton
-            className="token-overview__button"
-            disabled={!isSwapsChain}
-            Icon={
-              <img
-                src="./images/icons/eth_swap.svg"
-                alt=""
-                style={{ height: 28, width: 28 }}
-              />
-            }
-            onClick={() => {
-              if (isSwapsChain) {
-                trackEvent({
-                  event: EVENT_NAMES.NAV_SWAP_BUTTON_CLICKED,
-                  category: EVENT.CATEGORIES.SWAPS,
-                  properties: {
-                    token_symbol: token.symbol,
-                    location: EVENT.SOURCE.SWAPS.TOKEN_VIEW,
-                    text: 'Swap',
-                  },
-                });
-                dispatch(
-                  setSwapsFromToken({
-                    ...token,
-                    address: token.address.toLowerCase(),
-                    iconUrl: token.image,
-                    balance,
-                    string: balanceToRender,
-                  }),
-                );
-                if (usingHardwareWallet) {
-                  global.platform.openExtensionInBrowser(BUILD_QUOTE_ROUTE);
-                } else {
-                  history.push(BUILD_QUOTE_ROUTE);
-                }
-              }
-            }}
-            label={t('swap')}
-            tooltipRender={(contents) => (
-              <Tooltip
-                title={t('currentlyUnavailable')}
-                position="bottom"
-                disabled={isSwapsChain}
-              >
-                {contents}
-              </Tooltip>
-            )}
-          />
         </>
       }
       className={className}

@@ -1321,7 +1321,7 @@
     "message": "Ang inirerekomendang gas limit ay $1. Kung mas mababa dito ang gas limit, maaaring mabigo."
   },
   "gasLimitTooLow": {
-    "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa 21000"
+    "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa $1",

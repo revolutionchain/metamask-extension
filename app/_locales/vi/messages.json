@@ -1321,7 +1321,7 @@
     "message": "Giới hạn gas được đề xuất là $1. Có thể thất bại nếu giới hạn gas thấp hơn."
   },
   "gasLimitTooLow": {
-    "message": "Giới hạn gas ít nhất phải là 21000"
+    "message": "Giới hạn gas ít nhất phải là 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "Giới hạn gas ít nhất phải là $1",

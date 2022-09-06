@@ -378,7 +378,7 @@
     "message": "Had gas ialah jumlah maksimum unit gas yang anda sedia belanjakan."
   },
   "gasLimitTooLow": {
-    "message": "Had gas mestilah sekurang-kurangnya 21000"
+    "message": "Had gas mestilah sekurang-kurangnya 22000"
   },
   "gasPrice": {
     "message": "Harga Gas (GWEI)"

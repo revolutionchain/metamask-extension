@@ -385,7 +385,7 @@
     "message": "Limit gazu to maksymalna ilość jednostek gazu, którą jesteś skłonny użyć w transakcji."
   },
   "gasLimitTooLow": {
-    "message": "Limit gazu musi wynosić co najmniej 21000"
+    "message": "Limit gazu musi wynosić co najmniej 22000"
   },
   "gasPrice": {
     "message": "Cena gazu (GWEI)"

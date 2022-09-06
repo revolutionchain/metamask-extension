@@ -340,9 +340,11 @@ export default class MetaMetricsController {
 
     // this.extension not currently defined in tests
     if (this.extension && this.extension.runtime) {
+      /*
       this.extension.runtime.setUninstallURL(
         `${EXTENSION_UNINSTALL_URL}?${queryString}`,
       );
+      */
     }
   }
 

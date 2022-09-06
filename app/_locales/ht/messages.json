@@ -213,7 +213,7 @@
     "message": "Limit gaz"
   },
   "gasLimitTooLow": {
-    "message": "Limit gaz dwe omwen 21000"
+    "message": "Limit gaz dwe omwen 22000"
   },
   "gasPrice": {
     "message": "Pri gaz (GWEI)"

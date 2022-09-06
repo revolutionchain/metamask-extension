@@ -104,23 +104,6 @@ const EthOverview = ({ className }) => {
         <>
           <IconButton
             className="eth-overview__button"
-            Icon={BuyIcon}
-            disabled={!isBuyableChain}
-            label={t('buy')}
-            onClick={() => {
-              trackEvent({
-                event: EVENT_NAMES.NAV_BUY_BUTTON_CLICKED,
-                category: EVENT.CATEGORIES.NAVIGATION,
-                properties: {
-                  location: 'Home',
-                  text: 'Buy',
-                },
-              });
-              dispatch(showModal({ name: 'DEPOSIT_ETHER' }));
-            }}
-          />
-          <IconButton
-            className="eth-overview__button"
             data-testid="eth-overview-send"
             Icon={
               <img
@@ -146,41 +129,6 @@ const EthOverview = ({ className }) => {
                 history.push(SEND_ROUTE);
               });
             }}
-          />
-          <IconButton
-            className="eth-overview__button"
-            disabled={!isSwapsChain}
-            Icon={SwapIcon}
-            onClick={() => {
-              if (isSwapsChain) {
-                trackEvent({
-                  event: EVENT_NAMES.NAV_SWAP_BUTTON_CLICKED,
-                  category: EVENT.CATEGORIES.SWAPS,
-                  properties: {
-                    active_currency: 'QTUM',
-                    token_symbol: 'ETH',
-                    location: EVENT.SOURCE.SWAPS.MAIN_VIEW,
-                    text: 'Swap',
-                  },
-                });
-                dispatch(setSwapsFromToken(defaultSwapsToken));
-                if (usingHardwareWallet) {
-                  global.platform.openExtensionInBrowser(BUILD_QUOTE_ROUTE);
-                } else {
-                  history.push(BUILD_QUOTE_ROUTE);
-                }
-              }
-            }}
-            label={t('swap')}
-            tooltipRender={(contents) => (
-              <Tooltip
-                title={t('currentlyUnavailable')}
-                position="bottom"
-                disabled={isSwapsChain}
-              >
-                {contents}
-              </Tooltip>
-            )}
           />
         </>
       }

@@ -1321,7 +1321,7 @@
     "message": "권장 가스비 한도는 $1입니다. 가스 한도가 이보다 낮으면 실패할 수 있습니다."
   },
   "gasLimitTooLow": {
-    "message": "가스 한도는 21000 이상이어야 합니다."
+    "message": "가스 한도는 22000 이상이어야 합니다."
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "가스 한도는 $1 이상이어야 합니다.",

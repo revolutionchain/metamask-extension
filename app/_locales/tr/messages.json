@@ -1321,7 +1321,7 @@
     "message": "Önerilen gas limiti 1$ kadardır. Gas limiti bundan daha düşükse başarısız olabilir."
   },
   "gasLimitTooLow": {
-    "message": "Gaz limiti en az 21000 olmalıdır"
+    "message": "Gaz limiti en az 22000 olmalıdır"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "Gaz limiti en az $1 olmalıdır",

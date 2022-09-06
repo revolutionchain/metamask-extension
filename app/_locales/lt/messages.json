@@ -385,7 +385,7 @@
     "message": "Dujų apribojimas yra maksimalus dujų vienetų, kuriuos pageidaujate išleisti, skaičius."
   },
   "gasLimitTooLow": {
-    "message": "Dujų apribojimas turi būti bent 21000"
+    "message": "Dujų apribojimas turi būti bent 22000"
   },
   "gasPrice": {
     "message": "Dujų kaina (GWEI)"

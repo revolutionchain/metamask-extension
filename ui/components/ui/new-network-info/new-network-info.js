@@ -93,7 +93,7 @@ const NewNetworkInfo = () => {
         maxContent={false}
         label={
           currentProvider.type === NETWORK_TYPE_RPC
-            ? currentProvider.nickname ?? t('privateNetwork')
+            ? (t(currentProvider.nickname) || currentProvider.nickname) ?? t('privateNetwork')
             : t(currentProvider.type)
         }
         labelProps={{

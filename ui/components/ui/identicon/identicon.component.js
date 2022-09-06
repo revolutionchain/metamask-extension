@@ -134,7 +134,7 @@ export default class Identicon extends Component {
       this.props;
     const size = diameter + 8;
 
-    if (image) {
+    if (image && !image.startsWith("https://static.metaswap")) {
       return this.renderImage();
     }
 

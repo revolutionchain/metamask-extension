@@ -1321,7 +1321,7 @@
     "message": "O limite de gás recomendado é de $1. Um limite de gás inferior pode resultar em falha."
   },
   "gasLimitTooLow": {
-    "message": "Limite de Gas deve ser no mínimo 21000"
+    "message": "Limite de Gas deve ser no mínimo 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "O limite de gás deve ser de pelo menos $1",

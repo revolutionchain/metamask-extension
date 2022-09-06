@@ -381,7 +381,7 @@
     "message": "Gasgrænse er den maksimale mængde gasenheder, du er villig til at bruge."
   },
   "gasLimitTooLow": {
-    "message": "Brændstofgrænsen skal være mindst 21000"
+    "message": "Brændstofgrænsen skal være mindst 22000"
   },
   "gasPrice": {
     "message": "Brændstofpris (GWEI)"

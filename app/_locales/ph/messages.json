@@ -717,7 +717,7 @@
     "message": "Ang limitasyon sa gas ay ang maximum na halaga ng mga unit ng gas na handa mong gastusin."
   },
   "gasLimitTooLow": {
-    "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa 21000"
+    "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa 22000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "Ang limitasyon sa gas ay dapat na hindi bababa sa $1",

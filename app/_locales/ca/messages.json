@@ -378,7 +378,7 @@
     "message": "El límit de gas és la màxima quantitat d'unitats de gas que estàs disposat a gastar."
   },
   "gasLimitTooLow": {
-    "message": "El límit de gas ha de ser al menys 21000"
+    "message": "El límit de gas ha de ser al menys 22000"
   },
   "gasPrice": {
     "message": "Preu del Gas (GWEI)"
