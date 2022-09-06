@@ -32,9 +32,12 @@ export const BSC_CHAIN_ID = '0x38';
 export const OPTIMISM_CHAIN_ID = '0xa';
 export const OPTIMISM_TESTNET_CHAIN_ID = '0x1a4';
 export const POLYGON_CHAIN_ID = '0x89';
-export const QTUM_MAINNET_CHAIN_ID = '0x51'
-export const QTUM_TESTNET_CHAIN_ID = '0x22B9'
-export const QTUM_REGTEST_CHAIN_ID = '0x22BA'
+export const QTUM_MAINNET_CHAIN_ID = '0x51';
+export const QTUM_MAINNET_ID = '89';
+export const QTUM_TESTNET_CHAIN_ID = '0x22B9';
+export const QTUM_TESTNET_ID = '8889';
+export const QTUM_REGTEST_CHAIN_ID = '0x22BA';
+export const QTUM_REGTEST_ID = '8890';
 export const AVALANCHE_CHAIN_ID = '0xa86a';
 export const FANTOM_CHAIN_ID = '0xfa';
 export const CELO_CHAIN_ID = '0xa4ec';
@@ -258,6 +261,9 @@ export const NETWORK_ID_TO_ETHERS_NETWORK_NAME_MAP = {
   [RINKEBY_NETWORK_ID]: RINKEBY,
   [GOERLI_NETWORK_ID]: GOERLI,
   [MAINNET_NETWORK_ID]: HOMESTEAD,
+  [QTUM_MAINNET_ID]: QTUM_MAINNET,
+  [QTUM_TESTNET_ID]: QTUM_TESTNET,
+  [QTUM_REGTEST_ID]: QTUM_REGTEST,
 };
 
 export const CHAIN_ID_TO_NETWORK_ID_MAP = Object.values(

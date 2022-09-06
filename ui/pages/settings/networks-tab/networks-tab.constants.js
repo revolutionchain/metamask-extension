@@ -33,7 +33,9 @@ const defaultNetworksData = [
     rpcUrl: QTUM_MAINNET_RPC_URL,
     chainId: QTUM_MAINNET_CHAIN_ID,
     ticker: 'QTUM',
-    blockExplorerUrl: 'https://qtum.info/',
+    rpcPrefs: {
+      blockExplorerUrl: "https://qtum.info/",
+    },
   },
   {
     labelKey: QTUM_TESTNET,
@@ -42,7 +44,9 @@ const defaultNetworksData = [
     rpcUrl: QTUM_TESTNET_RPC_URL,
     chainId: QTUM_TESTNET_CHAIN_ID,
     ticker: 'QTUM',
-    blockExplorerUrl: 'https://testnet.qtum.info/',
+    rpcPrefs: {
+      blockExplorerUrl: "https://testnet.qtum.info/",
+    },
   },
   {
     labelKey: QTUM_REGTEST,

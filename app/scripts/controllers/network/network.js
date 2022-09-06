@@ -28,6 +28,7 @@ import {
   QTUM_REGTEST_CHAIN_ID,
   QTUM_TESTNET,
   TEST_NETWORK_TICKER_MAP,
+  QTUM_TESTNET_NETWORK_ID,
 } from '../../../../shared/constants/network';
 import {
   isPrefixedFormattedHexString,
@@ -59,7 +60,10 @@ if (process.env.IN_TEST) {
     type: NETWORK_TYPE_RPC,
     chainId: QTUM_TESTNET_CHAIN_ID,
     rpcUrl: QTUM_TESTNET_RPC_URL,
-    // nickname: QTUM_TESTNET,
+    nickname: QTUM_TESTNET,
+    rpcPrefs: {
+      blockExplorerUrl: "https://testnet.qtum.info/",
+    },
   };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
 } else {
@@ -68,7 +72,10 @@ if (process.env.IN_TEST) {
     type: NETWORK_TYPE_RPC,
     chainId: QTUM_TESTNET_CHAIN_ID,
     rpcUrl: QTUM_TESTNET_RPC_URL,
-    // nickname: QTUM_TESTNET,
+    nickname: QTUM_TESTNET,
+    rpcPrefs: {
+      blockExplorerUrl: "https://testnet.qtum.info/",
+    },
   };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_MAINNET_CHAIN_ID, rpcUrl: QTUM_MAINNET_RPC_URL };
 }

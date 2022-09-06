@@ -601,11 +601,15 @@ export function getTargetSubjectMetadata(state, origin) {
 }
 
 export function getRpcPrefsForCurrentProvider(state) {
+  console.log('[getRpcPrefsForCurrentProvider]', state)
   const { frequentRpcListDetail, provider } = state.metamask;
+  console.log('[getRpcPrefsForCurrentProvider]', frequentRpcListDetail, provider)
   const selectRpcInfo = frequentRpcListDetail.find(
     (rpcInfo) => rpcInfo.rpcUrl === provider.rpcUrl,
   );
+  console.log('[getRpcPrefsForCurrentProvider]', selectRpcInfo)
   const { rpcPrefs = {} } = selectRpcInfo || {};
+  console.log('[getRpcPrefsForCurrentProvider]', rpcPrefs)
   return rpcPrefs;
 }
 

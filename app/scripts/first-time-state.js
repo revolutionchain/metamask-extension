@@ -26,11 +26,10 @@ const initialState = {
       {
         rpcUrl: 'http://localhost:8545',
         chainId: '0x539',
-        ticker: 'ETH',
+        ticker: 'QTUM',
         nickname: 'Localhost 8545',
         rpcPrefs: {},
       },
-      /*
       {
         rpcUrl: QTUM_MAINNET_RPC_URL,
         chainId: QTUM_MAINNET_CHAIN_ID,
@@ -49,6 +48,7 @@ const initialState = {
           blockExplorerUrl: 'https://testnet.qtum.info/',
         },
       },
+      /*
       {
         rpcUrl: QTUM_REGTEST_RPC_URL,
         chainId: QTUM_REGTEST_CHAIN_ID,

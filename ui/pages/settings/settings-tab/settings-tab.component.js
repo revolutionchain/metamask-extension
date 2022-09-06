@@ -327,9 +327,9 @@ export default class SettingsTab extends PureComponent {
     return (
       <div className="settings-page__content-row">
         <div className="settings-page__content-item">
-          <span>{t('primaryAddressSetting')}</span>
+          <span>{t('addressFormatSetting')}</span>
           <div className="settings-page__content-description">
-            {t('primaryAddressSettingDescription')}
+            {t('addressFormatSettingDescription')}
           </div>
         </div>
         <div className="settings-page__content-item">

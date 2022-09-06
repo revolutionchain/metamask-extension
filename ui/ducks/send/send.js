@@ -2420,13 +2420,20 @@ export function toggleSendMaxMode() {
  * @returns {ThunkAction<void>}
  */
 export function startNewDraftTransaction(asset) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     await dispatch(actions.clearPreviousDrafts());
 
+    const state = getState();
+    const sendingAddress =
+      draftTransactionInitialState.fromAccount?.address ??
+      state[name].selectedAccount.address ??
+      getSelectedAddress(state);
+    const account = getTargetAccount(state, sendingAddress);
     await dispatch(
       actions.addNewDraft({
         ...draftTransactionInitialState,
         history: [`sendFlow - User started new draft transaction`],
+        fromAccount: account,
       }),
     );
 

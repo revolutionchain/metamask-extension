@@ -65,7 +65,6 @@ export default class TransactionListItemDetails extends PureComponent {
       history,
       onClose,
     } = this.props;
-    console.log('[stripHexPrefix]', stripHexPrefix(primaryTransaction.hash));
     const blockExplorerLink = getBlockExplorerLink(
       { hash: stripHexPrefix(primaryTransaction.hash), chainId: primaryTransaction.chainId},
       rpcPrefs,
