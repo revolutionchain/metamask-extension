@@ -33,7 +33,7 @@ export default function MenuBar() {
         <ConnectedStatusIndicator
           onClick={() => history.push(CONNECTED_ACCOUNTS_ROUTE)}
         />
-      ) : null}
+      ) : <div/>}
 
       <SelectedAccount />
 

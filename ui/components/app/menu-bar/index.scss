@@ -10,6 +10,7 @@
     padding: 7px 8px 0 5px;
     margin-left: 15px;
     color: white;
+    // place-self: center end;
   }
 }
 
@@ -17,13 +18,24 @@
   &__explorer-origin {
     @include H7;
 
-    color: var(--color-text-alternative);
+    color: var(--color-text-default);
   }
 }
 
 @media screen and (max-width: $break-small) {
   .menu-bar {
+    display: grid;
+    grid-template-columns: 30% minmax(30%, 1fr) 30%;
+    column-gap: 5px;
+    padding: 0 8px;
+    height: 64px;
+    width: 100%;
     position: static;
-    right: auto;
+    right: 5%;
+
+    .menu-bar__account-options {
+      place-self: center end;
+      padding: 0 8px 0 0;
+    }
   }
 }

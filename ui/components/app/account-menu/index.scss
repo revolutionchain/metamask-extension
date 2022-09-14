@@ -10,8 +10,8 @@
   color: var(--color-text-default);
 
   @include screen-sm-max {
-    right: 16px;
-    width: 375px;
+    // right: 16px;
+    width: 100%;
   }
 
   @include screen-sm-min {
@@ -39,7 +39,7 @@
 
     @include screen-sm-max {
       padding: 0 14px;
-      height: 40px;
+      height: 61px;
     }
 
     &--clickable {
@@ -76,6 +76,7 @@
       font-size: 20px;
       line-height: 27px;
       color: $Black-300;
+      text-align: center;
     }
 
     &__subtext {
@@ -85,7 +86,7 @@
     }
 
     &--settings {
-      padding: 17px 48px;
+      padding: 17px 39px;
       background-color: white;
       color: $Black-300;
       font-size: 20px;
@@ -129,7 +130,8 @@
     line-height: 45px;
 
     @media screen and (max-width: $break-small) {
-      padding: 25px 25px 20px;
+      // padding: 25px 25px 20px;
+      padding: 15px 25px 15px;
     }
   }
 
@@ -144,6 +146,10 @@
     font-size: 18px;
     display: flex;
     cursor: pointer;
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
   }
 
   & &__lock-button {
@@ -160,6 +166,7 @@
       font-size: 14px;
       line-height: 20px;
       padding: 6px 25px;
+      margin-top: 0px;
     }
   }
 
@@ -191,6 +198,7 @@
     // reduce scrollable accounts window height
     @media screen and (max-height: 600px) {
       max-height: 130px;
+      overflow-y: auto;
     }
 
     .keyring-label {
@@ -249,7 +257,7 @@
     width: 100%;
 
     @include screen-sm-max {
-      padding: 12px 14px;
+      padding: 12px 5px;
     }
 
     .remove-account-icon {
@@ -274,6 +282,11 @@
     flex: 1 0 auto;
     display: flex;
     flex-flow: column nowrap;
+
+    @include screen-sm-max {
+      width: 45%;
+    }
+
   }
 
   &__check-mark {
@@ -352,23 +365,39 @@
   &__bottom-buttons {
     background-color: white;
     display: flex;
-    padding: 0 48px 48px;
+    padding: 0 36px 36px;
     margin-top: 25px;
+
+    @include screen-sm-max {
+      // padding: 15px 0px 15px 10px;
+      padding: 0 41px 38px;
+    }
 
     .button {
       height: 60px;
       margin-right: 15px;
       z-index: 201;
 
-      padding: 0px;
+      padding: 0;
+
+      @include screen-sm-max {
+        padding: 0.75rem 1rem;
+      }
 
       .account-menu__item__icon {
         margin-right: 0px;
         height: fit-content;
+
+        @include screen-sm-max {
+          display: none;
+        }
       }
 
       .account-menu__item__text {
         font-size: 16px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 
@@ -376,6 +405,8 @@
       color: #037dd6;
       border: 1px solid #b0d7f2;
       background-color: #fff;
+      margin-left: 15px;
+      margin-right: 0;
 
       .account-menu__item__text {
         color: #037dd6;

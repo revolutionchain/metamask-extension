@@ -72,7 +72,7 @@
   &__input-label {
     @include Paragraph;
 
-    color: var(--color-text-alternative);
+    color: var(--color-text-default);
     align-self: flex-start;
   }
 

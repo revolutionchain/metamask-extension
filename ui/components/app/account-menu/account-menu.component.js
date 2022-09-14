@@ -431,8 +431,10 @@ export default class AccountMenu extends Component {
               });
               history.push(NEW_ACCOUNT_ROUTE);
             }}
+            /*
             icon={<IconPlus color="var(--color-icon-alternative)" />}
-            text={t('createAccount')}
+            */
+            text={"+ " + t('createAccount')}
             className="button btn-primary"
           />
           <AccountMenuItem
@@ -448,12 +450,14 @@ export default class AccountMenu extends Component {
               });
               history.push(IMPORT_ACCOUNT_ROUTE);
             }}
+            /*
             icon={
               <IconImport
                 color="var(--color-icon-alternative)"
                 ariaLabel={t('importAccount')}
               />
             }
+            */
             text={t('importAccount')}
             className="button btn-secondary"
           />

@@ -28,7 +28,7 @@
     line-height: 21px;
     font-weight: light;
     color: #EBEBEB;
-    display: flex;
+    // display: flex;
     align-items: center;
   }
 
@@ -49,5 +49,22 @@
     display: inline-block;
     margin-inline-start: 3px;
     margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: $break-small) {
+  .selected-account {
+    &__name {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    &__clickable {
+      display: block;
+    }
+
+    &__address {
+      width: 100%;
+    }
   }
 }
