@@ -57,7 +57,7 @@
     "message": "Ilość"
   },
   "appDescription": {
-    "message": "Wtyczka przeglądarki do Ethereum",
+    "message": "Wtyczka przeglądarki do QTUM",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Łączenie z siecią testową Kovan"
   },
   "connectingToMainnet": {
-    "message": "Łączenie z główną siecią Ethereum"
+    "message": "Łączenie z główną siecią QTUM"
   },
   "connectingToRinkeby": {
     "message": "Łączenie z siecią testową Rinkeby"
@@ -329,7 +329,7 @@
     "message": "Dowiedz się więcej."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Nazwa ENS nie została znaleziona w bieżącej sieci. Spróbuj przełączyć się na Główną sieć Ethereum."
+    "message": "Nazwa ENS nie została znaleziona w bieżącej sieci. Spróbuj przełączyć się na Główną sieć QTUM."
   },
   "ensRegistrationError": {
     "message": "Błąd w rejestracji nazwy ENS"
@@ -344,7 +344,7 @@
     "message": "Szacunkowy czas przetwarzania"
   },
   "ethereumPublicAddress": {
-    "message": "Adres publiczny Ethereum"
+    "message": "Adres publiczny QTUM"
   },
   "etherscanView": {
     "message": "Zobacz konto na Etherscan"
@@ -540,7 +540,7 @@
     "message": "Wyloguj się"
   },
   "mainnet": {
-    "message": "Główna sieć Ethereum"
+    "message": "Główna sieć QTUM"
   },
   "max": {
     "message": "Maks."
@@ -552,7 +552,7 @@
     "message": "Wiadomość"
   },
   "metamaskDescription": {
-    "message": "Qnekt to bezpieczny portfel dla Ethereum."
+    "message": "Qnekt to bezpieczny portfel dla QTUM."
   },
   "metamaskVersion": {
     "message": "Wersja Qnekt"

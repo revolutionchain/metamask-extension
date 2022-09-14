@@ -51,7 +51,7 @@
     "message": "Halaga"
   },
   "appDescription": {
-    "message": "Isang Ethereum Wallet sa iyong Browser",
+    "message": "Isang QTUM Wallet sa iyong Browser",
     "description": "The description of the application"
   },
   "appName": {
@@ -176,7 +176,7 @@
     "message": "Kumokonekta sa Kovan Test Network"
   },
   "connectingToMainnet": {
-    "message": "Kumokonekta sa Ethereum Mainnet"
+    "message": "Kumokonekta sa QTUM Mainnet"
   },
   "connectingToRinkeby": {
     "message": "Kumokonekta sa Rinkeby Test Network"
@@ -305,7 +305,7 @@
     "message": "Matuto pa."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Hindi nakita ang ENS name sa kasalukuyang network. Subukang lumipat sa Ethereum Mainnet."
+    "message": "Hindi nakita ang ENS name sa kasalukuyang network. Subukang lumipat sa QTUM Mainnet."
   },
   "ensRegistrationError": {
     "message": "May error sa pagrerehistro ng ENS name"
@@ -493,7 +493,7 @@
     "message": "Mensahe"
   },
   "metamaskDescription": {
-    "message": "Kinokonekta ka sa Ethereum at sa Decentralized Web."
+    "message": "Kinokonekta ka sa QTUM at sa Decentralized Web."
   },
   "metamaskVersion": {
     "message": "Bersyon ng Qnekt"

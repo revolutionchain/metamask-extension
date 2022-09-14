@@ -79,7 +79,7 @@
     "message": "เชื่อมต่อกับ $1"
   },
   "connectingToMainnet": {
-    "message": "เชื่อมต่อกับเครือข่าย Ethereum หลัก"
+    "message": "เชื่อมต่อกับเครือข่าย QTUM หลัก"
   },
   "connectingToRopsten": {
     "message": "เชื่อมต่อกับเครือข่ายทดสอบ Ropsten"

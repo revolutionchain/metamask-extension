@@ -39,7 +39,7 @@
     "message": "Kantite lajan"
   },
   "appDescription": {
-    "message": "Ekstansyon Navigatè Ethereum",
+    "message": "Ekstansyon Navigatè QTUM",
     "description": "The description of the application"
   },
   "appName": {
@@ -112,7 +112,7 @@
     "message": "Konekte nan Kovan Tès Rezo a"
   },
   "connectingToMainnet": {
-    "message": "Konekte ak Prensipal Ethereum Rezo a"
+    "message": "Konekte ak Prensipal QTUM Rezo a"
   },
   "connectingToRinkeby": {
     "message": "Konekte nan Rinkeby Tès Rezo a"
@@ -323,7 +323,7 @@
     "message": "Dekonekte"
   },
   "mainnet": {
-    "message": "Prensipal Ethereum Rezo a"
+    "message": "Prensipal QTUM Rezo a"
   },
   "max": {
     "message": "Maksimòm"
@@ -332,7 +332,7 @@
     "message": "Mesaje"
   },
   "metamaskDescription": {
-    "message": "Qnekt sekirize idantite pou Ethereum."
+    "message": "Qnekt sekirize idantite pou QTUM."
   },
   "metamaskVersion": {
     "message": "Qnekt Vèsyon"

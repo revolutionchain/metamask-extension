@@ -57,7 +57,7 @@
     "message": "Beløb"
   },
   "appDescription": {
-    "message": "En Ethereum-pung i din browser",
+    "message": "En QTUM-pung i din browser",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Forbinder til Kovan Testnetværk"
   },
   "connectingToMainnet": {
-    "message": "Forbinder til dit Primære Ethereum Netværk"
+    "message": "Forbinder til dit Primære QTUM Netværk"
   },
   "connectingToRinkeby": {
     "message": "Forbinder til Rinkeby-testnetværk"
@@ -329,7 +329,7 @@
     "message": "Lær mere. "
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS-navn ikke fundet for det nuværende netværk. Prøv at skifte til Ethereums hovednetværk."
+    "message": "ENS-navn ikke fundet for det nuværende netværk. Prøv at skifte til QTUMs hovednetværk."
   },
   "ensRegistrationError": {
     "message": "Fejl i ENS-navneregistrering"
@@ -344,7 +344,7 @@
     "message": "Estimerede behandlingstider"
   },
   "ethereumPublicAddress": {
-    "message": "Offentlig Ethereum-adresse"
+    "message": "Offentlig QTUM-adresse"
   },
   "etherscanView": {
     "message": "Se konto på Etherscan"
@@ -527,7 +527,7 @@
     "message": "Log ud"
   },
   "mainnet": {
-    "message": "Hovednetværk for Ethereum"
+    "message": "Hovednetværk for QTUM"
   },
   "max": {
     "message": "Maks"
@@ -542,7 +542,7 @@
     "message": "Besked"
   },
   "metamaskDescription": {
-    "message": "Som forbinder dig til Ethereum og de decentraliserede internet."
+    "message": "Som forbinder dig til QTUM og de decentraliserede internet."
   },
   "mustSelectOne": {
     "message": "Skal vælge mindst 1 token."

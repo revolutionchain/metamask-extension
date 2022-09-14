@@ -57,7 +57,7 @@
     "message": "Summa"
   },
   "appDescription": {
-    "message": "Ethereumi rahakott teie lehitsejas",
+    "message": "QTUMi rahakott teie lehitsejas",
     "description": "The description of the application"
   },
   "appName": {
@@ -329,7 +329,7 @@
     "message": "Lisateave."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS-i nime ei leitud praegusest võrgust. Proovige lülituda peamisele Ethereumi võrgule."
+    "message": "ENS-i nime ei leitud praegusest võrgust. Proovige lülituda peamisele QTUMi võrgule."
   },
   "ensRegistrationError": {
     "message": "Tõrge ENS-i nime registreerimisel"
@@ -344,7 +344,7 @@
     "message": "Eeldatavad töötlemisajad"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereumi avalik aadress"
+    "message": "QTUMi avalik aadress"
   },
   "etherscanView": {
     "message": "Vaadake kontot Etherscanil"
@@ -533,7 +533,7 @@
     "message": "Logi välja"
   },
   "mainnet": {
-    "message": "Ethereumi põhivõrk"
+    "message": "QTUMi põhivõrk"
   },
   "memo": {
     "message": "teatis"
@@ -545,7 +545,7 @@
     "message": "Sõnum"
   },
   "metamaskDescription": {
-    "message": "Teid ühendatakse Ethereumi ja detsentraliseeritud võrguga."
+    "message": "Teid ühendatakse QTUMi ja detsentraliseeritud võrguga."
   },
   "metamaskVersion": {
     "message": "Qnekti versioon"

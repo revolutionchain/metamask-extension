@@ -57,7 +57,7 @@
     "message": "Znesek"
   },
   "appDescription": {
-    "message": "Denarnica za Ethereum v brskalniku",
+    "message": "Denarnica za QTUM v brskalniku",
     "description": "The description of the application"
   },
   "appName": {
@@ -329,7 +329,7 @@
     "message": "Več o tem"
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Imena ENS v trenutnem omrežju ni mogoče najti. Poskusite preklopiti na glavno omrežje Ethereum."
+    "message": "Imena ENS v trenutnem omrežju ni mogoče najti. Poskusite preklopiti na glavno omrežje QTUM."
   },
   "ensRegistrationError": {
     "message": "Napaka pri registraciji imena ENS"
@@ -344,7 +344,7 @@
     "message": "Predviden čas obdelave"
   },
   "ethereumPublicAddress": {
-    "message": "Javni naslov Ethereum"
+    "message": "Javni naslov QTUM"
   },
   "etherscanView": {
     "message": "Poglej račun na Etherscan"
@@ -543,7 +543,7 @@
     "message": "Sporočilo"
   },
   "metamaskDescription": {
-    "message": "Qnekt je varen identitetni sklad za Ethereum."
+    "message": "Qnekt je varen identitetni sklad za QTUM."
   },
   "metamaskVersion": {
     "message": "Različica"

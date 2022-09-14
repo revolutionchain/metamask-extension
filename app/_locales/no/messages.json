@@ -57,7 +57,7 @@
     "message": "Sum"
   },
   "appDescription": {
-    "message": "En Ethereum-lommebok i nettleseren din",
+    "message": "En QTUM-lommebok i nettleseren din",
     "description": "The description of the application"
   },
   "appName": {
@@ -194,7 +194,7 @@
     "message": "Kobler til Kovan testnettverk"
   },
   "connectingToMainnet": {
-    "message": "Forbinder med hoved-Ethereumnettverk "
+    "message": "Forbinder med hoved-QTUMnettverk "
   },
   "connectingToRinkeby": {
     "message": "Kobler til Rinkeby Test Network "
@@ -326,7 +326,7 @@
     "message": "Finn ut mer."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS-navn ikke funnet i det gjeldende nettverket. Prøv å bytte til hovednettverket for Ethereum."
+    "message": "ENS-navn ikke funnet i det gjeldende nettverket. Prøv å bytte til hovednettverket for QTUM."
   },
   "ensRegistrationError": {
     "message": "Feil i ENS-navneregistrering"
@@ -341,7 +341,7 @@
     "message": "Anslått behandlingstid"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum offentlig adresse"
+    "message": "QTUM offentlig adresse"
   },
   "etherscanView": {
     "message": "Vis konto på Etherscan "
@@ -527,7 +527,7 @@
     "message": "Logg ut "
   },
   "mainnet": {
-    "message": "Ethereum hovednettverk"
+    "message": "QTUM hovednettverk"
   },
   "max": {
     "message": "Maks"
@@ -542,7 +542,7 @@
     "message": "Melding "
   },
   "metamaskDescription": {
-    "message": "Kobler deg til Ethereum og det desentraliserte nettet."
+    "message": "Kobler deg til QTUM og det desentraliserte nettet."
   },
   "metamaskVersion": {
     "message": "Qnekt-versjon "

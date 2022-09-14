@@ -57,7 +57,7 @@
     "message": "Кількість"
   },
   "appDescription": {
-    "message": "Гаманець Ethereum у вашому браузері",
+    "message": "Гаманець QTUM у вашому браузері",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Підключення до тестової мережі Kovan"
   },
   "connectingToMainnet": {
-    "message": "З'єднуємось з Головною мережею Ethereum"
+    "message": "З'єднуємось з Головною мережею QTUM"
   },
   "connectingToRinkeby": {
     "message": "Під'єднуємось до тестової мережі Rinkeby"
@@ -329,7 +329,7 @@
     "message": "Дізнатись більше."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Ім'я ENS не знайдено у даній мережі. Спробуйте перейти у Ethereum Mainnet."
+    "message": "Ім'я ENS не знайдено у даній мережі. Спробуйте перейти у QTUM Mainnet."
   },
   "ensRegistrationError": {
     "message": "Помилка у реєстрації ENS ім'я"
@@ -344,7 +344,7 @@
     "message": "Приблизні часи обробки"
   },
   "ethereumPublicAddress": {
-    "message": "Публічна адреса Ethereum"
+    "message": "Публічна адреса QTUM"
   },
   "etherscanView": {
     "message": "Переглянути обліковий запис на Etherscan"
@@ -540,7 +540,7 @@
     "message": "Вийти"
   },
   "mainnet": {
-    "message": "Головна Мережа Ethereum"
+    "message": "Головна Мережа QTUM"
   },
   "max": {
     "message": "Максимум"
@@ -555,7 +555,7 @@
     "message": "Повідомлення"
   },
   "metamaskDescription": {
-    "message": "Під'єднуємо вас до Ethereum та децентралізованої мережі."
+    "message": "Під'єднуємо вас до QTUM та децентралізованої мережі."
   },
   "metamaskVersion": {
     "message": "Версія Qnekt"

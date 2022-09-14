@@ -197,7 +197,7 @@
     "message": "Свързване с тестовата мрежа на Kovan"
   },
   "connectingToMainnet": {
-    "message": "Свързване с главната мрежа Ethereum"
+    "message": "Свързване с главната мрежа QTUM"
   },
   "connectingToRinkeby": {
     "message": "Свързване с тестова мрежа на Rinkeby"
@@ -551,7 +551,7 @@
     "message": "Съобщение"
   },
   "metamaskDescription": {
-    "message": "Свързва ви с Ethereum и децентрализираната мрежа."
+    "message": "Свързва ви с QTUM и децентрализираната мрежа."
   },
   "metamaskVersion": {
     "message": "Версия на Qnekt"

@@ -57,7 +57,7 @@
     "message": "Iznos"
   },
   "appDescription": {
-    "message": "Ethereum novčanik u vašem pregledaču",
+    "message": "QTUM novčanik u vašem pregledaču",
     "description": "The description of the application"
   },
   "appName": {
@@ -194,7 +194,7 @@
     "message": "Povezuje se na test mrežu Kovan"
   },
   "connectingToMainnet": {
-    "message": "Povezuje se na glavnu Ethereum mrežu"
+    "message": "Povezuje se na glavnu QTUM mrežu"
   },
   "connectingToRinkeby": {
     "message": "Poezivanje na Rinkeby Test mrežu"
@@ -326,7 +326,7 @@
     "message": "Saznajte više."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS ime nije nađeno na trenutnoj mreži. Probajte da se prebacite na glavnu Ethereum mrežu."
+    "message": "ENS ime nije nađeno na trenutnoj mreži. Probajte da se prebacite na glavnu QTUM mrežu."
   },
   "ensRegistrationError": {
     "message": "Greška u registraciji ENS imena."
@@ -341,7 +341,7 @@
     "message": "Procenjeno vreme za obradu"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum javna adresa"
+    "message": "QTUM javna adresa"
   },
   "etherscanView": {
     "message": "Pogledajte račun na Etherscan-u"
@@ -534,7 +534,7 @@
     "message": "Odjavi se"
   },
   "mainnet": {
-    "message": "Glavna Ethereum mreža"
+    "message": "Glavna QTUM mreža"
   },
   "max": {
     "message": "Maksimum"
@@ -546,7 +546,7 @@
     "message": "Poruka"
   },
   "metamaskDescription": {
-    "message": "Povezivanje na Ethereum i decentralizovani veb."
+    "message": "Povezivanje na QTUM i decentralizovani veb."
   },
   "metamaskVersion": {
     "message": "Qnekt verzija"

@@ -57,7 +57,7 @@
     "message": "Apjoms"
   },
   "appDescription": {
-    "message": "Ethereum maks pārlūkā",
+    "message": "QTUM maks pārlūkā",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Savienojas ar Kovan testa tīklu"
   },
   "connectingToMainnet": {
-    "message": "Savienojas ar galveno Ethereum tīklu"
+    "message": "Savienojas ar galveno QTUM tīklu"
   },
   "connectingToRinkeby": {
     "message": "Pieslēdzas Rinkeby testa tīklam"
@@ -329,7 +329,7 @@
     "message": "Uzzināt vairāk."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Šajā tīklā ENS nosaukums nav atrasts. Pamēģiniet pārslēgties uz galveno Ethereum tīklu."
+    "message": "Šajā tīklā ENS nosaukums nav atrasts. Pamēģiniet pārslēgties uz galveno QTUM tīklu."
   },
   "ensRegistrationError": {
     "message": "Kļūda ENS vārda reģistrācijā"
@@ -344,7 +344,7 @@
     "message": "Aprēķinātais apstrādes laiks"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum publiskā adrese"
+    "message": "QTUM publiskā adrese"
   },
   "etherscanView": {
     "message": "Skatīt kontu ar Etherscan"
@@ -536,7 +536,7 @@
     "message": "Izrakstīties"
   },
   "mainnet": {
-    "message": "Galvenais Ethereum tīkls"
+    "message": "Galvenais QTUM tīkls"
   },
   "max": {
     "message": "Maks."
@@ -551,7 +551,7 @@
     "message": "Ziņojums"
   },
   "metamaskDescription": {
-    "message": "Veido savienojumu ar Ethereum un decentralizēto tīmekli."
+    "message": "Veido savienojumu ar QTUM un decentralizēto tīmekli."
   },
   "metamaskVersion": {
     "message": "Qnekt versija"

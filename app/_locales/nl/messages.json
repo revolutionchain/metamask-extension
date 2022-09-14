@@ -15,7 +15,7 @@
     "message": "Bedrag"
   },
   "appDescription": {
-    "message": "Ethereum Browser-extensie",
+    "message": "QTUM Browser-extensie",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Bericht"
   },
   "metamaskDescription": {
-    "message": "Qnekt is een veilige identiteitskluis voor Ethereum."
+    "message": "Qnekt is een veilige identiteitskluis voor QTUM."
   },
   "mustSelectOne": {
     "message": "Moet ten minste één token selecteren."

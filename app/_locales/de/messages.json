@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "Sie können kein Token finden? Sie können ein beliebiges Token manuell hinzufügen, indem Sie seine Adresse eingeben. Token-Vertragsadressen finden Sie auf $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "Dadurch kann dieses Netzwerk innerhalb Qnekt verwendet werden."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekte überprüft keine benutzerdefinierten Netzwerke."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "Erfahren Sie mehr über $1.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "Betrug und Sicherheitsrisiken im Netzwerk",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "Dieser Seite das Hinzufügen eines Netzwerks erlauben?"
   },
   "addFriendsAndAddresses": {
@@ -248,7 +248,7 @@
     "message": "Betrag"
   },
   "appDescription": {
-    "message": "Ethereum Browsererweiterung",
+    "message": "QTUM Browsererweiterung",
     "description": "The description of the application"
   },
   "appName": {
@@ -612,7 +612,7 @@
     "message": " Verbinde zum Kovan Testnetzwerk"
   },
   "connectingToMainnet": {
-    "message": "Verbinde zum Ethereum Mainnet"
+    "message": "Verbinde zum QTUM Mainnet"
   },
   "connectingToRinkeby": {
     "message": " Verbinde zum Rinkeby Testnetzwerk"
@@ -1106,7 +1106,7 @@
     "message": "Unzulässiges Zeichen für ENS."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS-Name wurde im aktuellen Netzwerk nicht gefunden. Versuchen Sie, zum Ethereum Mainnet zu wechseln."
+    "message": "ENS-Name wurde im aktuellen Netzwerk nicht gefunden. Versuchen Sie, zum QTUM Mainnet zu wechseln."
   },
   "ensNotSupportedOnNetwork": {
     "message": "Netzwerk unterstützt kein ENS"
@@ -1165,7 +1165,7 @@
     "message": "Der Gaspreis, der sich aus der Gaseinschätzung ergibt, ist derzeit nicht verfügbar."
   },
   "ethereumPublicAddress": {
-    "message": "Öffentliche Ethereum-Adresse"
+    "message": "Öffentliche QTUM-Adresse"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1690,7 +1690,7 @@
     "message": "Nutzen Sie Ledger Live unter Einstellungen > Erweitert"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Schließen Sie Ihr Ledger Gerät an und wählen Sie die Ethereum App aus"
+    "message": "Schließen Sie Ihr Ledger Gerät an und wählen Sie die QTUM App aus"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Ledger Live App öffnen und entsperren"
@@ -1710,7 +1710,7 @@
     "message": "Ledger Live-App"
   },
   "ledgerLocked": {
-    "message": "Keine Verbindung zum Ledger-Gerät. Bitte stellen Sie sicher, dass Ihr Gerät entsperrt ist und die Ethereum-App geöffnet ist."
+    "message": "Keine Verbindung zum Ledger-Gerät. Bitte stellen Sie sicher, dass Ihr Gerät entsperrt ist und die QTUM-App geöffnet ist."
   },
   "ledgerTimeout": {
     "message": "Ledger Live braucht zu lange für eine Reaktion oder um eine Verbindung herzustellen. Stellen Sie sicher, dass die Ledger Live-App geöffnet und Ihr Gerät entsperrt ist."
@@ -1779,10 +1779,10 @@
     "message": "Künftige Transaktionen werden nach dieser in die Warteschlange gestellt."
   },
   "mainnet": {
-    "message": "Ethereum Hauptnetz"
+    "message": "QTUM Hauptnetz"
   },
   "mainnetToken": {
-    "message": "Diese Adresse stimmt mit einer bekannten Ethereum-Mainnet-Token-Adresse überein. Überprüfen Sie erneut die Vertragsadresse und das Netzwerk für das Token, das Sie hinzufügen möchten."
+    "message": "Diese Adresse stimmt mit einer bekannten QTUM-Mainnet-Token-Adresse überein. Überprüfen Sie erneut die Vertragsadresse und das Netzwerk für das Token, das Sie hinzufügen möchten."
   },
   "makeAnotherSwap": {
     "message": "Eine neue Wallet erstellen"
@@ -1835,7 +1835,7 @@
     "message": "Die Schaltfläche Verbindungsstatus zeigt an, ob die Site, die Sie besuchen, mit Ihrem aktuell ausgewählten Konto verbunden ist."
   },
   "metamaskDescription": {
-    "message": "Qnekt ist ein sicherer Identitätssafe für Ethereum."
+    "message": "Qnekt ist ein sicherer Identitätssafe für QTUM."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Qnekt Swaps wird gewartet. Bitte versuchen Sie es später erneut."
@@ -1884,7 +1884,7 @@
     "message": "Hilf uns Qnekt zu verbessern"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt möchte Nutzungsdaten sammeln, um besser zu verstehen, wie unsere Nutzer mit der Erweiterung umgehen. Diese Daten werden verwendet, um die Benutzerfreundlichkeit und das Benutzererlebnis unseres Produkts und des Ethereum-Ökosystems kontinuierlich zu verbessern."
+    "message": "Qnekt möchte Nutzungsdaten sammeln, um besser zu verstehen, wie unsere Nutzer mit der Erweiterung umgehen. Diese Daten werden verwendet, um die Benutzerfreundlichkeit und das Benutzererlebnis unseres Produkts und des QTUM-Ökosystems kontinuierlich zu verbessern."
   },
   "metametricsOptInDescription2": {
     "message": "Wir würden gerne grundlegende Nutzungsdaten sammeln, um die Benutzerfreundlichkeit unseres Produkts zu verbessern.  Diese Metriken werden..."
@@ -1968,8 +1968,8 @@
   "networkNameDefinition": {
     "message": "Der diesem Netzwerk zugeordnete Name."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -2143,7 +2143,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Die verbesserte Token-Erkennung ist derzeit in den Netzwerken Ethereum Mainnet, Polygon, BSC und Avalanche verfügbar. Es gibt bald mehr!"
+    "message": "Die verbesserte Token-Erkennung ist derzeit in den Netzwerken QTUM Mainnet, Polygon, BSC und Avalanche verfügbar. Es gibt bald mehr!"
   },
   "notifications10DescriptionThree": {
     "message": "Die Token-Erkennungsfunktion ist standardmäßig eingeschaltet. Sie können sie jedoch in den Einstellungen deaktivieren."
@@ -2226,7 +2226,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Um Transaktionen auf Ethereum Mainnet abzuschließen, stellen Sie sicher, dass Ihr Ledger-Gerät die neueste Firmware hat.",
+    "message": "Um Transaktionen auf QTUM Mainnet abzuschließen, stellen Sie sicher, dass Ihr Ledger-Gerät die neueste Firmware hat.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2333,7 +2333,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Die Anzeige der eingehenden Transaktionen in Ihrer Wallet beruht auf der Kommunikation mit $1. Etherscan hat Zugriff auf Ihre Ethereum-Adresse und Ihre IP-Adresse. $2 anzeigen.",
+    "message": "Die Anzeige der eingehenden Transaktionen in Ihrer Wallet beruht auf der Kommunikation mit $1. Etherscan hat Zugriff auf Ihre QTUM-Adresse und Ihre IP-Adresse. $2 anzeigen.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3113,7 +3113,7 @@
     "message": "Ledger Wallet einstecken"
   },
   "step2LedgerWalletMsg": {
-    "message": "Verbinden Sie Ihre Wallet direkt mit Ihrem Computer.  Entsperren Sie Ihren Ledger und öffnen Sie die Ethereum-App. Für weitere Informationen zur Verwendung Ihres Hardware-Wallet-Geräts, $1.",
+    "message": "Verbinden Sie Ihre Wallet direkt mit Ihrem Computer.  Entsperren Sie Ihren Ledger und öffnen Sie die QTUM-App. Für weitere Informationen zur Verwendung Ihres Hardware-Wallet-Geräts, $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3273,7 +3273,7 @@
     "message": "Mit Ihrer Hardware-Wallet bestätigen"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "In der Ethereum-App auf Ihrem Ledger gehen Sie zu \"Einstellungen\" und erlauben Vertragsdaten. Versuchen Sie dann Ihren Swap erneut."
+    "message": "In der QTUM-App auf Ihrem Ledger gehen Sie zu \"Einstellungen\" und erlauben Vertragsdaten. Versuchen Sie dann Ihren Swap erneut."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Vertragsdaten sind in Ihrem Ledger nicht aktiviert"
@@ -3342,7 +3342,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Gasgebühren werden an Krypto-Miner gezahlt, die Transaktionen im $1-Netzwerk verarbeiten. Qnekt profitiert nicht von den Gasgebühren.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Der Slippage-Betrag ist sehr hoch."
@@ -3544,10 +3544,10 @@
   "swapsViewInActivity": {
     "message": "In Aktivität anzeigen"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "Dadurch wird das ausgewählte Netzwerk innerhalb von Qnekt auf ein zuvor hinzugefügtes Netzwerk umgeschaltet:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "Dieser Site das Wechseln eines Netzwerks erlauben?"
   },
   "switchNetwork": {
@@ -3908,7 +3908,7 @@
     "message": "Phishing-Erkennung verwenden"
   },
   "usePhishingDetectionDescription": {
-    "message": "Zeigt eine Warnung für Phishing-Domänen, die Ethereum Benutzer ansprechen"
+    "message": "Zeigt eine Warnung für Phishing-Domänen, die QTUM Benutzer ansprechen"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "Die automatische Anzeige der an Ihr Konto gesendeten Token erfordert die Kommunikation mit Servern von Drittanbietern, um die Bilder der Token abzurufen. Diese Server haben Zugriff auf Ihre IP-Adresse."

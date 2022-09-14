@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "Bạn không tìm thấy token? Bạn có thể dán địa chỉ của bất kỳ token nào để thêm token đó theo cách thủ công. Bạn có thể tìm thấy địa chỉ hợp đồng token trên $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "Thao tác này sẽ cho phép sử dụng mạng này trong Qnekt."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt không xác minh mạng tùy chỉnh."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "Tìm hiểu về $1.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "lừa đảo và các nguy cơ về an ninh mạng",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "Cho phép trang này thêm một mạng?"
   },
   "addFriendsAndAddresses": {
@@ -252,7 +252,7 @@
     "message": "Số tiền"
   },
   "appDescription": {
-    "message": "Ví Ethereum trên trình duyệt của bạn",
+    "message": "Ví QTUM trên trình duyệt của bạn",
     "description": "The description of the application"
   },
   "appName": {
@@ -620,7 +620,7 @@
     "message": "Đang kết nối với mạng thử nghiệm Kovan"
   },
   "connectingToMainnet": {
-    "message": "Đang kết nối với mạng chính thức của Ethereum"
+    "message": "Đang kết nối với mạng chính thức của QTUM"
   },
   "connectingToRinkeby": {
     "message": "Đang kết nối với mạng thử nghiệm Rinkeby"
@@ -1114,7 +1114,7 @@
     "message": "Ký Tự Không Hợp Lệ đối với ENS."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Không tìm thấy tên ENS trên mạng hiện tại. Đang chuyển sang mạng chính thức của Ethereum."
+    "message": "Không tìm thấy tên ENS trên mạng hiện tại. Đang chuyển sang mạng chính thức của QTUM."
   },
   "ensNotSupportedOnNetwork": {
     "message": "Mạng không hỗ trợ ENS"
@@ -1173,7 +1173,7 @@
     "message": "Giá gas dự phòng được cung cấp vì dịch vụ ước tính giá gas chính hiện không hoạt động."
   },
   "ethereumPublicAddress": {
-    "message": "Địa chỉ công khai trên Ethereum"
+    "message": "Địa chỉ công khai trên QTUM"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1704,7 +1704,7 @@
     "message": "Bật Sử Dụng Ledger Live trong Cài Đặt > Nâng Cao"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Cắm thiết bị Ledger và chọn ứng dụng Ethereum"
+    "message": "Cắm thiết bị Ledger và chọn ứng dụng QTUM"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Mở và mở khóa Ứng Dụng Ledger Live"
@@ -1724,7 +1724,7 @@
     "message": "Ứng dụng Ledger Live"
   },
   "ledgerLocked": {
-    "message": "Không thể kết nối với thiết bị Ledger. Vui lòng đảm bảo bạn đã mở khóa thiết bị và mở ứng dụng Ethereum."
+    "message": "Không thể kết nối với thiết bị Ledger. Vui lòng đảm bảo bạn đã mở khóa thiết bị và mở ứng dụng QTUM."
   },
   "ledgerTimeout": {
     "message": "Ledger Live mất quá nhiều thời gian để phản hồi hoặc đã hết thời gian chờ kết nối. Hãy đảm bảo bạn đã mở ứng dụng Ledger Live và đã mở khóa thiết bị."
@@ -1793,10 +1793,10 @@
     "message": "Các giao dịch trong tương lai sẽ được xếp sau giao dịch này. Mức giá này được nhìn thấy lần cuối cách đây một thời gian."
   },
   "mainnet": {
-    "message": "Mạng chính thức của Ethereum"
+    "message": "Mạng chính thức của QTUM"
   },
   "mainnetToken": {
-    "message": "Địa chỉ này trùng với một địa chỉ đã biết trên Mạng chính thức của Ethereum. Hãy kiểm tra lại địa chỉ hợp đồng và mạng cho token mà bạn đang muốn thêm."
+    "message": "Địa chỉ này trùng với một địa chỉ đã biết trên Mạng chính thức của QTUM. Hãy kiểm tra lại địa chỉ hợp đồng và mạng cho token mà bạn đang muốn thêm."
   },
   "makeAnotherSwap": {
     "message": "Tạo một giao dịch hoán đổi mới"
@@ -1849,7 +1849,7 @@
     "message": "Nút trạng thái kết nối sẽ hiển thị nếu trang web mà bạn đang truy cập được kết nối với tài khoản bạn đang chọn."
   },
   "metamaskDescription": {
-    "message": "Kết nối bạn với Ethereum và trang Web phi tập trung."
+    "message": "Kết nối bạn với QTUM và trang Web phi tập trung."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Tính năng Hoán đổi trên Qnekt đang được bảo trì. Vui lòng kiểm tra lại sau."
@@ -1898,7 +1898,7 @@
     "message": "Giúp chúng tôi cải thiện Qnekt"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt muốn thu thập dữ liệu sử dụng để hiểu rõ hơn về cách người dùng tương tác với tiện ích. Chúng tôi sẽ dùng dữ liệu này để liên tục cải thiện độ hữu ích và trải nghiệm người dùng trên sản phẩm của mình và hệ sinh thái Ethereum."
+    "message": "Qnekt muốn thu thập dữ liệu sử dụng để hiểu rõ hơn về cách người dùng tương tác với tiện ích. Chúng tôi sẽ dùng dữ liệu này để liên tục cải thiện độ hữu ích và trải nghiệm người dùng trên sản phẩm của mình và hệ sinh thái QTUM."
   },
   "metametricsOptInDescription2": {
     "message": "Chúng tôi muốn thu thập dữ liệu sử dụng cơ bản để cải thiện mức độ hữu ích của sản phẩm. Các chỉ số này sẽ..."
@@ -1995,8 +1995,8 @@
   "networkNameDefinition": {
     "message": "Tên được liên kết với mạng này."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -2170,7 +2170,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Tính năng phát hiện token cải tiến hiện đã có sẵn trên Mạng chính thức của Ethereum, mạng Polygon, BSC và Avalanche. Sẽ sớm có thêm nhiều mạng khác!"
+    "message": "Tính năng phát hiện token cải tiến hiện đã có sẵn trên Mạng chính thức của QTUM, mạng Polygon, BSC và Avalanche. Sẽ sớm có thêm nhiều mạng khác!"
   },
   "notifications10DescriptionThree": {
     "message": "Theo mặc định, tính năng phát hiện token sẽ được BẬT. Nhưng bạn có thể tắt tính năng này trong phần Cài đặt."
@@ -2263,7 +2263,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Để hoàn thành các giao dịch trên Mạng chính thức của Ethereum, hãy chắc chắn thiết bị Ledger của bạn đã được cập nhật lên phiên bản phần mềm mới nhất.",
+    "message": "Để hoàn thành các giao dịch trên Mạng chính thức của QTUM, hãy chắc chắn thiết bị Ledger của bạn đã được cập nhật lên phiên bản phần mềm mới nhất.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2370,7 +2370,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Việc hiển thị các giao dịch đến trong ví của bạn tùy thuộc vào quá trình truyền tin với $1. Etherscan sẽ có quyền truy cập vào địa chỉ Ethereum và địa chỉ IP của bạn. Xem $2.",
+    "message": "Việc hiển thị các giao dịch đến trong ví của bạn tùy thuộc vào quá trình truyền tin với $1. Etherscan sẽ có quyền truy cập vào địa chỉ QTUM và địa chỉ IP của bạn. Xem $2.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3169,7 +3169,7 @@
     "message": "Cắm ví Ledger"
   },
   "step2LedgerWalletMsg": {
-    "message": "Kết nối ví của bạn trực tiếp với máy tính.  Mở khóa Ledger của bạn và mở ứng dụng Ethereum. Để biết thêm thông tin về cách sử dụng thiết bị ví cứng của bạn, $1.",
+    "message": "Kết nối ví của bạn trực tiếp với máy tính.  Mở khóa Ledger của bạn và mở ứng dụng QTUM. Để biết thêm thông tin về cách sử dụng thiết bị ví cứng của bạn, $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3329,7 +3329,7 @@
     "message": "Xác nhận ví cứng của bạn"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "Trong ứng dụng Ethereum trên Ledger của bạn, hãy chuyển đến phần \"Cài đặt\" và cho phép dữ liệu hợp đồng. Sau đó, thử hoán đổi lại."
+    "message": "Trong ứng dụng QTUM trên Ledger của bạn, hãy chuyển đến phần \"Cài đặt\" và cho phép dữ liệu hợp đồng. Sau đó, thử hoán đổi lại."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Chưa bật dữ liệu hợp đồng trên Ledger của bạn"
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Phí gas được trả cho thợ đào tiền điện tử, họ là những người xử lý các giao dịch trên mạng $1. Qnekt không thu lợi nhuận từ phí gas.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Số tiền trượt giá rất cao."
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "Xem hoạt động"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "Thao tác này sẽ chuyển mạng được chọn trong Qnekt sang một mạng đã thêm trước đó:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "Cho phép trang web này chuyển mạng?"
   },
   "switchNetwork": {
@@ -3964,7 +3964,7 @@
     "message": "Sử dụng tính năng Phát hiện lừa đảo"
   },
   "usePhishingDetectionDescription": {
-    "message": "Hiển thị cảnh báo đối với các tên miền lừa đảo nhắm đến người dùng Ethereum"
+    "message": "Hiển thị cảnh báo đối với các tên miền lừa đảo nhắm đến người dùng QTUM"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "Tự động hiển thị các token được gửi vào tài khoản của bạn có liên quan đến hoạt động trao đổi thông tin với các máy chủ bên thứ ba để tìm nạp hình ảnh của token. Các máy chủ đó sẽ có quyền truy cập vào địa chỉ IP của bạn."

@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "टोकन नहीं मिल रहा है? आप किसी भी टोकन का पता पेस्ट करके उसे मैन्युअल रूप से भी जोड़ सकते हैं। टोकन अनुबंध पते $1 पर मिल सकते हैं।",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "इससे इस नेटवर्क को Qnekt के अंदर उपयोग करने की अनुमति मिलेगी।"
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt कस्टम नेटवर्क को सत्यापित नहीं करता है।"
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "$1 के बारे में जानें।",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "धोखाधड़ी और नेटवर्क सुरक्षा जोखिम",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "इस साइट को नेटवर्क जोड़ने की अनुमति दें?"
   },
   "addFriendsAndAddresses": {
@@ -252,7 +252,7 @@
     "message": "राशि"
   },
   "appDescription": {
-    "message": "आपके ब्राउजर में एक Ethereum वॉलेट",
+    "message": "आपके ब्राउजर में एक QTUM वॉलेट",
     "description": "The description of the application"
   },
   "appName": {
@@ -620,7 +620,7 @@
     "message": "Kovan टेस्ट नेटवर्क से कनेक्ट हो रहा है"
   },
   "connectingToMainnet": {
-    "message": "Ethereum Mainnet से कनेक्ट हो रहा है"
+    "message": "QTUM Mainnet से कनेक्ट हो रहा है"
   },
   "connectingToRinkeby": {
     "message": "Rinkeby टेस्ट नेटवर्क से कनेक्ट हो रहा है"
@@ -1114,7 +1114,7 @@
     "message": "ENS के लिए गैर-कानूनी कैरेक्टर।"
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "वर्तमान नेटवर्क पर ENS नाम नहीं मिला। Ethereum Mainnet पर स्विच करने का प्रयास करें।"
+    "message": "वर्तमान नेटवर्क पर ENS नाम नहीं मिला। QTUM Mainnet पर स्विच करने का प्रयास करें।"
   },
   "ensNotSupportedOnNetwork": {
     "message": "नेटवर्क ENS का समर्थन नहीं करता है"
@@ -1173,7 +1173,7 @@
     "message": "बैकअप गैस की कीमत प्रदान की जाती है क्योंकि मुख्य गैस अनुमान सर्विस अभी उपलब्ध नहीं है।"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum सार्वजनिक पता"
+    "message": "QTUM सार्वजनिक पता"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1704,7 +1704,7 @@
     "message": "सेटिंग्स> एडवांस के तहत उपयोग लेजर लाइव इनेबल करें"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "अपने लेजर डिवाइस में प्लग इन करें और Ethereum ऐप चुनें"
+    "message": "अपने लेजर डिवाइस में प्लग इन करें और QTUM ऐप चुनें"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "लेजर लाइव ऐप खोलें और अनलॉक करें"
@@ -1724,7 +1724,7 @@
     "message": "Ledger Live ऐप"
   },
   "ledgerLocked": {
-    "message": "लेजर डिवाइस से कनेक्ट नहीं हो सकता। कृपया सुनिश्चित करें कि आपका डिवाइस अनलॉक है और Ethereum ऐप खुला है।"
+    "message": "लेजर डिवाइस से कनेक्ट नहीं हो सकता। कृपया सुनिश्चित करें कि आपका डिवाइस अनलॉक है और QTUM ऐप खुला है।"
   },
   "ledgerTimeout": {
     "message": "Ledger Live जवाब देने में बहुत अधिक समय ले रहा है या कनेक्शन समयबाह्य हो गया है। सुनिश्चित करें कि Ledger Live ऐप खुला है और आपका डिवाइस अनलॉक है।"
@@ -1793,10 +1793,10 @@
     "message": "इसके बाद भविष्य के लेन-देन होंगे। यह कीमत आखिरी बार कुछ समय पहले देखी गई थी।"
   },
   "mainnet": {
-    "message": "Ethereum Mainnet"
+    "message": "QTUM Mainnet"
   },
   "mainnetToken": {
-    "message": "ये एड्रेस एक ज्ञात Ethereum Mainnet टोकन के एड्रेस से मेल खाता है। आप जिस टोकन को जोड़ने का प्रयास कर रहे हैं, उसके लिए कॉन्ट्रैक्ट एड्रेस और नेटवर्क दोबारा जांचें।"
+    "message": "ये एड्रेस एक ज्ञात QTUM Mainnet टोकन के एड्रेस से मेल खाता है। आप जिस टोकन को जोड़ने का प्रयास कर रहे हैं, उसके लिए कॉन्ट्रैक्ट एड्रेस और नेटवर्क दोबारा जांचें।"
   },
   "makeAnotherSwap": {
     "message": "एक नया स्वैप बनाएं"
@@ -1849,7 +1849,7 @@
     "message": "कनेक्शन स्थिति बटन दिखाता है कि आप जिस वेबसाइट पर जा रहे हैं, वह आपके वर्तमान में चयनित खाते से कनेक्ट है।"
   },
   "metamaskDescription": {
-    "message": "आपको Ethereum और विकेंद्रीकृत वेब से कनेक्ट किया जा रहा है।"
+    "message": "आपको QTUM और विकेंद्रीकृत वेब से कनेक्ट किया जा रहा है।"
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Qnekt स्वैप का रखरखाव किया जा रहा है। कृपया बाद में वापस देखें।"
@@ -1898,7 +1898,7 @@
     "message": "Qnekt को बेहतर बनाने में हमारी मदद करें"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt इस बात की बेहतर समझ प्राप्त करने के लिए डेटा एकत्र करना चाहता है कि हमारे उपयोगकर्ता विस्तार के साथ कैसे सहभागिता करते हैं। इस डेटा का उपयोग हमारे उत्पाद और Ethereum पारिस्थितिकी तंत्र की उपयोगिता और उपयोगकर्ता अनुभव को लगातार सुधारने के लिए किया जाएगा।"
+    "message": "Qnekt इस बात की बेहतर समझ प्राप्त करने के लिए डेटा एकत्र करना चाहता है कि हमारे उपयोगकर्ता विस्तार के साथ कैसे सहभागिता करते हैं। इस डेटा का उपयोग हमारे उत्पाद और QTUM पारिस्थितिकी तंत्र की उपयोगिता और उपयोगकर्ता अनुभव को लगातार सुधारने के लिए किया जाएगा।"
   },
   "metametricsOptInDescription2": {
     "message": "हम अपने उत्पाद की उपयोगिता में सुधार के लिए बुनियादी उपयोग डेटा एकत्र करना चाहते हैं। ये मेट्रिक्स करेंगे..."
@@ -1995,8 +1995,8 @@
   "networkNameDefinition": {
     "message": "इस नेटवर्क के साथ संबद्ध नाम।"
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "बहुभुज"
@@ -2170,7 +2170,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "बेहतर टोकन डिटेक्शन वर्तमान में Ethereum Mainnet, Polygon, BSC और Avalanche के नेटवर्कों पर उपलब्ध है। और भी आने वाला है!"
+    "message": "बेहतर टोकन डिटेक्शन वर्तमान में QTUM Mainnet, Polygon, BSC और Avalanche के नेटवर्कों पर उपलब्ध है। और भी आने वाला है!"
   },
   "notifications10DescriptionThree": {
     "message": "टोकन डिटेक्शन फ़ीचर डिफ़ॉल्ट रूप से चालू है। लेकिन आप इसे सेटिंग्स में जाकर अक्षम कर सकते हैं।"
@@ -2263,7 +2263,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Ethereum Mainnet पर लेनदेन पूरा करने के लिए, सुनिश्चित करें कि आपके लेजर डिवाइस में नवीनतम फर्मवेयर है।",
+    "message": "QTUM Mainnet पर लेनदेन पूरा करने के लिए, सुनिश्चित करें कि आपके लेजर डिवाइस में नवीनतम फर्मवेयर है।",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2370,7 +2370,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "आपके वॉलेट में आने वाले लेन-देन को दिखाना $1 के साथ संचार पर निर्भर करता है। Etherscan की पहुंच आपके Ethereum और आपके IP पते तक होगी। $2 देखें।",
+    "message": "आपके वॉलेट में आने वाले लेन-देन को दिखाना $1 के साथ संचार पर निर्भर करता है। Etherscan की पहुंच आपके QTUM और आपके IP पते तक होगी। $2 देखें।",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3169,7 +3169,7 @@
     "message": "Ledger वॉलेट प्लग इन करें"
   },
   "step2LedgerWalletMsg": {
-    "message": "अपने वॉलेट को सीधे अपने कंप्यूटर से कनेक्ट करें। अपने Ledger को अनलॉक करें और Ethereum ऐप खोलें। अपने हार्डवेयर वॉलेट डिवाइस के उपयोग के बारे में अधिक जानकारी के लिए, $1।",
+    "message": "अपने वॉलेट को सीधे अपने कंप्यूटर से कनेक्ट करें। अपने Ledger को अनलॉक करें और QTUM ऐप खोलें। अपने हार्डवेयर वॉलेट डिवाइस के उपयोग के बारे में अधिक जानकारी के लिए, $1।",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3329,7 +3329,7 @@
     "message": "अपने हार्डवेयर वॉलेट से पुष्टि करें"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "अपने Ledger पर Ethereum ऐप में, \"सेटिंग\" पर जाएं और अनुबंध डेटा की अनुमति दें। फिर, अपने स्वैप का पुनः प्रयास करें।"
+    "message": "अपने Ledger पर QTUM ऐप में, \"सेटिंग\" पर जाएं और अनुबंध डेटा की अनुमति दें। फिर, अपने स्वैप का पुनः प्रयास करें।"
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "आपके Ledger पर अनुबंध डेटा सक्षम नहीं है"
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "क्रिप्टो खनिकों को गैस शुल्क का भुगतान किया जाता है जो $1 नेटवर्क पर लेन-देन की प्रक्रिया करते हैं। Qnekt को गैस शुल्क से लाभ नहीं होता है।",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "स्लिपेज राशि बहुत अधिक है।"
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "गतिविधि में देखें"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "इससे चयनित नेटवर्क को Qnekt के भीतर पहले से जोड़े गए नेटवर्क में बदल दिया जाएगा:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "इस साइट को नेटवर्क स्विच करने की अनुमति दें?"
   },
   "switchNetwork": {
@@ -3964,7 +3964,7 @@
     "message": "फिशिंग डिटेक्शन का उपयोग करें"
   },
   "usePhishingDetectionDescription": {
-    "message": "Ethereum उपयोगकर्ताओं को लक्षित करने वाले फिशिंग डोमेन के लिए एक चेतावनी प्रदर्शित करें"
+    "message": "QTUM उपयोगकर्ताओं को लक्षित करने वाले फिशिंग डोमेन के लिए एक चेतावनी प्रदर्शित करें"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "आपके खाते में भेजे गए टोकन को स्वचालित रूप से प्रदर्शित करने में थर्ड पार्टी के सर्वर्स के साथ संचार शामिल रहेगा, जो टोकन के चित्रों को लाने का काम करते हैं। वे सर्वर्स आपके IP एड्रेस को एक्सेस कर पाएंगे।"

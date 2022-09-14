@@ -57,7 +57,7 @@
     "message": "Quantitat"
   },
   "appDescription": {
-    "message": "Un Moneder Ethereum al teu Navegador",
+    "message": "Un Moneder QTUM al teu Navegador",
     "description": "The description of the application"
   },
   "appName": {
@@ -194,7 +194,7 @@
     "message": "Conectant a la xarxa de Kovan Test"
   },
   "connectingToMainnet": {
-    "message": "Connectant a Xarxa Principal Ethereum"
+    "message": "Connectant a Xarxa Principal QTUM"
   },
   "connectingToRinkeby": {
     "message": "Connectant a la Xarxa de Prova Rinkeby"
@@ -326,7 +326,7 @@
     "message": "Més informació."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "El nom ENS no s'ha trovat a la xarxa actual. Prova a cambiar a la xarxa principal d'Ethereum."
+    "message": "El nom ENS no s'ha trovat a la xarxa actual. Prova a cambiar a la xarxa principal d'QTUM."
   },
   "ensRegistrationError": {
     "message": "Error al registre de nom ENS"
@@ -341,7 +341,7 @@
     "message": "Temps de processament estimats"
   },
   "ethereumPublicAddress": {
-    "message": "Adreça Pública d'Ethereum"
+    "message": "Adreça Pública d'QTUM"
   },
   "etherscanView": {
     "message": "Veure compte a Etherscan"
@@ -527,7 +527,7 @@
     "message": "Tanca la sessió"
   },
   "mainnet": {
-    "message": "Xarxa Ethereum principal"
+    "message": "Xarxa QTUM principal"
   },
   "memo": {
     "message": "notes"
@@ -539,7 +539,7 @@
     "message": "Missatge"
   },
   "metamaskDescription": {
-    "message": "Conectant-te a Ethereum i la web descentralitzada."
+    "message": "Conectant-te a QTUM i la web descentralitzada."
   },
   "metamaskVersion": {
     "message": "Versió Qnekt"

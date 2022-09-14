@@ -112,23 +112,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "找不到代币？您可以通过粘贴地址手动添加任何代币。代币合同地址可以在$1上找到。",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "这将允许在Qnekt中使用此网络。"
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt不验证自定义网络。"
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "了解$1。",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "欺诈和网络安全风险",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "允许此站点添加一个网络？"
   },
   "addFriendsAndAddresses": {
@@ -510,7 +510,7 @@
     "message": "正在连接到 Kovan 测试网络"
   },
   "connectingToMainnet": {
-    "message": "正在连接到以太坊 Ethereum 主网"
+    "message": "正在连接到以太坊 QTUM 主网"
   },
   "connectingToRinkeby": {
     "message": "正在连接到 Rinkeby 测试网络"
@@ -985,7 +985,7 @@
     "message": "由于目前主要的燃料估算服务不可用，因此提供了备用燃料价格。"
   },
   "ethereumPublicAddress": {
-    "message": "以太坊 Ethereum 公开地址"
+    "message": "以太坊 QTUM 公开地址"
   },
   "etherscan": {
     "message": "Etherscan（以太坊浏览器）"
@@ -1414,7 +1414,7 @@
     "message": "启用在“设置 > 高级”下使用Ledger Live"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "在您的Ledger设备中插入并选择Ethereum应用"
+    "message": "在您的Ledger设备中插入并选择QTUM应用"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "打开和解锁Ledger Live应用程序"
@@ -1490,7 +1490,7 @@
     "message": "以后的交易将在这个时候之后排队。最后一次看到的价格是在一段时间之前。"
   },
   "mainnet": {
-    "message": "以太坊 Ethereum 主网络"
+    "message": "以太坊 QTUM 主网络"
   },
   "makeAnotherSwap": {
     "message": "创建一个新的交换"
@@ -1537,7 +1537,7 @@
     "message": "连接状态按钮显示所访问的网站是否与您当前选择的账户连接。"
   },
   "metamaskDescription": {
-    "message": "将您与 Ethereum 和去中心化网络连接起来。"
+    "message": "将您与 QTUM 和去中心化网络连接起来。"
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Qnekt Swaps 正在进行维护。请稍后访问。"
@@ -1586,7 +1586,7 @@
     "message": "帮助我们让 Qnekt 变得更好"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt 希望收集使用数据，以更好地了解我们的用户如何与扩展进行互动。这些数据将被用于持续改进我们产品和 Ethereum 生态系统的可用性和用户体验。"
+    "message": "Qnekt 希望收集使用数据，以更好地了解我们的用户如何与扩展进行互动。这些数据将被用于持续改进我们产品和 QTUM 生态系统的可用性和用户体验。"
   },
   "metametricsOptInDescription2": {
     "message": "我们想要收集基本使用数据以提高我们产品的可用性。这些数据将..."
@@ -1648,8 +1648,8 @@
   "networkNameDefinition": {
     "message": "与此网络关联的名称。"
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -1853,7 +1853,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "要完成Ethereum Mainnet上的交易，请确保您的Ledger设备有最新的固件。",
+    "message": "要完成QTUM Mainnet上的交易，请确保您的Ledger设备有最新的固件。",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2542,7 +2542,7 @@
     "message": "插入Ledger钱包"
   },
   "step2LedgerWalletMsg": {
-    "message": "将您的钱包直接连接到电脑。解锁Ledger并打开Ethereum应用程序。关于使用您的硬件钱包设备的更多，$1。",
+    "message": "将您的钱包直接连接到电脑。解锁Ledger并打开QTUM应用程序。关于使用您的硬件钱包设备的更多，$1。",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "storePhrase": {
@@ -2664,7 +2664,7 @@
   },
   "swapGasFeesSummary": {
     "message": "燃料费用支付给在$1网络上处理交易的加密矿工。Qnekt不会从燃料费用中获利。",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "翻转数量非常高。"
@@ -2862,10 +2862,10 @@
   "swapsViewInActivity": {
     "message": "在活动中查看"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "这将切换Qnekt中选定的网络到以前添加的网络："
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "允许此站点切换网络？"
   },
   "switchNetwork": {
@@ -3170,7 +3170,7 @@
     "message": "使用网络钓鱼检测"
   },
   "usePhishingDetectionDescription": {
-    "message": "显示针对 Ethereum 用户钓鱼域名的警告。"
+    "message": "显示针对 QTUM 用户钓鱼域名的警告。"
   },
   "usedByClients": {
     "message": "可用于各种不同的客户端"

@@ -112,23 +112,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "¿No encuentra un token? Para agregar un token, copie su dirección. Puede encontrar la dirección de contrato del token en $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "Esto permitirá que la red se utilice en Qnekt."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt no verifica redes personalizadas."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "Obtenga más información sobre $1.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "estafas y riesgos de seguridad de la red",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "¿Permitir que este sitio agregue una red?"
   },
   "addFriendsAndAddresses": {
@@ -215,7 +215,7 @@
     "message": "Importe"
   },
   "appDescription": {
-    "message": "Una cartera de Ethereum en el explorador",
+    "message": "Una cartera de QTUM en el explorador",
     "description": "The description of the application"
   },
   "appName": {
@@ -518,7 +518,7 @@
     "message": "Estableciendo conexión a la red de prueba Kovan"
   },
   "connectingToMainnet": {
-    "message": "Estableciendo conexión a la red principal de Ethereum"
+    "message": "Estableciendo conexión a la red principal de QTUM"
   },
   "connectingToRinkeby": {
     "message": "Estableciendo conexión a la red de prueba Rinkeby"
@@ -956,7 +956,7 @@
     "message": "Caracter ilegal para ENS."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "El nombre de ENS no se encuentra en la red actual. Intente cambiar a la red principal de Ethereum."
+    "message": "El nombre de ENS no se encuentra en la red actual. Intente cambiar a la red principal de QTUM."
   },
   "ensNotSupportedOnNetwork": {
     "message": "La red no admite ENS"
@@ -1015,7 +1015,7 @@
     "message": "Se muestra el precio del gas de respaldo, ya que el servicio para calcular el precio del gas principal no se encuentra disponible en este momento."
   },
   "ethereumPublicAddress": {
-    "message": "Dirección pública de Ethereum"
+    "message": "Dirección pública de QTUM"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1463,7 +1463,7 @@
     "message": "Habilite el uso de Ledger Live en Configuración > Avanzada"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Conecte su dispositivo Ledger y seleccione la aplicación Ethereum"
+    "message": "Conecte su dispositivo Ledger y seleccione la aplicación QTUM"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Abra y desbloquee la aplicación Ledger Live"
@@ -1483,7 +1483,7 @@
     "message": "Aplicación Ledger Live"
   },
   "ledgerLocked": {
-    "message": "No se pudo establecer la conexión con el dispositivo Ledger. Asegúrese de que el dispositivo está desbloqueado y que la aplicación de Ethereum está abierta."
+    "message": "No se pudo establecer la conexión con el dispositivo Ledger. Asegúrese de que el dispositivo está desbloqueado y que la aplicación de QTUM está abierta."
   },
   "ledgerTimeout": {
     "message": "Ledger Live tardó mucho en responder o se excedió el tiempo de espera de la conexión. Asegúrese de que la aplicación de Ledger Live está abierta y que su dispositivo está desbloqueado."
@@ -1536,7 +1536,7 @@
     "message": "baja"
   },
   "mainnet": {
-    "message": "Red principal de Ethereum"
+    "message": "Red principal de QTUM"
   },
   "makeAnotherSwap": {
     "message": "Crear un nuevo swap"
@@ -1583,7 +1583,7 @@
     "message": "El botón de estado de la conexión muestra si el sitio web que visita está conectado a la cuenta seleccionada actualmente."
   },
   "metamaskDescription": {
-    "message": "Conectándolo a Ethereum y a la Web descentralizada."
+    "message": "Conectándolo a QTUM y a la Web descentralizada."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Qnekt Swaps está en mantenimiento. Vuelva a comprobarlo más tarde."
@@ -1632,7 +1632,7 @@
     "message": "Ayúdenos a mejorar Qnekt"
   },
   "metametricsOptInDescription": {
-    "message": "A Qnekt le gustaría recopilar datos de uso para entender mejor cómo interactúan los usuarios con la extensión. Estos datos se usarán para mejorar de manera continua la usabilidad y la experiencia de usuario de nuestro producto y del ecosistema de Ethereum."
+    "message": "A Qnekt le gustaría recopilar datos de uso para entender mejor cómo interactúan los usuarios con la extensión. Estos datos se usarán para mejorar de manera continua la usabilidad y la experiencia de usuario de nuestro producto y del ecosistema de QTUM."
   },
   "metametricsOptInDescription2": {
     "message": "Nos gustaría recopilar datos básicos de uso para mejorar la usabilidad de nuestro producto.  Estos indicadores..."
@@ -1697,8 +1697,8 @@
   "networkNameDefinition": {
     "message": "El nombre asociado a esta red."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -1899,7 +1899,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Para llevar a cabo transacciones en el Mainnet de Ethereum, asegúrese de que su dispositivo Ledger tenga el último firmware.",
+    "message": "Para llevar a cabo transacciones en el Mainnet de QTUM, asegúrese de que su dispositivo Ledger tenga el último firmware.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -1993,7 +1993,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Mostrar las transacciones entrantes en su cartera depende de la comunicación con $1. Etherscan tendrá acceso a su dirección de Ethereum y a su dirección IP. Ver 2$.",
+    "message": "Mostrar las transacciones entrantes en su cartera depende de la comunicación con $1. Etherscan tendrá acceso a su dirección de QTUM y a su dirección IP. Ver 2$.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -2594,7 +2594,7 @@
     "message": "Conectar la cartera Ledger"
   },
   "step2LedgerWalletMsg": {
-    "message": "Conecte la cartera directamente al equipo.  Desbloquee su Ledger y abra la aplicación de Ethereum. Para más información sobre el uso de su dispositivo de cartera de hardware, $1.",
+    "message": "Conecte la cartera directamente al equipo.  Desbloquee su Ledger y abra la aplicación de QTUM. Para más información sobre el uso de su dispositivo de cartera de hardware, $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "storePhrase": {
@@ -2651,7 +2651,7 @@
     "message": "Confirmar con la cartera de hardware"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "En la aplicación de Ethereum en su Ledger, diríjase a \"Configuración\" y habilite los datos de contrato. Luego intente canjear de nuevo."
+    "message": "En la aplicación de QTUM en su Ledger, diríjase a \"Configuración\" y habilite los datos de contrato. Luego intente canjear de nuevo."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Los datos de contrato no se habilitaron en su Ledger"
@@ -2716,7 +2716,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Las tarifas de gas se pagan a los mineros de criptomonedas que procesan transacciones en la red $1. Qnekt no se beneficia de las tarifas de gas.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "El monto del desfase es muy alto."
@@ -2914,10 +2914,10 @@
   "swapsViewInActivity": {
     "message": "Ver en actividad"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "Esto cambiará la red seleccionada en Qnekt por una red agregada con anterioridad:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "¿Le permite a este sitio cambiar la red?"
   },
   "switchNetwork": {
@@ -3228,7 +3228,7 @@
     "message": "Usar detección de phishing"
   },
   "usePhishingDetectionDescription": {
-    "message": "Mostrar una advertencia respecto de los dominios de phishing dirigidos a los usuarios de Ethereum"
+    "message": "Mostrar una advertencia respecto de los dominios de phishing dirigidos a los usuarios de QTUM"
   },
   "usedByClients": {
     "message": "Usado por una variedad de clientes distintos"

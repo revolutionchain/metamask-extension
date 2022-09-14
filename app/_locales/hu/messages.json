@@ -57,7 +57,7 @@
     "message": "Összeg"
   },
   "appDescription": {
-    "message": "Ethereum tárca a böngészőjében",
+    "message": "QTUM tárca a böngészőjében",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Csatlakozás a Kovan teszthálózathoz"
   },
   "connectingToMainnet": {
-    "message": "Csatlakozás a fő Ethereum hálózathoz"
+    "message": "Csatlakozás a fő QTUM hálózathoz"
   },
   "connectingToRinkeby": {
     "message": "Kapcsolódás a Rinkeby Teszthálózathoz"
@@ -329,7 +329,7 @@
     "message": "Bővebb információk."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS név nem található a jelenlegi hálózaton. Próbálj váltani Ethereum főhálózatra."
+    "message": "ENS név nem található a jelenlegi hálózaton. Próbálj váltani QTUM főhálózatra."
   },
   "ensRegistrationError": {
     "message": "Hiba történt az ENS név regisztrációjakor"
@@ -344,7 +344,7 @@
     "message": "Becsült feldolgozási idők"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum nyilvános címe"
+    "message": "QTUM nyilvános címe"
   },
   "etherscanView": {
     "message": "Fiók megtekintése Etherscanen"
@@ -533,7 +533,7 @@
     "message": "Kilépés"
   },
   "mainnet": {
-    "message": "Fő Ethereum hálózat"
+    "message": "Fő QTUM hálózat"
   },
   "max": {
     "message": "Maximum"
@@ -548,7 +548,7 @@
     "message": "Üzenet"
   },
   "metamaskDescription": {
-    "message": "Csatlakozás az Ethereumhoz és a decentralizált hálózathoz."
+    "message": "Csatlakozás az QTUMhoz és a decentralizált hálózathoz."
   },
   "metamaskVersion": {
     "message": "Qnekt verzió"

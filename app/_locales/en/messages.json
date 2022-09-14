@@ -204,23 +204,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "Can’t find a token? You can manually add any token by pasting its address. Token contract addresses can be found on $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "This will allow this network to be used within Qnekt."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt does not verify custom networks."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "Learn about $1.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "scams and network security risks",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "Allow this site to add a network?"
   },
   "addFriendsAndAddresses": {
@@ -327,7 +327,7 @@
     "message": "Amount"
   },
   "appDescription": {
-    "message": "An Ethereum Wallet in your Browser",
+    "message": "An QTUM Wallet in your Browser",
     "description": "The description of the application"
   },
   "appName": {
@@ -723,7 +723,7 @@
     "message": "Connecting to Kovan test network"
   },
   "connectingToMainnet": {
-    "message": "Connecting to Ethereum Mainnet"
+    "message": "Connecting to QTUM Mainnet"
   },
   "connectingToRinkeby": {
     "message": "Connecting to Rinkeby test network"
@@ -1235,7 +1235,7 @@
     "message": "Illegal character for ENS."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS name not found on the current network. Try switching to Ethereum Mainnet."
+    "message": "ENS name not found on the current network. Try switching to QTUM Mainnet."
   },
   "ensNotSupportedOnNetwork": {
     "message": "Network does not support ENS"
@@ -1294,7 +1294,7 @@
     "message": "Backup gas price is provided as the main gas estimation service is unavailable right now."
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum public address"
+    "message": "QTUM public address"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1834,7 +1834,7 @@
     "message": "Enable Use Ledger Live under Settings > Advanced"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Plug in your Ledger device and select the Ethereum app"
+    "message": "Plug in your Ledger device and select the QTUM app"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Open and unlock Ledger Live App"
@@ -1854,7 +1854,7 @@
     "message": "Ledger Live App"
   },
   "ledgerLocked": {
-    "message": "Cannot connect to Ledger device. Please make sure your device is unlocked and Ethereum app is opened."
+    "message": "Cannot connect to Ledger device. Please make sure your device is unlocked and QTUM app is opened."
   },
   "ledgerTimeout": {
     "message": "Ledger Live is taking too long to respond or connection timeout. Make sure Ledger Live app is opened and your device is unlocked."
@@ -1923,10 +1923,10 @@
     "message": "Future transactions will queue after this one."
   },
   "mainnet": {
-    "message": "Ethereum Mainnet"
+    "message": "QTUM Mainnet"
   },
   "mainnetToken": {
-    "message": "This address matches a known Ethereum Mainnet token address. Recheck the contract address and network for the token you are trying to add."
+    "message": "This address matches a known QTUM Mainnet token address. Recheck the contract address and network for the token you are trying to add."
   },
   "makeAnotherSwap": {
     "message": "Create a new swap"
@@ -1979,7 +1979,7 @@
     "message": "The connection status button shows if the website you’re visiting is connected to your currently selected account."
   },
   "metamaskDescription": {
-    "message": "Connecting you to Ethereum and the Decentralized Web."
+    "message": "Connecting you to QTUM and the Decentralized Web."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Qnekt Swaps is undergoing maintenance. Please check back later."
@@ -2028,7 +2028,7 @@
     "message": "Help us improve Qnekt"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt would like to gather usage data to better understand how our users interact with the extension. This data will be used to continually improve the usability and user experience of our product and the Ethereum ecosystem."
+    "message": "Qnekt would like to gather usage data to better understand how our users interact with the extension. This data will be used to continually improve the usability and user experience of our product and the QTUM ecosystem."
   },
   "metametricsOptInDescription2": {
     "message": "We would like to gather basic usage data to improve the usability of our product.  These metrics will..."
@@ -2129,8 +2129,8 @@
   "networkNameDefinition": {
     "message": "The name associated with this network."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -2304,7 +2304,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Improved token detection is currently available on Ethereum Mainnet, Polygon, BSC, and Avalanche networks. More to come!"
+    "message": "Improved token detection is currently available on QTUM Mainnet, Polygon, BSC, and Avalanche networks. More to come!"
   },
   "notifications10DescriptionThree": {
     "message": "Token detection feature is ON by default. But you can disable it from Settings."
@@ -2397,7 +2397,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "To complete transactions on Ethereum Mainnet, make sure your Ledger device has the latest firmware.",
+    "message": "To complete transactions on QTUM Mainnet, make sure your Ledger device has the latest firmware.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2511,7 +2511,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Showing incoming transactions in your wallet relies on communication with $1. Etherscan will have access to your Ethereum address and your IP address. View $2.",
+    "message": "Showing incoming transactions in your wallet relies on communication with $1. Etherscan will have access to your QTUM address and your IP address. View $2.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3355,7 +3355,7 @@
     "message": "Plug in Ledger wallet"
   },
   "step2LedgerWalletMsg": {
-    "message": "Connect your wallet directly to your computer.  Unlock your Ledger and open the Ethereum app. For more on using your hardware wallet device, $1.",
+    "message": "Connect your wallet directly to your computer.  Unlock your Ledger and open the QTUM app. For more on using your hardware wallet device, $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3515,7 +3515,7 @@
     "message": "Confirm with your hardware wallet"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "In the Ethereum app on your Ledger, go to \"Settings\" and allow contract data. Then, try your swap again."
+    "message": "In the QTUM app on your Ledger, go to \"Settings\" and allow contract data. Then, try your swap again."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Contract data is not enabled on your Ledger"
@@ -3584,7 +3584,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Gas fees are paid to crypto miners who process transactions on the $1 network. Qnekt does not profit from gas fees.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Slippage amount is very high."
@@ -3786,10 +3786,10 @@
   "swapsViewInActivity": {
     "message": "View in activity"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "This will switch the selected network within Qnekt to a previously added network:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "Allow this site to switch the network?"
   },
   "switchNetwork": {
@@ -3925,7 +3925,7 @@
     "message": "Token detection is currently available on $1. $2"
   },
   "tokenDetectionDescription": {
-    "message": "ConsenSys' token API aggregates a list of tokens from various third party token lists. When turned on, tokens will be automatically detected, and searchable, on  Ethereum mainnet, Binance, Polygon and Avalanche. When turned off, you will still be able to search for tokens on Ethereum mainnet using Qnekt's legacy token list."
+    "message": "ConsenSys' token API aggregates a list of tokens from various third party token lists. When turned on, tokens will be automatically detected, and searchable, on  QTUM mainnet, Binance, Polygon and Avalanche. When turned off, you will still be able to search for tokens on QTUM mainnet using Qnekt's legacy token list."
   },
   "tokenFoundTitle": {
     "message": "1 new token found"
@@ -4172,7 +4172,7 @@
     "message": "Use phishing detection"
   },
   "usePhishingDetectionDescription": {
-    "message": "Display a warning for phishing domains targeting Ethereum users"
+    "message": "Display a warning for phishing domains targeting QTUM users"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "Automatically displaying tokens sent to your account involves communication with third party servers to fetch token’s images. Those serves will have access to your IP address."

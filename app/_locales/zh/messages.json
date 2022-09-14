@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "找不到代币？您可以通过粘贴其地址手动添加任何代币。代币合约地址可以在 $1 上找到。",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "这将允许在 Qnekt 中使用此网络。"
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt 不验证自定义网络。"
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "了解 $1。",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "诈骗和网络安全风险",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "允许此网站增加一个网络？"
   },
   "addFriendsAndAddresses": {
@@ -1707,7 +1707,7 @@
     "message": "在“设置 > 高级”下启用使用 Ledger Live"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "在您的 Ledger 设备中插入并选择 Ethereum 应用程序"
+    "message": "在您的 Ledger 设备中插入并选择 QTUM 应用程序"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "打开和解锁 Ledger Live 应用程序"
@@ -1998,7 +1998,7 @@
   "networkNameDefinition": {
     "message": "与此网络关联的名称。"
   },
-  "networkNameEthereum": {
+  "networkNameQTUM": {
     "message": "以太坊"
   },
   "networkNamePolygon": {
@@ -2173,7 +2173,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in settings' notification. Upon clicking, users will be taken to settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Ethereum Mainnet、Polygon、BSC 和 Avalanche 网络目前提供经改进的代币检测。 即将推出更多！"
+    "message": "QTUM Mainnet、Polygon、BSC 和 Avalanche 网络目前提供经改进的代币检测。 即将推出更多！"
   },
   "notifications10DescriptionThree": {
     "message": "代币检测功能默认开启。但是您可从设置中禁用它。"
@@ -3179,7 +3179,7 @@
     "message": "插入 Ledger 钱包"
   },
   "step2LedgerWalletMsg": {
-    "message": "将您的钱包直接连接到电脑。解锁 Ledger 并打开 Ethereum 应用程序。若要了解有关使用您的硬件钱包设备的更多信息，$1。",
+    "message": "将您的钱包直接连接到电脑。解锁 Ledger 并打开 QTUM 应用程序。若要了解有关使用您的硬件钱包设备的更多信息，$1。",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3408,7 +3408,7 @@
   },
   "swapGasFeesSummary": {
     "message": "燃料费用支付给在 $1 网络上处理交易的加密矿工。Qnekt 不会从燃料费用中获利。",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "滑点金额非常高。"
@@ -3610,10 +3610,10 @@
   "swapsViewInActivity": {
     "message": "在活动中查看"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "这将切换 Qnekt 中选定的网络到以前添加的网络："
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "允许此网站切换网络？"
   },
   "switchNetwork": {
@@ -3977,7 +3977,7 @@
     "message": "使用网络钓鱼检测"
   },
   "usePhishingDetectionDescription": {
-    "message": "显示针对 Ethereum 用户的网络钓鱼域名警告"
+    "message": "显示针对 QTUM 用户的网络钓鱼域名警告"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "要自动显示发送到您账户的代币，需要与第三方服务器通信以获取代币的图像。这些服务器将拥有您的IP地址的访问权限。"

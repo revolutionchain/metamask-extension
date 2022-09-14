@@ -57,7 +57,7 @@
     "message": "পরিমান"
   },
   "appDescription": {
-    "message": "আপনার ব্রাউজারে একটি Ethereum ওয়ালেট",
+    "message": "আপনার ব্রাউজারে একটি QTUM ওয়ালেট",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "কোভান টেস্ট নেটওয়ার্কের সাথে সংযোগ করছে"
   },
   "connectingToMainnet": {
-    "message": "মুখ্য Ethereum নেটওয়ার্কের সাথে সংযোগ করছে"
+    "message": "মুখ্য QTUM নেটওয়ার্কের সাথে সংযোগ করছে"
   },
   "connectingToRinkeby": {
     "message": "রিঙ্কেবি টেস্ট নেটওয়ার্কের সাথে সংযোগ করছে"
@@ -329,7 +329,7 @@
     "message": "আরও জানুন।"
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS নাম বর্তমান নেটওয়ার্কে খুঁজে পাওয়া যায় নি। মূল Ethereum নেটওয়ার্কে বদলানোর চেষ্টা করুন।"
+    "message": "ENS নাম বর্তমান নেটওয়ার্কে খুঁজে পাওয়া যায় নি। মূল QTUM নেটওয়ার্কে বদলানোর চেষ্টা করুন।"
   },
   "ensRegistrationError": {
     "message": "ENS নাম নিবন্ধীকরণে ত্রুটি হয়েছে"
@@ -344,7 +344,7 @@
     "message": "আনুমানিক প্রক্রিয়াকরণের সময়"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum পাবলিক অ্যাড্রেস"
+    "message": "QTUM পাবলিক অ্যাড্রেস"
   },
   "etherscanView": {
     "message": "Etherscan এ অ্যাকাউন্ট দেখুন"
@@ -540,7 +540,7 @@
     "message": "লগ আউট করুন"
   },
   "mainnet": {
-    "message": "মূল Ethereum নেটওয়ার্ক"
+    "message": "মূল QTUM নেটওয়ার্ক"
   },
   "max": {
     "message": "সর্বাধিক"
@@ -555,7 +555,7 @@
     "message": "বার্তা"
   },
   "metamaskDescription": {
-    "message": "আপনার Ethereum এবং ছড়িয়ে ছিটিয়ে থাকা ওয়েবের সাথে সংযোগ করছে। "
+    "message": "আপনার QTUM এবং ছড়িয়ে ছিটিয়ে থাকা ওয়েবের সাথে সংযোগ করছে। "
   },
   "metamaskVersion": {
     "message": "Qnekt সংস্করণ"

@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "Не можете найти токен? Можно вручную добавить любой токен, вставив его адрес. Адреса контракта токена можно найти на $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "Это позволит использовать эту сеть в Qnekt."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt не проверяет пользовательские сети."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "Подробнее о $1.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "мошенничестве и угрозах безопасности в сети",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "Разрешить этому сайту добавить сеть?"
   },
   "addFriendsAndAddresses": {
@@ -252,7 +252,7 @@
     "message": "Сумма"
   },
   "appDescription": {
-    "message": "Кошелек Ethereum в вашем браузере",
+    "message": "Кошелек QTUM в вашем браузере",
     "description": "The description of the application"
   },
   "appName": {
@@ -620,7 +620,7 @@
     "message": "Подключение к тестовой сети Kovan..."
   },
   "connectingToMainnet": {
-    "message": "Подключение к сети Ethereum Mainnet..."
+    "message": "Подключение к сети QTUM Mainnet..."
   },
   "connectingToRinkeby": {
     "message": "Подключение к тестовой сети Rinkeby..."
@@ -1114,7 +1114,7 @@
     "message": "Недопустимый символ для ENS."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Имя ENS не найдено в текущей сети. Попробуйте переключиться на сеть Ethereum Mainnet."
+    "message": "Имя ENS не найдено в текущей сети. Попробуйте переключиться на сеть QTUM Mainnet."
   },
   "ensNotSupportedOnNetwork": {
     "message": "Сеть не поддерживает ENS"
@@ -1173,7 +1173,7 @@
     "message": "Указана резервная цена газа, поскольку основной сервис определения цены газа сейчас недоступен."
   },
   "ethereumPublicAddress": {
-    "message": "Открытый адрес Ethereum"
+    "message": "Открытый адрес QTUM"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1704,7 +1704,7 @@
     "message": "Включите «Использовать Ledger Live» в разделе «Настройки» > «Дополнительно»"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Подключите леджер и выберите приложение Ethereum"
+    "message": "Подключите леджер и выберите приложение QTUM"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Откройте и разблокируйте приложение Ledger Live"
@@ -1724,7 +1724,7 @@
     "message": "приложение Ledger Live"
   },
   "ledgerLocked": {
-    "message": "Не удалось подключиться к леджеру. Убедитесь, что устройство разблокировано и приложение Ethereum открыто."
+    "message": "Не удалось подключиться к леджеру. Убедитесь, что устройство разблокировано и приложение QTUM открыто."
   },
   "ledgerTimeout": {
     "message": "Ledger Live слишком долго не отвечает, или время ожидания подключения истекло. Убедитесь, что приложение Ledger Live открыто и устройство разблокировано."
@@ -1793,10 +1793,10 @@
     "message": "Последующие транзакции будут помещены в очередь после этой. Последний раз эту цену видели некоторое время назад."
   },
   "mainnet": {
-    "message": "Сеть Ethereum Mainnet"
+    "message": "Сеть QTUM Mainnet"
   },
   "mainnetToken": {
-    "message": "Этот адрес соответствует известному адресу токена Ethereum Mainnet. Перепроверьте адрес контракта и сеть для токена, который вы пытаетесь добавить."
+    "message": "Этот адрес соответствует известному адресу токена QTUM Mainnet. Перепроверьте адрес контракта и сеть для токена, который вы пытаетесь добавить."
   },
   "makeAnotherSwap": {
     "message": "Создать новый обмен"
@@ -1849,7 +1849,7 @@
     "message": "Кнопка статуса подключения показывает, подключен ли посещаемый вами веб-сайт, к выбранному вами в настоящее время счету."
   },
   "metamaskDescription": {
-    "message": "Подключение вас к Ethereum и децентрализованной сети..."
+    "message": "Подключение вас к QTUM и децентрализованной сети..."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Сервис обмена Qnekt на техобслуживании. Зайдите позже."
@@ -1898,7 +1898,7 @@
     "message": "Помогите нам улучшить Qnekt"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt хотел бы собрать основные данные об использовании, чтобы лучше понять, как наши пользователи взаимодействуют с расширением. Эти данные будут использоваться для постоянного повышения удобства и улучшения впечатлений от использования нашего продукта и экосистемы Ethereum."
+    "message": "Qnekt хотел бы собрать основные данные об использовании, чтобы лучше понять, как наши пользователи взаимодействуют с расширением. Эти данные будут использоваться для постоянного повышения удобства и улучшения впечатлений от использования нашего продукта и экосистемы QTUM."
   },
   "metametricsOptInDescription2": {
     "message": "Мы хотели бы получить базовые данные об использовании, чтобы повысить удобство использования нашего продукта. Эти показатели будут..."
@@ -1995,8 +1995,8 @@
   "networkNameDefinition": {
     "message": "Имя, связанное с этой сетью."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -2170,7 +2170,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Улучшенное обнаружение токенов в настоящее время доступно в сетях Ethereum Mainnet, Polygon, BSC и Avalanche. Это еще не все!"
+    "message": "Улучшенное обнаружение токенов в настоящее время доступно в сетях QTUM Mainnet, Polygon, BSC и Avalanche. Это еще не все!"
   },
   "notifications10DescriptionThree": {
     "message": "Функция обнаружения токена включена по умолчанию. Но вы можете отключить ее в настройках."
@@ -2263,7 +2263,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Перед выполнением транзакций в сети Ethereum Mainnet убедитесь, что в вашем леджере установлена последняя версия прошивки.",
+    "message": "Перед выполнением транзакций в сети QTUM Mainnet убедитесь, что в вашем леджере установлена последняя версия прошивки.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2370,7 +2370,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Отображение входящих транзакций в вашем кошельке зависит от связи с $1. Etherscan получит доступ к вашему адресу Ethereum и вашему IP-адресу. Посмотрите $2.",
+    "message": "Отображение входящих транзакций в вашем кошельке зависит от связи с $1. Etherscan получит доступ к вашему адресу QTUM и вашему IP-адресу. Посмотрите $2.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3169,7 +3169,7 @@
     "message": "Подключите кошелек-леджер"
   },
   "step2LedgerWalletMsg": {
-    "message": "Подключите кошелек напрямую к компьютеру. Разблокируйте леджер и откройте приложение Ethereum. Для получения дополнительной информации об использовании аппаратного кошелька $1.",
+    "message": "Подключите кошелек напрямую к компьютеру. Разблокируйте леджер и откройте приложение QTUM. Для получения дополнительной информации об использовании аппаратного кошелька $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3329,7 +3329,7 @@
     "message": "Подтвердите с помощью аппаратного кошелька"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "В приложении Ethereum на леджере перейдите в раздел «Настройки» и разрешите использование данных о контракте. Затем попробуйте повторить обмен."
+    "message": "В приложении QTUM на леджере перейдите в раздел «Настройки» и разрешите использование данных о контракте. Затем попробуйте повторить обмен."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "На леджере не включены данные о контракте"
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Плата за газ переводится майнерам, которые обрабатывают транзакции в сети $1. Qnekt не получает прибыли от платы за газ.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Сумма проскальзывания очень велика."
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "Посмотреть в журнале активности"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "В результате этого сеть, выбранная в Qnekt, будет изменена на ранее добавленную:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "Разрешить этому сайту сменить сеть?"
   },
   "switchNetwork": {
@@ -3964,7 +3964,7 @@
     "message": "Использовать обнаружение фишинга"
   },
   "usePhishingDetectionDescription": {
-    "message": "Показывать предупреждение для фишинговых доменов, нацеленных на пользователей Ethereum"
+    "message": "Показывать предупреждение для фишинговых доменов, нацеленных на пользователей QTUM"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "Автоматическое отображение токенов, отправленных на ваш счет, требует обмена данными со сторонними серверами для получения изображений токенов. Эти серверы получат доступ к вашему IP-адресу."

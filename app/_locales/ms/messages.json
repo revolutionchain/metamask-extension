@@ -57,7 +57,7 @@
     "message": "Jumlah"
   },
   "appDescription": {
-    "message": "Dompat Ethereum di Pelayar anda",
+    "message": "Dompat QTUM di Pelayar anda",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Menyambungkan kepada Rangkaian Ujian Kovan"
   },
   "connectingToMainnet": {
-    "message": "Menyambung kepada Rangkaian Ethereum Utama"
+    "message": "Menyambung kepada Rangkaian QTUM Utama"
   },
   "connectingToRinkeby": {
     "message": "Menyambung kepada Rangkaian Ujian Rinkeby"
@@ -326,7 +326,7 @@
     "message": "Ketahui lebih lanjut."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Nama ENS tidak ditemui di rangkaian semasa. Cuba beralih kepada Rangkaian Ethereum Utama."
+    "message": "Nama ENS tidak ditemui di rangkaian semasa. Cuba beralih kepada Rangkaian QTUM Utama."
   },
   "ensRegistrationError": {
     "message": "Ralat dalam pendaftaran nama ENS"
@@ -341,7 +341,7 @@
     "message": "Masa Pemprosesan yang Dijangka"
   },
   "ethereumPublicAddress": {
-    "message": "Alamat Awam Ethereum"
+    "message": "Alamat Awam QTUM"
   },
   "etherscanView": {
     "message": "Lihat akaun di Etherscan"
@@ -526,7 +526,7 @@
     "message": "Log keluar"
   },
   "mainnet": {
-    "message": "Rangkaian Ethereum Utama"
+    "message": "Rangkaian QTUM Utama"
   },
   "max": {
     "message": "Maks"
@@ -538,7 +538,7 @@
     "message": "Mesej"
   },
   "metamaskDescription": {
-    "message": "Menyambungkan anda kepada Ethereum dan Web Ternyahpusat."
+    "message": "Menyambungkan anda kepada QTUM dan Web Ternyahpusat."
   },
   "metamaskVersion": {
     "message": "Versi Qnekt"

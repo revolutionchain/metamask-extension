@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "이 토큰을 찾을 수 없으신가요? 토큰 주소를 붙여넣으면 토큰을 직접 추가할 수 있습니다. 토큰의 계약 주소는 $1에서 찾을 수 있습니다.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "이렇게 하면 Qnekt 내에서 이 네트워크를 사용할 수 있습니다."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt는 맞춤형 네트워크를 검증하지 않습니다."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "$1에 대해 자세히 알아보세요.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "사기 및 네트워크 보안 위험",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "이 사이트에서 네트워크를 추가하도록 허용할까요?"
   },
   "addFriendsAndAddresses": {
@@ -1995,7 +1995,7 @@
   "networkNameDefinition": {
     "message": "이 네트워크와 연결된 이름입니다."
   },
-  "networkNameEthereum": {
+  "networkNameQTUM": {
     "message": "이더리움"
   },
   "networkNamePolygon": {
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "가스요금은 $1 네트워크에서 거래를 처리하는 암호화폐 채굴자에게 지급됩니다. Qnekt는 가스 요금으로 수익을 창출하지 않습니다.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "슬리패지 금액이 아주 큽니다."
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "활동에서 보기"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "이는 Qnekt에서 선택한 네트워크를 이전에 추가한 다음 네트워크로 전환하게 됩니다:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "이 사이트가 네트워크를 전환하도록 허용할까요?"
   },
   "switchNetwork": {

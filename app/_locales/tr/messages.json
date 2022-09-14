@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "Bir tokeni bulamadınız mı? Adresini yapıştırarak dilediğiniz tokeni manuel olarak ekleyebilirsiniz. Token sözleşme adreslerini $1 alanında bulabilirsiniz.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "Bu, bu ağın MetaMas dahilinde kullanılmasına olanak tanıyacaktır."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnekt özel ağları doğrulamaz."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "$1 hakkında bilgi edinin.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "dolandırıcılık ve ağ güvenliği riskleri",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "Bu sitenin ağ eklemesine izin ver?"
   },
   "addFriendsAndAddresses": {
@@ -252,7 +252,7 @@
     "message": "Tutar"
   },
   "appDescription": {
-    "message": "Tarayıcında bir Ethereum Cüzdanı",
+    "message": "Tarayıcında bir QTUM Cüzdanı",
     "description": "The description of the application"
   },
   "appName": {
@@ -620,7 +620,7 @@
     "message": "Kovan Test Ağına bağlanıyor"
   },
   "connectingToMainnet": {
-    "message": "Ethereum Mainnet ağına bağlanıyor"
+    "message": "QTUM Mainnet ağına bağlanıyor"
   },
   "connectingToRinkeby": {
     "message": "Rinkeby Test Ağına bağlanıyor"
@@ -1114,7 +1114,7 @@
     "message": "ENS için Uygun Olmayan Karakter."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS adı geçerli ağda bulunamadı. Ethereum Mainnet'e geçmeyi deneyin."
+    "message": "ENS adı geçerli ağda bulunamadı. QTUM Mainnet'e geçmeyi deneyin."
   },
   "ensNotSupportedOnNetwork": {
     "message": "Ağ ENS desteklemiyor"
@@ -1173,7 +1173,7 @@
     "message": "Ana gaz tahmini hizmeti olarak sunulan yedek gaz fiyatı şu anda kullanılamıyor."
   },
   "ethereumPublicAddress": {
-    "message": "Ethereum Genel Adresi"
+    "message": "QTUM Genel Adresi"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1704,7 +1704,7 @@
     "message": "Ayarlar > Gelişmiş kısmının altında Ledger Live'i Kullan seçeneğini etkinleştirin"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Kayıt Defteri cihazınızı bağlayın ve Ethereum uygulamasını seçin"
+    "message": "Kayıt Defteri cihazınızı bağlayın ve QTUM uygulamasını seçin"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Ledger Live Uygulamasını açın ve kilidini açın"
@@ -1724,7 +1724,7 @@
     "message": "Ledger Live Uygulaması"
   },
   "ledgerLocked": {
-    "message": "Kayıt defteri cihazına bağlanılamıyor. Lütfen cihazınızın kilidinin açık ve Ethereum uygulamasının açık olduğundan emin olun."
+    "message": "Kayıt defteri cihazına bağlanılamıyor. Lütfen cihazınızın kilidinin açık ve QTUM uygulamasının açık olduğundan emin olun."
   },
   "ledgerTimeout": {
     "message": "Ledger Live'ın yanıt vermesi çok uzun sürdü ya da bağlantı zaman aşımına uğradı. Ledger Live uygulamasının açık olduğundan ve cihazınızın kilidinin açık olduğundan emin olun."
@@ -1793,10 +1793,10 @@
     "message": "Gelecekteki işlemleri bu işlemden sonrasında kuyruğa alınacaktır. Bu fiyat bir süre önce son defa görülmüştür."
   },
   "mainnet": {
-    "message": "Ethereum Ana Ağı"
+    "message": "QTUM Ana Ağı"
   },
   "mainnetToken": {
-    "message": "Bu adres, bilinen bir Ethereum Mainnet token adresiyle eşleşir. Eklemeye çalıştığın token için sözleşme adresini ve ağı yeniden kontrol et."
+    "message": "Bu adres, bilinen bir QTUM Mainnet token adresiyle eşleşir. Eklemeye çalıştığın token için sözleşme adresini ve ağı yeniden kontrol et."
   },
   "makeAnotherSwap": {
     "message": "Yeni bir takas oluştur"
@@ -1849,7 +1849,7 @@
     "message": "Bağlantı durumu düğmesi ziyaret ettiğiniz web sitesinin şu anda seçilen hesabınıza bağlı olup olmadığını gösterir."
   },
   "metamaskDescription": {
-    "message": "Sizi Ethereum ve Merkezi Olmayan Webe bağlar."
+    "message": "Sizi QTUM ve Merkezi Olmayan Webe bağlar."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Qnekt Takas İşlemleri bakımda. Lütfen daha sonra tekrar kontrol edin."
@@ -1898,7 +1898,7 @@
     "message": "Qnekt'i geliştirmemize yardımcı olun"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt, kullanıcılarımızın uzantıyı nasıl kullandıklarını daha iyi anlamak amacıyla kullanım verilerini toplamak istiyor. Bu veriler ürünümüzün ve Ethereum eko-sisteminin kullanılabilirliği ve kullanıcı deneyimini geliştirmek için sürekli olarak kullanılacaktır."
+    "message": "Qnekt, kullanıcılarımızın uzantıyı nasıl kullandıklarını daha iyi anlamak amacıyla kullanım verilerini toplamak istiyor. Bu veriler ürünümüzün ve QTUM eko-sisteminin kullanılabilirliği ve kullanıcı deneyimini geliştirmek için sürekli olarak kullanılacaktır."
   },
   "metametricsOptInDescription2": {
     "message": "Ürünümüzün kullanılabilirliğini geliştirmek için temel kullanım verilerini toplamak istiyoruz. Bu ölçümler..."
@@ -1995,8 +1995,8 @@
   "networkNameDefinition": {
     "message": "Bu ağ ile ilişkilendirilmiş ad."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -2170,7 +2170,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Geliştirilmiş token algılama şu anda Ethereum Mainnet, Polygon, BSC ve Avalanche ağlarında mevcut. Daha fazlası gelecek!"
+    "message": "Geliştirilmiş token algılama şu anda QTUM Mainnet, Polygon, BSC ve Avalanche ağlarında mevcut. Daha fazlası gelecek!"
   },
   "notifications10DescriptionThree": {
     "message": "Token algılama özelliği varsayılan olarak AÇIK'tır. Ancak bunu Ayarlar'dan devre dışı bırakabilirsin."
@@ -2263,7 +2263,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "İşlemleri Ethereum Mainnet'te tamamlamak için Kayıt Defteri cihazınızın son donanım yazılımına sahip olduğundan emin olun.",
+    "message": "İşlemleri QTUM Mainnet'te tamamlamak için Kayıt Defteri cihazınızın son donanım yazılımına sahip olduğundan emin olun.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2370,7 +2370,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Cüzdanınıza gelen işlemlerin gösterilmesi $1 ile iletişime bağlıdır. Etherscan, Ethereum adresinize ve IP adresinize erişim sağlayacaktır. Şunu görüntüleyin: $2.",
+    "message": "Cüzdanınıza gelen işlemlerin gösterilmesi $1 ile iletişime bağlıdır. Etherscan, QTUM adresinize ve IP adresinize erişim sağlayacaktır. Şunu görüntüleyin: $2.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3169,7 +3169,7 @@
     "message": "Ledger cüzdanını bağlayın"
   },
   "step2LedgerWalletMsg": {
-    "message": "Cüzdanınızı doğrudan bilgisayara bağlayın. Kayıt defterinizin kilidini açın ve Ethereum uygulamasını açın. Donanım cüzdanı cihazınızın kullanımı hakkında daha fazla bilgi için $1.",
+    "message": "Cüzdanınızı doğrudan bilgisayara bağlayın. Kayıt defterinizin kilidini açın ve QTUM uygulamasını açın. Donanım cüzdanı cihazınızın kullanımı hakkında daha fazla bilgi için $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3329,7 +3329,7 @@
     "message": "Donanım cüzdanınızla onaylayın"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "Kayıt defterinizdeki Ethereum uygulamasında \"Ayarlar\" öğesine gidin ve sözleşme verilerine izin verin. Ardından takas işleminizi tekrar deneyin."
+    "message": "Kayıt defterinizdeki QTUM uygulamasında \"Ayarlar\" öğesine gidin ve sözleşme verilerine izin verin. Ardından takas işleminizi tekrar deneyin."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Sözleşme verileriniz Kayıt Defterinizde etkinleştirilmemiş"
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Gaz ücretleri, $1 ağında işlemleri gerçekleştiren kripto madencilerine ödenir. Qnekt gaz ücretlerinden herhangi bir kazanç elde etmemektedir.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Fark tutarı çok yüksek."
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "Aktivitede görüntüle"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "Bu, Qnekt'te seçili bir ağı önceden eklenmiş bir ağa dönüştürecektir:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "Bu sitenin ağı değiştirmesine izin ver?"
   },
   "switchNetwork": {
@@ -3964,7 +3964,7 @@
     "message": "Kimlik Avı Algılama Kullan"
   },
   "usePhishingDetectionDescription": {
-    "message": "Ethereum kullanıcılarını hedefleyen kimlik avı alanları için bir uyarı görüntüler"
+    "message": "QTUM kullanıcılarını hedefleyen kimlik avı alanları için bir uyarı görüntüler"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "Hesabına gönderilen token'ların otomatik olarak görüntülenmesi, token'ın görüntülerini almak için üçüncü taraf sunucularla iletişimi içerir. Bu servislerin IP adresine erişimi olacaktır."

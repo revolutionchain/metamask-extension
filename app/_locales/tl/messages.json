@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "Hindi makahanap ng token? Maaari kang manu-manong magdagdag ng anumang token sa pamamagitan ng pag-paste ng address nito. Ang mga address ng token contract ay matatagpuan sa $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "Magpapahintulot ito sa network na ito na gamitin sa loob ng Qnekt."
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Ang Qnekt ay hindi nag-ve-verify ng mga custom na network."
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "Alamin ang tungkol sa $1.",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "mga scam at panganib ng seguridad ng network",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "Payagan ang site na ito na magdagdag ng network?"
   },
   "addFriendsAndAddresses": {
@@ -252,7 +252,7 @@
     "message": "Halaga"
   },
   "appDescription": {
-    "message": "Ethereum Wallet sa iyong Browser",
+    "message": "QTUM Wallet sa iyong Browser",
     "description": "The description of the application"
   },
   "appName": {
@@ -620,7 +620,7 @@
     "message": "Kumokonekta sa Kovan Test Network"
   },
   "connectingToMainnet": {
-    "message": "Kumokonekta sa Ethereum Mainnet"
+    "message": "Kumokonekta sa QTUM Mainnet"
   },
   "connectingToRinkeby": {
     "message": "Kumokonekta sa Rinkeby Test Network"
@@ -1114,7 +1114,7 @@
     "message": "Mga ilegal na Character para sa ENS."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Hindi nahanapa ang ENS name sa kasalukuyang network. Subukang lumipat sa Ethereum Mainnet."
+    "message": "Hindi nahanapa ang ENS name sa kasalukuyang network. Subukang lumipat sa QTUM Mainnet."
   },
   "ensNotSupportedOnNetwork": {
     "message": "Hindi sinusuportahan ng network ang ENS"
@@ -1173,7 +1173,7 @@
     "message": "Ang backup gas price ay inilalaan dahil ang pangunahing pagtantiya ng presyo ng gas ay hindi available sa ngayon."
   },
   "ethereumPublicAddress": {
-    "message": "Pampublikong Address ng Ethereum"
+    "message": "Pampublikong Address ng QTUM"
   },
   "etherscan": {
     "message": "Etherscan"
@@ -1704,7 +1704,7 @@
     "message": "Paganahin ang Gamitin ang Ledger Live sa ilalim ng Settings > Advanced"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "I-plug in ang iyong Ledger device at piliin ang Ethereum app"
+    "message": "I-plug in ang iyong Ledger device at piliin ang QTUM app"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Buksan at i-unlock ang Ledger Live App"
@@ -1724,7 +1724,7 @@
     "message": "Ledger Live App"
   },
   "ledgerLocked": {
-    "message": "Hindi makakonekta sa Ledger device. Siguruhin na ang device mo ay naka-unlock at bukas ang Ethereum."
+    "message": "Hindi makakonekta sa Ledger device. Siguruhin na ang device mo ay naka-unlock at bukas ang QTUM."
   },
   "ledgerTimeout": {
     "message": "Masyadong natatagalan ang Ledger Live upang tumugon o mag-timeout ng koneksyon. Tiyaking nakabukas ang Ledger Live app at naka-unlock ang iyong device."
@@ -1793,10 +1793,10 @@
     "message": "Ang mga transaksyon sa hinaharap ay pipila pagkatapos nito. Ang presyong ito ay huling nakita noong nakaraan."
   },
   "mainnet": {
-    "message": "Ethereum Mainnet"
+    "message": "QTUM Mainnet"
   },
   "mainnetToken": {
-    "message": "Ang address na ito ay tumutugma sa isang kilalang address ng token na Ethereum Mainnet. Suriin muli ang address ng contract at network para sa token na sinusubukan mong idagdag."
+    "message": "Ang address na ito ay tumutugma sa isang kilalang address ng token na QTUM Mainnet. Suriin muli ang address ng contract at network para sa token na sinusubukan mong idagdag."
   },
   "makeAnotherSwap": {
     "message": "Gumawa ng bagong pag-swap"
@@ -1849,7 +1849,7 @@
     "message": "Makikita sa button ng status ng koneksyon kung nakakonekta ang website na binibisita mo sa kasalukuyan mong napiling account."
   },
   "metamaskDescription": {
-    "message": "Ikinokonekta ka sa Ethereum at sa Decentralized Web."
+    "message": "Ikinokonekta ka sa QTUM at sa Decentralized Web."
   },
   "metamaskSwapsOfflineDescription": {
     "message": "Kasalukuyang minementina ang Qnekt Swaps. Bumalik sa ibang pagkakataon."
@@ -1898,7 +1898,7 @@
     "message": "Tulungan Kaming Mapahusay ang Qnekt"
   },
   "metametricsOptInDescription": {
-    "message": "Gustong kunin ng Qnekt ang data ng paggamit para mas maunawaan kung paano ginagamit ng mga user namin ang extension. Gagamitin ang data na ito para patuloy na mapahusay ang kakayahang magamit at karanasan ng user sa paggamit ng produkto namin at Ethereum ecosystem."
+    "message": "Gustong kunin ng Qnekt ang data ng paggamit para mas maunawaan kung paano ginagamit ng mga user namin ang extension. Gagamitin ang data na ito para patuloy na mapahusay ang kakayahang magamit at karanasan ng user sa paggamit ng produkto namin at QTUM ecosystem."
   },
   "metametricsOptInDescription2": {
     "message": "Nais naming mangalap ng pangunahing data ng paggamit upang mapabuti ang kakayahang magamit ang aming produkto. Ang mga sukatan na ito ay..."
@@ -1995,8 +1995,8 @@
   "networkNameDefinition": {
     "message": "Ang pangalan ay nauugnay sa network na ito."
   },
-  "networkNameEthereum": {
-    "message": "Ethereum"
+  "networkNameQTUM": {
+    "message": "QTUM"
   },
   "networkNamePolygon": {
     "message": "Polygon"
@@ -2170,7 +2170,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "Ang pinahusay na pagtukoy ng token ay kasalukuyang magagamit sa Ethereum Mainnet, Polygon, BSC, at mga Avalanche network. Marami pang darating!"
+    "message": "Ang pinahusay na pagtukoy ng token ay kasalukuyang magagamit sa QTUM Mainnet, Polygon, BSC, at mga Avalanche network. Marami pang darating!"
   },
   "notifications10DescriptionThree": {
     "message": "NAKA-ON bilang default ang tampok sa pagtukoy ng token. Ngunit maaari mo itong i-disable mula sa Mga Setting."
@@ -2263,7 +2263,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Para makumpleto ang mga transaksyon sa Ethereum Mainnet, siguruhin na ang iyong Ledger device ay may pinakabagong firmware.",
+    "message": "Para makumpleto ang mga transaksyon sa QTUM Mainnet, siguruhin na ang iyong Ledger device ay may pinakabagong firmware.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -2370,7 +2370,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Ang pagpapakita ng mga papasok na transaksyon sa iyong wallet ay umaasa sa pakikipag-ugnayan sa $1. Magkakaroon ng access ang Etherscan sa iyong Ethereum address at iyong IP address. Tingnan ang $2.",
+    "message": "Ang pagpapakita ng mga papasok na transaksyon sa iyong wallet ay umaasa sa pakikipag-ugnayan sa $1. Magkakaroon ng access ang Etherscan sa iyong QTUM address at iyong IP address. Tingnan ang $2.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -3169,7 +3169,7 @@
     "message": "I-plug sa Ledger wallet"
   },
   "step2LedgerWalletMsg": {
-    "message": "Direktang ikonekta ang iyong wallet sa iyong computer. I-unlock ang iyong Ledger at buksan ang Ethereum app. Para sa higit pa sa paggamit ng iyong hardware wallet device, $1.",
+    "message": "Direktang ikonekta ang iyong wallet sa iyong computer. I-unlock ang iyong Ledger at buksan ang QTUM app. Para sa higit pa sa paggamit ng iyong hardware wallet device, $1.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "stillGettingMessage": {
@@ -3329,7 +3329,7 @@
     "message": "Kumpirmahin gamit ang iyong hardware wallet"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "Sa Ethereum app sa iyong Ledger, magpunta sa \"Settings\" at payagan ang contract data. Pagkatapos ay subukan muli ang iyong pag-swap."
+    "message": "Sa QTUM app sa iyong Ledger, magpunta sa \"Settings\" at payagan ang contract data. Pagkatapos ay subukan muli ang iyong pag-swap."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Ang data ng contract ay hindi pinagagana sa iyong Ledger"
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "Ang mga gas fee ay binabayaran sa mga crypto miner na nagpoproseso ng mga transaksyon sa $1 na network. Ang Qnekt ay hindi kumikita mula sa mga gas fee.",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Napakataas ng halaga ng slippage."
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "Tingnan sa aktibidad"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "Maglilipat ito sa napiling network sa loob ng Qnekt sa dating idinagdag na network:"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "Payagan ang site na ito para lumipat ng network?"
   },
   "switchNetwork": {
@@ -3964,7 +3964,7 @@
     "message": "Gumamit ng Pag-detect ng Phishing"
   },
   "usePhishingDetectionDescription": {
-    "message": "Magpakita ng babala para sa mga phishing domain na nagta-target sa mga user ng Ethereum"
+    "message": "Magpakita ng babala para sa mga phishing domain na nagta-target sa mga user ng QTUM"
   },
   "useTokenDetectionPrivacyDesc": {
     "message": "Awtomatikong ipinapakita ang mga token na ipinadala sa iyong account na nakapaloob sa komunikasyon ng mga server ng third party para makuha ang mga larawan ng token. Ang mga server na iyon ay magkakaroon ng access sa iyong IP address."

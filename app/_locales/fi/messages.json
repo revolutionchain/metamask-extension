@@ -57,7 +57,7 @@
     "message": "Summa"
   },
   "appDescription": {
-    "message": "Ethereum-kukkaro selaimessasi",
+    "message": "QTUM-kukkaro selaimessasi",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Yhdistetään Kovanin koeverkkoon"
   },
   "connectingToMainnet": {
-    "message": "Yhdistetään Ethereumin pääverkkoon"
+    "message": "Yhdistetään QTUMin pääverkkoon"
   },
   "connectingToRinkeby": {
     "message": "Yhdistetään Rinkebyn koeverkkoon"
@@ -329,7 +329,7 @@
     "message": "Lue lisää."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS-nimeä ei löytynyt nykyisestä verkosta. Koeta vaihtaa Ethereumin pääverkkoon."
+    "message": "ENS-nimeä ei löytynyt nykyisestä verkosta. Koeta vaihtaa QTUMin pääverkkoon."
   },
   "ensRegistrationError": {
     "message": "Virhe ENS-nimen rekisteröinnissä"
@@ -344,7 +344,7 @@
     "message": "Arvioidut käsittelyajat"
   },
   "ethereumPublicAddress": {
-    "message": "Ethereumin julkinen osoite"
+    "message": "QTUMin julkinen osoite"
   },
   "etherscanView": {
     "message": "Tarkastele tiliä Etherscanissa"
@@ -540,7 +540,7 @@
     "message": "Kirjaudu ulos"
   },
   "mainnet": {
-    "message": "Ethereumin pääverkko"
+    "message": "QTUMin pääverkko"
   },
   "max": {
     "message": "Maks"
@@ -555,7 +555,7 @@
     "message": "Viesti"
   },
   "metamaskDescription": {
-    "message": "Sinua yhdistetään Ethereumiin ja hajautettuun verkkoon."
+    "message": "Sinua yhdistetään QTUMiin ja hajautettuun verkkoon."
   },
   "metamaskVersion": {
     "message": "Qnekt-versio"

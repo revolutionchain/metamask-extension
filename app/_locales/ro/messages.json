@@ -57,7 +57,7 @@
     "message": "Sumă"
   },
   "appDescription": {
-    "message": "Un portofel Ethereum în browserul dvs.",
+    "message": "Un portofel QTUM în browserul dvs.",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Se conectează la rețeaua de test Kovan"
   },
   "connectingToMainnet": {
-    "message": "Se conectează la rețeaua Ethereum principală"
+    "message": "Se conectează la rețeaua QTUM principală"
   },
   "connectingToRinkeby": {
     "message": "Se conectează la Rețeaua de test Rinkeby"
@@ -329,7 +329,7 @@
     "message": "Aflați mai multe."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Numele ENS nu s-a găsit pe rețeaua curentă. Încercați să comutați la Rețeaua Ethereum principală."
+    "message": "Numele ENS nu s-a găsit pe rețeaua curentă. Încercați să comutați la Rețeaua QTUM principală."
   },
   "ensRegistrationError": {
     "message": "Eroare la înregistrarea numelui ENS"
@@ -344,7 +344,7 @@
     "message": "Timpi estimativi de procesare"
   },
   "ethereumPublicAddress": {
-    "message": "Adresa publică Ethereum"
+    "message": "Adresa publică QTUM"
   },
   "etherscanView": {
     "message": "Vizualizare cont pe Etherscan"
@@ -527,7 +527,7 @@
     "message": "Deconectați-vă"
   },
   "mainnet": {
-    "message": "Rețeaua Ethereum principală"
+    "message": "Rețeaua QTUM principală"
   },
   "max": {
     "message": "Maximum"
@@ -542,7 +542,7 @@
     "message": "Mesaj"
   },
   "metamaskDescription": {
-    "message": "Vă conectăm la Ethereum și la Internetul descentralizat."
+    "message": "Vă conectăm la QTUM și la Internetul descentralizat."
   },
   "metamaskVersion": {
     "message": "Versiune Qnekt"

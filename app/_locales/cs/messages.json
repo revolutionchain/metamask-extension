@@ -18,7 +18,7 @@
     "message": "Částka"
   },
   "appDescription": {
-    "message": "Ethereum rozšíření prohlížeče",
+    "message": "QTUM rozšíření prohlížeče",
     "description": "The description of the application"
   },
   "appName": {
@@ -67,7 +67,7 @@
     "message": "Připojuji se k Kovan Test Network"
   },
   "connectingToMainnet": {
-    "message": "Připojuji se k Ethereum Mainnet"
+    "message": "Připojuji se k QTUM Mainnet"
   },
   "connectingToRinkeby": {
     "message": "Připojuji se k Rinkeby Test Network"
@@ -226,7 +226,7 @@
     "message": "Zpráva"
   },
   "metamaskDescription": {
-    "message": "Qnekt je bezpečný osobní trezor pro Ethereum."
+    "message": "Qnekt je bezpečný osobní trezor pro QTUM."
   },
   "mustSelectOne": {
     "message": "Musíte zvolit aspoň 1 token."

@@ -129,23 +129,23 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "トークンが見つからない場合、アドレスをペーストして手動でトークンを追加できます。トークンコントラクトアドレスは$1にあります。",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for Ethereum"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
   },
-  "addEthereumChainConfirmationDescription": {
+  "addQTUMChainConfirmationDescription": {
     "message": "これにより、このネットワークはQnekt内で使用できるようになります。"
   },
-  "addEthereumChainConfirmationRisks": {
+  "addQTUMChainConfirmationRisks": {
     "message": "Qnektはカスタム ネットワークを検証しません。"
   },
-  "addEthereumChainConfirmationRisksLearnMore": {
+  "addQTUMChainConfirmationRisksLearnMore": {
     "message": "$1の詳細。",
-    "description": "$1 is a link with text that is provided by the 'addEthereumChainConfirmationRisksLearnMoreLink' key"
+    "description": "$1 is a link with text that is provided by the 'addQTUMChainConfirmationRisksLearnMoreLink' key"
   },
-  "addEthereumChainConfirmationRisksLearnMoreLink": {
+  "addQTUMChainConfirmationRisksLearnMoreLink": {
     "message": "詐欺やネットワーク セキュリティのリスク",
-    "description": "Link text for the 'addEthereumChainConfirmationRisksLearnMore' translation key"
+    "description": "Link text for the 'addQTUMChainConfirmationRisksLearnMore' translation key"
   },
-  "addEthereumChainConfirmationTitle": {
+  "addQTUMChainConfirmationTitle": {
     "message": "このサイトにネットワークの追加を許可しますか？"
   },
   "addFriendsAndAddresses": {
@@ -1704,7 +1704,7 @@
     "message": "[設定] > [高度な設定] でLedger Liveを有効にしてください"
   },
   "ledgerConnectionInstructionStepThree": {
-    "message": "Ledgerデバイスを接続し、Ethereumアプリを選択してください"
+    "message": "Ledgerデバイスを接続し、QTUMアプリを選択してください"
   },
   "ledgerConnectionInstructionStepTwo": {
     "message": "Ledger Liveアプリを開いてロックを解除してください"
@@ -1724,7 +1724,7 @@
     "message": "Ledger Liveアプリ"
   },
   "ledgerLocked": {
-    "message": "Ledgerデバイスに接続できません。デバイスのロックが解除され、Ethereumアプリが開かれていることを確認してください。"
+    "message": "Ledgerデバイスに接続できません。デバイスのロックが解除され、QTUMアプリが開かれていることを確認してください。"
   },
   "ledgerTimeout": {
     "message": "Ledger Liveが応答に時間がかかりすぎているか、接続がタイムアウトしました。Ledger Liveのアプリが開かれていて、デバイスのロックが解除されていることを確認してください。"
@@ -1796,7 +1796,7 @@
     "message": "イーサリアムメインネット"
   },
   "mainnetToken": {
-    "message": "このアドレスは、既知の Ethereum Mainnet トークンアドレスと一致しています。追加するトークンのコントラクトアドレスとネットワークを再確認してください。"
+    "message": "このアドレスは、既知の QTUM Mainnet トークンアドレスと一致しています。追加するトークンのコントラクトアドレスとネットワークを再確認してください。"
   },
   "makeAnotherSwap": {
     "message": "新しいスワップの作成"
@@ -1995,7 +1995,7 @@
   "networkNameDefinition": {
     "message": "このネットワークに関連付けられている名前。"
   },
-  "networkNameEthereum": {
+  "networkNameQTUM": {
     "message": "イーサリアム"
   },
   "networkNamePolygon": {
@@ -2170,7 +2170,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
-    "message": "改善されたトークン検出は、現在 Ethereum Mainnet、Polygon、BSC、Avalanche ネットワークで利用できます。他のネットワークも追加される予定です！"
+    "message": "改善されたトークン検出は、現在 QTUM Mainnet、Polygon、BSC、Avalanche ネットワークで利用できます。他のネットワークも追加される予定です！"
   },
   "notifications10DescriptionThree": {
     "message": "トークン検出機能はデフォルトでオンになっていますが、設定で無効にできます。"
@@ -2263,7 +2263,7 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
-    "message": "Ethereumメインネットでトランザクションを完了させるには、Ledgerデバイスに最新のファームウェアがインストールされていことを確認してください。",
+    "message": "QTUMメインネットでトランザクションを完了させるには、Ledgerデバイスに最新のファームウェアがインストールされていことを確認してください。",
     "description": "Description of a notification in the 'See What's New' popup. Describes the need to update ledger firmware."
   },
   "notifications7Title": {
@@ -3398,7 +3398,7 @@
   },
   "swapGasFeesSummary": {
     "message": "ガス代は、$1ネットワークでトランザクションを処理するクリプトマイナーに支払われます。Qnektはガス代から利益を得ません。",
-    "description": "$1 is the selected network, e.g. Ethereum or BSC"
+    "description": "$1 is the selected network, e.g. QTUM or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "スリッページが非常に大きいです。"
@@ -3600,10 +3600,10 @@
   "swapsViewInActivity": {
     "message": "アクティビティに表示"
   },
-  "switchEthereumChainConfirmationDescription": {
+  "switchQTUMChainConfirmationDescription": {
     "message": "これによりQnekt内で選択されたネットワークが、以前に追加されたものに切り替わります。"
   },
-  "switchEthereumChainConfirmationTitle": {
+  "switchQTUMChainConfirmationTitle": {
     "message": "このサイトによるネットワークの切り替えを許可しますか?"
   },
   "switchNetwork": {

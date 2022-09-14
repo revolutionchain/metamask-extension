@@ -57,7 +57,7 @@
     "message": "Suma"
   },
   "appDescription": {
-    "message": "„Ethereum“ piniginė jūsų naršyklėje",
+    "message": "„QTUM“ piniginė jūsų naršyklėje",
     "description": "The description of the application"
   },
   "appName": {
@@ -197,7 +197,7 @@
     "message": "Jungiamasi prie „Kovan“ bandomojo tinklo"
   },
   "connectingToMainnet": {
-    "message": "Jungiamasi prie pagrindinio „Ethereum“ tinklo"
+    "message": "Jungiamasi prie pagrindinio „QTUM“ tinklo"
   },
   "connectingToRinkeby": {
     "message": "Jungiamasi prie „Rinkeby“ bandomojo tinklo"
@@ -329,7 +329,7 @@
     "message": "Sužinokite daugiau."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS pavadinimas dabartiniame tinkle nerastas. Mėginkite perjungti į pagrindinį „Ethereum“ tinklą."
+    "message": "ENS pavadinimas dabartiniame tinkle nerastas. Mėginkite perjungti į pagrindinį „QTUM“ tinklą."
   },
   "ensRegistrationError": {
     "message": "ENS pavadinimo registracijos klaida"
@@ -344,7 +344,7 @@
     "message": "Numatomos apdorojimo trukmės"
   },
   "ethereumPublicAddress": {
-    "message": "„Ethereum“ viešasis adresas"
+    "message": "„QTUM“ viešasis adresas"
   },
   "etherscanView": {
     "message": "Peržiūrėti paskyrą „Etherscan“ programoje"
@@ -540,7 +540,7 @@
     "message": "Atsijungti"
   },
   "mainnet": {
-    "message": "Pagrindinis „Ethereum“ tinklas"
+    "message": "Pagrindinis „QTUM“ tinklas"
   },
   "max": {
     "message": "Maks."
@@ -555,7 +555,7 @@
     "message": "Pranešimas"
   },
   "metamaskDescription": {
-    "message": "Prijungiame jus prie „Ethereum“ ir decentralizuotojo žiniatinklio."
+    "message": "Prijungiame jus prie „QTUM“ ir decentralizuotojo žiniatinklio."
   },
   "metamaskVersion": {
     "message": "„Qnekt“ versija"

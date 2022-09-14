@@ -57,7 +57,7 @@
     "message": "Kiasi"
   },
   "appDescription": {
-    "message": "Waleti ya Ethereum kwenye Kivinjari chako",
+    "message": "Waleti ya QTUM kwenye Kivinjari chako",
     "description": "The description of the application"
   },
   "appName": {
@@ -191,7 +191,7 @@
     "message": "Inaunganisha kwenye Mtandao wa Majaribio wa Kovan"
   },
   "connectingToMainnet": {
-    "message": "Inaunganisha kwenye Mtandao Mkuu wa Ethereum"
+    "message": "Inaunganisha kwenye Mtandao Mkuu wa QTUM"
   },
   "connectingToRinkeby": {
     "message": "Inaunganisha kwenye Mtandao wa Majaribio wa Rinkeby"
@@ -323,7 +323,7 @@
     "message": "Jifunze zaidi."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Jina la ENS halipatikani kwenye mtandao wa sasa. Jaribu kuhamia kwenye Mtandao Mkuu wa Ethereum."
+    "message": "Jina la ENS halipatikani kwenye mtandao wa sasa. Jaribu kuhamia kwenye Mtandao Mkuu wa QTUM."
   },
   "ensRegistrationError": {
     "message": "Hitilafu imetokea kwenye usajili wa jina la ENS"
@@ -338,7 +338,7 @@
     "message": "Muda wa Kuchakata Uliokadiriwa"
   },
   "ethereumPublicAddress": {
-    "message": "Anwani ya Umma ya Ethereum"
+    "message": "Anwani ya Umma ya QTUM"
   },
   "etherscanView": {
     "message": "Tazama akaunti kwenye Etherscan"
@@ -524,7 +524,7 @@
     "message": "Toka kwenye akaunti"
   },
   "mainnet": {
-    "message": "Mtandao Mkuu wa Ethereum"
+    "message": "Mtandao Mkuu wa QTUM"
   },
   "memorizePhrase": {
     "message": "Kariri kirai hiki"
@@ -533,7 +533,7 @@
     "message": "Ujumbe"
   },
   "metamaskDescription": {
-    "message": "Kukuunganisha kwenye Ethereum na Wavutiu Uliotawanywa."
+    "message": "Kukuunganisha kwenye QTUM na Wavutiu Uliotawanywa."
   },
   "metamaskVersion": {
     "message": "Toleo la Qnekt"
