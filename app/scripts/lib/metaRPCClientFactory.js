@@ -18,7 +18,9 @@ class MetaRPCClient {
   }
 
   send(id, payload, cb) {
-    console.log("send(", id, ", ", payload, ",)")
+    if (cb && typeof cb !== 'function') {
+      throw new Error("Unknown cb")
+    }
     this.requests.set(id, cb);
     this.connectionStream.write(payload);
     this.responseHandled[id] = false;
@@ -62,7 +64,6 @@ class MetaRPCClient {
 
   handleResponse(data) {
     const { id, result, error, method, params } = data;
-    console.log("handleResponse, ", id, ": ", data)
     const isNotification = id === undefined && error === undefined;
     const cb = this.requests.get(id);
 
@@ -79,10 +80,14 @@ class MetaRPCClient {
     }
 
     if (error) {
+      if (!error.messge || error.message == '') {
+        error.message = 'unknown error';
+      }
       const e = new EthereumRpcError(error.code, error.message, error.data);
       // preserve the stack from serializeError
       e.stack = error.stack;
-      if (cb) {
+      if (cb && typeof cb === 'function') {
+        console.log("cb", cb, this.requests)
         this.requests.delete(id);
         cb(e);
         return;
