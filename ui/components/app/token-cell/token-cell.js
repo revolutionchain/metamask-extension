@@ -6,6 +6,7 @@ import AssetListItem from '../asset-list-item';
 import { getSelectedAddress } from '../../../selectors';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
+import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
 
 export default function TokenCell({
   address,
@@ -16,7 +17,8 @@ export default function TokenCell({
   onClick,
   isERC721,
 }) {
-  const userAddress = useSelector(getSelectedAddress);
+  const chainId = useSelector(getCurrentChainId);
+  const userAddress = getQtumAddressFromHex(useSelector(getSelectedAddress), chainId);
   const t = useI18nContext();
 
   const formattedFiat = useTokenFiatAmount(address, string, symbol);
@@ -24,7 +26,7 @@ export default function TokenCell({
     <span>
       {t('troubleTokenBalances')}
       <a
-        href={`https://ethplorer.io/address/${userAddress}`}
+        href={`https://qtum.info/address/${userAddress}`}
         rel="noopener noreferrer"
         target="_blank"
         onClick={(event) => event.stopPropagation()}

@@ -154,3 +154,9 @@
     background-color: #FBFBFB;
   }
 }
+
+@media screen and (max-width: $break-small) {
+  .wallet-overview {
+    padding-top: 10px;
+  }
+}

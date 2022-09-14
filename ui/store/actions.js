@@ -2403,10 +2403,12 @@ export function exportAccount(password, address) {
   return function (dispatch) {
     dispatch(showLoadingIndication());
 
+    console.log("background.verifyPassword")
     log.debug(`background.verifyPassword`);
     return new Promise((resolve, reject) => {
       background.verifyPassword(password, function (err) {
         if (err) {
+          console.error("error in verifying password")
           log.error('Error in verifying password.');
           dispatch(hideLoadingIndication());
           dispatch(displayWarning('Incorrect Password.'));
@@ -2414,7 +2416,9 @@ export function exportAccount(password, address) {
           return;
         }
         log.debug(`background.exportAccount`);
+        console.log("background.exportAccount")
         background.exportAccount(address, function (err2, result) {
+          console.log("background.exportAccount", err2, result)
           dispatch(hideLoadingIndication());
 
           if (err2) {
