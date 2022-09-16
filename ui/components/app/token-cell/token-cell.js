@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import AssetListItem from '../asset-list-item';
-import { getSelectedAddress } from '../../../selectors';
+import { 
+  getSelectedAddress,
+  getCurrentChainId,
+} from '../../../selectors';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
 import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';

@@ -20,7 +20,6 @@ const createMetaRPCHandler = (api, outStream) => {
     let error;
     try {
       result = await api[data.method](...data.params);
-      console.log("[api] [", data.method, '] => ', result)
     } catch (err) {
       error = err;
     }

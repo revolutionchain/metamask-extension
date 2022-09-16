@@ -2112,8 +2112,7 @@ export default class MetamaskController extends EventEmitter {
       const accounts = await this.keyringController.getAccounts();
       if (accounts.length > 0) {
         vault = await this.keyringController.fullUpdate();
-        await this.setQtumBalances(accounts[0]);
-        await this.setQtumAddressFromHexAddress(accounts[0]);
+        await this.updateQtumAccounts(accounts);
       } else {
         vault = await this.keyringController.createNewVaultAndKeychain(
           password,
@@ -2122,8 +2121,7 @@ export default class MetamaskController extends EventEmitter {
         this.preferencesController.setAddresses(addresses);
         this.selectFirstIdentity();
 
-        await this.setQtumBalances(addresses[0]);
-        await this.setQtumAddressFromHexAddress(addresses[0]);
+        await this.updateQtumAccounts(addresses);
       }
 
       return vault;
@@ -2270,9 +2268,7 @@ export default class MetamaskController extends EventEmitter {
       this.preferencesController.setAddresses(accounts);
       this.selectFirstIdentity();
 
-      await this.setQtumBalances(accounts[0]);
-
-      await this.setQtumAddressFromHexAddress(accounts[0]);
+      await this.updateQtumAccounts(accounts);
 
       return vault;
     } finally {
@@ -2766,8 +2762,7 @@ export default class MetamaskController extends EventEmitter {
         }
       });
 
-      await this.setQtumBalances(newAccounts);
-      await this.setQtumAddressFromHexAddress(newAccounts[0]);
+      await this.updateQtumAccounts(newAccounts);
 
       const { identities } = this.preferencesController.store.getState();
       return { ...keyState, identities };
@@ -2921,8 +2916,7 @@ export default class MetamaskController extends EventEmitter {
     // set new account as selected
     await this.preferencesController.setSelectedAddress(accounts[0]);
 
-    await this.setQtumBalances(accounts[0]);
-    await this.setQtumAddressFromHexAddress(accounts[0]);
+    await this.updateQtumAccounts(accounts);
   }
 
   // ---------------------------------------------------------------------------
@@ -4865,6 +4859,15 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
   }
 };
 
+MetamaskController.prototype.updateQtumAccounts = async function (accounts) {
+  if (accounts.length > 0) {
+    await this.setQtumBalances(accounts[0]);
+  }
+  for (let i = 0; i < accounts.length; i++) {
+    await this.setQtumAddressFromHexAddress(accounts[i]);
+  }
+}
+
 MetamaskController.prototype.setQtumBalances = async function (account) {
   const { ticker } = this.networkController.getProviderConfig();
   if (ticker === 'QTUM') {
@@ -4884,6 +4887,7 @@ MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_add
       let version;
       switch (chainId) {
         case '0x22B8':
+        case '0x51':
           version = 58;
           break;
         case '0x22B9':
@@ -4997,35 +5001,6 @@ MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
     });
   };
 }
-
-MetamaskController.prototype.getQtumAddressFromHexAddress = async function (
-  _address
-) {
-  const { ticker } = this.networkController.getProviderConfig();
-  const networks = await this.networkController.getNetworkState();
-  try {
-    if (ticker === 'QTUM') {
-      const chainId = await this.networkController.getCurrentChainId();
-      let version;
-      switch (chainId) {
-        case '0x22B8':
-          version = 58;
-          break;
-        case '0x22B9':
-          version = 120;
-          break;
-        default:
-          version = 120;
-          break;
-      }
-      const hash = Buffer.from(_address.slice(2), 'hex');
-      return qtum.address.toBase58Check(hash, version);
-    }
-    return '0x00';
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 MetamaskController.prototype.setQtumAddressFromHexAddress = async function (
   _address
