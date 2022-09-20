@@ -64,6 +64,7 @@ if (process.env.IN_TEST) {
     rpcPrefs: {
       blockExplorerUrl: "https://testnet.qtum.info/",
     },
+    blockExplorerUrl: "https://testnet.qtum.info/",
   };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
 } else {
@@ -76,6 +77,7 @@ if (process.env.IN_TEST) {
     rpcPrefs: {
       blockExplorerUrl: "https://testnet.qtum.info/",
     },
+    blockExplorerUrl: "https://testnet.qtum.info/",
   };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_MAINNET_CHAIN_ID, rpcUrl: QTUM_MAINNET_RPC_URL };
 }
