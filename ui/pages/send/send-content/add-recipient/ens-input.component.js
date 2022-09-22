@@ -110,7 +110,7 @@ export default class EnsInput extends Component {
       !isQtumAddressShowCheck &&
       this.isBase58(input) &&
       input !== ''
-    ) {
+    ) if (isHexString(input)) {
       const newAddress = getHexAddressFromQtum(input);
       return newAddress;
     }

@@ -9,6 +9,11 @@ import {
 import { toChecksumHexAddress } from '../../../../../shared/modules/hexstring-utils';
 import ViewContact from './view-contact.component';
 
+import {
+  getQtumAddress,
+  isQtumAddressShow,
+} from '../../../../ducks/metamask/metamask';
+
 const mapStateToProps = (state, ownProps) => {
   const { location } = ownProps;
   const { pathname } = location;
@@ -29,6 +34,8 @@ const mapStateToProps = (state, ownProps) => {
     memo,
     editRoute: CONTACT_EDIT_ROUTE,
     listRoute: CONTACT_LIST_ROUTE,
+    qtumAddress: contact ? getQtumAddress(state, address) : null,
+    isQtumAddressShow: isQtumAddressShow(state),
   };
 };
 

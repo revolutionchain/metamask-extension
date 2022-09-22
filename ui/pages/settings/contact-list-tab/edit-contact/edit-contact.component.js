@@ -9,6 +9,9 @@ import {
   isBurnAddress,
   isValidHexAddress,
 } from '../../../../../shared/modules/hexstring-utils';
+import {
+  getHexAddressFromQtum,
+} from '../../../../helpers/utils/util';
 
 export default class EditContact extends PureComponent {
   static contextTypes = {
@@ -25,6 +28,8 @@ export default class EditContact extends PureComponent {
     memo: PropTypes.string,
     viewRoute: PropTypes.string,
     listRoute: PropTypes.string,
+    qtumAddress: PropTypes.string,
+    isQtumAddressShow: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -34,7 +39,7 @@ export default class EditContact extends PureComponent {
 
   state = {
     newName: this.props.name,
-    newAddress: this.props.address,
+    newAddress: this.props.isQtumAddressShow ? this.props.qtumAddress : this.props.address,
     newMemo: this.props.memo,
     error: '',
   };
@@ -139,15 +144,21 @@ export default class EditContact extends PureComponent {
               this.state.newAddress !== address
             ) {
               // if the user makes a valid change to the address field, remove the original address
+              const isHex = isValidHexAddress(this.state.newAddress, {
+                mixedCaseUseChecksum: true,
+              });
+              const hex = isHex ?
+                this.state.newAddress : getHexAddressFromQtum(this.state.newAddress);
               if (
-                !isBurnAddress(this.state.newAddress) &&
+                !isBurnAddress(hex)/* &&
                 isValidHexAddress(this.state.newAddress, {
                   mixedCaseUseChecksum: true,
                 })
+                */
               ) {
                 await removeFromAddressBook(chainId, address);
                 await addToAddressBook(
-                  this.state.newAddress,
+                  hex,
                   this.state.newName || name,
                   this.state.newMemo || memo,
                 );

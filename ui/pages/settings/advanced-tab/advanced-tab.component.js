@@ -348,6 +348,8 @@ export default class AdvancedTab extends PureComponent {
   }
 
   renderAdvancedGasInputInline() {
+    return (<div/>);
+
     const { t } = this.context;
     const { advancedInlineGas, setAdvancedInlineGasFeatureFlag } = this.props;
 
@@ -842,7 +844,7 @@ export default class AdvancedTab extends PureComponent {
         {this.renderHexDataOptIn()}
         {this.renderShowConversionInTestnets()}
         {this.renderToggleTestNetworks()}
-        {this.renderUseNonceOptIn()}
+        {/*this.renderUseNonceOptIn()*/}
         {this.renderAutoLockTimeLimit()}
         {this.renderUserDataBackup()}
         {this.renderRestoreUserData()}
