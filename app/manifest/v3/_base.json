@@ -71,6 +71,8 @@
     "https://*.infura.io/",
     "https://chainid.network/chains.json",
     "https://lattice.gridplus.io/*",
+    "https://janus.qiswap.com/",
+    "https://testnet-janus.qiswap.com/",
     "activeTab",
     "webRequest",
     "*://*.eth/",

@@ -15,6 +15,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    color: white;
   }
 
   &__buttons {
@@ -121,7 +122,8 @@
   &__primary-balance {
     @include H2;
 
-    color: var(--color-text-default);
+    color: var(--color-text-alternative);
+    font-weight: bold;
     width: 100%;
     justify-content: center;
   }
@@ -137,6 +139,10 @@
   &__button {
     margin-right: 24px;
     color: #5364FF!important;
+
+    span {
+      color: white;
+    }
   }
 
   &__button:last-of-type {
@@ -146,12 +152,12 @@
 
 .token {
   &__overview {
-    background-color: #FBFBFB;
+    // background-color: #FBFBFB;
   }
 
   &__navigation {
-    padding: 38px 38px 0;
-    background-color: #FBFBFB;
+    // padding: 38px 38px 0;
+    // background-color: #FBFBFB;
   }
 }
 

@@ -296,7 +296,7 @@ export default class ExperimentalTab extends PureComponent {
         {this.renderCollectibleDetectionToggle()}
         {this.renderEIP1559V2EnabledToggle()}
         {this.renderTheme()}
-        {this.renderCustomNetworkListToggle()}
+        {/*this.renderCustomNetworkListToggle()*/}
       </div>
     );
   }

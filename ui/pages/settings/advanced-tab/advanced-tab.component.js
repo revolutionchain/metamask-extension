@@ -840,7 +840,7 @@ export default class AdvancedTab extends PureComponent {
         {/** this.renderMobileSync()*/}
         {this.renderResetAccount()}
         {this.renderAdvancedGasInputInline()}
-        {this.renderTokenDetectionToggle()}
+        {/**this.renderTokenDetectionToggle()*/}
         {this.renderHexDataOptIn()}
         {this.renderShowConversionInTestnets()}
         {this.renderToggleTestNetworks()}

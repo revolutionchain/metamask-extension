@@ -1,4 +1,28 @@
 {
+  "qtumMainnet": {
+    "message": "QTUM Mainnet"
+  },
+  "qtumTestnet": {
+    "message": "QTUM Testnet"
+  },
+  "qtumRegtest": {
+    "message": "QTUM Regtest"
+  },
+  "insufficientSpendableBalance": {
+    "message": "Your spendable balance is "
+  },
+  "addressFormatSetting": {
+    "message": "Address format"
+  },
+  "addressFormatSettingDescription": {
+    "message": "Selecciona una dirección hex para mostrar una dirección Ethereum normal. Selecciona una dirección de Qtum para obtener una dirección base58 de Qtum."
+  },
+  "hexAddress": {
+    "message": "Dirección Hex"
+  },
+  "qtumAddress": {
+    "message": "Dirección Qtum"
+  },
   "QRHardwareInvalidTransactionTitle": {
     "message": "Error"
   },

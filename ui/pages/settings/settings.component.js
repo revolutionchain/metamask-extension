@@ -298,11 +298,13 @@ class SettingsPage extends PureComponent {
             icon: <i className="fa fa-plug" />,
             key: NETWORKS_ROUTE,
           },
+          /**
           {
             content: t('experimental'),
             icon: <i className="fa fa-flask" />,
             key: EXPERIMENTAL_ROUTE,
           },
+          */
           {
             content: t('about'),
             icon: <i className="fa fa-info-circle" />,
