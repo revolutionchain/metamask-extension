@@ -170,9 +170,7 @@ if (isManifestV3) {
  */
 async function initialize(remotePort) {
   const initState = await loadStateFromPersistence();
-  console.log('[init state]', initState);
   const initLangCode = await getFirstPreferredLangCode();
-  console.log('[initLangCode]', initLangCode);
   await setupController(initState, initLangCode, remotePort);
   await loadPhishingWarningPage();
   log.info('MetaMask initialization complete.');

@@ -5,6 +5,11 @@ import {
   getIsBuyableChain,
   getNetworkIdentifier,
 } from '../../../selectors';
+import { getSelectedIdentity } from '../../../selectors';
+import {
+  getQtumAddress,
+  isQtumAddressShow,
+} from '../../../ducks/metamask/metamask';
 import { showModal } from '../../../store/actions';
 import ConfirmPageContainer from './confirm-page-container.component';
 
@@ -22,6 +27,8 @@ function mapStateToProps(state, ownProps) {
       .includes(to),
     to,
     networkIdentifier,
+    qtumAddress: getQtumAddress(state, getSelectedIdentity(state).address),
+    isQtumAddressShow: isQtumAddressShow(state),
   };
 }
 

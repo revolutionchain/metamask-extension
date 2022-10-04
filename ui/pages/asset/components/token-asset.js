@@ -83,6 +83,7 @@ export default function TokenAsset({ token }) {
       />
       <TokenOverview className="asset__overview token__overview" token={token} />
     </div>
+      <TransactionList tokenAddress={token.address} />
     </>
   );
 }

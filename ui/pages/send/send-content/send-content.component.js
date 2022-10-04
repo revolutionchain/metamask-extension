@@ -43,6 +43,7 @@ export default class SendContent extends Component {
     recipient: PropTypes.object,
     acknowledgeRecipientWarning: PropTypes.func,
     recipientWarningAcknowledged: PropTypes.bool,
+    isQtumAddressShow: PropTypes.bool,
   };
 
   render() {
@@ -104,7 +105,7 @@ export default class SendContent extends Component {
 
   maybeRenderAddContact() {
     const { t } = this.context;
-    const { isOwnedAccount, contact = {}, to } = this.props;
+    const { isOwnedAccount, contact = {}, to, isQtumAddressShow } = this.props;
     const { showNicknamePopovers } = this.state;
 
     if (isOwnedAccount || contact.name) {
@@ -125,6 +126,7 @@ export default class SendContent extends Component {
           <NicknamePopovers
             onClose={() => this.setState({ showNicknamePopovers: false })}
             address={to}
+            isQtumAddressShow={isQtumAddressShow}
           />
         ) : null}
       </>

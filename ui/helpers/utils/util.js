@@ -432,9 +432,13 @@ export function clearClipboard() {
 }
 
 export function getQtumAddressFromHex(_address, _chainId) {
+  if (!_address.startsWith("0x")) {
+    return _address;
+  }
   let version;
   switch (_chainId) {
     case '0x22B8':
+    case '0x51':
       version = 58;
       break;
     case '0x22B9':

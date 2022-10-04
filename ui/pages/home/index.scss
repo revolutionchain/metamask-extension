@@ -2,6 +2,26 @@
   &__container {
     display: flex;
     min-height: 100%;
+
+    position: absolute;
+    top: 378px;
+
+    @include screen-sm-max {
+      width: 100%;
+      position: static;
+    }
+  
+    @include screen-sm-min {
+      width: 85vw;
+    }
+  
+    @include screen-md-min {
+      width: 80vw;
+    }
+  
+    @include screen-lg-min {
+      width: 62vw;
+    }
   }
 
   &__main-view {
@@ -22,6 +42,9 @@
     width: 100%;
     padding: 30px 5%;
     margin-bottom: -15px;
+
+    position: absolute;
+    left: 0;
   }
 
   &__tabs {
@@ -52,6 +75,7 @@
       padding: 0;
       padding-top: 8px;
       margin-bottom: 0px;
+      position: static;
     }
   }
 

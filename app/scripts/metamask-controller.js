@@ -4881,6 +4881,9 @@ MetamaskController.prototype.setQtumBalances = async function (account) {
 MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
   const networks = await this.networkController.getNetworkState();
+  if (!_address.startsWith("0x")) {
+    return _address;
+  }
   try {
     if (ticker === 'QTUM') {
       const chainId = await this.networkController.getCurrentChainId();

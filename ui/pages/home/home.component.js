@@ -614,11 +614,11 @@ export default class Home extends PureComponent {
 
     return (
       <>
+      <div className="main-container">
       <div className="home__balance-wrapper">
         <MenuBar />
         <EthOverview />
       </div>
-      <div className="main-container">
         <Route path={CONNECTED_ROUTE} component={ConnectedSites} exact />
         <Route
           path={CONNECTED_ACCOUNTS_ROUTE}
