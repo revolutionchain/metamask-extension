@@ -846,8 +846,8 @@ export default class AdvancedTab extends PureComponent {
         {this.renderToggleTestNetworks()}
         {/*this.renderUseNonceOptIn()*/}
         {this.renderAutoLockTimeLimit()}
-        {this.renderUserDataBackup()}
-        {this.renderRestoreUserData()}
+        {/**this.renderUserDataBackup() // broken with mv3*/}
+        {/**this.renderRestoreUserData() // download broken with mv3*/}
         {/** this.renderThreeBoxControl()*/}
         {this.renderIpfsGatewayControl()}
         {/** notUsingFirefox ? this.renderLedgerLiveControl() : null*/}

@@ -607,6 +607,7 @@ export default class Home extends PureComponent {
     }
 
     const showWhatsNew =
+      false && // hide whats new
       ((completedOnboarding && firstTimeFlowType === 'import') ||
         !completedOnboarding) &&
       announcementsToShow &&

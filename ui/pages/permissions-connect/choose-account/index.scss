@@ -60,10 +60,10 @@
 
   &__content {
     display: flex;
-    flex: 0;
     width: 100%;
     padding: 16px 34px 16px 24px;
-    background-color: #F8F8F8;
+    overflow-y: auto;
+    flex-direction: column;
   }
 
   &__accounts-list-header--one-item {
@@ -161,14 +161,16 @@
       justify-content: space-between;
       padding-bottom: 20px;
     }
-    padding: 26px 48px 46px;
+    // padding: 26px 48px 46px;
   }
 
   &__bottom-buttons {
     display: flex;
     width: 100%;
     border-top: 1px solid #d6d9dc;
-    margin-top: 40px;
+    margin-top: 12px;
+    padding: 32px 46px 46px;
+    justify-content: space-between;
 
     @include screen-sm-min {
       border-top: none;

@@ -32,6 +32,9 @@ export default function EnableEIP1559V2Notice({ isFirstAlert }) {
     return null;
   }
 
+  // EIP1559 does not apply to Qtum
+  return null;
+
   return (
     <Box
       marginRight={4}
