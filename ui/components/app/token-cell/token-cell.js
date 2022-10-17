@@ -6,10 +6,16 @@ import AssetListItem from '../asset-list-item';
 import { 
   getSelectedAddress,
   getCurrentChainId,
+  getRpcPrefsForCurrentProvider,
 } from '../../../selectors';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
 import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
+import { getAccountLink } from '@metamask/etherscan-link';
+
+const getBlockExplorerLink = (address, chainId, rpcPrefs) => {
+  return getAccountLink(address, chainId, rpcPrefs);
+};
 
 export default function TokenCell({
   address,
@@ -23,13 +29,15 @@ export default function TokenCell({
   const chainId = useSelector(getCurrentChainId);
   const userAddress = getQtumAddressFromHex(useSelector(getSelectedAddress), chainId);
   const t = useI18nContext();
+  const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
+  const blockExplorerLink = getBlockExplorerLink(userAddress, chainId, rpcPrefs)
 
   const formattedFiat = useTokenFiatAmount(address, string, symbol);
   const warning = balanceError ? (
     <span>
       {t('troubleTokenBalances')}
       <a
-        href={`https://qtum.info/address/${userAddress}`}
+        href={blockExplorerLink}
         rel="noopener noreferrer"
         target="_blank"
         onClick={(event) => event.stopPropagation()}

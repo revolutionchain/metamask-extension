@@ -1,5 +1,11 @@
 @import './send-content/send-gas-row/send-gas-row';
 
+.send-container {
+  .page-container__content {
+    overflow-y: unset;
+  }
+}
+
 .send {
   &__header {
     position: relative;
@@ -234,7 +240,7 @@
       @extend %ellipsify;
 
       display: flex;
-      font-size: 16px;
+      font-size: 13px;
       line-height: 27px;
       color: $Black-300;
 
@@ -243,10 +249,11 @@
     }
 
     &__subtitle {
-      font-size: 16px;
+      font-size: 13px;
       line-height: 27px;
       color: $Black-300;
       margin-top: 0.25rem;
+      word-wrap: break-word;
     }
   }
 }

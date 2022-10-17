@@ -662,8 +662,8 @@
     }
 
     &__asset-icon {
-      border-left: 1px solid #C5C6CB;
-      padding-left: 16px;
+      // border-left: 1px solid #C5C6CB;
+      // padding-left: 16px;
 
       .identicon {
         border: 1px solid var(--color-border-muted);
@@ -674,6 +674,7 @@
       display: flex;
       flex-flow: column nowrap;
       flex-grow: 1;
+      padding-left: 8px;
     }
 
     @include screen-sm-max {
@@ -686,13 +687,15 @@
       @include Paragraph;
 
       margin-top: 4px;
-      margin-left: 5px;
+      // margin-left: 5px;
+
+      font-size: 1rem;
     }
 
     &__name {
       @include H7;
 
-      font-size: 20px;
+      font-size: 0.75rem;
       line-height: 24px;
       display: flex;
       flex-flow: row nowrap;
@@ -724,7 +727,7 @@
       padding: 4px 0;
 
       .send-v2__asset-dropdown__asset {
-        padding: 8px;
+        padding: 16px;
       }
     }
 

@@ -32,7 +32,7 @@
 @media screen and (max-width: $break-midpoint) {
   .asset {
     &__header {
-      margin-left: calc((-99vw + 85vw)/2);
+      // margin-left: calc((-99vw + 85vw)/2);
     }
   }
 }

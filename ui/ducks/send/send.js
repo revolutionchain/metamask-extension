@@ -76,6 +76,9 @@ import {
   getTokenIdParam,
 } from '../../helpers/utils/token-util';
 import {
+  getERC20Balance,
+} from './helpers';
+import {
   checkExistingAddresses,
   isDefaultMetaMaskChain,
   isOriginContractAddress,
@@ -2429,11 +2432,35 @@ export function startNewDraftTransaction(asset) {
       state[name].selectedAccount.address ??
       getSelectedAddress(state);
     const account = getTargetAccount(state, sendingAddress);
+
+    const {
+      metamask: { gasFeeEstimates, gasEstimateType },
+    } = state;
+
+    let gasPrice = '0x0';
+
+    if (gasEstimateType === GAS_ESTIMATE_TYPES.LEGACY) {
+      gasPrice = getGasPriceInHexWei(gasFeeEstimates.medium);
+    } else if (gasEstimateType === GAS_ESTIMATE_TYPES.ETH_GASPRICE) {
+      gasPrice = getRoundedGasPrice(gasFeeEstimates.gasPrice);
+    } else if (gasEstimateType === GAS_ESTIMATE_TYPES.FEE_MARKET) {
+      gasPrice = getGasPriceInHexWei(
+        gasFeeEstimates.medium.suggestedMaxFeePerGas,
+      );
+    } else {
+      gasPrice = gasFeeEstimates.gasPrice
+        ? getRoundedGasPrice(gasFeeEstimates.gasPrice)
+        : '0x0';
+    }
+
     await dispatch(
       actions.addNewDraft({
         ...draftTransactionInitialState,
         history: [`sendFlow - User started new draft transaction`],
         fromAccount: account,
+        gas: {
+          gasPrice: gasPrice,
+        },
       }),
     );
 

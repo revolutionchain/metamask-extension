@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { isHexString } from 'ethereumjs-util';
 
 import {
+  shortenAddress,
   isValidDomainName,
   getHexAddressFromQtum,
   getQtumAddressFromHex,

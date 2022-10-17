@@ -9,15 +9,15 @@
     @include H7;
 
     margin-top: 4px;
-    color: var(--color-text-alternative);
+    color: var(--color-text-default);
   }
 
   & &--unconfirmed {
-    color: var(--color-text-alternative);
+    color: var(--color-text-default);
   }
 
   &--unconfirmed &__primary-currency {
-    color: var(--color-text-alternative);
+    color: var(--color-text-default);
   }
 
   &__pending-actions {
