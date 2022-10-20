@@ -1,3 +1,13 @@
+.send-container {
+  .page-container__content {
+    overflow-y: unset;
+  }
+}
+
+.send-container::-webkit-scrollbar {
+  display: block;
+}
+
 .send-screen-wrapper {
   display: flex;
   flex-flow: column nowrap;

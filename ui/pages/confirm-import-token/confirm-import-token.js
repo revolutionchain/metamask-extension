@@ -126,6 +126,7 @@ const ConfirmImportToken = () => {
               dispatch(clearPendingTokens());
               history.push(IMPORT_TOKEN_ROUTE);
             }}
+            rounded={false}
           >
             {t('back')}
           </Button>
@@ -134,6 +135,7 @@ const ConfirmImportToken = () => {
             large
             className="page-container__footer-button"
             onClick={handleAddTokens}
+            rounded={false}
           >
             {t('importTokensCamelCase')}
           </Button>

@@ -170,6 +170,10 @@
     flex: 1;
   }
 
+  &__content::-webkit-scrollbar {
+    display: block;
+  }
+
   &__warning-container {
     background: var(--color-error-muted);
     padding: 20px;
