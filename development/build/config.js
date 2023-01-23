@@ -64,8 +64,8 @@ async function getProductionConfig(buildType) {
     INFURA_BETA_PROJECT_ID: process.env.INFURA_BETA_PROJECT_ID,
     INFURA_FLASK_PROJECT_ID: process.env.INFURA_FLASK_PROJECT_ID,
     INFURA_PROD_PROJECT_ID: process.env.INFURA_PROD_PROJECT_ID,
-    PUBNUB_PUB_KEY: process.env.PUBNUB_PUB_KEY,
-    PUBNUB_SUB_KEY: process.env.PUBNUB_SUB_KEY,
+    // PUBNUB_PUB_KEY: process.env.PUBNUB_PUB_KEY,
+    // PUBNUB_SUB_KEY: process.env.PUBNUB_SUB_KEY,
     SEGMENT_BETA_WRITE_KEY: process.env.SEGMENT_BETA_WRITE_KEY,
     SEGMENT_FLASK_WRITE_KEY: process.env.SEGMENT_FLASK_WRITE_KEY,
     SEGMENT_PROD_WRITE_KEY: process.env.SEGMENT_PROD_WRITE_KEY,
@@ -74,7 +74,7 @@ async function getProductionConfig(buildType) {
   };
 
   const requiredEnvironmentVariables = {
-    all: ['PUBNUB_PUB_KEY', 'PUBNUB_SUB_KEY', 'SENTRY_DSN'],
+    all: [/*'PUBNUB_PUB_KEY', 'PUBNUB_SUB_KEY',*/ 'SENTRY_DSN'],
     [BuildType.beta]: ['INFURA_BETA_PROJECT_ID', 'SEGMENT_BETA_WRITE_KEY'],
     [BuildType.flask]: ['INFURA_FLASK_PROJECT_ID', 'SEGMENT_FLASK_WRITE_KEY'],
     [BuildType.main]: ['INFURA_PROD_PROJECT_ID', 'SEGMENT_PROD_WRITE_KEY'],

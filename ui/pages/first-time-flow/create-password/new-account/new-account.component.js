@@ -182,6 +182,7 @@ export default class NewAccount extends PureComponent {
             fullWidth
             largeLabel
           />
+          { false && (
           <div
             className="first-time-flow__checkbox-container"
             onClick={this.toggleTermsCheck}
@@ -215,10 +216,11 @@ export default class NewAccount extends PureComponent {
               ])}
             </span>
           </div>
+          )}
           <Button
             type="primary"
             className="first-time-flow__button"
-            disabled={!this.isValid() || !termsChecked}
+            disabled={!this.isValid()}
             onClick={this.handleCreate}
             rounded={false}
           >

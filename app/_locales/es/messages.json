@@ -153,7 +153,7 @@
   },
   "addCustomTokenByContractAddress": {
     "message": "¿No encuentra un token? Puede agregar cualquier token si copia su dirección. Puede encontrar la dirección de contrato del token en $1.",
-    "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for QTUM"
+    "description": "$1 is a blockchain explorer for a specific network, e.g. explorador de bloques for QTUM"
   },
   "addQTUMChainConfirmationDescription": {
     "message": "Esto permitirá que la red se utilice en Qnekt."
@@ -1539,7 +1539,7 @@
     "message": "Agregar NFT"
   },
   "importNFTAddressToolTip": {
-    "message": "En OpenSea, por ejemplo, en la página de NFT en Detalles, hay un un vínculo azul etiquetado como 'Dirección del contrato'. Si haces clic en esto, te llevará a la dirección del contrato en Etherscan; en la parte superior izquierda de esa página, debe haber un icono etiquetado como 'Contrato' y, a la derecha, una larga cadena de letras y números. Esta es la dirección del contrato que creó tu NFT. Haz clic en el icono de 'copiar' que aparece a la derecha de la dirección, y la tendrás en el portapapeles."
+    "message": "En OpenSea, por ejemplo, en la página de NFT en Detalles, hay un un vínculo azul etiquetado como 'Dirección del contrato'. Si haces clic en esto, te llevará a la dirección del contrato en explorador de bloques; en la parte superior izquierda de esa página, debe haber un icono etiquetado como 'Contrato' y, a la derecha, una larga cadena de letras y números. Esta es la dirección del contrato que creó tu NFT. Haz clic en el icono de 'copiar' que aparece a la derecha de la dirección, y la tendrás en el portapapeles."
   },
   "importNFTPage": {
     "message": "Importar página de NFT"
@@ -2394,7 +2394,7 @@
     "description": "Return the user to the site that initiated onboarding"
   },
   "onboardingShowIncomingTransactionsDescription": {
-    "message": "Mostrar las transacciones entrantes en su cartera depende de la comunicación con $1. Etherscan tendrá acceso a su dirección de QTUM y a su dirección IP. Ver 2$.",
+    "message": "Mostrar las transacciones entrantes en su cartera depende de la comunicación con $1. explorador de bloques tendrá acceso a su dirección de QTUM y a su dirección IP. Ver 2$.",
     "description": "$1 is a clickable link with text defined by the 'etherscan' key. $2 is a clickable link with text defined by the 'privacyMsg' key."
   },
   "onboardingUsePhishingDetectionDescription": {
@@ -2985,7 +2985,7 @@
     "message": "Mostrar transacciones entrantes"
   },
   "showIncomingTransactionsDescription": {
-    "message": "Seleccione esta opción para usar Etherscan para mostrar las transacciones entrantes en la lista de transacciones"
+    "message": "Seleccione esta opción para usar explorador de bloques para mostrar las transacciones entrantes en la lista de transacciones"
   },
   "showPermissions": {
     "message": "Mostrar permisos"

@@ -1166,9 +1166,9 @@ export function getBlockExplorerLinkText(
         };
   } else if (isCustomNetwork === false) {
     blockExplorerLinkText = accountDetailsModalComponent
-      ? { firstPart: 'etherscanViewOn', secondPart: '' }
+      ? { firstPart: 'viewOnBlockExplorer', secondPart: '' }
       : {
-          firstPart: 'viewOnEtherscan',
+          firstPart: 'viewinExplorer',
           secondPart: 'blockExplorerAccountAction',
         };
   }

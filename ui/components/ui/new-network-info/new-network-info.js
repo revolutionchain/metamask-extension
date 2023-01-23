@@ -147,6 +147,8 @@ const NewNetworkInfo = () => {
             </Typography>
           </Box>
         ) : null}
+        {
+          false && (
         <Box
           display={DISPLAY.FLEX}
           alignItems={ALIGN_ITEMS.CENTER}
@@ -183,6 +185,8 @@ const NewNetworkInfo = () => {
             </a>
           </Typography>
         </Box>
+          )
+        }
         {!autoDetectToken || !tokenDetectionSupported ? (
           <Box
             display={DISPLAY.FLEX}

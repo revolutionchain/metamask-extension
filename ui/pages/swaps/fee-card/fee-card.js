@@ -22,7 +22,7 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT } from '../../../../shared/constants/metametrics';
 
 const GAS_FEES_LEARN_MORE_URL =
-  'https://community.metamask.io/t/what-is-gas-why-do-transactions-take-so-long/3172';
+  'https://www.qtum.org/about/gas';
 
 export default function FeeCard({
   primaryFee,

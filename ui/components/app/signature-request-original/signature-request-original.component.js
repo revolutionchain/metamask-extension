@@ -225,6 +225,7 @@ export default class SignatureRequestOriginal extends Component {
         >
           {notice}
           {type === MESSAGE_TYPE.ETH_SIGN ? (
+            /**
             <span
               className="request-signature__help-link"
               onClick={() => {
@@ -235,6 +236,8 @@ export default class SignatureRequestOriginal extends Component {
             >
               {this.context.t('learnMoreUpperCase')}
             </span>
+            */
+           <div/>
           ) : null}
         </div>
         <div className="request-signature__rows">

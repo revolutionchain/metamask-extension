@@ -34,6 +34,10 @@
     }
   }
 
+  &__link-item-hidden {
+    display: none;
+  }
+
   &__version-number {
     @include H6;
 

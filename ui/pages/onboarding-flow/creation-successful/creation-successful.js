@@ -74,7 +74,7 @@ export default function CreationSuccessful() {
         </li>
         <li>
           <Button
-            href="https://community.metamask.io/t/what-is-a-secret-recovery-phrase-and-how-to-keep-your-crypto-wallet-secure/3440"
+            href="http://qtum.org/about/qnekt"
             target="_blank"
             type="link"
             rel="noopener noreferrer"

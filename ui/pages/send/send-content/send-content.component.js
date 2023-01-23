@@ -157,6 +157,7 @@ export default class SendContent extends Component {
             onClick: acknowledgeRecipientWarning,
           }}
           message={t('sendingToTokenContractWarning', [
+            /**
             <a
               key="contractWarningSupport"
               target="_blank"
@@ -166,6 +167,7 @@ export default class SendContent extends Component {
             >
               {t('learnMoreUpperCase')}
             </a>,
+            */
           ])}
           roundedButtons
         />
