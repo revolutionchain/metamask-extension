@@ -73,6 +73,8 @@
     "https://lattice.gridplus.io/*",
     "https://janus.qiswap.com/",
     "https://testnet-janus.qiswap.com/",
+    "https://mainnet.qnode.qtum.info/",
+    "https://testnet.qnode.qtum.info/",
     "activeTab",
     "webRequest",
     "*://*.eth/",

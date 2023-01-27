@@ -107,7 +107,7 @@ const mainnet = {
   "chain": "QTUM",
   "icon": "qtum",
   "rpc": [
-    "https://janus.qiswap.com/api/"
+    "https://mainnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
   ],
   "faucets": [],
   "nativeCurrency": {
@@ -136,7 +136,7 @@ const testnet = {
   "chain": "QTUM",
   "icon": "qtum",
   "rpc": [
-    "https://testnet-janus.qiswap.com/api/"
+    "https://testnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
   ],
   "faucets": [],
   "nativeCurrency": {

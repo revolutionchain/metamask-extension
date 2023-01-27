@@ -81,8 +81,8 @@ export const KOVAN_RPC_URL = getRpcUrl({ network: KOVAN });
 export const MAINNET_RPC_URL = getRpcUrl({ network: MAINNET });
 export const GOERLI_RPC_URL = getRpcUrl({ network: GOERLI });
 export const LOCALHOST_RPC_URL = 'http://localhost:8545';
-export const QTUM_MAINNET_RPC_URL = `https://janus.qiswap.com/api/`;
-export const QTUM_TESTNET_RPC_URL = `https://testnet-janus.qiswap.com/api/`;
+export const QTUM_MAINNET_RPC_URL = `https://mainnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN`;
+export const QTUM_TESTNET_RPC_URL = `https://testnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN`;
 export const QTUM_REGTEST_RPC_URL = `https://localhost:23889`;
 
 export const ETH_SYMBOL = 'ETH';
