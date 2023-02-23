@@ -1366,7 +1366,7 @@
     "message": "La dirección del destinatario no es válida"
   },
   "invalidAddressRecipientNotEthNetwork": {
-    "message": "No es una red ETH; configurar en minúsculas"
+    "message": "No es una red QTUM; configurar en minúsculas"
   },
   "invalidBlockExplorerURL": {
     "message": "Dirección URL del explorador de bloques no válida"
@@ -2358,6 +2358,9 @@
   },
   "seedPhraseIntroTitleCopy": {
     "message": "Antes de comenzar, mire este breve video para aprender sobre su frase de recuperación y sobre cómo proteger su cartera."
+  },
+  "seedPhraseVideo": {
+    "message": "./images/videos/recovery-onboarding/video_es.webm"
   },
   "seedPhraseReq": {
     "message": "Las frases secretas de recuperación contienen 12, 15, 18, 21 o 24 palabras"

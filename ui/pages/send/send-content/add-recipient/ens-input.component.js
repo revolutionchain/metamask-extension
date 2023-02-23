@@ -53,7 +53,11 @@ export default class EnsInput extends Component {
         const input = text.trim();
         let hexAddress = input;
         if (this.isBase58(input) || !isHexString(input)) {
-          hexAddress = getHexAddressFromQtum(input);
+          try {
+            hexAddress = getHexAddressFromQtum(input);
+          } catch (e) {
+
+          }
         }
         if (
           !isBurnAddress(hexAddress) &&
@@ -76,7 +80,11 @@ export default class EnsInput extends Component {
     const input = value.trim();
     let hexAddress = input;
     if (this.isBase58(input) || !isHexString(input)) {
-      hexAddress = getHexAddressFromQtum(input);
+      try {
+        hexAddress = getHexAddressFromQtum(input);
+      } catch (e) {
+
+      }
     }
     onChange(hexAddress);
 
@@ -104,7 +112,7 @@ export default class EnsInput extends Component {
 
   convertAddress = (input) => {
     const { chainId, isQtumAddressShowCheck } = this.props;
-    if (isQtumAddressShowCheck && isHexString(input) && input !== '') {
+    if (isQtumAddressShowCheck && isHexString(input) && input !== '' && input.length === 42) {
       const newAddress = getQtumAddressFromHex(input, chainId);
       return newAddress;
     } else if (

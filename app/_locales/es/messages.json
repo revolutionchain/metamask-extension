@@ -1610,7 +1610,7 @@
     "message": "La dirección del destinatario no es válida"
   },
   "invalidAddressRecipientNotEthNetwork": {
-    "message": "No es una red ETH; configurar en minúsculas"
+    "message": "No es una red QTUM; configurar en minúsculas"
   },
   "invalidAssetType": {
     "message": "Este activo es un NFT y debe volver a añadirse en la página de Importar NFTs que se encuentra en la pestaña de NFTs"
@@ -2855,6 +2855,9 @@
   },
   "seedPhraseIntroTitleCopy": {
     "message": "Antes de comenzar, mire este breve video para aprender sobre su frase de recuperación y sobre cómo mantener segura su cartera."
+  },
+  "seedPhraseVideo": {
+    "message": "./images/videos/recovery-onboarding/video_es.webm"
   },
   "seedPhraseReq": {
     "message": "Las frases secretas de recuperación contienen 12, 15, 18, 21 o 24 palabras"

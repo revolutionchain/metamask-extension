@@ -83,9 +83,11 @@ export default class SendContent extends Component {
         <div className="send-v2__form">
           {assetError ? this.renderError(assetError) : null}
           {gasError ? this.renderError(gasError) : null}
+          {/** gas estimation service integration not supported yet}
           {isEthGasPrice
             ? this.renderWarning(ETH_GAS_PRICE_FETCH_WARNING_KEY)
             : null}
+          **/}
           {error ? this.renderError(error) : null}
           {warning ? this.renderWarning() : null}
           {showKnownRecipientWarning && !recipientWarningAcknowledged

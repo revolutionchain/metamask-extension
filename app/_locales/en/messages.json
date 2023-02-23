@@ -1476,7 +1476,7 @@
     "message": "Gas price estimation failed due to network error."
   },
   "gasPriceInfoTooltipContent": {
-    "message": "Gas price specifies the amount of Ether you are willing to pay for each unit of gas."
+    "message": "Gas price specifies the amount of Qtum you are willing to pay for each unit of gas."
   },
   "gasTimingHoursShort": {
     "message": "$1 hrs",
@@ -1525,11 +1525,11 @@
     "message": "General"
   },
   "getEther": {
-    "message": "Get Ether"
+    "message": "Get Qtum"
   },
   "getEtherFromFaucet": {
-    "message": "Get Ether from a faucet for the $1",
-    "description": "Displays network name for Ether faucet"
+    "message": "Get Qtum from a faucet for the $1",
+    "description": "Displays network name for Qtum faucet"
   },
   "getStarted": {
     "message": "Get started"
@@ -1722,7 +1722,7 @@
     "message": "Recipient address is invalid"
   },
   "invalidAddressRecipientNotEthNetwork": {
-    "message": "Not ETH network, set to lowercase"
+    "message": "Not QTUM network, set to lowercase"
   },
   "invalidAssetType": {
     "message": "This asset is an NFT and needs to be re-added on the Import NFTs page found under the NFTs tab"
@@ -2945,7 +2945,7 @@
     "message": "Your Secret Recovery Phrase makes it easy to back up and restore your account."
   },
   "secretBackupPhraseWarning": {
-    "message": "WARNING: Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your Ether forever."
+    "message": "WARNING: Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your Qtum forever."
   },
   "secretPhrase": {
     "message": "Only the first account on this wallet will auto load. After completing this process, to add additional accounts, click the drop down menu, then select Create Account."
@@ -3006,6 +3006,9 @@
   },
   "seedPhraseIntroTitleCopy": {
     "message": "Before getting started, watch this short video to learn about your Secret Recovery Phrase and how to keep your wallet safe."
+  },
+  "seedPhraseVideo": {
+    "message": "./images/videos/recovery-onboarding/video.webm"
   },
   "seedPhraseReq": {
     "message": "Secret Recovery Phrases contain 12, 15, 18, 21, or 24 words"

@@ -12,6 +12,7 @@ import {
   KOVAN_CHAIN_ID,
   LOCALHOST_CHAIN_ID,
   MAINNET_CHAIN_ID,
+  QTUM_MAINNET_CHAIN_ID,
   RINKEBY_CHAIN_ID,
   ROPSTEN_CHAIN_ID,
 } from '../../../shared/constants/network';
@@ -58,7 +59,8 @@ export function isDefaultMetaMaskChain(chainId) {
     chainId === RINKEBY_CHAIN_ID ||
     chainId === KOVAN_CHAIN_ID ||
     chainId === GOERLI_CHAIN_ID ||
-    chainId === LOCALHOST_CHAIN_ID
+    chainId === LOCALHOST_CHAIN_ID ||
+    chainId === QTUM_MAINNET_CHAIN_ID
   ) {
     return true;
   }

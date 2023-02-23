@@ -2499,6 +2499,7 @@ TransactionController.prototype.signTransaction = async function (txId) {
       this.provider.sendAsync({
         method,
         params,
+        id: new Date().getTime(),
       }, (err, response) => {
         if (err) {
           return reject(err);

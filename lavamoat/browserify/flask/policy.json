@@ -4207,6 +4207,7 @@
       "globals": {
         "clearTimeout": true,
         "console.log": true,
+        "fetch": true,
         "setImmediate": true,
         "setTimeout": true
       },
@@ -4220,6 +4221,7 @@
         "analytics-node>remove-trailing-slash": true,
         "analytics-node>uuid": true,
         "browserify>assert": true,
+        "browserify>buffer": true,
         "browserify>process": true
       }
     },

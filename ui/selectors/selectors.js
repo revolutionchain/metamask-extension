@@ -5,7 +5,7 @@ import { memoize } from 'lodash';
 import { addHexPrefix } from '../../app/scripts/lib/util';
 import {
   MAINNET_CHAIN_ID,
-  QTUM_CHAIN_ID,
+  QTUM_MAINNET_CHAIN_ID,
   TEST_CHAINS,
   NETWORK_TYPE_RPC,
   NATIVE_CURRENCY_TOKEN_IMAGE_MAP,
@@ -20,6 +20,7 @@ import {
   POLYGON_DISPLAY_NAME,
   AVALANCHE_DISPLAY_NAME,
   CHAIN_ID_TO_RPC_URL_MAP,
+  QTUM_MAINNET_DISPLAY_NAME,
 } from '../../shared/constants/network';
 import {
   KEYRING_TYPES,
@@ -526,7 +527,7 @@ export function getSuggestedAssets(state) {
 
 export function getIsMainnet(state) {
   const chainId = getCurrentChainId(state);
-  return chainId === QTUM_CHAIN_ID;
+  return chainId === QTUM_MAINNET_CHAIN_ID;
 }
 
 export function getIsTestnet(state) {
@@ -601,15 +602,11 @@ export function getTargetSubjectMetadata(state, origin) {
 }
 
 export function getRpcPrefsForCurrentProvider(state) {
-  console.log('[getRpcPrefsForCurrentProvider]', state)
   const { frequentRpcListDetail, provider } = state.metamask;
-  console.log('[getRpcPrefsForCurrentProvider]', frequentRpcListDetail, provider)
   const selectRpcInfo = frequentRpcListDetail.find(
     (rpcInfo) => rpcInfo.rpcUrl === provider.rpcUrl,
   );
-  console.log('[getRpcPrefsForCurrentProvider]', selectRpcInfo)
   const { rpcPrefs = {} } = selectRpcInfo || {};
-  console.log('[getRpcPrefsForCurrentProvider]', rpcPrefs)
   return rpcPrefs;
 }
 

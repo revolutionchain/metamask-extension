@@ -78,7 +78,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[4]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://www.qtum.org/attributions"
+            href="https://www.qtum.org/about/attributions"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
