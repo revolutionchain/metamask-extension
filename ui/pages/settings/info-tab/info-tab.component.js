@@ -56,7 +56,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[2]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/privacy.html"
+            href="https://www.qtum.org/about/privacy"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -64,7 +64,7 @@ export default class InfoTab extends PureComponent {
             {t('privacyMsg')}
           </Button>
         </div>
-        <div ref={this.settingsRefs[3]} className="info-tab__link-item">
+        <div ref={this.settingsRefs[3]} className="info-tab__link-item-hidden">
           <Button
             type="link"
             href="https://metamask.io/terms.html"
@@ -78,7 +78,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[4]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/attributions.html"
+            href="https://www.qtum.org/about/attributions"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -87,7 +87,7 @@ export default class InfoTab extends PureComponent {
           </Button>
         </div>
         <hr className="info-tab__separator" />
-        <div ref={this.settingsRefs[5]} className="info-tab__link-item">
+        <div ref={this.settingsRefs[5]} className="info-tab__link-item-hidden">
           <Button
             type="link"
             href={SUPPORT_LINK}
@@ -115,7 +115,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[6]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/"
+            href="https://www.qtum.org/"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"

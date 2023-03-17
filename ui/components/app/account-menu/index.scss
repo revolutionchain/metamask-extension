@@ -1,3 +1,7 @@
+.account-menu__accounts::-webkit-scrollbar {
+  display: block; // doesn't work
+}
+
 .account-menu {
   position: absolute;
   z-index: 100;
@@ -189,6 +193,7 @@
 
   &__accounts {
     position: relative;
+    width: 100%;
 
     @include screen-sm-max {
       max-height: 240px;

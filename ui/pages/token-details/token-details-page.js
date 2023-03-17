@@ -16,6 +16,8 @@ import Button from '../../components/ui/button';
 import CopyIcon from '../../components/ui/icon/copy-icon.component';
 import Box from '../../components/ui/box';
 import Typography from '../../components/ui/typography';
+import PageContainerHeader from '../../components/ui/page-container/page-container-header';
+import { PageContainerFooter } from '../../components/ui/page-container';
 import {
   COLORS,
   TYPOGRAPHY,
@@ -57,11 +59,99 @@ export default function TokenDetailsPage() {
   const { nickname: networkNickname, type: networkType } = currentNetwork;
 
   const [copied, handleCopy] = useCopyToClipboard();
+  const onClose = () => history.push(`${ASSET_ROUTE}/${token.address}`);
 
   if (!token) {
     return <Redirect to={{ pathname: DEFAULT_ROUTE }} />;
   }
   return (
+    <div className="page-container send-container">
+      <PageContainerHeader
+        className="send__header"
+        onClose={onClose}
+        title={t('tokenDetails')}
+        headerCloseText={t('cancel')}
+        hideClose={false}
+      />
+      <div className="settings-page__body">
+        <div className="settings-page__content-row">
+          <div className="token-details__balance-container">
+            <div className="token-details__balance">
+              {tokenBalance || ''}
+            </div>
+            <Identicon
+              diameter={32}
+              address={token.address}
+              image={tokenMetadata ? tokenMetadata.iconUrl : token.image}
+              className="token-details__icon"
+            />
+          </div>
+        </div>
+        <div className="settings-page__content-row">
+          <div className="settings-page__content-item">
+            {t('tokenContractAddress')}
+            <div className="settings-page__content-description token-details__token-contract-address">
+              {token.address}
+              <div className="token-details__copy-icon">
+                <Tooltip
+                  position="bottom"
+                  title={copied ? t('copiedExclamation') : t('copyToClipboard')}
+                >
+                  <Button
+                    type="link"
+                    className="token-details__copyIcon"
+                    onClick={() => {
+                      handleCopy(token.address);
+                    }}
+                  >
+                    <CopyIcon size={11} color="var(--color-primary-default)" />
+                  </Button>
+                </Tooltip>
+              </div>
+            </div>
+          </div>
+          <div className="settings-page__content-item">
+            {t('tokenDecimalTitle')}
+            <div className="settings-page__content-description">
+              {token.decimals}
+            </div>
+          </div>
+          <div className="settings-page__content-item">
+            {t('network')}
+            <div className="settings-page__content-description">
+              {networkType === NETWORK_TYPE_RPC
+              ? t(networkNickname) ?? t('privateNetwork')
+              : t(networkType)}
+            </div>
+          </div>
+          {aggregators && (
+            <>
+              <div className="settings-page__content-item">
+                {t('tokenList')}
+                {`${aggregators}.`}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+      <PageContainerFooter
+        cancelButtonType="default"
+        onSubmit={() => {
+          dispatch(
+            showModal({ name: 'HIDE_TOKEN_CONFIRMATION', token, history }),
+          );
+        }}
+        submitText={t('hideToken')}
+        hideCancel={true}
+        /**
+        onSubmit={() => this.onSubmit()}
+        submitText={this.context.t('connect')}
+         */
+        buttonSizeLarge={false}
+      />
+    </div>
+  );
+    /**
     <Box className="page-container token-details">
       <Box marginLeft={5} marginRight={6}>
         <Typography
@@ -176,7 +266,7 @@ export default function TokenDetailsPage() {
           color={COLORS.TEXT_DEFAULT}
         >
           {networkType === NETWORK_TYPE_RPC
-            ? networkNickname ?? t('privateNetwork')
+            ? t(networkNickname) ?? t('privateNetwork')
             : t(networkType)}
         </Typography>
         {aggregators && (
@@ -216,4 +306,5 @@ export default function TokenDetailsPage() {
       </Box>
     </Box>
   );
+  **/
 }

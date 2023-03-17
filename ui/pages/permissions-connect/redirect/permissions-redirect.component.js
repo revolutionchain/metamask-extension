@@ -35,10 +35,6 @@ export default function PermissionsRedirect({ subjectMetadata }) {
           >
             <i className="fa fa-check fa-lg permissions-redirect__check" />
             <div className="permissions-redirect__dashed-line" />
-            {
-              // TODO: NOT NEEDED?
-              renderBrokenLine()
-            }
           </Box>
           <SiteIcon
             icon="/images/logo/qtum-logo.svg"

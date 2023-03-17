@@ -36,6 +36,7 @@ const defaultNetworksData = [
     rpcPrefs: {
       blockExplorerUrl: "https://qtum.info/",
     },
+    blockExplorerUrl: "https://qtum.info/",
   },
   {
     labelKey: QTUM_TESTNET,
@@ -47,6 +48,7 @@ const defaultNetworksData = [
     rpcPrefs: {
       blockExplorerUrl: "https://testnet.qtum.info/",
     },
+    blockExplorerUrl: "https://testnet.qtum.info/",
   },
   {
     labelKey: QTUM_REGTEST,

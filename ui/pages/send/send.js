@@ -110,11 +110,11 @@ export default function SendTransactionScreen() {
   }
 
   return (
-    <div className="page-container">
+    <div className="page-container send-container">
       <SendHeader history={history} />
       <EnsInput
         userInput={userInput}
-        className="send__to-row"
+        className="send__to-row hey"
         onChange={(address) => dispatch(updateRecipientUserInput(address))}
         onValidAddressTyped={async (address) => {
           dispatch(

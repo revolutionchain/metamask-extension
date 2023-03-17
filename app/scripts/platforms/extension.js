@@ -240,7 +240,7 @@ export default class ExtensionPlatform {
 
     const title = 'Confirmed transaction';
     const message = `Transaction ${nonce} confirmed! ${
-      url.length ? 'View on Etherscan' : ''
+      url.length ? 'View on Block explorer' : ''
     }`;
     this._showNotification(title, message, url);
   }

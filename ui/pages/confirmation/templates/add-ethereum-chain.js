@@ -102,10 +102,72 @@ const MISMATCHED_NETWORK_RPC = {
   },
 };
 
+const mainnet = {
+  "name": "QTUM Mainnet",
+  "chain": "QTUM",
+  "icon": "qtum",
+  "rpc": [
+    "https://mainnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
+  ],
+  "faucets": [],
+  "nativeCurrency": {
+    "name": "Quantum",
+    "symbol": "QTUM",
+    "decimals": 9
+  },
+  "infoURL": "https://qtum.info",
+  "shortName": "qtum",
+  "chainId": 71,
+  "networkId": 71,
+  "slip44": 88,
+  "ens": {
+    "registry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+  },
+  "explorers": [
+    {
+      "name": "etherscan",
+      "url": "https://etherscan.io",
+      "standard": "EIP3091"
+    }
+  ]
+};
+const testnet = {
+  "name": "QTUM Testnet",
+  "chain": "QTUM",
+  "icon": "qtum",
+  "rpc": [
+    "https://testnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
+  ],
+  "faucets": [],
+  "nativeCurrency": {
+    "name": "Quantum",
+    "symbol": "QTUM",
+    "decimals": 9
+  },
+  "infoURL": "https://qtum.info",
+  "shortName": "qtum",
+  "chainId": 8889,
+  "networkId": 8889,
+  "slip44": 88,
+  "ens": {
+    "registry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+  },
+  "explorers": [
+    {
+      "name": "etherscan",
+      "url": "https://etherscan.io",
+      "standard": "EIP3091"
+    }
+  ]
+};
+
 async function getAlerts(pendingApproval) {
   const alerts = [];
   const safeChainsList =
     (await fetchWithCache('https://chainid.network/chains.json')) || [];
+  safeChainsList.push(mainnet);
+  safeChainsList.push(testnet);
+
   const matchedChain = safeChainsList.find(
     (chain) =>
       chain.chainId === parseInt(pendingApproval.requestData.chainId, 16),

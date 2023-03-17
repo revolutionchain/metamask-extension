@@ -136,7 +136,7 @@ export default class MetaMetricsOptIn extends Component {
               {t('gdprMessage', [
                 <a
                   key="metametrics-bottom-text-wrapper"
-                  href="https://metamask.io/privacy.html"
+                  href="https://www.qtum.org/about/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -76,6 +76,9 @@ import {
   getTokenIdParam,
 } from '../../helpers/utils/token-util';
 import {
+  getERC20Balance,
+} from './helpers';
+import {
   checkExistingAddresses,
   isDefaultMetaMaskChain,
   isOriginContractAddress,
@@ -717,14 +720,8 @@ export const initializeSendState = createAsyncThunk(
     }
 
     let qtumBalances;
-    console.log(
-      '[check send native currency]',
-      draftTransaction.asset,
-      ASSET_TYPES.NATIVE,
-    );
     if (draftTransaction.asset.type === ASSET_TYPES.NATIVE) {
       qtumBalances = getQtumBalances(state);
-      console.log('[check qtum balance from metamask duck]', qtumBalances);
     }
 
     // There may be a case where the send has been canceled by the user while
@@ -978,13 +975,6 @@ const slice = createSlice({
             aBase: 16,
             bBase: 16,
           },
-        );
-        console.log(
-          '[update amount to max check]',
-          draftTransaction.asset.balance,
-          _gasTotal,
-          amount,
-          state.qtumBalances.spendableBalance,
         );
       }
       slice.caseReducers.updateSendAmount(state, {
@@ -1579,24 +1569,17 @@ const slice = createSlice({
         });
       })
       .addCase(UPDATE_QTUM_BALANCE, (state, action) => {
-        console.log('[update qtum balance]', action.payload);
         state.qtumBalances = { ...action.payload.qtumBalances };
       })
       .addCase(initializeSendState.pending, (state) => {
         // when we begin initializing state, which can happen when switching
         // chains even after loading the send flow, we set gasEstimateIsLoading
         // as initialization will trigger a fetch for gasPrice estimates.
-        console.log(
-          '[send action check state]',
-          state.qtumBalances,
-          state.currentTransactionUUID,
-        );
         state.gasEstimateIsLoading = true;
       })
       .addCase(initializeSendState.fulfilled, (state, action) => {
         // writes the computed initialized state values into the slice and then
         // calculates slice validity using the caseReducers.
-        console.log('[send action check]', action.payload);
         state.eip1559support = action.payload.eip1559support;
         state.selectedAccount.address = action.payload.account.address;
         state.selectedAccount.balance = action.payload.account.balance;
@@ -1646,11 +1629,6 @@ const slice = createSlice({
         slice.caseReducers.validateSendState(state);
       })
       .addCase(initializeSendState.rejected, (state) => {
-        console.log(
-          '[initialize send state rejected]',
-          state.qtumBalances,
-          state.currentTransactionUUID,
-        );
       })
       .addCase(SELECTED_ACCOUNT_CHANGED, (state, action) => {
         // This event occurs when the user selects a new account from the
@@ -2399,7 +2377,6 @@ export function toggleSendMaxMode() {
       await dispatch(addHistoryEntry(`sendFlow - user toggled max mode off`));
     } else {
       await dispatch(actions.updateAmountMode(AMOUNT_MODES.MAX));
-      console.log('[toggleSendMaxMode]', state[name]);
       await dispatch(actions.updateAmountToMax(state[name]));
       await dispatch(addHistoryEntry(`sendFlow - user toggled max mode on`));
     }
@@ -2429,11 +2406,35 @@ export function startNewDraftTransaction(asset) {
       state[name].selectedAccount.address ??
       getSelectedAddress(state);
     const account = getTargetAccount(state, sendingAddress);
+
+    const {
+      metamask: { gasFeeEstimates, gasEstimateType },
+    } = state;
+
+    let gasPrice = '0x0';
+
+    if (gasEstimateType === GAS_ESTIMATE_TYPES.LEGACY) {
+      gasPrice = getGasPriceInHexWei(gasFeeEstimates.medium);
+    } else if (gasEstimateType === GAS_ESTIMATE_TYPES.ETH_GASPRICE) {
+      gasPrice = getRoundedGasPrice(gasFeeEstimates.gasPrice);
+    } else if (gasEstimateType === GAS_ESTIMATE_TYPES.FEE_MARKET) {
+      gasPrice = getGasPriceInHexWei(
+        gasFeeEstimates.medium.suggestedMaxFeePerGas,
+      );
+    } else {
+      gasPrice = gasFeeEstimates.gasPrice
+        ? getRoundedGasPrice(gasFeeEstimates.gasPrice)
+        : '0x0';
+    }
+
     await dispatch(
       actions.addNewDraft({
         ...draftTransactionInitialState,
         history: [`sendFlow - User started new draft transaction`],
         fromAccount: account,
+        gas: {
+          gasPrice: gasPrice,
+        },
       }),
     );
 
@@ -2781,11 +2782,6 @@ export function getSendStage(state) {
 export function getQtumSpendableBalanceInString(state) {
   let balance = '0x0';
   const draftTransaction = getCurrentDraftTransaction(state);
-  console.log(
-    '[get qtum spendable balance]',
-    draftTransaction,
-    state.send.qtumBalances,
-  );
   if (state.send.qtumBalances.spendableBalance) {
     const amount = subtractCurrencies(
       addHexPrefix(state.send.qtumBalances.spendableBalance),

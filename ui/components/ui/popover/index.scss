@@ -1,13 +1,16 @@
 .popover {
   &-wrap {
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
+    @media screen and (max-width: $break-small) {
+      ::-webkit-scrollbar {
+        width: 6px;
+        display: block;
+      }
 
-    ::-webkit-scrollbar-thumb {
-      -webkit-border-radius: 10px;
-      border-radius: 10px;
-      background: var(--color-icon-muted);
+      ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: var(--color-icon-muted);
+      }
     }
 
     display: flex;
@@ -20,7 +23,7 @@
     background: white;
 
     @media screen and (max-width: $break-small) {
-      width: 375px;
+      width: 357px;
     }
   }
 

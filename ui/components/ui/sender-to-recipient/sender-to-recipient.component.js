@@ -11,7 +11,8 @@ import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import NicknamePopovers from '../../app/modals/nickname-popovers';
-import { isQtumAddressShow, getCurrentProvider } from '../../../ducks/metamask/metamask';
+import { getQtumAddress, getQtumAddressForHex, isQtumAddressShow, getCurrentProvider } from '../../../ducks/metamask/metamask';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   DEFAULT_VARIANT,
   CARDS_VARIANT,
@@ -114,6 +115,7 @@ export function RecipientWithAddress({
 }) {
   const t = useI18nContext();
   const [showNicknamePopovers, setShowNicknamePopovers] = useState(false);
+  const shouldQtumAddressShow = useSelector(isQtumAddressShow)
 
   return (
     <>
@@ -144,6 +146,7 @@ export function RecipientWithAddress({
         <NicknamePopovers
           onClose={() => setShowNicknamePopovers(false)}
           address={checksummedRecipientAddress}
+          isQtumAddressShow={shouldQtumAddressShow}
         />
       ) : null}
     </>
@@ -218,6 +221,7 @@ function SenderToRecipient({
           recipientEns={recipientEns}
           recipientName={recipientName}
           isQtumAddressShowCheck={isQtumAddressShowCheck}
+          chainId={chainId}
         />
       ) : (
         <div className="sender-to-recipient__party sender-to-recipient__party--recipient">

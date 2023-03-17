@@ -170,9 +170,7 @@ if (isManifestV3) {
  */
 async function initialize(remotePort) {
   const initState = await loadStateFromPersistence();
-  console.log('[init state]', initState);
   const initLangCode = await getFirstPreferredLangCode();
-  console.log('[initLangCode]', initLangCode);
   await setupController(initState, initLangCode, remotePort);
   await loadPhishingWarningPage();
   log.info('MetaMask initialization complete.');
@@ -263,7 +261,6 @@ async function loadStateFromPersistence() {
   // first from preferred, async API:
   versionedData =
     (await localStore.get()) || migrator.generateInitialState(firstTimeState);
-  console.log('[versioned data]', versionedData);
   // check if somehow state is empty
   // this should never happen but new error reporting suggests that it has
   // for a small number of users

@@ -1,6 +1,10 @@
 @import 'confirm-page-container-warning/index';
 @import 'confirm-page-container-summary/index';
 
+.confirm-page-container-content::-webkit-scrollbar {
+  display: block;
+}
+
 .confirm-page-container-content {
   overflow-y: auto;
   height: 100%;

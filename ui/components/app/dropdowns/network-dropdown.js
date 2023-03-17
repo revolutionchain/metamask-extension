@@ -356,14 +356,12 @@ class NetworkDropdown extends Component {
         </div>
         {this.renderNetworkEntry('qtumMainnet')}
         {this.renderNetworkEntry('qtumTestnet')}
-        {this.renderNetworkEntry('qtumRegtest')}
 
         <div className="network-dropdown-list">
           {this.renderCustomRpcList(
             rpcListDetailWithoutLocalHost,
             this.props.provider,
           )}
-
           <div
             className={classnames('network-dropdown-testnets', {
               'network-dropdown-testnets--no-visibility': !shouldShowTestNetworks,

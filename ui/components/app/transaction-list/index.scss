@@ -4,6 +4,26 @@
   flex: 1;
   background-color: white;
 
+  position: absolute;
+  top: 378px;
+
+  @include screen-sm-max {
+    width: 100%;
+    position: static;
+  }
+
+  @include screen-sm-min {
+    width: 85vw;
+  }
+
+  @include screen-md-min {
+    width: 80vw;
+  }
+
+  @include screen-lg-min {
+    width: 62vw;
+  }
+
   &__completed-transactions {
     display: flex;
     flex-direction: column;
@@ -48,5 +68,12 @@
   &__view-more {
     margin: 16px auto;
     max-width: 200px;
+  }
+}
+
+.tabs__content {
+  .transaction-list {
+    position: relative;
+    top: 0;
   }
 }

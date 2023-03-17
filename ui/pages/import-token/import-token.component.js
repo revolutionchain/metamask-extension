@@ -582,6 +582,7 @@ class ImportToken extends Component {
     const { tokenSelectorError, selectedTokens, searchResults } = this.state;
     return (
       <div className="import-token__search-token">
+        {/**
         {!useTokenDetection && (
           <ActionableMessage
             message={t('tokenDetectionAlertMessage', [
@@ -603,6 +604,7 @@ class ImportToken extends Component {
             className="import-token__token-detection-announcement"
           />
         )}
+         */}
         <TokenSearch
           onSearch={({ results = [] }) =>
             this.setState({ searchResults: results })

@@ -155,6 +155,8 @@ export default class ExperimentalTab extends PureComponent {
     const { t } = this.context;
     const { eip1559V2Enabled, setEIP1559V2Enabled } = this.props;
 
+    return (<div/>);
+
     return (
       <div ref={this.settingsRefs[3]} className="settings-page__content-row">
         <div className="settings-page__content-item">
@@ -197,6 +199,8 @@ export default class ExperimentalTab extends PureComponent {
   }
 
   renderTheme() {
+    return (<div/>);
+
     const { t } = this.context;
     const { theme, setTheme } = this.props;
 
@@ -292,7 +296,7 @@ export default class ExperimentalTab extends PureComponent {
         {this.renderCollectibleDetectionToggle()}
         {this.renderEIP1559V2EnabledToggle()}
         {this.renderTheme()}
-        {this.renderCustomNetworkListToggle()}
+        {/*this.renderCustomNetworkListToggle()*/}
       </div>
     );
   }

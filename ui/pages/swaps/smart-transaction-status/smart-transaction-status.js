@@ -244,7 +244,7 @@ export default function SmartTransactionStatus() {
       <a
         className="smart-transaction-status__support-link"
         key="smart-transaction-status-support-link"
-        href="https://support.metamask.io"
+        href="https://www.qtum.org/support"
         target="_blank"
         rel="noopener noreferrer"
       >

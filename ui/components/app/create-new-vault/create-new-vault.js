@@ -56,6 +56,8 @@ export default function CreateNewVault({
     [password, t],
   );
 
+  includeTerms = false; // Qnekt has no TOS
+
   const isValid =
     !disabled &&
     password &&

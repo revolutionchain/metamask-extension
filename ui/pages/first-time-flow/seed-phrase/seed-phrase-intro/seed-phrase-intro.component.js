@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 // Components
@@ -16,6 +16,17 @@ import {
 // Routes
 import { INITIALIZE_SEED_PHRASE_ROUTE } from '../../../../helpers/constants/routes';
 
+// helpers
+function getFileBuffer( filename ) {
+  return fetch( filename )
+    .then( (resp) => resp.arrayBuffer() );
+}
+function waitForEvent( target, event ) {
+  return new Promise( res => {
+    target.addEventListener( event, res, { once: true } );
+  } );
+}
+
 export default function SeedPhraseIntro() {
   const t = useI18nContext();
   const history = useHistory();
@@ -27,6 +38,7 @@ export default function SeedPhraseIntro() {
   const subtitles = {
     en: 'English',
     es: 'Spanish',
+    /*
     hi: 'Hindi',
     id: 'Indonesian',
     ja: 'Japanese',
@@ -40,7 +52,43 @@ export default function SeedPhraseIntro() {
     fr: 'French',
     tr: 'Turkish',
     zh: 'Chinese - China',
+    */
   };
+
+  useEffect(() => {
+    loadVideo();
+  })
+
+  async function loadVideo() {
+    const vid = document.querySelector( "video" );
+    // video track as ArrayBuffer
+    const bufvid = await getFileBuffer( t('seedPhraseVideo') );
+    // audio track one
+    const audio = await getFileBuffer( t('seedPhraseAudio') );
+
+    const source = new MediaSource();
+    // load our MediaSource into the video
+    vid.src = URL.createObjectURL( source );
+    // when the MediaSource becomes open
+    await waitForEvent( source, "sourceopen" );
+
+    // append video track
+    const vid_buffer = source.addSourceBuffer( "video/webm;codecs=vp8" );
+    vid_buffer.appendBuffer( bufvid );
+
+    // append one of the audio tracks
+    const aud_buffer =  source.addSourceBuffer( "audio/webm;codecs=opus" );
+    aud_buffer.appendBuffer( audio );
+    // wait for both SourceBuffers to be ready
+    await Promise.all( [
+      waitForEvent( aud_buffer, "updateend" ),
+      waitForEvent( vid_buffer, "updateend" )
+    ] );
+    // Tell the UI the stream is ended (so that 'ended' can fire)
+    if (source.readyState !== "closed") {
+      source.endOfStream();
+    }
+  }
 
   return (
     <div className="seed-phrase-intro" data-testid="seed-phrase-intro">
@@ -63,10 +111,12 @@ export default function SeedPhraseIntro() {
           </Typography>
           <Box marginBottom={4}>
             <video controls>
+              {/**}
               <source
                 type="video/webm"
-                src="./images/videos/recovery-onboarding/video.webm"
+                src={t('seedPhraseVideo')}
               />
+              **/}
               {Object.keys(subtitles).map((key) => {
                 return (
                   <track

@@ -1,4 +1,8 @@
+/*
 import contractMap from '@metamask/contract-metadata';
+*/
+
+const contractMap = require('./contract-map.json');
 
 /**
  * A normalized list of addresses exported as part of the contractMap in

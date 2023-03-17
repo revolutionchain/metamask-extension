@@ -1,6 +1,7 @@
 .asset-list-item {
   & .list-item__heading {
     max-width: 100%;
+    display: block;
   }
 
   &__token-button {

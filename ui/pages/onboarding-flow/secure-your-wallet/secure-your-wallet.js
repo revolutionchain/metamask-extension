@@ -84,7 +84,7 @@ export default function SecureYourWallet() {
         <video className="secure-your-wallet__video" controls>
           <source
             type="video/webm"
-            src="./images/videos/recovery-onboarding/video.webm"
+            src={t('seedPhraseVideo')}
           />
           {Object.keys(subtitles).map((key) => {
             return (

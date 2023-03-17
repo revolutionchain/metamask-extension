@@ -10,19 +10,17 @@ See [Janus](https://github.com/qtumproject/janus) for our Web3 compatible API la
 
 See [qtum-ethers-wrapper](https://github.com/earlgreytech/qtum-ethers) for client-side transaction signing
 
-# MetaMask Browser Extension
+# Qnekt Browser Extension
 
-You can find the latest version of MetaMask on [our official website](https://metamask.io/). For help using MetaMask, visit our [User Support Site](https://metamask.zendesk.com/hc/en-us).
+You can find the latest version of Qnekt on [github](https://github.com/qtumproject/metamask-extension/releases). For help using MetaMask, visit our [Discord](https://www.qtum.org/support).
 
-For [general questions](https://community.metamask.io/c/learn/26), [feature requests](https://community.metamask.io/c/feature-requests-ideas/13), or [developer questions](https://community.metamask.io/c/developer-questions/11), visit our [Community Forum](https://community.metamask.io/).
+Qnekt supports Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
 
-MetaMask supports Firefox, Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
-
-For up to the minute news, follow our [Twitter](https://twitter.com/metamask) or [Medium](https://medium.com/metamask) pages.
+For up to the minute news, follow our [Twitter](https://twitter.com/qtum) or [Medium](https://medium.com/@Qtum) pages.
 
 To learn how to develop MetaMask-compatible applications, visit our [Developer Docs](https://metamask.github.io/metamask-docs/).
 
-To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/MetaMask/metamask-extension/tree/develop/docs).
+To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/qtumproject/metamask-extension/tree/develop/docs).
 
 ## Building locally
 
@@ -32,7 +30,7 @@ To learn how to contribute to the MetaMask project itself, visit our [Internal D
 - Install dependencies: `yarn setup` (not the usual install command)
 - Copy the `.metamaskrc.dist` file to `.metamaskrc`
     - Replace the `INFURA_PROJECT_ID` value with your own personal [Infura Project ID](https://infura.io/docs).
-    - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/), see [Developing on MetaMask - Segment](./development/README.md#segment).
+    - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/), see [Developing on Qnekt - Segment](./development/README.md#segment).
     - If debugging unhandled exceptions, you'll need to add a value for `SENTRY_DSN` [Sentry Dsn](https://docs.sentry.io/product/sentry-basics/dsn-explainer/), see [Developing on MetaMask - Sentry](./development/README.md#sentry).
     - Optionally, replace the `PASSWORD` value with your development wallet password to avoid entering it each time you open the app.
 - Build the project to the `./dist/` folder with `yarn dist`.
@@ -63,7 +61,7 @@ To create a development build and run both of these tools simultaneously, run `y
 
 #### Test Dapp
 
-[This test site](https://metamask.github.io/test-dapp/) can be used to execute different user flows.
+[This test site](https://qtumproject.github.io/test-dapp/) can be used to execute different user flows.
 
 ### Running Unit Tests and Linting
 

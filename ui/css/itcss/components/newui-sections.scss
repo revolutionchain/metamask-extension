@@ -31,7 +31,7 @@
 // Main container
 .main-container {
   z-index: $main-container-z-index;
-  max-width: 619px;
+  // max-width: 619px;
 }
 
 .main-container::-webkit-scrollbar {
@@ -46,6 +46,19 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
+
+  @media screen and (max-width: $break-small) {
+    ::-webkit-scrollbar {
+      width: 6px;
+      // display: block;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: var(--color-icon-muted);
+    }
+  }
 }
 
 // main-container media queries

@@ -24,53 +24,68 @@ const accountImporter = {
   },
 
   strategies: {
-    'Private Key': (privateKey) => {
-      if (!privateKey) {
-        throw new Error('Cannot import an empty key.');
-      }
-
-      // eslint-disable-next-line require-unicode-regexp
-      const isBase58 = (value) => /^[A-HJ-NP-Za-km-z1-9]*$/.test(value);
-      let prefixed;
-      let buffer;
-      if (isBase58(privateKey)) {
-        const pBuffer = wif.decode(privateKey);
-        prefixed = `0x${pBuffer.privateKey.toString('hex')}`;
-        // const computeAdd = computeAddress(prefixed);
-        buffer = toBuffer(prefixed);
-
-        // const qWallet = new QtumWallet(privateKey);
-
-        // // const computeAdd = computeAddress(prefixed2);
-        // console.log('[decodedPrivateKey]', qWallet);
-
-        // console.log('[buffer]', this.preferencesController.store.getState());
-      } else {
-        prefixed = addHexPrefix(privateKey);
-        buffer = toBuffer(prefixed);
-      }
-
-      if (!isValidPrivate(buffer)) {
-        console.log('[buffer]', isValidPrivate(buffer));
-        throw new Error('Cannot import invalid private key.');
-      }
-
-      const stripped = stripHexPrefix(prefixed);
-      return stripped;
-    },
+    'Private Key': importPrivateKey,
     'JSON File': (input, password) => {
       let wallet;
       try {
         wallet = importers.fromEtherWallet(input, password);
       } catch (e) {
         log.debug('Attempt to import as EtherWallet format failed, trying V3');
-        wallet = Wallet.fromV3(input, password, true);
+        try {
+          wallet = Wallet.fromV3(input, password, true);
+        } catch (e2) {
+          log.debug('Attempt to import V3 failed, trying Electrum', input);
+          try {
+            input = JSON.parse(input);
+            const keys = Object.keys(input);
+            const privateKeys = [];
+            for (let i = 0; i < keys.length; i++) {
+              let privateKey = input[keys[i]];
+              if (privateKey.indexOf(":") !== -1) {
+                privateKey = privateKey.substring(privateKey.indexOf(":")+1);
+              }
+              privateKeys.push(importPrivateKey(privateKey));
+            }
+  
+            return privateKeys;
+          } catch (e3) {
+            log.debug("Failed to import Electrum wallet")
+            log.debug(e3);
+          }
+        }
       }
 
       return walletToPrivateKey(wallet);
     },
   },
 };
+
+function importPrivateKey(privateKey) {
+  if (!privateKey) {
+    throw new Error('Cannot import an empty key.');
+  }
+
+  // eslint-disable-next-line require-unicode-regexp
+  const isBase58 = (value) => /^[A-HJ-NP-Za-km-z1-9]*$/.test(value);
+  let prefixed;
+  let buffer;
+  if (isBase58(privateKey)) {
+    const pBuffer = wif.decode(privateKey);
+    prefixed = `0x${pBuffer.privateKey.toString('hex')}`;
+    // const computeAdd = computeAddress(prefixed);
+    buffer = toBuffer(prefixed);
+  } else {
+    prefixed = addHexPrefix(privateKey);
+    buffer = toBuffer(prefixed);
+  }
+
+  if (!isValidPrivate(buffer)) {
+    throw new Error('Cannot import invalid private key.');
+  }
+
+  const stripped = stripHexPrefix(prefixed);
+  return stripped;
+}
 
 function walletToPrivateKey(wallet) {
   const privateKeyBuffer = wallet.getPrivateKey();

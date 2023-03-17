@@ -77,17 +77,19 @@ const ChooseAccount = ({
         <PermissionsConnectFooter />
         <div className="permissions-connect-choose-account__bottom-buttons">
           <Button
-            onClick={() => cancelPermissionsRequest(permissionsRequestId)}
-            type="secondary"
-          >
-            {t('cancel')}
-          </Button>
-          <Button
             onClick={() => selectAccounts(selectedAccounts)}
             type="primary"
+            rounded={false}
             disabled={selectedAccounts.size === 0}
           >
             {t('next')}
+          </Button>
+          <Button
+            onClick={() => cancelPermissionsRequest(permissionsRequestId)}
+            type="secondary"
+            rounded={false}
+          >
+            {t('cancel')}
           </Button>
         </div>
       </div>

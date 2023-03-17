@@ -65,6 +65,10 @@ const NetworksTab = ({ addNewNetwork }) => {
       blockExplorerUrl: rpc.rpcPrefs?.blockExplorerUrl || '',
       isATestNetwork: TEST_CHAINS.includes(rpc.chainId),
     };
+  }).filter((rpc) => {
+    return defaultNetworks
+      .filter((network) => network.chainId === rpc.chainId)
+      .find((network) => network.rpcUrl === rpc.rpcUrl) === undefined
   });
 
   const networksToRender = [

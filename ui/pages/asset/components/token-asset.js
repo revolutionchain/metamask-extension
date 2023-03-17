@@ -45,6 +45,7 @@ export default function TokenAsset({ token }) {
 
   return (
     <>
+    <div className="asset__header">
       <AssetNavigation
         accountName={selectedAccountName}
         assetName={token.symbol}
@@ -81,6 +82,7 @@ export default function TokenAsset({ token }) {
         className="token__navigation"
       />
       <TokenOverview className="asset__overview token__overview" token={token} />
+    </div>
       <TransactionList tokenAddress={token.address} />
     </>
   );

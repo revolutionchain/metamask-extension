@@ -43,6 +43,7 @@ export default class SendContent extends Component {
     recipient: PropTypes.object,
     acknowledgeRecipientWarning: PropTypes.func,
     recipientWarningAcknowledged: PropTypes.bool,
+    isQtumAddressShow: PropTypes.bool,
   };
 
   render() {
@@ -82,9 +83,11 @@ export default class SendContent extends Component {
         <div className="send-v2__form">
           {assetError ? this.renderError(assetError) : null}
           {gasError ? this.renderError(gasError) : null}
+          {/** gas estimation service integration not supported yet}
           {isEthGasPrice
             ? this.renderWarning(ETH_GAS_PRICE_FETCH_WARNING_KEY)
             : null}
+          **/}
           {error ? this.renderError(error) : null}
           {warning ? this.renderWarning() : null}
           {showKnownRecipientWarning && !recipientWarningAcknowledged
@@ -104,7 +107,7 @@ export default class SendContent extends Component {
 
   maybeRenderAddContact() {
     const { t } = this.context;
-    const { isOwnedAccount, contact = {}, to } = this.props;
+    const { isOwnedAccount, contact = {}, to, isQtumAddressShow } = this.props;
     const { showNicknamePopovers } = this.state;
 
     if (isOwnedAccount || contact.name) {
@@ -125,6 +128,7 @@ export default class SendContent extends Component {
           <NicknamePopovers
             onClose={() => this.setState({ showNicknamePopovers: false })}
             address={to}
+            isQtumAddressShow={isQtumAddressShow}
           />
         ) : null}
       </>
@@ -155,6 +159,7 @@ export default class SendContent extends Component {
             onClick: acknowledgeRecipientWarning,
           }}
           message={t('sendingToTokenContractWarning', [
+            /**
             <a
               key="contractWarningSupport"
               target="_blank"
@@ -164,6 +169,7 @@ export default class SendContent extends Component {
             >
               {t('learnMoreUpperCase')}
             </a>,
+            */
           ])}
           roundedButtons
         />

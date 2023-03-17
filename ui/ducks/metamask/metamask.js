@@ -17,6 +17,7 @@ import { decGWEIToHexWEI } from '../../helpers/utils/conversions.util';
 
 import { KEYRING_TYPES } from '../../../shared/constants/hardware-wallets';
 import { isEqualCaseInsensitive } from '../../../shared/modules/string-utils';
+import qtum from 'qtumjs-lib';
 
 export default function reduceMetamask(state = {}, action) {
   const metamaskState = {
@@ -478,4 +479,25 @@ export function getQtumAddressBook(state) {
 
 export function isQtumAddressShow(state) {
   return state.metamask.preferences.isQtumAddressShow;
+}
+
+export function getQtumAddressForHex(_address, _chainId) {
+  let version;
+  if (!_address.startsWith("0x")) {
+    return _address;
+  }
+  switch (_chainId) {
+    case '0x22B8':
+    case '0x51':
+      version = 58;
+      break;
+    case '0x22B9':
+      version = 120;
+      break;
+    default:
+      version = 120;
+      break;
+  }
+  const hash = Buffer.from(_address.slice(2), 'hex');
+  return qtum.address.toBase58Check(hash, version);
 }

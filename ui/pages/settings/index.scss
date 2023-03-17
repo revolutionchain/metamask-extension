@@ -23,7 +23,7 @@
     position: relative;
 
     @include screen-sm-max {
-      background: var(--color-background-alternative);
+      background: var(--color-background-default);
     }
 
     &__title-container {

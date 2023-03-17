@@ -25,6 +25,8 @@ function ViewContact({
   memo,
   editRoute,
   listRoute,
+  qtumAddress,
+  isQtumAddressShow,
 }) {
   const t = useI18nContext();
   const [copied, handleCopy] = useCopyToClipboard();
@@ -56,7 +58,11 @@ function ViewContact({
           </div>
           <div className="address-book__view-contact__group__value">
             <div className="address-book__view-contact__group__static-address">
-              {quadSplit(checkSummedAddress)}
+              {
+                isQtumAddressShow ?
+                  qtumAddress :
+                  quadSplit(checkSummedAddress)
+              }
             </div>
             <Tooltip
               position="bottom"
@@ -94,6 +100,8 @@ ViewContact.propTypes = {
   memo: PropTypes.string,
   editRoute: PropTypes.string,
   listRoute: PropTypes.string.isRequired,
+  qtumAddress: PropTypes.string,
+  isQtumAddressShow: PropTypes.bool,
 };
 
 export default React.memo(ViewContact);

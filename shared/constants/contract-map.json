@@ -1,0 +1,202 @@
+{
+  "0xf2033ede578e17fa6231047265010445bca8cf1c": {
+    "name": "QCASH",
+    "symbol": "QC",
+    "erc20": true,
+    "logo": "qcash.png",
+    "decimals": 8
+  },
+  "0x60f33e17d8d2dba280cf85b6c35880dedd8ed728": {
+    "name": "QIAIR",
+    "symbol": "QIAIR",
+    "erc20": true,
+    "decimals": 18
+  },
+  "0x57931faffdec114056a49adfcaa1caac159a1a25": {
+    "name": "SpaceCash",
+    "symbol": "SPC",
+    "erc20": true,
+    "logo": "spacecash.png",
+    "decimals": 8
+  },
+  "0xf2703e93f87b846a7aacec1247beaec1c583daa4": {
+    "name": "Hyperpay",
+    "symbol": "HPY",
+    "erc20": true,
+    "logo": "hyperpay.png",
+    "decimals": 8
+  },
+  "0x6b8bf98ff497c064e8f0bde13e0c4f5ed5bf8ce7": {
+    "name": "Bodhi Token",
+    "symbol": "BOT",
+    "erc20": true,
+    "logo": "bodhi.png",
+    "decimals": 8
+  },
+  "0x54fefdb5b31164f66ddb68becd7bdd864cacd65b": {
+    "name": "Qi",
+    "symbol": "QI",
+    "erc20": true,
+    "logo": "qi.png",
+    "decimals": 18
+  },
+  "0x09800417b097c61b9fd26b3ddde4238304a110d5": {
+    "name": "QBT",
+    "symbol": "QBT",
+    "erc20": true,
+    "logo": "qbt.png",
+    "decimals": 8
+  },
+  "0xb6c48b3a7c888713dd96eed92a4ee0397dd64e71": {
+    "name": "PlayCoin",
+    "symbol": "PLY",
+    "erc20": true,
+    "logo": "playcoin.png",
+    "decimals": 9
+  },
+  "0x2f65a0af11d50d2d15962db39d7f7b0619ed55ae": {
+    "name": "MED TOKEN",
+    "symbol": "MED",
+    "erc20": true,
+    "logo": "med.png",
+    "decimals": 8
+  },
+  "0x72e531e37c31ecbe336208fd66e93b48df3af420": {
+    "name": "Luna Stars",
+    "symbol": "LSTR",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0xd8dec2b605005749abbf4b060edad3070e23cf5c": {
+    "name": "TESLA",
+    "symbol": "TSL",
+    "erc20": true,
+    "logo": "tesla.png",
+    "decimals": 18
+  },
+  "0xf397f39ce992b0f5bdc7ec1109d676d07f7af2f9": {
+    "name": "Ocash",
+    "symbol": "OC",
+    "erc20": true,
+    "logo": "ocash.png",
+    "decimals": 8
+  },
+  "0x8b9500e2b789e002c1d0e744bd0ac7aa60dbffcc": {
+    "name": "CFun Token",
+    "symbol": "CFun",
+    "erc20": true,
+    "decimals": 9
+  },
+  "0xe7e5caae57b34b93c57af9478a5130f62e3d2827": {
+    "name": "Wrapped QTUM",
+    "symbol": "WQTUM",
+    "erc20": true,
+    "logo": "qtum.png",
+    "decimals": 8
+  },
+  "0x4060e21ac01b5c5d2a3f01cecd7cbf820f50be95": {
+    "name": "Profile Utility Token",
+    "symbol": "PUT",
+    "erc20": true,
+    "logo": "profile_utility.png",
+    "decimals": 8
+  },
+  "0x2e1b8528c07539b5dd9a76f3374adf09f1ab6075": {
+    "name": "EPC",
+    "symbol": "EPC",
+    "erc20": true,
+    "decimals": 18
+  },
+  "0xdd8ef078a5699ea3dac26b12cb5c5d8f0a2f6e4f": {
+    "name": "ZATGO TOKEN",
+    "symbol": "ZAT",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0xa9a6d22880065c9388ce182be16ab8d15e387133": {
+    "name": "EPC",
+    "symbol": "EPC",
+    "erc20": true,
+    "decimals": 18
+  },
+  "0x59e7e07a4c7035a9df3f118b95ce6d64eee6ea35": {
+    "name": "WineChain",
+    "symbol": "WID",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0x7db6d5653cb83372ff83a1a3720219a289fd5cb9": {
+    "name": "SOL",
+    "symbol": "SOL",
+    "erc20": true,
+    "decimals": 2
+  },
+  "0x9d3d4cc1986d81f9109f2b091b7732e7d9bcf63b": {
+    "name": "Vevue Token",
+    "symbol": "Vevue",
+    "erc20": true,
+    "logo": "vevue.png",
+    "decimals": 8
+  },
+  "0x222b099fe58d01b2eac666177dd06d9b0003b25c": {
+    "name": "QI Swap Liquidity Token -- Qi : Wrapped QTUM",
+    "symbol": "QILP-QI_WQTUM",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0xb406040d9e1a9bbb19fcc803a7a808b038ae45ce": {
+    "name": "QI Swap Liquidity Token -- Wrapped QTUM : QCASH",
+    "symbol": "QILP-WQTUM_QC",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0xf1ba1c02a5b71dee6de988c3dc470b6c382b37cf": {
+    "name": "Qiswap Pioneers",
+    "symbol": "QPe",
+    "erc20": true,
+    "decimals": 18
+  },
+  "0xe2461c84df96878fa0983e497c97124c15f2b79d": {
+    "name": "Node Accelerator",
+    "symbol": "NODE",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0x0f80aa32ba51e0acf171e106a1cfcd1eb9a9c3a5": {
+    "name": "CRT Token",
+    "symbol": "CRT",
+    "erc20": true,
+    "logo": "crt.png",
+    "decimals": 8
+  },
+  "0x2eb2a66afd4e465fb06d8b71f30fb1b93e18788d": {
+    "name": "Loopring Qtum Token",
+    "symbol": "LRQ",
+    "erc20": true,
+    "decimals": 18
+  },
+  "0x4c7e57efb3c55c398fae08c64d2a1d25019bcc4f": {
+    "name": "ExCash for ExMind",
+    "symbol": "ExC",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0xf3da5a958b4a3fd57293264ddd3080dd7c4521c2": {
+    "name": "Apis",
+    "symbol": "APIS",
+    "erc20": true,
+    "decimals": 8
+  },
+  "0xfbb3be981b61eee7f4c7cefcf02c97056323117c": {
+    "name": "QBT",
+    "symbol": "QBT",
+    "erc20": true,
+    "decimals": 2
+  },
+  "0x74d0a9e9e70d379e15f3b681e4c13113c7ea5865": {
+    "name": "QI Swap Liquidity Token -- Qi : QCASH",
+    "symbol": "QILP-QI_QC",
+    "erc20": true,
+    "decimals": 8
+  }
+}

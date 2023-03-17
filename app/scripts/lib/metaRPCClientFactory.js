@@ -87,7 +87,6 @@ class MetaRPCClient {
       // preserve the stack from serializeError
       e.stack = error.stack;
       if (cb && typeof cb === 'function') {
-        console.log("cb", cb, this.requests)
         this.requests.delete(id);
         cb(e);
         return;

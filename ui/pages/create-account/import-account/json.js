@@ -14,6 +14,7 @@ import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
 class JsonImportSubview extends Component {
   state = {
     fileContents: '',
+    maybeElectrumWallet: false,
     isEmpty: true,
   };
 
@@ -21,7 +22,7 @@ class JsonImportSubview extends Component {
 
   render() {
     const { error, history, mostRecentOverviewPage } = this.props;
-    const enabled = !this.state.isEmpty && this.state.fileContents !== '';
+    const enabled = this.state.maybeElectrumWallet || (!this.state.isEmpty && this.state.fileContents !== '');
 
     return (
       <div className="new-account-import-form__json">
@@ -45,6 +46,7 @@ class JsonImportSubview extends Component {
             width: '100%',
           }}
         />
+        { this.state.maybeElectrumWallet ? <></> :
         <input
           className="new-account-import-form__input-password"
           type="password"
@@ -54,6 +56,7 @@ class JsonImportSubview extends Component {
           onChange={() => this.checkInputEmpty()}
           ref={this.inputRef}
         />
+        }
         <div className="new-account-create-form__buttons">
           <Button
             type="secondary"
@@ -79,8 +82,20 @@ class JsonImportSubview extends Component {
   }
 
   onLoad(event) {
+    let maybeElectrumWallet = false;
+    try {
+      const parsed = JSON.parse(event.target.result)
+      if (!parsed.address) {
+        // not an ethereum JSON file
+        // https://github.com/SilentCicero/ethereumjs-accounts
+        maybeElectrumWallet = true;
+      }
+    } catch (e) {
+      // ok
+    }
     this.setState({
       fileContents: event.target.result,
+      maybeElectrumWallet: maybeElectrumWallet,
     });
   }
 
@@ -109,7 +124,10 @@ class JsonImportSubview extends Component {
       return;
     }
 
+    /**
     const password = this.inputRef.current.value;
+    */
+    const password = this.inputRef.current?.value || '';
 
     importNewJsonAccount([fileContents, password])
       .then(({ selectedAddress }) => {

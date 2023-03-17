@@ -346,7 +346,7 @@ export default class SettingsTab extends PureComponent {
                   htmlFor="hex-primary-address"
                   className="settings-tab__radio-label"
                 >
-                  Hex Address
+                  {t('hexAddress')}
                 </label>
               </div>
               <div className="settings-tab__radio-button">
@@ -360,7 +360,7 @@ export default class SettingsTab extends PureComponent {
                   htmlFor="qtum-primary-address"
                   className="settings-tab__radio-label"
                 >
-                  Qtum Address
+                  {t('qtumAddress')}
                 </label>
               </div>
             </div>

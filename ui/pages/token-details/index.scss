@@ -3,6 +3,16 @@
     text-transform: capitalize;
   }
 
+  &__balance-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__balance {
+    width: fit-content;
+    float: left;
+  }
+
   &__closeButton {
     float: right;
     width: 10px;
@@ -22,6 +32,10 @@
 
   &__token-address {
     width: 222px;
+  }
+
+  &__token-contract-address {
+    word-break: break-all;
   }
 
   &__copy-icon {

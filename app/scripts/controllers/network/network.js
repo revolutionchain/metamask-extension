@@ -64,6 +64,7 @@ if (process.env.IN_TEST) {
     rpcPrefs: {
       blockExplorerUrl: "https://testnet.qtum.info/",
     },
+    blockExplorerUrl: "https://testnet.qtum.info/",
   };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
 } else {
@@ -76,6 +77,7 @@ if (process.env.IN_TEST) {
     rpcPrefs: {
       blockExplorerUrl: "https://testnet.qtum.info/",
     },
+    blockExplorerUrl: "https://testnet.qtum.info/",
   };
   // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_MAINNET_CHAIN_ID, rpcUrl: QTUM_MAINNET_RPC_URL };
 }
@@ -445,7 +447,6 @@ export default class NetworkController extends EventEmitter {
   }
 
   _configureProvider({ type, rpcUrl, chainId }) {
-    console.log('[configure provider]', type, rpcUrl, chainId);
     // infura type-based endpoints
     const isInfura =
       INFURA_PROVIDER_TYPES.includes(type) &&
@@ -454,7 +455,6 @@ export default class NetworkController extends EventEmitter {
       this._configureInfuraProvider(type, this._infuraProjectId);
       // url-based rpc endpoints
     } else if (type === NETWORK_TYPE_RPC) {
-      console.log('[configure provider type check]', type, rpcUrl, chainId);
       this._configureStandardProvider(rpcUrl, chainId);
     } else {
       throw new Error(

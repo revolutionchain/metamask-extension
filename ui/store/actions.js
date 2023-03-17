@@ -323,12 +323,9 @@ export function importNewAccount(strategy, args) {
       showLoadingIndication('This may take a while, please be patient.'),
     );
     try {
-      log.debug(`background.importAccountWithStrategy`);
       await promisifiedBackground.importAccountWithStrategy(strategy, args);
-      log.debug(`background.getState`);
       newState = await promisifiedBackground.getState();
     } catch (err) {
-      console.log('[import new account error]', err);
       dispatch(displayWarning(err.message));
       throw err;
     } finally {
@@ -542,7 +539,7 @@ export function setNativeCurrency() {
     try {
       await promisifiedBackground.setNativeCurrency();
     } catch (error) {
-      console.log('[setNativeCurrency error]', error);
+      console.error('[setNativeCurrency error]', error);
     }
   };
 }
@@ -555,7 +552,6 @@ export function getHexAddressFromQtumAddress(_address) {
       );
       return qtumAddress;
     } catch (error) {
-      console.log('[getHexAddressFromQtum error]', error);
       return undefined;
     }
   };
@@ -569,17 +565,14 @@ export function getQtumAddressFromHexAddress(_address) {
       );
       return qtumAddress;
     } catch (error) {
-      console.log('[getQtumAddressFromHexAddress error]', error);
       return undefined;
     }
   };
 }
 
 export function signMsg(msgData) {
-  log.debug('action - signMsg');
   return async (dispatch) => {
     dispatch(showLoadingIndication());
-    log.debug(`actions calling background.signMessage`);
     let newState;
     try {
       newState = await promisifiedBackground.signMessage(msgData);
@@ -971,7 +964,6 @@ export function updateAndApproveTx(txData, dontShowLoadingIndicator) {
     !dontShowLoadingIndicator && dispatch(showLoadingIndication());
     return new Promise((resolve, reject) => {
       background.updateAndApproveTransaction(txData, (err) => {
-        console.log('[updateAndApproveTx]', txData, err);
         dispatch(updateTransactionParams(txData.id, txData.txParams));
         dispatch(resetSendState());
 
@@ -1447,7 +1439,6 @@ export function unlockSucceeded(message) {
 }
 
 export function updateMetamaskState(newState) {
-  console.log('[update metamask new state]', newState);
   return (dispatch, getState) => {
     const { metamask: currentState } = getState();
 
@@ -1459,12 +1450,6 @@ export function updateMetamaskState(newState) {
       nativeCurrency,
       qtumAddresses,
     } = newState;
-    console.log(
-      '[update metamask nativeCurrency]',
-      nativeCurrency,
-      qtumAddresses,
-      newSelectedAddress,
-    );
 
     if (currentLocale && newLocale && currentLocale !== newLocale) {
       dispatch(updateCurrentLocale(newLocale));
@@ -1542,10 +1527,6 @@ export function updateMetamaskState(newState) {
       nativeCurrency === 'QTUM' &&
       newState.qtumBalances[newSelectedAddress] !== undefined
     ) {
-      console.log(
-        '[account qtum balance action check]',
-        newState.qtumBalances[newSelectedAddress].spendableBalance,
-      );
       dispatch({
         type: actionConstants.UPDATE_QTUM_BALANCE,
         payload: {
@@ -2403,8 +2384,6 @@ export function exportAccount(password, address) {
   return function (dispatch) {
     dispatch(showLoadingIndication());
 
-    console.log("background.verifyPassword")
-    log.debug(`background.verifyPassword`);
     return new Promise((resolve, reject) => {
       background.verifyPassword(password, function (err) {
         if (err) {
@@ -2415,10 +2394,7 @@ export function exportAccount(password, address) {
           reject(err);
           return;
         }
-        log.debug(`background.exportAccount`);
-        console.log("background.exportAccount")
         background.exportAccount(address, function (err2, result) {
-          console.log("background.exportAccount", err2, result)
           dispatch(hideLoadingIndication());
 
           if (err2) {
