@@ -34,6 +34,10 @@
     width: 222px;
   }
 
+  &__token-contract-address {
+    word-break: break-all;
+  }
+
   &__copy-icon {
     float: right;
     margin-inline-start: 62px;

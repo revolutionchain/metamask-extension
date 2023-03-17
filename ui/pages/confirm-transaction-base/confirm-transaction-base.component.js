@@ -878,7 +878,6 @@ export default class ConfirmTransactionBase extends Component {
           toCurrency: 'ETH',
           toDenomination: 'SATOSHI',
         });
-        console.log('[satoshi value]', satoshiValue, txData.txParams.value);
         txData.txParams.value = satoshiValue;
 
         sendTransaction(txData)

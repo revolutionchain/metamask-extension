@@ -90,7 +90,7 @@ export default function TokenDetailsPage() {
         <div className="settings-page__content-row">
           <div className="settings-page__content-item">
             {t('tokenContractAddress')}
-            <div className="settings-page__content-description">
+            <div className="settings-page__content-description token-details__token-contract-address">
               {token.address}
               <div className="token-details__copy-icon">
                 <Tooltip

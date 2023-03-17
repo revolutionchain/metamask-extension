@@ -2905,9 +2905,32 @@ export default class MetamaskController extends EventEmitter {
    * @param {any} args - The data required by that strategy to import an account.
    */
   async importAccountWithStrategy(strategy, args) {
-    const privateKey = await accountImporter.importAccount(strategy, args);
+    let privateKey = await accountImporter.importAccount(strategy, args);
 
-    const keyring = await this.addNewKeyring('Simple Key Pair', [privateKey]);
+    let multipleKeys = false;
+    if (privateKey instanceof Array) {
+      multipleKeys = true;
+    } else {
+      privateKey = [privateKey];
+    }
+
+    let keyring;
+    for (let i = 0; i < privateKey.length; i++) {
+      try {
+        keyring = await this.addNewKeyring('Simple Key Pair', [privateKey[i]]);
+      } catch (e) {
+        if (e.message.indexOf("duplicate")) {
+          // ignore
+        } else {
+          throw e;
+        }
+      }
+    }
+
+    if (!keyring) {
+      // duplicates, do nothing
+      return;
+    }
 
     const accounts = await keyring.getAccounts();
     // update accounts in preferences controller
@@ -2915,8 +2938,7 @@ export default class MetamaskController extends EventEmitter {
     this.preferencesController.setAddresses(allAccounts);
     // set new account as selected
     await this.preferencesController.setSelectedAddress(accounts[0]);
-
-    await this.updateQtumAccounts(accounts);
+    await this.updateQtumAccounts(accounts); 
   }
 
   // ---------------------------------------------------------------------------
@@ -4835,7 +4857,6 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
       _address,
       'all',
     ]);
-    console.log('[qtum spendable balance 0]', balances, _address);
 
     if (balances) {
       const spendableBalance = balances.reduce((sum, item) => {
@@ -4966,18 +4987,21 @@ MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
   if (ticker === 'QTUM') {
     const chainId = await this.networkController.getCurrentChainId();
     switch (chainId) {
+      case '0x51':
       case '0x22B8':
-        version = 128;
+      case '0x22b8':
+        version = 0x80;
         break;
       case '0x22B9':
-        version = 239;
+      case '0x22b9':
+        version = 0xef ;
         break;
       default:
-        version = 239;
+        version = 0xef;
         break;
     }
   } else {
-    version = 239;
+    version = 0x80;
   }
 
   this.keyringController.__proto__._exportAccount = this.keyringController.__proto__.exportAccount;

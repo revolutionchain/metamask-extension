@@ -1928,7 +1928,7 @@
     "message": "Nos gustaría recopilar datos básicos de uso para mejorar la usabilidad de nuestro producto.  Estos indicadores..."
   },
   "metametricsTitle": {
-    "message": "Únase a más de 6 millones de usuarios para mejorar Qnekt"
+    "message": "Únase para mejorar Qnekt"
   },
   "mismatchedChainLinkText": {
     "message": "verifique los detalles de la red",
@@ -2433,10 +2433,10 @@
     "message": "Parámetros"
   },
   "participateInMetaMetrics": {
-    "message": "Participar en MetaMetrics"
+    "message": "Participar en QMetrix"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Participe en MetaMetrics para ayudarnos a mejorar Qnekt"
+    "message": "Participe en QMetrix para ayudarnos a mejorar Qnekt"
   },
   "password": {
     "message": "Contraseña"
@@ -2549,7 +2549,7 @@
     "message": "Moneda principal"
   },
   "primaryCurrencySettingDescription": {
-    "message": "Seleccione Nativa para dar prioridad a mostrar los valores en la moneda nativa de la cadena (p. ej., ETH). Seleccione Fiduciaria para dar prioridad a mostrar los valores en la moneda fiduciaria seleccionada."
+    "message": "Seleccione Nativa para dar prioridad a mostrar los valores en la moneda nativa de la cadena (p. ej., QTUM). Seleccione Fiduciaria para dar prioridad a mostrar los valores en la moneda fiduciaria seleccionada."
   },
   "priorityFee": {
     "message": "Tarifa de prioridad"
@@ -2856,8 +2856,8 @@
   "seedPhraseIntroTitleCopy": {
     "message": "Antes de comenzar, mire este breve video para aprender sobre su frase de recuperación y sobre cómo mantener segura su cartera."
   },
-  "seedPhraseVideo": {
-    "message": "./images/videos/recovery-onboarding/video_es.webm"
+  "seedPhraseAudio": {
+    "message": "./images/videos/recovery-onboarding/audio_es.webm"
   },
   "seedPhraseReq": {
     "message": "Las frases secretas de recuperación contienen 12, 15, 18, 21 o 24 palabras"

@@ -89,15 +89,30 @@ export default class ExportPrivateKeyModal extends Component {
     );
   }
 
-  renderPasswordInput(privateKey) {
+  renderPasswordInput(privateKey, address) {
     const plainKey = privateKey && stripHexPrefix(privateKey);
 
     if (!privateKey) {
       return (
         <input
+          autoFocus
           type="password"
           className="export-private-key-modal__password-input"
           onChange={(event) => this.setState({ password: event.target.value })}
+          onKeyUp={(event) => {
+            if (event.key !== "Enter") {
+              return;
+            }
+            this.context.trackEvent({
+              category: EVENT.CATEGORIES.KEYS,
+              event: EVENT_NAMES.KEY_EXPORT_REQUESTED,
+              properties: {
+                key_type: EVENT.KEY_TYPES.PKEY,
+              },
+            });
+
+            this.exportAccountAndGetPrivateKey(this.state.password, address);
+          }}
         />
       );
     }
@@ -211,7 +226,7 @@ export default class ExportPrivateKeyModal extends Component {
         </span>
         <div className="export-private-key-modal__password">
           {this.renderPasswordLabel(privateKey)}
-          {this.renderPasswordInput(privateKey)}
+          {this.renderPasswordInput(privateKey, address)}
           {showWarning && warning ? (
             <span className="export-private-key-modal__password--error">
               {warning}

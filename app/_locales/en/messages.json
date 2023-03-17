@@ -2040,7 +2040,7 @@
     "message": "We would like to gather basic usage data to improve the usability of our product.  These metrics will..."
   },
   "metametricsTitle": {
-    "message": "Join 6M+ users to improve Qnekt"
+    "message": "Join to improve Qnekt"
   },
   "mismatchedChainLinkText": {
     "message": "verify the network details",
@@ -2559,10 +2559,10 @@
     "message": "Parameters"
   },
   "participateInMetaMetrics": {
-    "message": "Participate in MetaMetrics"
+    "message": "Participate in QMetrix"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Participate in MetaMetrics to help us make Qnekt better"
+    "message": "Participate in QMetrix to help us make Qnekt better"
   },
   "password": {
     "message": "Password"
@@ -2685,7 +2685,7 @@
     "message": "Primary currency"
   },
   "primaryCurrencySettingDescription": {
-    "message": "Select native to prioritize displaying values in the native currency of the chain (e.g. ETH). Select Fiat to prioritize displaying values in your selected fiat currency."
+    "message": "Select native to prioritize displaying values in the native currency of the chain (e.g. QTUM). Select Fiat to prioritize displaying values in your selected fiat currency."
   },
   "priorityFee": {
     "message": "Priority fee"
@@ -3009,6 +3009,9 @@
   },
   "seedPhraseVideo": {
     "message": "./images/videos/recovery-onboarding/video.webm"
+  },
+  "seedPhraseAudio": {
+    "message": "./images/videos/recovery-onboarding/audio_en.webm"
   },
   "seedPhraseReq": {
     "message": "Secret Recovery Phrases contain 12, 15, 18, 21, or 24 words"

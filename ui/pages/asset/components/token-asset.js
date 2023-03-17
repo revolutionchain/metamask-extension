@@ -45,7 +45,7 @@ export default function TokenAsset({ token }) {
 
   return (
     <>
-    <div class="asset__header">
+    <div className="asset__header">
       <AssetNavigation
         accountName={selectedAccountName}
         assetName={token.symbol}

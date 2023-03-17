@@ -261,7 +261,6 @@ async function loadStateFromPersistence() {
   // first from preferred, async API:
   versionedData =
     (await localStore.get()) || migrator.generateInitialState(firstTimeState);
-  console.log('[versioned data]', versionedData);
   // check if somehow state is empty
   // this should never happen but new error reporting suggests that it has
   // for a small number of users
