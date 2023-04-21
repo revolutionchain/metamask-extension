@@ -71,9 +71,10 @@ function importPrivateKey(privateKey) {
   let buffer;
   if (isBase58(privateKey)) {
     const pBuffer = wif.decode(privateKey);
-    prefixed = `0x${pBuffer.privateKey.toString('hex')}`;
+    // prefixed = `0x${pBuffer.privateKey.toString('hex')}`;
+    prefixed = privateKey;
     // const computeAdd = computeAddress(prefixed);
-    buffer = toBuffer(prefixed);
+    buffer = toBuffer(`0x${pBuffer.privateKey.toString('hex')}`);
   } else {
     prefixed = addHexPrefix(privateKey);
     buffer = toBuffer(prefixed);

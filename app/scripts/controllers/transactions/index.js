@@ -42,7 +42,7 @@ import {
   CUSTOM_GAS_ESTIMATE,
   PRIORITY_LEVELS,
 } from '../../../../shared/constants/gas';
-import { decGWEIToHexWEI } from '../../../../shared/modules/conversion.utils';
+import { conversionUtil, decGWEIToHexWEI } from '../../../../shared/modules/conversion.utils';
 import { isSwapsDefaultTokenAddress } from '../../../../shared/modules/swaps.utils';
 import { EVENT } from '../../../../shared/constants/metametrics';
 import {
@@ -61,6 +61,7 @@ import TransactionStateManager from './tx-state-manager';
 import TxGasUtil from './tx-gas-utils';
 import PendingTransactionTracker from './pending-tx-tracker';
 import * as txUtils from './lib/util';
+import { getGasPriceInWei } from '../../../../ui/ducks/send';
 
 const MAX_MEMSTORE_TX_LIST_SIZE = 100; // Number of transactions (by unique nonces) to keep in memory
 const UPDATE_POST_TX_BALANCE_TIMEOUT = 5000;
@@ -729,6 +730,28 @@ export default class TransactionController extends EventEmitter {
     const eip1559Compatibility = await this.getEIP1559Compatibility();
 
     txUtils.validateTxParams(normalizedTxParams, eip1559Compatibility);
+
+    // txParams.value will be in satoshi
+    // metamask stores things in wei in the store
+    // convert value from satoshi to wei before adding it to the store
+    // there will eventually be 3rd party chains that attach to Qtum
+    // those chains may be based on ethereum, so we will need to maintain support for wei
+    // we need a way to detect the decimals for the chain we are connected to
+    // so that this ins't a huge problem in the future
+    // as right now, only janus is supported
+
+    if (origin !== ORIGIN_METAMASK) { 
+      normalizedTxParams.value = conversionUtil(normalizedTxParams.value, {
+        fromNumericBase: 'hex',
+        toNumericBase: 'hex',
+        fromDenomination: 'SATOSHI',
+        toDenomination: 'WEI',
+      });
+    }
+
+    // support gas price in wei and satoshi
+
+    normalizedTxParams.gasPrice = getGasPriceInWei(normalizedTxParams.gasPrice);
 
     /**
      * `generateTxMeta` adds the default txMeta properties to the passed object.
@@ -2499,6 +2522,13 @@ TransactionController.prototype.signTransaction = async function (txId) {
     gasLimit: txMeta.txParams.gas,
   };
 
+  txParams.gasPrice = addHexPrefix(conversionUtil(txParams.gasPrice, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'hex',
+    fromDenomination: 'WEI',
+    toDenomination: 'SATOSHI',
+  }));
+
   const fromAddress = txParams.from;
   const unsignedEthTx = TransactionFactory.fromTxData(txParams);
 
@@ -2528,7 +2558,7 @@ TransactionController.prototype.signTransaction = async function (txId) {
   );
 
   const qtumWallet = new QtumWallet(key, qtumProvider, {filterDust: false});
-  const signedEthTx = await qtumWallet.signTransaction(ethTx)
+  const signedEthTx = await qtumWallet.signTransaction(ethTx);
 
   // add r,s,v values for provider request purposes see createMetamaskMiddleware
   // and JSON rpc standard for further explanation

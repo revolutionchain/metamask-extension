@@ -114,7 +114,7 @@ export default function SendTransactionScreen() {
       <SendHeader history={history} />
       <EnsInput
         userInput={userInput}
-        className="send__to-row hey"
+        className="send__to-row"
         onChange={(address) => dispatch(updateRecipientUserInput(address))}
         onValidAddressTyped={async (address) => {
           dispatch(

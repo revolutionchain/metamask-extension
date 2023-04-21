@@ -23682,10 +23682,10 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-qtum-ethers-wrapper@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/qtum-ethers-wrapper/-/qtum-ethers-wrapper-1.2.0.tgz#bef65ff25eb64643fd8bda8da84a9cd0312b9768"
-  integrity sha512-adQAxqC75zeYpok4HqYlMZT9/RUz0gQvcPOlAOk2Prn9B9EVTa+6Dpz+eq0c8wVW0e/Rxu54HGSbNH0b7J+mQw==
+qtum-ethers-wrapper@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/qtum-ethers-wrapper/-/qtum-ethers-wrapper-2.0.0.tgz#6fb1a027a89aab0f7933d6022c318ddd89de6423"
+  integrity sha512-5RtasmMDywc2aoRAESKxOvuIZpuzADA20N/FN7V3BBPBJmVe4qKn6qnsLQdOPcc7uHKbsuc32hY5dR+XJEyDew==
   dependencies:
     "@types/bitcoinjs-lib" "^5.0.0"
     "@types/bn.js" "^5.1.0"

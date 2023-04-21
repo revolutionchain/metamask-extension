@@ -755,6 +755,36 @@ export const initializeSendState = createAsyncThunk(
   },
 );
 
+export function getGasPriceInWei(gasPriceString) {
+  // support gas price in wei and satoshi
+
+  const gasPriceInSatoshiDecimal = ((gasPriceString + '').indexOf("0x") === 0) ? conversionUtil((gasPriceString + ''), {
+    fromNumericBase: 'hex',
+    toNumericBase: 'dec',
+    fromDenomination: 'SATOSHI',
+    toDenomination: 'SATOSHI',
+  }) : parseInt(gasPriceString + '', 10);
+
+  const minimumGasPriceInWei = conversionUtil("0x9502f9000", {
+    fromNumericBase: 'hex',
+    toNumericBase: 'dec',
+    fromDenomination: 'WEI',
+    toDenomination: 'WEI',
+  });
+
+  if (gasPriceInSatoshiDecimal < minimumGasPriceInWei) {
+    // value in satoshi 
+    return conversionUtil(gasPriceString, {
+      fromNumericBase: 'hex',
+      toNumericBase: (gasPriceString + '').indexOf("0x") === 0 ? 'hex' : 'dec',
+      fromDenomination: 'SATOSHI',
+      toDenomination: 'WEI',
+    });
+  }
+
+  return gasPriceString;
+}
+
 // Action Payload Typedefs
 /**
  * @typedef {(
@@ -1040,16 +1070,20 @@ const slice = createSlice({
             payload: {
               transactionType: TRANSACTION_ENVELOPE_TYPES.FEE_MARKET,
               maxFeePerGas: getGasPriceInHexWei(
+                getGasPriceInWei(
                 gasFeeEstimates.medium.suggestedMaxFeePerGas,
+                ),
               ),
               maxPriorityFeePerGas: getGasPriceInHexWei(
+                getGasPriceInWei(
                 gasFeeEstimates.medium.suggestedMaxPriorityFeePerGas,
+                )
               ),
             },
           });
           break;
         case GAS_ESTIMATE_TYPES.LEGACY:
-          gasPriceEstimate = getRoundedGasPrice(gasFeeEstimates.medium);
+          gasPriceEstimate = getGasPriceInWei(getRoundedGasPrice(gasFeeEstimates.medium));
           slice.caseReducers.updateGasFees(state, {
             payload: {
               gasPrice: gasPriceEstimate,
@@ -1059,7 +1093,8 @@ const slice = createSlice({
           });
           break;
         case GAS_ESTIMATE_TYPES.ETH_GASPRICE:
-          gasPriceEstimate = getRoundedGasPrice(gasFeeEstimates.gasPrice);
+          gasPriceEstimate = getGasPriceInWei(getRoundedGasPrice(gasFeeEstimates.gasPrice));
+          // support gas estimates in both Satoshi and WEI
           slice.caseReducers.updateGasFees(state, {
             payload: {
               gasPrice: getRoundedGasPrice(gasFeeEstimates.gasPrice),

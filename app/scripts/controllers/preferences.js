@@ -276,7 +276,10 @@ export default class PreferencesController {
    */
   setQtumAddress(address, qtumAddress) {
     const { qtumAddresses } = this.store.getState();
-    qtumAddresses[address] = qtumAddress;
+    const normalizedAddress = normalizeAddress(address);
+    const lowerCasedAddress = normalizedAddress.toLowerCase();
+    qtumAddresses[normalizedAddress] = qtumAddress;
+    qtumAddresses[lowerCasedAddress] = qtumAddress;
     this.store.updateState({ qtumAddresses });
   }
 
@@ -313,10 +316,14 @@ export default class PreferencesController {
   removeQtumAddress(address) {
     const { qtumAddresses } = this.store.getState();
 
-    if (!qtumAddresses[address]) {
+    const normalizedAddress = normalizeAddress(address);
+    const lowerCasedAddress = normalizeAddress.toLowerCase();
+
+    if (!qtumAddresses[normalizedAddress] && !qtumAddresses[lowerCasedAddress]) {
       throw new Error(`${address} can't be deleted cause it was not found`);
     }
-    delete qtumAddresses[address];
+    delete qtumAddresses[normalizedAddress];
+    delete qtumAddresses[lowerCasedAddress];
     this.store.updateState({ qtumAddresses });
   }
 

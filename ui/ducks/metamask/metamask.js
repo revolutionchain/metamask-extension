@@ -470,7 +470,7 @@ export function getQtumBalances(state) {
 }
 
 export function getQtumAddress(state, address) {
-  return state.metamask.qtumAddresses[address];
+  return state.metamask.qtumAddresses[address.toLowerCase()];
 }
 
 export function getQtumAddressBook(state) {

@@ -51,13 +51,13 @@ export default function RecipientGroup({
             <div className="send__select-recipient-wrapper__group-item__title">
               {name ||
                 (isQtumAddressShowCheck
-                  ? qtumAddressBook[address]
+                  ? (qtumAddressBook[address] || ellipsify(address))
                   : ellipsify(address))}
             </div>
             {name && (
               <div className="send__select-recipient-wrapper__group-item__subtitle">
                 {isQtumAddressShowCheck
-                  ? qtumAddressBook[address]
+                  ? (qtumAddressBook[address] || ellipsify(address))
                   : ellipsify(address)}
               </div>
             )}

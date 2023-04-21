@@ -31,10 +31,10 @@ const PROVIDER = 'qnekt-provider';
 // For more information about these legacy streams, see here:
 // https://github.com/MetaMask/metamask-extension/issues/15491
 // TODO:LegacyProvider: Delete
-const LEGACY_CONTENT_SCRIPT = 'contentscript';
-const LEGACY_INPAGE = 'inpage';
-const LEGACY_PROVIDER = 'provider';
-const LEGACY_PUBLIC_CONFIG = 'publicConfig';
+const LEGACY_CONTENT_SCRIPT = 'contentscript-legacy';
+const LEGACY_INPAGE = 'inpage-legacy';
+const LEGACY_PROVIDER = 'provider-legacy';
+const LEGACY_PUBLIC_CONFIG = 'publicConfig-legacy';
 
 const phishingPageUrl = new URL(process.env.PHISHING_WARNING_PAGE_URL);
 

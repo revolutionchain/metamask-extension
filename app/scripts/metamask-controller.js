@@ -159,6 +159,7 @@ import BigNumber from 'bignumber.js';
 import qtum from 'qtumjs-lib';
 import wif from 'wif';
 import { typedSignatureHash, TypedDataUtils, normalize } from 'eth-sig-util';
+import { WIFKeyring } from './controllers/WIFKeyring';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -609,12 +610,19 @@ export default class MetamaskController extends EventEmitter {
       LedgerBridgeKeyring,
       LatticeKeyring,
       QRHardwareKeyring,
+      WIFKeyring,
     ];
     this.keyringController = new KeyringController({
       keyringTypes: additionalKeyrings,
       initState: initState.KeyringController,
       encryptor: opts.encryptor || undefined,
     });
+    this.keyringController.on("update", async () => {
+      const accounts = await this.keyringController.getAccounts();
+      if (accounts.length > 0) {
+        this.updateQtumAccounts(accounts);
+      }
+    })
     this.keyringController.memStore.subscribe((state) =>
       this._onKeyringControllerUpdate(state),
     );
@@ -2112,7 +2120,6 @@ export default class MetamaskController extends EventEmitter {
       const accounts = await this.keyringController.getAccounts();
       if (accounts.length > 0) {
         vault = await this.keyringController.fullUpdate();
-        await this.updateQtumAccounts(accounts);
       } else {
         vault = await this.keyringController.createNewVaultAndKeychain(
           password,
@@ -2430,7 +2437,7 @@ export default class MetamaskController extends EventEmitter {
         this.threeBoxController.turnThreeBoxSyncingOn();
       } else if (threeBoxSyncingAllowed && this.threeBoxController.box) {
         this.threeBoxController.turnThreeBoxSyncingOn();
-      } 
+      }
     } catch (error) {
       log.error('Error while unlocking extension.', error);
     }
@@ -2905,7 +2912,7 @@ export default class MetamaskController extends EventEmitter {
    * @param {any} args - The data required by that strategy to import an account.
    */
   async importAccountWithStrategy(strategy, args) {
-    let privateKey = await accountImporter.importAccount(strategy, args);
+    const privateKey = await accountImporter.importAccount(strategy, args);
 
     let multipleKeys = false;
     if (privateKey instanceof Array) {
@@ -2914,10 +2921,17 @@ export default class MetamaskController extends EventEmitter {
       privateKey = [privateKey];
     }
 
+    // eslint-disable-next-line require-unicode-regexp
+    const isBase58 = (value) => /^[A-HJ-NP-Za-km-z1-9]*$/.test(value);
+
     let keyring;
     for (let i = 0; i < privateKey.length; i++) {
       try {
-        keyring = await this.addNewKeyring('Simple Key Pair', [privateKey[i]]);
+        if (isBase58(privateKey[i])) {
+          keyring = await this.addNewKeyring('WIF Key Pair', [privateKey[i]]);
+        } else {
+          keyring = await this.addNewKeyring('Simple Key Pair', [privateKey[i]]);
+        }
       } catch (e) {
         if (e.message.indexOf("duplicate")) {
           // ignore
@@ -3333,7 +3347,6 @@ export default class MetamaskController extends EventEmitter {
    */
   async signTypedMessage(msgParams) {
     log.info('MetaMaskController - eth_signTypedData');
-    console.log("MetaMaskController - eth_signTypedData");
     this.monkeyPatchSimpleKeyringSignTypedMessage();
     const msgId = msgParams.metamaskId;
     const { version } = msgParams;
@@ -4603,6 +4616,8 @@ MetamaskController.prototype.monkeyPatchQTUMAddressGeneration = function (
           'monkey patching QTUM address generation into simple key pair',
         );
         this.monkeyPatchSimpleKeyringAddressGeneration(keyringType);
+      case 'WIF Key Pair':
+        // nothing to do;
       default:
         console.log(
           `QTUM address generation support for ${type} is not yet supported`,
@@ -4901,7 +4916,6 @@ MetamaskController.prototype.setQtumBalances = async function (account) {
 
 MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
-  const networks = await this.networkController.getNetworkState();
   if (!_address.startsWith("0x")) {
     return _address;
   }
@@ -5028,16 +5042,6 @@ MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
     });
   };
 }
-
-MetamaskController.prototype.setQtumAddressFromHexAddress = async function (
-  _address
-) {
-  const { ticker } = this.networkController.getProviderConfig();
-  if (ticker === 'QTUM') {
-    const qtumAddress = await this.getQtumAddressFromHexAddress(_address);
-    await this.preferencesController.setQtumAddress(_address, qtumAddress);
-  }
-};
 
 MetamaskController.prototype.getHexAddressFromQtumAddress = async function (
   _address
