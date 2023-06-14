@@ -203,13 +203,13 @@ export default class SignatureRequestOriginal extends Component {
       msgParams: { data },
     } = txData;
 
-    if (type === MESSAGE_TYPE.PERSONAL_SIGN) {
+    if (type === MESSAGE_TYPE.PERSONAL_SIGN || type === MESSAGE_TYPE.BTC_PERSONAL_SIGN) {
       rows = [
         { name: this.context.t('message'), value: this.msgHexToText(data) },
       ];
-    } else if (type === MESSAGE_TYPE.ETH_SIGN_TYPED_DATA) {
+    } else if (type === MESSAGE_TYPE.ETH_SIGN_TYPED_DATA || type === MESSAGE_TYPE.BTC_SIGN_TYPED_DATA) {
       rows = data;
-    } else if (type === MESSAGE_TYPE.ETH_SIGN) {
+    } else if (type === MESSAGE_TYPE.ETH_SIGN || type === MESSAGE_TYPE.BTC_SIGN) {
       rows = [{ name: this.context.t('message'), value: data }];
       notice = this.context.t('signNotice');
     }
@@ -220,11 +220,11 @@ export default class SignatureRequestOriginal extends Component {
         {this.renderOriginInfo()}
         <div
           className={classnames('request-signature__notice', {
-            'request-signature__warning': type === MESSAGE_TYPE.ETH_SIGN,
+            'request-signature__warning': (type === MESSAGE_TYPE.ETH_SIGN || type === MESSAGE_TYPE.BTC_SIGN),
           })}
         >
           {notice}
-          {type === MESSAGE_TYPE.ETH_SIGN ? (
+          {(type === MESSAGE_TYPE.ETH_SIGN || type === MESSAGE_TYPE.BTC_SIGN) ? (
             /**
             <span
               className="request-signature__help-link"

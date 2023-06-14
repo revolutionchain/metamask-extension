@@ -3375,8 +3375,15 @@
     },
     "@metamask/rpc-methods>@metamask/key-tree>@scure/bip39": {
       "packages": {
-        "@metamask/rpc-methods>@metamask/key-tree>@noble/hashes": true,
-        "@metamask/rpc-methods>@metamask/key-tree>@scure/base": true
+        "@metamask/rpc-methods>@metamask/key-tree>@scure/base": true,
+        "@metamask/rpc-methods>@metamask/key-tree>@scure/bip39>@noble/hashes": true
+      }
+    },
+    "@metamask/rpc-methods>@metamask/key-tree>@scure/bip39>@noble/hashes": {
+      "globals": {
+        "TextEncoder": true,
+        "crypto": true,
+        "setTimeout": true
       }
     },
     "@metamask/smart-transactions-controller": {
@@ -6901,9 +6908,11 @@
       "packages": {
         "browserify>buffer": true,
         "browserify>timers-browserify": true,
+        "qtum-ethers-wrapper>bigi": true,
         "qtum-ethers-wrapper>bignumber.js": true,
         "qtum-ethers-wrapper>bip66": true,
         "qtum-ethers-wrapper>bn.js": true,
+        "qtum-ethers-wrapper>elliptic": true,
         "qtum-ethers-wrapper>ethers": true,
         "qtum-ethers-wrapper>ethers>@ethersproject/abstract-provider": true,
         "qtum-ethers-wrapper>ethers>@ethersproject/abstract-signer": true,
@@ -6921,9 +6930,16 @@
         "qtum-ethers-wrapper>ethers>@ethersproject/transactions": true,
         "qtum-ethers-wrapper>hash.js": true,
         "qtum-ethers-wrapper>secp256k1": true,
+        "qtum-ethers-wrapper>typedarray-to-buffer": true,
         "qtum-ethers-wrapper>varuint-bitcoin": true,
         "qtumjs-lib>bitcoinjs-lib": true,
         "wif": true
+      }
+    },
+    "qtum-ethers-wrapper>bigi": {
+      "packages": {
+        "browserify>assert": true,
+        "browserify>buffer": true
       }
     },
     "qtum-ethers-wrapper>bignumber.js": {
@@ -8664,6 +8680,11 @@
         "qtum-ethers-wrapper>elliptic": true
       }
     },
+    "qtum-ethers-wrapper>typedarray-to-buffer": {
+      "packages": {
+        "browserify>buffer": true
+      }
+    },
     "qtum-ethers-wrapper>typeforce": {
       "packages": {
         "browserify>insert-module-globals>is-buffer": true
@@ -8689,10 +8710,10 @@
         "ethereumjs-util>create-hash": true,
         "ethereumjs-wallet>randombytes": true,
         "ethers>@ethersproject/providers>bech32": true,
+        "qtum-ethers-wrapper>bigi": true,
         "qtum-ethers-wrapper>bip66": true,
         "qtum-ethers-wrapper>pushdata-bitcoin": true,
         "qtum-ethers-wrapper>typeforce": true,
-        "qtumjs-lib>bitcoinjs-lib>bigi": true,
         "qtumjs-lib>bitcoinjs-lib>bitcoin-ops": true,
         "qtumjs-lib>bitcoinjs-lib>create-hmac": true,
         "qtumjs-lib>bitcoinjs-lib>ecurve": true,
@@ -8701,12 +8722,6 @@
         "qtumjs-lib>safe-buffer": true,
         "wif": true,
         "wif>bs58check": true
-      }
-    },
-    "qtumjs-lib>bitcoinjs-lib>bigi": {
-      "packages": {
-        "browserify>assert": true,
-        "browserify>buffer": true
       }
     },
     "qtumjs-lib>bitcoinjs-lib>create-hmac": {
@@ -8722,7 +8737,7 @@
     "qtumjs-lib>bitcoinjs-lib>ecurve": {
       "packages": {
         "browserify>assert": true,
-        "qtumjs-lib>bitcoinjs-lib>bigi": true,
+        "qtum-ethers-wrapper>bigi": true,
         "qtumjs-lib>safe-buffer": true
       }
     },

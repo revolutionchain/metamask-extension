@@ -71,8 +71,16 @@ export default class MessageManager extends EventEmitter {
    * @param {object} [req] - The original request object possibly containing the origin
    * @returns {promise} after signature has been
    */
-  async addUnapprovedMessageAsync(msgParams, req) {
-    const msgId = this.addUnapprovedMessage(msgParams, req);
+  addUnapprovedMessageAsync(msgParams, req) {
+    return this._addUnapprovedMessageAsync(MESSAGE_TYPE.ETH_SIGN, msgParams, req);
+  }
+
+  addUnapprovedBtcMessageAsync(msgParams, req) {
+    return this._addUnapprovedMessageAsync(MESSAGE_TYPE.BTC_SIGN, msgParams, req);
+  }
+
+  async _addUnapprovedMessageAsync(type, msgParams, req) {
+    const msgId = this._addUnapprovedMessage(type, msgParams, req);
     return await new Promise((resolve, reject) => {
       // await finished
       this.once(`${msgId}:finished`, (data) => {
@@ -111,6 +119,14 @@ export default class MessageManager extends EventEmitter {
    * @returns {number} The id of the newly created message.
    */
   addUnapprovedMessage(msgParams, req) {
+    return this._addUnapprovedMessage(MESSAGE_TYPE.ETH_SIGN, msgParams, req);
+  }
+
+  addUnapprovedBtcMessage(msgParams, req) {
+    return this._addUnapprovedMessage(MESSAGE_TYPE.BTC_SIGN, msgParams, req);
+  }
+
+  _addUnapprovedMessage(type, msgParams, req) {
     // add origin from request
     if (req) {
       msgParams.origin = req.origin;
@@ -124,7 +140,7 @@ export default class MessageManager extends EventEmitter {
       msgParams,
       time,
       status: 'unapproved',
-      type: MESSAGE_TYPE.ETH_SIGN,
+      type: type,
     };
     this.addMsg(msgData);
 

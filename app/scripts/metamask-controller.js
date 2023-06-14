@@ -1,9 +1,9 @@
 import EventEmitter from 'events';
-import { QtumWallet } from 'qtum-ethers-wrapper';
+import { QtumWallet, hashMessage } from 'qtum-ethers-wrapper';
 import pump from 'pump';
 import { ObservableStore } from '@metamask/obs-store';
 import { storeAsStream } from '@metamask/obs-store/dist/asStream';
-import { JsonRpcEngine } from 'json-rpc-engine';
+import { createAsyncMiddleware, createScaffoldMiddleware, JsonRpcEngine } from 'json-rpc-engine';
 import { debounce } from 'lodash';
 import createEngineStream from 'json-rpc-middleware-stream/engineStream';
 import createFilterMiddleware from 'eth-json-rpc-filters';
@@ -16,7 +16,7 @@ import {
   ethErrors,
 } from 'eth-rpc-errors';
 import { Mutex } from 'await-semaphore';
-import { addHexPrefix, stripHexPrefix, toBuffer } from 'ethereumjs-util';
+import { addHexPrefix, stripHexPrefix, toBuffer, keccak } from 'ethereumjs-util';
 import log from 'loglevel';
 import TrezorKeyring from 'eth-trezor-keyring';
 import LedgerBridgeKeyring from '@metamask/eth-ledger-bridge-keyring';
@@ -158,7 +158,7 @@ import createRPCMethodTrackingMiddleware from './lib/createRPCMethodTrackingMidd
 import BigNumber from 'bignumber.js';
 import qtum from 'qtumjs-lib';
 import wif from 'wif';
-import { typedSignatureHash, TypedDataUtils, normalize } from 'eth-sig-util';
+import { signTypedDataLegacy, typedSignatureHash, TypedDataUtils, normalize } from 'eth-sig-util';
 import { WIFKeyring } from './controllers/WIFKeyring';
 
 export const METAMASK_CONTROLLER_EVENTS = {
@@ -640,6 +640,7 @@ export default class MetamaskController extends EventEmitter {
           `${this.approvalController.name}:hasRequest`,
           `${this.approvalController.name}:acceptRequest`,
           `${this.approvalController.name}:rejectRequest`,
+          'btc_sign', 
         ],
       }),
       state: initState.PermissionController,
@@ -1450,10 +1451,15 @@ export default class MetamaskController extends EventEmitter {
       processTransaction: this.newUnapprovedTransaction.bind(this),
       // msg signing
       processEthSignMessage: this.newUnsignedMessage.bind(this),
+      processBtcSignMessage: this.newUnsignedBtcMessage.bind(this),
       processTypedMessage: this.newUnsignedTypedMessage.bind(this),
+      processBtcTypedMessage: this.newUnsignedBtcTypedMessage.bind(this),
       processTypedMessageV3: this.newUnsignedTypedMessage.bind(this),
+      processBtcTypedMessageV3: this.newUnsignedBtcTypedMessage.bind(this),
       processTypedMessageV4: this.newUnsignedTypedMessage.bind(this),
+      processBtcTypedMessageV4: this.newUnsignedBtcTypedMessage.bind(this),
       processPersonalMessage: this.newUnsignedPersonalMessage.bind(this),
+      processBtcPersonalMessage: this.newUnsignedBtcPersonalMessage.bind(this),
       processDecryptMessage: this.newRequestDecryptMessage.bind(this),
       processEncryptionPublicKey: this.newRequestEncryptionPublicKey.bind(this),
       getPendingNonce: this.getPendingNonce.bind(this),
@@ -2999,6 +3005,11 @@ export default class MetamaskController extends EventEmitter {
     return await promise;
   }
 
+  newUnsignedBtcMessage(msgParams, req) {
+    msgParams.btc = true;
+    return this.newUnsignedMessage(msgParams, req);
+  }
+
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   /**
    * Gets an "app key" corresponding to an Ethereum address. An app key is more
@@ -3041,7 +3052,7 @@ export default class MetamaskController extends EventEmitter {
         msgParams,
       );
       this.monkeyPatchSimpleKeyringSignMessage();
-      const rawSig = await this.keyringController.signMessage(cleanMsgParams);
+      const rawSig = await this.keyringController.signMessage(cleanMsgParams, {btc: cleanMsgParams.btc});
       this.messageManager.setMsgStatusSigned(msgId, rawSig);
       return this.getState();
     } catch (error) {
@@ -3084,6 +3095,11 @@ export default class MetamaskController extends EventEmitter {
     return promise;
   }
 
+  newUnsignedBtcPersonalMessage(msgParams, req) {
+    msgParams.btc = true;
+    return this.newUnsignedPersonalMessage(msgParams, req);
+  }
+
   /**
    * Signifies a user's approval to sign a personal_sign message in queue.
    * Triggers signing, and the callback function from newUnsignedPersonalMessage.
@@ -3103,6 +3119,7 @@ export default class MetamaskController extends EventEmitter {
       await this.monkeyPatchSimpleKeyringSignPersonalMessage();
       const rawSig = await this.keyringController.signPersonalMessage(
         cleanMsgParams,
+        {btc: cleanMsgParams.btc},
       );
       // tells the listener that the message has been signed
       // and can be returned to the dapp
@@ -3338,6 +3355,11 @@ export default class MetamaskController extends EventEmitter {
     return promise;
   }
 
+  newUnsignedBtcTypedMessage(msgParams, req, version) {
+    msgParams.btc = true;
+    return this.newUnsignedTypedMessage(msgParams, req, version);
+  }
+
   /**
    * The method for a user approving a call to eth_signTypedData, per EIP 712.
    * Triggers the callback in newUnsignedTypedMessage.
@@ -3365,7 +3387,7 @@ export default class MetamaskController extends EventEmitter {
 
       const signature = await this.keyringController.signTypedMessage(
         cleanMsgParams,
-        { version },
+        { version, btc: cleanMsgParams.btc },
       );
       this.typedMessageManager.setMsgStatusSigned(msgId, signature);
       return this.getState();
@@ -3890,6 +3912,9 @@ export default class MetamaskController extends EventEmitter {
           this.alertController.setWeb3ShimUsageRecorded.bind(
             this.alertController,
           ),
+        btcSign: this.newUnsignedBtcMessage.bind(this),
+        btcPersonalSign: this.newUnsignedBtcPersonalMessage.bind(this),
+        btcSignTypedData: this.newUnsignedBtcTypedMessage.bind(this),
       }),
     );
 
@@ -5097,7 +5122,7 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignMessage = function() {
         const message = stripHexPrefix(msgParams.data)
         const privKey = keyring.getPrivateKeyFor(address, opts);
         const wallet = new QtumWallet(privKey, qtumWalletOpts);
-        const rawMsgSig = await wallet.signHash(Buffer.from(message, "hex"));
+        const rawMsgSig = await (opts.btc ? wallet.signHashBtc : wallet.signHash).bind(wallet)(Buffer.from(message, "hex"));
         return Promise.resolve('0x' + rawMsgSig.toString('hex'));
       });
   }
@@ -5115,7 +5140,7 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignPersonalMessage = funct
         const message = stripHexPrefix(msgParams.data)
         const privKey = keyring.getPrivateKeyFor(address, opts);
         const wallet = new QtumWallet(privKey, qtumWalletOpts);
-        const rawMsgSig = await wallet.signMessage(Buffer.from(message, "hex"));
+        const rawMsgSig = await (opts.btc ? wallet.signMessageBtc : wallet.signMessage).bind(wallet)(Buffer.from(message, "hex"));
         return Promise.resolve('0x' + rawMsgSig.toString('hex'));
       });
   }
@@ -5133,13 +5158,13 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function
             keyringType.__proto__._signTypedData_v1 = keyringType.__proto__.signTypedData_v1;
             keyringType.__proto__.signTypedData_v1 = async function(withAccount, typedData, opts = {}) {
                 const privKey = this.getPrivateKeyFor(withAccount, opts);
-                const hash = typedSignatureHash(typedData);
+                const hash = toBuffer(typedSignatureHash(typedData));
                 const wallet = new QtumWallet(
                     `0x${privKey.toString('hex')}`,
                     qtumWalletOpts,
                 );
-                const sig = await wallet.signHash(hash);
-                return sig.toString('hex');
+                const sig = await (opts.btc ? wallet.signHashBtc : wallet.signHash).bind(wallet)(hash);
+                return "0x" + sig.toString('hex');
             }
         }
 
@@ -5147,13 +5172,15 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function
             keyringType.__proto__._signTypedData_v3 = keyringType.__proto__.signTypedData_v3;
             keyringType.__proto__.signTypedData_v3 = async function(withAccount, typedData, opts = {}) {
                 const privKey = this.getPrivateKeyFor(withAccount, opts);
-                const message = TypedDataUtils.sign(typedData, false);
                 const wallet = new QtumWallet(
                     `0x${privKey.toString('hex')}`,
                     qtumWalletOpts,
                 );
-                const sig = await wallet.signHash(message);
-                return sig.toString('hex');
+                const types = Object.assign({}, typedData.types);
+                delete types.EIP712Domain;
+
+                const sig = await (opts.btc ? wallet._signTypedDataBtc : wallet._signTypedData).bind(wallet)(typedData.domain, types, typedData.message)
+                return "0x" + sig.toString('hex');
             }
         }
 
@@ -5161,13 +5188,15 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function
             keyringType.__proto__._signTypedData_v4 = keyringType.__proto__.signTypedData_v4;
             keyringType.__proto__.signTypedData_v4 = async function(withAccount, typedData, opts = {}) {
                 const privKey = this.getPrivateKeyFor(withAccount, opts);
-                const message = TypedDataUtils.sign(typedData);
                 const wallet = new QtumWallet(
                     `0x${privKey.toString('hex')}`,
                     qtumWalletOpts,
                 );
-                const sig = await wallet.signHash(message);
-                return sig.toString('hex');
+                const types = Object.assign({}, typedData.types);
+                delete types.EIP712Domain;
+
+                const sig = await (opts.btc ? wallet._signTypedDataBtc : wallet._signTypedData).bind(wallet)(typedData.domain, types, typedData.message)
+                return "0x" + sig.toString('hex');
             }
         }
     }

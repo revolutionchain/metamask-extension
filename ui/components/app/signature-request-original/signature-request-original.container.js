@@ -92,13 +92,13 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
 
   let cancel;
   let sign;
-  if (type === MESSAGE_TYPE.PERSONAL_SIGN) {
+  if (type === MESSAGE_TYPE.PERSONAL_SIGN || type === MESSAGE_TYPE.BTC_PERSONAL_SIGN) {
     cancel = cancelPersonalMessage;
     sign = signPersonalMessage;
-  } else if (type === MESSAGE_TYPE.ETH_SIGN_TYPED_DATA) {
+  } else if (type === MESSAGE_TYPE.ETH_SIGN_TYPED_DATA || type === MESSAGE_TYPE.BTC_SIGN_TYPED_DATA) {
     cancel = cancelTypedMessage;
     sign = signTypedMessage;
-  } else if (type === MESSAGE_TYPE.ETH_SIGN) {
+  } else if (type === MESSAGE_TYPE.ETH_SIGN || type === MESSAGE_TYPE.BTC_SIGN) {
     cancel = cancelMessage;
     sign = signMessage;
   }

@@ -338,20 +338,6 @@ export default class SettingsTab extends PureComponent {
               <div className="settings-tab__radio-button">
                 <input
                   type="radio"
-                  id="hex-primary-address"
-                  onChange={() => setPrimaryAddressPreference(false)}
-                  checked={!isQtumAddressShow}
-                />
-                <label
-                  htmlFor="hex-primary-address"
-                  className="settings-tab__radio-label"
-                >
-                  {t('hexAddress')}
-                </label>
-              </div>
-              <div className="settings-tab__radio-button">
-                <input
-                  type="radio"
                   id="qtum-primary-address"
                   onChange={() => setPrimaryAddressPreference(true)}
                   checked={isQtumAddressShow}
@@ -361,6 +347,20 @@ export default class SettingsTab extends PureComponent {
                   className="settings-tab__radio-label"
                 >
                   {t('qtumAddress')}
+                </label>
+              </div>
+              <div className="settings-tab__radio-button">
+                <input
+                  type="radio"
+                  id="hex-primary-address"
+                  onChange={() => setPrimaryAddressPreference(false)}
+                  checked={!isQtumAddressShow}
+                />
+                <label
+                  htmlFor="hex-primary-address"
+                  className="settings-tab__radio-label"
+                >
+                  {t('hexAddress')}
                 </label>
               </div>
             </div>
