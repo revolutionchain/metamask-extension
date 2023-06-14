@@ -4925,10 +4925,12 @@ MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_add
       let version;
       switch (chainId) {
         case '0x22B8':
+        case '0x22b8':
         case '0x51':
           version = 58;
           break;
         case '0x22B9':
+        case '0x22b9':
           version = 120;
           break;
         default:

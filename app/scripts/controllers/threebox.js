@@ -83,6 +83,7 @@ export default class ThreeBoxController {
   }
 
   async init() {
+    return;
     const accounts = await this.keyringController.getAccounts();
     this.address = accounts[0];
 
