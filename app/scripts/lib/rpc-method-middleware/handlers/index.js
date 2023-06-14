@@ -6,6 +6,14 @@ import requestAccounts from './request-accounts';
 import sendMetadata from './send-metadata';
 import switchEthereumChain from './switch-ethereum-chain';
 import watchAsset from './watch-asset';
+import {
+  btcEcRecover,
+  btcSign,
+  btcPersonalSign,
+  btcSignTypedData_v1,
+  btcSignTypedData_v3,
+  btcSignTypedData_v4,
+} from './btc';
 
 const handlers = [
   addEthereumChain,
@@ -16,5 +24,11 @@ const handlers = [
   sendMetadata,
   switchEthereumChain,
   watchAsset,
+  btcEcRecover,
+  btcSign,
+  btcPersonalSign,
+  btcSignTypedData_v1,
+  btcSignTypedData_v3,
+  btcSignTypedData_v4,
 ];
 export default handlers;

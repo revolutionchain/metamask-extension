@@ -881,6 +881,7 @@ function setupReloadOnChange({ bundlerOpts, events }) {
     // Handle build error to avoid breaking build process
     // (eg on syntax error)
     bundleStream.on('error', (err) => {
+      logError(err)
       gracefulError(err);
     });
   });

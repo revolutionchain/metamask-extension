@@ -30,10 +30,13 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
     stateProps;
   const {
     signPersonalMessage,
+    signBtcPersonalMessage,
     signTypedMessage,
+    signBtcTypedMessage,
     cancelPersonalMessage,
     cancelTypedMessage,
     signMessage,
+    signBtcMessage,
     cancelMessage,
     txData,
   } = ownProps;
@@ -51,12 +54,21 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
   if (type === MESSAGE_TYPE.PERSONAL_SIGN) {
     cancel = cancelPersonalMessage;
     sign = signPersonalMessage;
+  } else if (type === MESSAGE_TYPE.BTC_PERSONAL_SIGN) {
+    cancel = cancelPersonalMessage,
+    sign = signBtcPersonalMessage;
   } else if (type === MESSAGE_TYPE.ETH_SIGN_TYPED_DATA) {
     cancel = cancelTypedMessage;
     sign = signTypedMessage;
+  } else if (type === MESSAGE_TYPE.BTC_SIGN_TYPED_DATA) {
+    cancel = cancelTypedMessage;
+    sign = signBtcTypedMessage;
   } else if (type === MESSAGE_TYPE.ETH_SIGN) {
     cancel = cancelMessage;
     sign = signMessage;
+  } else if (type === MESSAGE_TYPE.BTC_SIGN) {
+    cancel = cancelMessage;
+    sign = signBtcMessage;
   }
 
   return {

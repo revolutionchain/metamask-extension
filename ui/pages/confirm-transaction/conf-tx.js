@@ -144,6 +144,14 @@ class ConfirmTxScreen extends Component {
     return this.props.dispatch(actions.signMsg(params));
   }
 
+  signBtcMessage(msgData, event) {
+    log.info('conf-tx.js: signing btc message');
+    const params = msgData.msgParams;
+    params.metamaskId = msgData.id;
+    this.stopPropagation(event);
+    return this.props.dispatch(actions.signMsg(params));
+  }
+
   stopPropagation(event) {
     if (event?.stopPropagation) {
       event.stopPropagation();
@@ -278,8 +286,11 @@ class ConfirmTxScreen extends Component {
         currentCurrency={currentCurrency}
         blockGasLimit={blockGasLimit}
         signMessage={this.signMessage.bind(this, txData)}
+        /**signBtcMessage={this.signBtcMessage.bind(this, txData)}*/
         signPersonalMessage={this.signPersonalMessage.bind(this, txData)}
+        /**signBtcPersonalMessage={this.signBtcPersonalMessage.bind(this, txData)}*/
         signTypedMessage={this.signTypedMessage.bind(this, txData)}
+        /**signBtcTypedMessage={this.signBtcTypedMessage.bind(this, txData)}*/
         cancelMessage={this.cancelMessage.bind(this, txData)}
         cancelPersonalMessage={this.cancelPersonalMessage.bind(this, txData)}
         cancelTypedMessage={this.cancelTypedMessage.bind(this, txData)}
