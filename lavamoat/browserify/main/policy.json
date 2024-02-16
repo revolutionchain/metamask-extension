@@ -3508,7 +3508,9 @@
       "packages": {
         "@metamask/snap-controllers>concat-stream>readable-stream": true,
         "browserify>buffer": true,
-        "pumpify>inherits": true
+        "browserify>concat-stream>typedarray": true,
+        "pumpify>inherits": true,
+        "terser>source-map-support>buffer-from": true
       }
     },
     "@metamask/snap-controllers>concat-stream>readable-stream": {
