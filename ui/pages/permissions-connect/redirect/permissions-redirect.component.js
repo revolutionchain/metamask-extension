@@ -37,7 +37,7 @@ export default function PermissionsRedirect({ subjectMetadata }) {
             <div className="permissions-redirect__dashed-line" />
           </Box>
           <SiteIcon
-            icon="/images/logo/qtum-logo.svg"
+            icon="/images/logo/revo-logo.svg"
             size={64}
             className="permissions-redirect__site-icon"
           />

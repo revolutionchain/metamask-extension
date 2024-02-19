@@ -16,7 +16,7 @@ import { showModal } from '../../../store/actions';
 import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT } from '../../../../shared/constants/metametrics';
-import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
+import { getRevoAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
 import AssetNavigation from './asset-navigation';
 import AssetOptions from './asset-options';
 
@@ -30,7 +30,7 @@ export default function NativeAsset({ nativeCurrency }) {
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
   const address = useSelector(getSelectedAddress);
   const history = useHistory();
-  const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
+  const accountLink = getAccountLink(getRevoAddressFromHex(address, chainId), chainId, rpcPrefs);
   const trackEvent = useContext(MetaMetricsContext);
   const isCustomNetwork = useSelector(getIsCustomNetwork);
 

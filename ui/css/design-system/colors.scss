@@ -121,9 +121,9 @@ $rinkeby: #f6c343;
 $goerli: #3099f2;
 $localhost: #29b6af;
 
-$qtumMainnet: #29b6af;
-$qtumTestnet: #ff4a8d;
-$qtumRegtest: #f6c343;
+$revoMainnet: #29b6af;
+$revoTestnet: #ff4a8d;
+$revoRegtest: #f6c343;
 
 $color-map: (
   'ui-1': $ui-1,
@@ -149,9 +149,9 @@ $color-map: (
   'success-1': $success-1,
   'success-2': $success-2,
   'success-3': $success-3,
-  'qtumMainnet': --qtumMainnet,
-  'qtumTestnet': --qtumTestnet,
-  'qtumRegtest': --qtumRegtest,
+  'revoMainnet': --revoMainnet,
+  'revoTestnet': --revoTestnet,
+  'revoRegtest': --revoRegtest,
   'background-default': --color-background-default,
   'background-alternative': --color-background-alternative,
   'text-default': --color-text-default,

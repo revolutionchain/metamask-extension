@@ -74,7 +74,7 @@ export default function CreationSuccessful() {
         </li>
         <li>
           <Button
-            href="http://qtum.org/about/qnekt"
+            href="http://revo.org/about/qnekt"
             target="_blank"
             type="link"
             rel="noopener noreferrer"

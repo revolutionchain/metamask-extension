@@ -33,7 +33,7 @@
     "message": "veiklos žurnalas"
   },
   "addAcquiredTokens": {
-    "message": "Pridėkite žetonus, kuriuos gavote naudodamiesi „Qnekt“"
+    "message": "Pridėkite žetonus, kuriuos gavote naudodamiesi „RevoMask“"
   },
   "addAlias": {
     "message": "Pridėti alternatyvųjį vardą"
@@ -57,19 +57,19 @@
     "message": "Suma"
   },
   "appDescription": {
-    "message": "„QTUM“ piniginė jūsų naršyklėje",
+    "message": "„REVO“ piniginė jūsų naršyklėje",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Automatinio atjungimo laikmatis (minutės)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Nustatykite laukimo  trukmę minutėmis iki „Qnekt“ automatinio atsijungimo"
+    "message": "Nustatykite laukimo  trukmę minutėmis iki „RevoMask“ automatinio atsijungimo"
   },
   "average": {
     "message": "Vidurkis"
@@ -109,7 +109,7 @@
     "message": "Atgal prie visų"
   },
   "backupApprovalInfo": {
-    "message": "Šis slaptas kodas reikalingas norint atkurti jūsų slaptažodinę, jeigu pamestumėte savo įrenginį, pamirštumėte savo slaptažodį, iš naujo įdiegtumėte „Qnekt“, taip pat norint pasiekti slaptažodinę iš kito įrenginio."
+    "message": "Šis slaptas kodas reikalingas norint atkurti jūsų slaptažodinę, jeigu pamestumėte savo įrenginį, pamirštumėte savo slaptažodį, iš naujo įdiegtumėte „RevoMask“, taip pat norint pasiekti slaptažodinę iš kito įrenginio."
   },
   "backupApprovalNotice": {
     "message": "Pasidarykite atsarginę savo slapto atkūrimo kodo kopiją, kad jūsų slaptažodinė ir fondai būtų saugūs."
@@ -140,7 +140,7 @@
     "message": "Pirkti $1 su „Wyre“"
   },
   "buyWithWyreDescription": {
-    "message": "„Wyre“ leidžia naudotis kreditine kortele norint įnešti $1 tiesiai į jūsų „Qnekt“ paskyrą."
+    "message": "„Wyre“ leidžia naudotis kreditine kortele norint įnešti $1 tiesiai į jūsų „RevoMask“ paskyrą."
   },
   "bytes": {
     "message": "Baitai"
@@ -158,7 +158,7 @@
     "message": "Grandinės ID"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Norėdami prisijungti prie aparatinės įrangos slaptažodinės, „Qnekt“ naudokitės „Google Chrome“ naršyklėje."
+    "message": "Norėdami prisijungti prie aparatinės įrangos slaptažodinės, „RevoMask“ naudokitės „Google Chrome“ naršyklėje."
   },
   "clickToRevealSeed": {
     "message": "Spustelėkite čia, kad atidengtumėte slaptus žodžius"
@@ -197,7 +197,7 @@
     "message": "Jungiamasi prie „Kovan“ bandomojo tinklo"
   },
   "connectingToMainnet": {
-    "message": "Jungiamasi prie pagrindinio „QTUM“ tinklo"
+    "message": "Jungiamasi prie pagrindinio „REVO“ tinklo"
   },
   "connectingToRinkeby": {
     "message": "Jungiamasi prie „Rinkeby“ bandomojo tinklo"
@@ -317,19 +317,19 @@
     "message": "Niekam niekada nepasakykite šios frazės."
   },
   "endOfFlowMessage5": {
-    "message": "Saugokitės informacijos vagių! „Qnekt“ niekada spontaniškai neklaus jūsų atkūrimo frazės."
+    "message": "Saugokitės informacijos vagių! „RevoMask“ niekada spontaniškai neklaus jūsų atkūrimo frazės."
   },
   "endOfFlowMessage6": {
     "message": "Jeigu reikia dar kartą padaryti jūsų atkūrimo frazės kopiją, ją galite rasti pasirinkę Nuostatos -> Sauga."
   },
   "endOfFlowMessage8": {
-    "message": "„Qnekt“ negali atkurti jūsų atkūrimo frazės. Sužinokite daugiau."
+    "message": "„RevoMask“ negali atkurti jūsų atkūrimo frazės. Sužinokite daugiau."
   },
   "endOfFlowMessage9": {
     "message": "Sužinokite daugiau."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS pavadinimas dabartiniame tinkle nerastas. Mėginkite perjungti į pagrindinį „QTUM“ tinklą."
+    "message": "ENS pavadinimas dabartiniame tinkle nerastas. Mėginkite perjungti į pagrindinį „REVO“ tinklą."
   },
   "ensRegistrationError": {
     "message": "ENS pavadinimo registracijos klaida"
@@ -344,7 +344,7 @@
     "message": "Numatomos apdorojimo trukmės"
   },
   "ethereumPublicAddress": {
-    "message": "„QTUM“ viešasis adresas"
+    "message": "„REVO“ viešasis adresas"
   },
   "etherscanView": {
     "message": "Peržiūrėti paskyrą „Etherscan“ programoje"
@@ -454,7 +454,7 @@
     "message": "Importuoti paskyrą"
   },
   "importAccountMsg": {
-    "message": "Importuotos paskyros nebus susietos su pirmiau sukurta „Qnekt“ paskyros atkūrimo fraze. Sužinokite daugiau apie importuotas paskyras"
+    "message": "Importuotos paskyros nebus susietos su pirmiau sukurta „RevoMask“ paskyros atkūrimo fraze. Sužinokite daugiau apie importuotas paskyras"
   },
   "importAccountSeedPhrase": {
     "message": "Importuoti paskyrą su atkūrimo fraze"
@@ -540,7 +540,7 @@
     "message": "Atsijungti"
   },
   "mainnet": {
-    "message": "Pagrindinis „QTUM“ tinklas"
+    "message": "Pagrindinis „REVO“ tinklas"
   },
   "max": {
     "message": "Maks."
@@ -555,10 +555,10 @@
     "message": "Pranešimas"
   },
   "metamaskDescription": {
-    "message": "Prijungiame jus prie „QTUM“ ir decentralizuotojo žiniatinklio."
+    "message": "Prijungiame jus prie „REVO“ ir decentralizuotojo žiniatinklio."
   },
   "metamaskVersion": {
-    "message": "„Qnekt“ versija"
+    "message": "„RevoMask“ versija"
   },
   "mustSelectOne": {
     "message": "Turite pasirinkti bent 1 žetoną."
@@ -601,8 +601,8 @@
   "newPassword": {
     "message": "Naujas slaptažodis (bent 8 ženklai)"
   },
-  "newToQnekt": {
-    "message": "Tik pradedate naudotis „Qnekt“?"
+  "newToRevoMask": {
+    "message": "Tik pradedate naudotis „RevoMask“?"
   },
   "newTotal": {
     "message": "Nauja bendra suma"
@@ -656,7 +656,7 @@
     "message": "Dalyvaukite „MetaMetrics“"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Dalyvaukite „MetaMetrics“ ir padėkite mums tobulinti „Qnekt“"
+    "message": "Dalyvaukite „MetaMetrics“ ir padėkite mums tobulinti „RevoMask“"
   },
   "password": {
     "message": "Slaptažodis"
@@ -925,16 +925,16 @@
     "message": "Pasirūpinkite, kad jums nuskaitant šį kodą niekas nežiūrėtų į jūsų ekraną."
   },
   "syncWithMobileComplete": {
-    "message": "Jūsų duomenys sėkmingai sinchronizuoti. Mėgaukitės „Qnekt“ mobiliąja programa! "
+    "message": "Jūsų duomenys sėkmingai sinchronizuoti. Mėgaukitės „RevoMask“ mobiliąja programa! "
   },
   "syncWithMobileDesc": {
-    "message": "Galite sinchronizuoti paskyrą ir informaciją su savo mobiliuoju įrenginiu. Atverkite „Qnekt“ mobiliąją programą, eikite į „Nuostatos“ ir palieskite „Sinchronizuoti iš naršyklės plėtinio“"
+    "message": "Galite sinchronizuoti paskyrą ir informaciją su savo mobiliuoju įrenginiu. Atverkite „RevoMask“ mobiliąją programą, eikite į „Nuostatos“ ir palieskite „Sinchronizuoti iš naršyklės plėtinio“"
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Jeigu „Qnekt“ mobiliąją programą atveriate tik pirmą kartą, tiesiog sekite veiksmus telefone."
+    "message": "Jeigu „RevoMask“ mobiliąją programą atveriate tik pirmą kartą, tiesiog sekite veiksmus telefone."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Nuskaitykite šį kodą su savo „Qnekt“ mobiliąja programa"
+    "message": "Nuskaitykite šį kodą su savo „RevoMask“ mobiliąja programa"
   },
   "syncWithMobileTitle": {
     "message": "Sinchronizuoti su mobiliuoju"
@@ -1025,7 +1025,7 @@
     "message": "Bandyti dar kartą"
   },
   "typePassword": {
-    "message": "Įveskite savo „Qnekt“ slaptažodį"
+    "message": "Įveskite savo „RevoMask“ slaptažodį"
   },
   "unapproved": {
     "message": "Nepatvirtinta"
@@ -1076,7 +1076,7 @@
     "message": "Apsilankykite mūsų svetainėje"
   },
   "welcome": {
-    "message": "Sveiki, tai „Qnekt“"
+    "message": "Sveiki, tai „RevoMask“"
   },
   "welcomeBack": {
     "message": "Sveiki sugrįžę!"

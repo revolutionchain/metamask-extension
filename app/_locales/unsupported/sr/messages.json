@@ -33,7 +33,7 @@
     "message": "dnevnik aktivnosti"
   },
   "addAcquiredTokens": {
-    "message": "Dodajte stečene tokene koristeći Qnekt."
+    "message": "Dodajte stečene tokene koristeći RevoMask."
   },
   "addAlias": {
     "message": "Dodaj pseudonim"
@@ -57,19 +57,19 @@
     "message": "Iznos"
   },
   "appDescription": {
-    "message": "QTUM novčanik u vašem pregledaču",
+    "message": "REVO novčanik u vašem pregledaču",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Tajmer za automatsko odjavljivanje (u minutama)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Podesite vreme mirovanja u minutima pre nego što se Qnekt automatski odjavi. "
+    "message": "Podesite vreme mirovanja u minutima pre nego što se RevoMask automatski odjavi. "
   },
   "average": {
     "message": "Prosečno"
@@ -109,7 +109,7 @@
     "message": "Povratak na Sve"
   },
   "backupApprovalInfo": {
-    "message": "Potreban je tajni kôd za oporavak vašeg novčanika u slučaju da izgubite uređaj, zaboravite lozinku, morate ponovo da instalirate Qnekt ili želite da pristupite novčaniku sa drugog uređaja."
+    "message": "Potreban je tajni kôd za oporavak vašeg novčanika u slučaju da izgubite uređaj, zaboravite lozinku, morate ponovo da instalirate RevoMask ili želite da pristupite novčaniku sa drugog uređaja."
   },
   "backupApprovalNotice": {
     "message": "Napravite rezervnu kopiju tajnog kôda za oporavak da bi vaš novčanik i sredstva bili bezbedni."
@@ -140,7 +140,7 @@
     "message": "Kupite $1 preko servisa Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre vam dozvoljava da koristite kreditnu karticu kako biste deponovali $1 pravo na vaš Qnekt nalog."
+    "message": "Wyre vam dozvoljava da koristite kreditnu karticu kako biste deponovali $1 pravo na vaš RevoMask nalog."
   },
   "bytes": {
     "message": "Bajtovi"
@@ -155,7 +155,7 @@
     "message": "Otkazano"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Da biste se povezali sa Vašim hardverskim novčanikom morate da koristite Qnekt na Google Chrome-u."
+    "message": "Da biste se povezali sa Vašim hardverskim novčanikom morate da koristite RevoMask na Google Chrome-u."
   },
   "clickToRevealSeed": {
     "message": "Kliknite ovde kako biste otkrili tajne reči"
@@ -194,7 +194,7 @@
     "message": "Povezuje se na test mrežu Kovan"
   },
   "connectingToMainnet": {
-    "message": "Povezuje se na glavnu QTUM mrežu"
+    "message": "Povezuje se na glavnu REVO mrežu"
   },
   "connectingToRinkeby": {
     "message": "Poezivanje na Rinkeby Test mrežu"
@@ -314,19 +314,19 @@
     "message": "Nikada ne delite frazu ni sa kim."
   },
   "endOfFlowMessage5": {
-    "message": "Čuvajte se pecanja (krađe podataka)! Qnekt nikad neće spontano tražiti vašu šifru za oporavak naloga (seed phrase)."
+    "message": "Čuvajte se pecanja (krađe podataka)! RevoMask nikad neće spontano tražiti vašu šifru za oporavak naloga (seed phrase)."
   },
   "endOfFlowMessage6": {
     "message": "Ako treba ponovo da izradite rezervnu kopiju svoje početne fraze, možete je pronaći u Postavke -> Bezbednost."
   },
   "endOfFlowMessage8": {
-    "message": "Qnekt ne može da oporavi vašu početnu frazu. Saznajte više."
+    "message": "RevoMask ne može da oporavi vašu početnu frazu. Saznajte više."
   },
   "endOfFlowMessage9": {
     "message": "Saznajte više."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS ime nije nađeno na trenutnoj mreži. Probajte da se prebacite na glavnu QTUM mrežu."
+    "message": "ENS ime nije nađeno na trenutnoj mreži. Probajte da se prebacite na glavnu REVO mrežu."
   },
   "ensRegistrationError": {
     "message": "Greška u registraciji ENS imena."
@@ -341,7 +341,7 @@
     "message": "Procenjeno vreme za obradu"
   },
   "ethereumPublicAddress": {
-    "message": "QTUM javna adresa"
+    "message": "REVO javna adresa"
   },
   "etherscanView": {
     "message": "Pogledajte račun na Etherscan-u"
@@ -425,7 +425,7 @@
     "message": "Povežite hardverski novčanik"
   },
   "hardwareWalletsMsg": {
-    "message": "Izaberite hardverski novčanik koji biste voleli da koristite sa Qnekt-om"
+    "message": "Izaberite hardverski novčanik koji biste voleli da koristite sa RevoMask-om"
   },
   "here": {
     "message": "ovde",
@@ -451,7 +451,7 @@
     "message": "Uvezite nalog"
   },
   "importAccountMsg": {
-    "message": "Uvezeni nalozi neće biti povezani sa početnom frazom koju ste prvobitno kreirali za Qnekt nalog. Saznajte više o uvezenim nalozima."
+    "message": "Uvezeni nalozi neće biti povezani sa početnom frazom koju ste prvobitno kreirali za RevoMask nalog. Saznajte više o uvezenim nalozima."
   },
   "importAccountSeedPhrase": {
     "message": "Uvezi račun sa frazom početnih vrednosti"
@@ -534,7 +534,7 @@
     "message": "Odjavi se"
   },
   "mainnet": {
-    "message": "Glavna QTUM mreža"
+    "message": "Glavna REVO mreža"
   },
   "max": {
     "message": "Maksimum"
@@ -546,10 +546,10 @@
     "message": "Poruka"
   },
   "metamaskDescription": {
-    "message": "Povezivanje na QTUM i decentralizovani veb."
+    "message": "Povezivanje na REVO i decentralizovani veb."
   },
   "metamaskVersion": {
-    "message": "Qnekt verzija"
+    "message": "RevoMask verzija"
   },
   "mustSelectOne": {
     "message": "Morate izabrati najmanje 1 token."
@@ -592,8 +592,8 @@
   "newPassword": {
     "message": "Nova lozinka (minimalno 8 karaktera)"
   },
-  "newToQnekt": {
-    "message": "Novi ste u Qnekt-u?"
+  "newToRevoMask": {
+    "message": "Novi ste u RevoMask-u?"
   },
   "newTotal": {
     "message": "Novi zbir"
@@ -647,7 +647,7 @@
     "message": "Učestvujte u MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Učestvujte u MetaMetrics da biste nam pomogli da poboljšamo Qnekt."
+    "message": "Učestvujte u MetaMetrics da biste nam pomogli da poboljšamo RevoMask."
   },
   "password": {
     "message": "Лозинка"
@@ -916,16 +916,16 @@
     "message": "Obratite pažnju da niko drugi ne gleda u vaš ekran kad skenirate ovaj kod"
   },
   "syncWithMobileComplete": {
-    "message": "Vaši podaci su uspešno sinhronizovani. Uživajte u mobilnoj aplikaciji Qnekt!"
+    "message": "Vaši podaci su uspešno sinhronizovani. Uživajte u mobilnoj aplikaciji RevoMask!"
   },
   "syncWithMobileDesc": {
-    "message": "Možete sinhronizovati vaše naloge i informacije sa svojim mobilnim uređajem. Otvorite mobilnu aplikaciju Qnekt, idite na \"Podešavanja\" i pritisnite \"Sinhronizuj iz ekstenzije za pregledač\""
+    "message": "Možete sinhronizovati vaše naloge i informacije sa svojim mobilnim uređajem. Otvorite mobilnu aplikaciju RevoMask, idite na \"Podešavanja\" i pritisnite \"Sinhronizuj iz ekstenzije za pregledač\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Ako prvi put otvorite aplikaciju Qnekt Mobile, samo sledite korake u svom telefonu."
+    "message": "Ako prvi put otvorite aplikaciju RevoMask Mobile, samo sledite korake u svom telefonu."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Skenirajte ovaj kod uz pomoć svoje Qnekt mobilne aplikacije"
+    "message": "Skenirajte ovaj kod uz pomoć svoje RevoMask mobilne aplikacije"
   },
   "syncWithMobileTitle": {
     "message": "Sinhronizujte sa mobilnim uređajem"
@@ -1010,7 +1010,7 @@
     "message": "Пробај поново"
   },
   "typePassword": {
-    "message": "Ukucajte svoju Qnekt šifru"
+    "message": "Ukucajte svoju RevoMask šifru"
   },
   "unapproved": {
     "message": "Neodobren"
@@ -1061,7 +1061,7 @@
     "message": "Posetite našu veb lokaciju"
   },
   "welcome": {
-    "message": "Dobro došli na Qnekt"
+    "message": "Dobro došli na RevoMask"
   },
   "welcomeBack": {
     "message": "Dobro došli nazad!"

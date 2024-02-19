@@ -33,7 +33,7 @@
     "message": "tevékenységi napló"
   },
   "addAcquiredTokens": {
-    "message": "Adja hozzá Qnekt-kal a kapott érméket"
+    "message": "Adja hozzá RevoMask-kal a kapott érméket"
   },
   "addAlias": {
     "message": "Álnév hozzáadása"
@@ -57,19 +57,19 @@
     "message": "Összeg"
   },
   "appDescription": {
-    "message": "QTUM tárca a böngészőjében",
+    "message": "REVO tárca a böngészőjében",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Automatikus kijelentkezés időzítő (perc)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Adja meg a Qnekt automatikus kijelentkezéséig tartó tétlen állapot idejét percekben "
+    "message": "Adja meg a RevoMask automatikus kijelentkezéséig tartó tétlen állapot idejét percekben "
   },
   "average": {
     "message": "Átlag"
@@ -109,7 +109,7 @@
     "message": "Vissza az összeshez"
   },
   "backupApprovalInfo": {
-    "message": "Ez a titkos kód a tárca helyreállításához szükséges, ha elveszíti eszközét, elfelejti jelszavát, újra kell telepítenie a Qnekt alkalmazást, vagy ha a tárcájához egy másik eszközről szeretne hozzáférni."
+    "message": "Ez a titkos kód a tárca helyreállításához szükséges, ha elveszíti eszközét, elfelejti jelszavát, újra kell telepítenie a RevoMask alkalmazást, vagy ha a tárcájához egy másik eszközről szeretne hozzáférni."
   },
   "backupApprovalNotice": {
     "message": "Készíts biztonsági másolatot titkos helyreállítási kódodról, hogy pénztárcád és pénzalapod biztosítva legyen."
@@ -158,7 +158,7 @@
     "message": "Lánc azonosítója"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "A Qnekt-ot Google Chrome-mal kell használnia a Hardveres pénztárcához való csatlakozáshoz."
+    "message": "A RevoMask-ot Google Chrome-mal kell használnia a Hardveres pénztárcához való csatlakozáshoz."
   },
   "clickToRevealSeed": {
     "message": "Kattintson ide a titkos szavak megjelenítéséhez"
@@ -197,7 +197,7 @@
     "message": "Csatlakozás a Kovan teszthálózathoz"
   },
   "connectingToMainnet": {
-    "message": "Csatlakozás a fő QTUM hálózathoz"
+    "message": "Csatlakozás a fő REVO hálózathoz"
   },
   "connectingToRinkeby": {
     "message": "Kapcsolódás a Rinkeby Teszthálózathoz"
@@ -317,19 +317,19 @@
     "message": "Soha ne ossza meg senkivel a mondatot."
   },
   "endOfFlowMessage5": {
-    "message": "Vigyázzon az adathalászokkal! A Qnekt soha nem kéri spontán módon a seed mondatot."
+    "message": "Vigyázzon az adathalászokkal! A RevoMask soha nem kéri spontán módon a seed mondatot."
   },
   "endOfFlowMessage6": {
     "message": "Ha ismét biztonsági másolatot kell készítenie a seed mondatról, megtalálja azt a Beállítások -> Biztonság menüben."
   },
   "endOfFlowMessage8": {
-    "message": "A Qnekt nem tudta helyreállítani a seed mondatot. Tudjon meg többet."
+    "message": "A RevoMask nem tudta helyreállítani a seed mondatot. Tudjon meg többet."
   },
   "endOfFlowMessage9": {
     "message": "Bővebb információk."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS név nem található a jelenlegi hálózaton. Próbálj váltani QTUM főhálózatra."
+    "message": "ENS név nem található a jelenlegi hálózaton. Próbálj váltani REVO főhálózatra."
   },
   "ensRegistrationError": {
     "message": "Hiba történt az ENS név regisztrációjakor"
@@ -344,7 +344,7 @@
     "message": "Becsült feldolgozási idők"
   },
   "ethereumPublicAddress": {
-    "message": "QTUM nyilvános címe"
+    "message": "REVO nyilvános címe"
   },
   "etherscanView": {
     "message": "Fiók megtekintése Etherscanen"
@@ -424,7 +424,7 @@
     "message": "Hardveres tárca csatlakoztatása"
   },
   "hardwareWalletsMsg": {
-    "message": "Válassza ki a Qnekt-kal használni kívánt hardveres pénztárcát"
+    "message": "Válassza ki a RevoMask-kal használni kívánt hardveres pénztárcát"
   },
   "here": {
     "message": "itt",
@@ -450,7 +450,7 @@
     "message": "Fiók importálása"
   },
   "importAccountMsg": {
-    "message": "Az importált fiókot nem társítjuk az eredetileg létrehozott Qnekt-fiók seed mondatához. További információ az importált fiókokról"
+    "message": "Az importált fiókot nem társítjuk az eredetileg létrehozott RevoMask-fiók seed mondatához. További információ az importált fiókokról"
   },
   "importAccountSeedPhrase": {
     "message": "Fiók importálása seed mondat segítségével"
@@ -533,7 +533,7 @@
     "message": "Kilépés"
   },
   "mainnet": {
-    "message": "Fő QTUM hálózat"
+    "message": "Fő REVO hálózat"
   },
   "max": {
     "message": "Maximum"
@@ -548,10 +548,10 @@
     "message": "Üzenet"
   },
   "metamaskDescription": {
-    "message": "Csatlakozás az QTUMhoz és a decentralizált hálózathoz."
+    "message": "Csatlakozás az REVOhoz és a decentralizált hálózathoz."
   },
   "metamaskVersion": {
-    "message": "Qnekt verzió"
+    "message": "RevoMask verzió"
   },
   "mustSelectOne": {
     "message": "Legalább 1 tokent ki kell választania."
@@ -594,8 +594,8 @@
   "newPassword": {
     "message": "Új jelszó (minimum 8 karakter)"
   },
-  "newToQnekt": {
-    "message": "Új a Qnekt-on?"
+  "newToRevoMask": {
+    "message": "Új a RevoMask-on?"
   },
   "newTotal": {
     "message": "Új végösszeg"
@@ -649,7 +649,7 @@
     "message": "Vegyen részt a MetaMetrics-ben"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Vegyél részt a MetaMetricsben, hogy segíts a Qnekt fejlesztésében."
+    "message": "Vegyél részt a MetaMetricsben, hogy segíts a RevoMask fejlesztésében."
   },
   "password": {
     "message": "Jelszó"
@@ -918,16 +918,16 @@
     "message": "Győződjön meg arról, hogy senki nem látja a képernyőt, amikor beolvassa ezt a kódot"
   },
   "syncWithMobileComplete": {
-    "message": "Adatai szinkronizálása sikerült. Élvezze a Qnekt mobilalkalmazást!"
+    "message": "Adatai szinkronizálása sikerült. Élvezze a RevoMask mobilalkalmazást!"
   },
   "syncWithMobileDesc": {
-    "message": "Szinkronizálhatja fiókjait és adatait a mobilkészülékkel. Nyissa meg a Qnekt mobilalkalmazást, lépjen a \"Beállítások\" elemre, majd koppintson a \"Szinkronizálás a böngésző bővítményéből\" elemre."
+    "message": "Szinkronizálhatja fiókjait és adatait a mobilkészülékkel. Nyissa meg a RevoMask mobilalkalmazást, lépjen a \"Beállítások\" elemre, majd koppintson a \"Szinkronizálás a böngésző bővítményéből\" elemre."
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Ha most először nyitja meg a Qnekt mobilalkalmazást, kövesse a telefonon megadott lépéseket."
+    "message": "Ha most először nyitja meg a RevoMask mobilalkalmazást, kövesse a telefonon megadott lépéseket."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Olvasd be ezt a kódot Qnekt mobilalkalmazásoddal"
+    "message": "Olvasd be ezt a kódot RevoMask mobilalkalmazásoddal"
   },
   "syncWithMobileTitle": {
     "message": "Szinkronizálás mobillal"
@@ -1015,7 +1015,7 @@
     "message": "Újra"
   },
   "typePassword": {
-    "message": "Írd be Qnekt jelszavadat"
+    "message": "Írd be RevoMask jelszavadat"
   },
   "unapproved": {
     "message": "Jóvá nem hagyott"
@@ -1066,7 +1066,7 @@
     "message": "Látogass el weboldalunkra"
   },
   "welcome": {
-    "message": "Üdvözöljük a Qnektban"
+    "message": "Üdvözöljük a RevoMaskban"
   },
   "welcomeBack": {
     "message": "Üdvözöljük újra!"

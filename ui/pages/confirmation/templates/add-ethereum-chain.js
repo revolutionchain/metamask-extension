@@ -103,20 +103,20 @@ const MISMATCHED_NETWORK_RPC = {
 };
 
 const mainnet = {
-  "name": "QTUM Mainnet",
-  "chain": "QTUM",
-  "icon": "qtum",
+  "name": "REVO Mainnet",
+  "chain": "REVO",
+  "icon": "revo",
   "rpc": [
-    "https://mainnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
+    "https://mainnet.qnode.revo.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
   ],
   "faucets": [],
   "nativeCurrency": {
     "name": "Quantum",
-    "symbol": "QTUM",
+    "symbol": "REVO",
     "decimals": 9
   },
-  "infoURL": "https://qtum.info",
-  "shortName": "qtum",
+  "infoURL": "https://revo.info",
+  "shortName": "revo",
   "chainId": 71,
   "networkId": 71,
   "slip44": 88,
@@ -132,20 +132,20 @@ const mainnet = {
   ]
 };
 const testnet = {
-  "name": "QTUM Testnet",
-  "chain": "QTUM",
-  "icon": "qtum",
+  "name": "REVO Testnet",
+  "chain": "REVO",
+  "icon": "revo",
   "rpc": [
-    "https://testnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
+    "https://testnet.qnode.revo.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN"
   ],
   "faucets": [],
   "nativeCurrency": {
     "name": "Quantum",
-    "symbol": "QTUM",
+    "symbol": "REVO",
     "decimals": 9
   },
-  "infoURL": "https://qtum.info",
-  "shortName": "qtum",
+  "infoURL": "https://revo.info",
+  "shortName": "revo",
   "chainId": 8889,
   "networkId": 8889,
   "slip44": 88,

@@ -7,8 +7,8 @@ import {
   clearAccountDetails,
 } from '../../../../store/actions';
 import {
-  getQtumAddress,
-  isQtumAddressShow,
+  getRevoAddress,
+  isRevoAddressShow,
 } from '../../../../ducks/metamask/metamask';
 import { getSelectedIdentity } from '../../../../selectors';
 import ExportPrivateKeyModal from './export-private-key-modal.component';
@@ -27,8 +27,8 @@ function mapStateToPropsFactory() {
       privateKey: state.appState.accountDetail.privateKey,
       selectedIdentity,
       previousModalState: state.appState.modal.previousModalState.name,
-      qtumAddress: getQtumAddress(state, selectedIdentity.address),
-      isQtumAddressShow: isQtumAddressShow(state),
+      revoAddress: getRevoAddress(state, selectedIdentity.address),
+      isRevoAddressShow: isRevoAddressShow(state),
     };
   };
 }

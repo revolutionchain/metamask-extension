@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { QtumWallet, hashMessage } from 'qtum-ethers-wrapper';
+import { RevoWallet, hashMessage } from 'revo-ethers-wrapper';
 import pump from 'pump';
 import { ObservableStore } from '@metamask/obs-store';
 import { storeAsStream } from '@metamask/obs-store/dist/asStream';
@@ -156,7 +156,7 @@ import {
 import createRPCMethodTrackingMiddleware from './lib/createRPCMethodTrackingMiddleware';
 
 import BigNumber from 'bignumber.js';
-import qtum from 'qtumjs-lib';
+import revo from 'revojs-lib';
 import wif from 'wif';
 import { signTypedDataLegacy, typedSignatureHash, TypedDataUtils, normalize } from 'eth-sig-util';
 import { WIFKeyring } from './controllers/WIFKeyring';
@@ -458,7 +458,7 @@ export default class MetamaskController extends EventEmitter {
                 if (err) {
                     reject(err);
                 } else {
-                    const hasBug = result === "QTUM ETHTestRPC/ethereum-js";
+                    const hasBug = result === "REVO ETHTestRPC/ethereum-js";
                     self.txController.hasBug = hasBug;
                     gasFeeController._fetchEthGasPriceEstimate(ethQuery)
                         .then((result) => {
@@ -620,7 +620,7 @@ export default class MetamaskController extends EventEmitter {
     this.keyringController.on("update", async () => {
       const accounts = await this.keyringController.getAccounts();
       if (accounts.length > 0) {
-        this.updateQtumAccounts(accounts);
+        this.updateRevoAccounts(accounts);
       }
     })
     this.keyringController.memStore.subscribe((state) =>
@@ -1000,9 +1000,9 @@ export default class MetamaskController extends EventEmitter {
       const { ticker } = this.networkController.getProviderConfig();
       try {
         await this.currencyRateController.setNativeCurrency(ticker);
-        const qtumAccounts = await this.preferencesController.getQtumAddresses();
-        Object.keys(qtumAccounts).forEach((item) => {
-          this.setQtumAddressFromHexAddress(item);
+        const revoAccounts = await this.preferencesController.getRevoAddresses();
+        Object.keys(revoAccounts).forEach((item) => {
+          this.setRevoAddressFromHexAddress(item);
         });
       } catch (error) {
         // TODO: Handle failure to get conversion rate more gracefully
@@ -2002,13 +2002,13 @@ export default class MetamaskController extends EventEmitter {
           smartTransactionsController,
         ),
 
-      // QTUM
-      // set native currency to QTUM
+      // REVO
+      // set native currency to REVO
       setNativeCurrency: nodeify(this.setNativeCurrency, this),
-      // get Hex address from QTUM
-      getHexAddressFromQtum: nodeify(this.getHexAddressFromQtum, this),
-      // get qtum address from hex
-      getQtumAddressFromHex: nodeify(this.getQtumAddressFromHex, this),
+      // get Hex address from REVO
+      getHexAddressFromRevo: nodeify(this.getHexAddressFromRevo, this),
+      // get revo address from hex
+      getRevoAddressFromHex: nodeify(this.getRevoAddressFromHex, this),
 
       // MetaMetrics
       trackMetaMetricsEvent: metaMetricsController.trackEvent.bind(
@@ -2134,7 +2134,7 @@ export default class MetamaskController extends EventEmitter {
         this.preferencesController.setAddresses(addresses);
         this.selectFirstIdentity();
 
-        await this.updateQtumAccounts(addresses);
+        await this.updateRevoAccounts(addresses);
       }
 
       return vault;
@@ -2281,7 +2281,7 @@ export default class MetamaskController extends EventEmitter {
       this.preferencesController.setAddresses(accounts);
       this.selectFirstIdentity();
 
-      await this.updateQtumAccounts(accounts);
+      await this.updateRevoAccounts(accounts);
 
       return vault;
     } finally {
@@ -2475,7 +2475,7 @@ export default class MetamaskController extends EventEmitter {
    * @param {string} address The user's address
    */
   async exportAccount(address) {
-    await this.MonekyPatchQTUMExportAccount();
+    await this.MonekyPatchREVOExportAccount();
     return await this.keyringController.exportAccount(address);
   }
 
@@ -2775,7 +2775,7 @@ export default class MetamaskController extends EventEmitter {
         }
       });
 
-      await this.updateQtumAccounts(newAccounts);
+      await this.updateRevoAccounts(newAccounts);
 
       const { identities } = this.preferencesController.store.getState();
       return { ...keyState, identities };
@@ -2958,7 +2958,7 @@ export default class MetamaskController extends EventEmitter {
     this.preferencesController.setAddresses(allAccounts);
     // set new account as selected
     await this.preferencesController.setSelectedAddress(accounts[0]);
-    await this.updateQtumAccounts(accounts); 
+    await this.updateRevoAccounts(accounts); 
   }
 
   // ---------------------------------------------------------------------------
@@ -4477,7 +4477,7 @@ export default class MetamaskController extends EventEmitter {
    * A method for setting a native currency.
    */
   setNativeCurrency() {
-    this.monkeyPatchQTUMSetCurrency();
+    this.monkeyPatchREVOSetCurrency();
   }
 
   /**
@@ -4571,21 +4571,21 @@ export default class MetamaskController extends EventEmitter {
   }
 
   /**
-   * A method for getting hex address from qtum address.
+   * A method for getting hex address from revo address.
    *
-   * @param _qtumAddress
+   * @param _revoAddress
    */
-  async getHexAddressFromQtum(_qtumAddress) {
-    return await this.getHexAddressFromQtumAddress(_qtumAddress);
+  async getHexAddressFromRevo(_revoAddress) {
+    return await this.getHexAddressFromRevoAddress(_revoAddress);
   }
 
   /**
-   * A method for getting qtum address from hex address.
+   * A method for getting revo address from hex address.
    *
-   * @param _qtumAddress
+   * @param _revoAddress
    */
-  async getQtumAddressFromHex(_qtumAddress) {
-    return await this.getQtumAddressFromHexAddress(_qtumAddress);
+  async getRevoAddressFromHex(_revoAddress) {
+    return await this.getRevoAddressFromHexAddress(_revoAddress);
   }
 }
 
@@ -4600,9 +4600,9 @@ export default class MetamaskController extends EventEmitter {
   MetamaskController.prototype[originalMethod] =
     MetamaskController.prototype[methodToOverload];
   MetamaskController.prototype[methodToOverload] = function () {
-    this.monkeyPatchQTUMAddressGeneration();
-    this.monkeyPatchQTUMAddressImport();
-    this.MonekyPatchQTUMExportAccount();
+    this.monkeyPatchREVOAddressGeneration();
+    this.monkeyPatchREVOAddressImport();
+    this.MonekyPatchREVOExportAccount();
     return this[originalMethod].apply(this, arguments);
   };
 });
@@ -4610,13 +4610,13 @@ export default class MetamaskController extends EventEmitter {
 MetamaskController.prototype._addNewKeyring =
   MetamaskController.prototype.addNewKeyring;
 MetamaskController.prototype.addNewKeyring = function (p, o) {
-  // this.monkeyPatchQTUMAddNewKeyring();
-  this.monkeyPatchQTUMAddressImport();
-  this.MonekyPatchQTUMExportAccount();
+  // this.monkeyPatchREVOAddNewKeyring();
+  this.monkeyPatchREVOAddressImport();
+  this.MonekyPatchREVOExportAccount();
   return this._addNewKeyring.apply(this, arguments);
 };
 
-MetamaskController.prototype.monkeyPatchQTUMAddressGeneration = function (
+MetamaskController.prototype.monkeyPatchREVOAddressGeneration = function (
   password,
 ) {
   if (this._monkeyPatched) {
@@ -4633,25 +4633,25 @@ MetamaskController.prototype.monkeyPatchQTUMAddressGeneration = function (
     const { type } = keyringType;
     switch (type) {
       case 'HD Key Tree':
-        console.log('monkey patching QTUM address generation into hd key tree');
+        console.log('monkey patching REVO address generation into hd key tree');
         this.monkeyPatchHDKeyringAddNewKeyring();
         this.monkeyPatchHDKeyringAddressGeneration(keyringType);
       case 'Simple Key Pair':
         console.log(
-          'monkey patching QTUM address generation into simple key pair',
+          'monkey patching REVO address generation into simple key pair',
         );
         this.monkeyPatchSimpleKeyringAddressGeneration(keyringType);
       case 'WIF Key Pair':
         // nothing to do;
       default:
         console.log(
-          `QTUM address generation support for ${type} is not yet supported`,
+          `REVO address generation support for ${type} is not yet supported`,
         );
     }
   }
 };
 
-MetamaskController.prototype.monkeyPatchQTUMAddressImport = function () {
+MetamaskController.prototype.monkeyPatchREVOAddressImport = function () {
   for (let i = 0; i < this.keyringController.keyringTypes.length; i++) {
     const keyringType = this.keyringController.keyringTypes[i];
     if (keyringType.prototype.hasOwnProperty('_monkeyPatched')) {
@@ -4663,20 +4663,20 @@ MetamaskController.prototype.monkeyPatchQTUMAddressImport = function () {
     const { type } = keyringType;
     switch (type) {
       case 'HD Key Tree':
-        console.log('monkey patching QTUM address import into hd key tree');
+        console.log('monkey patching REVO address import into hd key tree');
         this.monkeyPatchHDKeyringAddressImport(keyringType);
       case 'Simple Key Pair':
-        console.log('monkey patching QTUM address import into simple key pair');
+        console.log('monkey patching REVO address import into simple key pair');
         this.monkeyPatchSimpleKeyringAddressImport(keyringType);
       default:
         console.log(
-          `QTUM address import support for ${type} is not yet supported`,
+          `REVO address import support for ${type} is not yet supported`,
         );
     }
   }
 };
 
-const qtumWalletOpts = {
+const revoWalletOpts = {
     filterDust: true,
 };
 
@@ -4707,14 +4707,14 @@ MetamaskController.prototype.monkeyPatchHDKeyringAddressGeneration = function (
 
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                if (!this._qtumWallet) {
-                    this._qtumWallet = new QtumWallet(
+                if (!this._revoWallet) {
+                    this._revoWallet = new RevoWallet(
                         `0x${this.privKey.toString('hex')}`,
-                        qtumWalletOpts,
+                        revoWalletOpts,
                     );
                 }
 
-                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
+                return Buffer.from(stripHexPrefix(this._revoWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4756,14 +4756,14 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressGeneration = functio
               }
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                if (!this._qtumWallet) {
-                    this._qtumWallet = new QtumWallet(
+                if (!this._revoWallet) {
+                    this._revoWallet = new RevoWallet(
                         `0x${this.privKey.toString('hex')}`,
-                        qtumWalletOpts,
+                        revoWalletOpts,
                     );
                 }
 
-                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
+                return Buffer.from(stripHexPrefix(this._revoWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4806,14 +4806,14 @@ MetamaskController.prototype.monkeyPatchHDKeyringAddressImport = function (
 
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                if (!this._qtumWallet) {
-                    this._qtumWallet = new QtumWallet(
+                if (!this._revoWallet) {
+                    this._revoWallet = new RevoWallet(
                         `0x${this.privKey.toString('hex')}`,
-                        qtumWalletOpts,
+                        revoWalletOpts,
                     );
                 }
 
-                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
+                return Buffer.from(stripHexPrefix(this._revoWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4855,14 +4855,14 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressImport = function (
               }
               wallet.__proto__._getAddress = wallet.__proto__.getAddress;
               wallet.__proto__.getAddress = function () {
-                if (!this._qtumWallet) {
-                    this._qtumWallet = new QtumWallet(
+                if (!this._revoWallet) {
+                    this._revoWallet = new RevoWallet(
                         `0x${this.privKey.toString('hex')}`,
-                        qtumWalletOpts,
+                        revoWalletOpts,
                     );
                 }
 
-                return Buffer.from(stripHexPrefix(this._qtumWallet.address), 'hex');
+                return Buffer.from(stripHexPrefix(this._revoWallet.address), 'hex');
               };
             } catch (e) {
               console.error(e);
@@ -4878,7 +4878,7 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringAddressImport = function (
   keyringType._monkeyPatched = true;
 };
 
-MetamaskController.prototype.monkeyPatchQTUMSetCurrency = async function () {
+MetamaskController.prototype.monkeyPatchREVOSetCurrency = async function () {
   const { ticker } = this.networkController.getProviderConfig();
   try {
     await this.currencyRateController.setNativeCurrency(ticker);
@@ -4888,12 +4888,12 @@ MetamaskController.prototype.monkeyPatchQTUMSetCurrency = async function () {
   }
 };
 
-MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
+MetamaskController.prototype.monkeyPatchREVOGetBalance = async function (
   _address,
 ) {
   const { rpcUrl } = this.networkController.getProviderConfig();
   try {
-    const balances = await jsonRpcRequest(rpcUrl, 'qtum_getUTXOs', [
+    const balances = await jsonRpcRequest(rpcUrl, 'revo_getUTXOs', [
       _address,
       'all',
     ]);
@@ -4920,32 +4920,32 @@ MetamaskController.prototype.monkeyPatchQTUMGetBalance = async function (
   }
 };
 
-MetamaskController.prototype.updateQtumAccounts = async function (accounts) {
+MetamaskController.prototype.updateRevoAccounts = async function (accounts) {
   if (accounts.length > 0) {
-    await this.setQtumBalances(accounts[0]);
+    await this.setRevoBalances(accounts[0]);
   }
   for (let i = 0; i < accounts.length; i++) {
-    await this.setQtumAddressFromHexAddress(accounts[i]);
+    await this.setRevoAddressFromHexAddress(accounts[i]);
   }
 }
 
-MetamaskController.prototype.setQtumBalances = async function (account) {
+MetamaskController.prototype.setRevoBalances = async function (account) {
   const { ticker } = this.networkController.getProviderConfig();
-  if (ticker === 'QTUM') {
-    const spendableQtumBalance = await this.monkeyPatchQTUMGetBalance(
+  if (ticker === 'RVO') {
+    const spendableRevoBalance = await this.monkeyPatchREVOGetBalance(
       account,
     );
-    await this.preferencesController.setQtumBalances(account, {spendableBalance: spendableQtumBalance});
+    await this.preferencesController.setRevoBalances(account, {spendableBalance: spendableRevoBalance});
   }
 }
 
-MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_address) {
+MetamaskController.prototype.getRevoAddressFromHexAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
   if (!_address.startsWith("0x")) {
     return _address;
   }
   try {
-    if (ticker === 'QTUM') {
+    if (ticker === 'RVO') {
       const chainId = await this.networkController.getCurrentChainId();
       let version;
       switch (chainId) {
@@ -4963,7 +4963,7 @@ MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_add
           break;
       }
       const hash = Buffer.from(_address.slice(2), 'hex');
-      return qtum.address.toBase58Check(hash, version);
+      return revo.address.toBase58Check(hash, version);
     } else {
       return '0x00';
     }
@@ -4972,24 +4972,24 @@ MetamaskController.prototype.getQtumAddressFromHexAddress = async function (_add
   }
 }
 
-MetamaskController.prototype.setQtumAddressFromHexAddress = async function (_address) {
+MetamaskController.prototype.setRevoAddressFromHexAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
-  if (ticker === 'QTUM') {
-    const qtumAddress = await this.getQtumAddressFromHexAddress(
+  if (ticker === 'RVO') {
+    const revoAddress = await this.getRevoAddressFromHexAddress(
       _address,
     );
-    await this.preferencesController.setQtumAddress(_address, qtumAddress);
+    await this.preferencesController.setRevoAddress(_address, revoAddress);
   }
 }
 
-MetamaskController.prototype.getHexAddressFromQtumAddress = async function (_address) {
+MetamaskController.prototype.getHexAddressFromRevoAddress = async function (_address) {
   const { ticker } = this.networkController.getProviderConfig();
   try {
-    if (ticker === 'QTUM') {
+    if (ticker === 'RVO') {
       if (_address === undefined) {
         return 'Invalid Address'
       }
-      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      const hexAddress = revo.address.fromBase58Check(_address).hash.toString('hex')
       return `0x${hexAddress}`
     } else {
       return '0x00';
@@ -5001,7 +5001,7 @@ MetamaskController.prototype.getHexAddressFromQtumAddress = async function (_add
 }
 
 MetamaskController.prototype.monkeyPatchHDKeyringAddNewKeyring = function () {
-  const QTUM_BIP44_PATH = `m/44'/88'/0'/0`;
+  const REVO_BIP44_PATH = `m/44'/88'/0'/0`;
   if (this.keyringController.__proto__.hasOwnProperty('_addNewKeyring')) {
     return;
   }
@@ -5019,13 +5019,13 @@ MetamaskController.prototype.monkeyPatchHDKeyringAddNewKeyring = function () {
   }
 };
 
-MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
+MetamaskController.prototype.MonekyPatchREVOExportAccount = async function () {
   if (this.keyringController.__proto__.hasOwnProperty('_exportAccount')) {
     return;
   }
   let version;
   const { ticker } = this.networkController.getProviderConfig();
-  if (ticker === 'QTUM') {
+  if (ticker === 'RVO') {
     const chainId = await this.networkController.getCurrentChainId();
     switch (chainId) {
       case '0x51':
@@ -5050,9 +5050,9 @@ MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
     return new Promise((resolve, reject) => {
       this._exportAccount(_address)
         .then((privKey) => {
-          const wallet = new QtumWallet(
+          const wallet = new RevoWallet(
             `0x${privKey.toString('hex')}`,
-            qtumWalletOpts,
+            revoWalletOpts,
           );
           const buffer = toBuffer(wallet.privateKey);
           let wifKey = '';
@@ -5070,16 +5070,16 @@ MetamaskController.prototype.MonekyPatchQTUMExportAccount = async function () {
   };
 }
 
-MetamaskController.prototype.getHexAddressFromQtumAddress = async function (
+MetamaskController.prototype.getHexAddressFromRevoAddress = async function (
   _address
 ) {
   const { ticker } = this.networkController.getProviderConfig();
   try {
-    if (ticker === 'QTUM') {
+    if (ticker === 'RVO') {
       if (_address === undefined) {
         return 'Invalid Address';
       }
-      const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+      const hexAddress = revo.address.fromBase58Check(_address).hash.toString('hex')
       return `0x${hexAddress}`
     } else {
       return '0x00';
@@ -5092,7 +5092,7 @@ MetamaskController.prototype.getHexAddressFromQtumAddress = async function (
 }
 
 MetamaskController.prototype.monkeyPatchHDKeyringAddNewKeyring = function () {
-  const QTUM_BIP44_PATH = `m/44'/88'/0'/0`;
+  const REVO_BIP44_PATH = `m/44'/88'/0'/0`;
   if (this.keyringController.__proto__.hasOwnProperty('_addNewKeyring')) {
     return;
   }
@@ -5121,7 +5121,7 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignMessage = function() {
       .then(async (keyring) => {
         const message = stripHexPrefix(msgParams.data)
         const privKey = keyring.getPrivateKeyFor(address, opts);
-        const wallet = new QtumWallet(privKey, qtumWalletOpts);
+        const wallet = new RevoWallet(privKey, revoWalletOpts);
         const rawMsgSig = await (opts.btc ? wallet.signHashBtc : wallet.signHash).bind(wallet)(Buffer.from(message, "hex"));
         return Promise.resolve('0x' + rawMsgSig.toString('hex'));
       });
@@ -5139,7 +5139,7 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignPersonalMessage = funct
       .then(async (keyring) => {
         const message = stripHexPrefix(msgParams.data)
         const privKey = keyring.getPrivateKeyFor(address, opts);
-        const wallet = new QtumWallet(privKey, qtumWalletOpts);
+        const wallet = new RevoWallet(privKey, revoWalletOpts);
         const rawMsgSig = await (opts.btc ? wallet.signMessageBtc : wallet.signMessage).bind(wallet)(Buffer.from(message, "hex"));
         return Promise.resolve('0x' + rawMsgSig.toString('hex'));
       });
@@ -5159,9 +5159,9 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function
             keyringType.__proto__.signTypedData_v1 = async function(withAccount, typedData, opts = {}) {
                 const privKey = this.getPrivateKeyFor(withAccount, opts);
                 const hash = toBuffer(typedSignatureHash(typedData));
-                const wallet = new QtumWallet(
+                const wallet = new RevoWallet(
                     `0x${privKey.toString('hex')}`,
-                    qtumWalletOpts,
+                    revoWalletOpts,
                 );
                 const sig = await (opts.btc ? wallet.signHashBtc : wallet.signHash).bind(wallet)(hash);
                 return "0x" + sig.toString('hex');
@@ -5172,9 +5172,9 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function
             keyringType.__proto__._signTypedData_v3 = keyringType.__proto__.signTypedData_v3;
             keyringType.__proto__.signTypedData_v3 = async function(withAccount, typedData, opts = {}) {
                 const privKey = this.getPrivateKeyFor(withAccount, opts);
-                const wallet = new QtumWallet(
+                const wallet = new RevoWallet(
                     `0x${privKey.toString('hex')}`,
-                    qtumWalletOpts,
+                    revoWalletOpts,
                 );
                 const types = Object.assign({}, typedData.types);
                 delete types.EIP712Domain;
@@ -5188,9 +5188,9 @@ MetamaskController.prototype.monkeyPatchSimpleKeyringSignTypedMessage = function
             keyringType.__proto__._signTypedData_v4 = keyringType.__proto__.signTypedData_v4;
             keyringType.__proto__.signTypedData_v4 = async function(withAccount, typedData, opts = {}) {
                 const privKey = this.getPrivateKeyFor(withAccount, opts);
-                const wallet = new QtumWallet(
+                const wallet = new RevoWallet(
                     `0x${privKey.toString('hex')}`,
-                    qtumWalletOpts,
+                    revoWalletOpts,
                 );
                 const types = Object.assign({}, typedData.types);
                 delete types.EIP712Domain;

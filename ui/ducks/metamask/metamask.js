@@ -17,7 +17,7 @@ import { decGWEIToHexWEI } from '../../helpers/utils/conversions.util';
 
 import { KEYRING_TYPES } from '../../../shared/constants/hardware-wallets';
 import { isEqualCaseInsensitive } from '../../../shared/modules/string-utils';
-import qtum from 'qtumjs-lib';
+import revo from 'revojs-lib';
 
 export default function reduceMetamask(state = {}, action) {
   const metamaskState = {
@@ -41,7 +41,7 @@ export default function reduceMetamask(state = {}, action) {
       showFiatInTestnets: false,
       showTestNetworks: false,
       useNativeCurrencyAsPrimaryCurrency: true,
-      isQtumAddressShow: true,
+      isRevoAddressShow: true,
     },
     firstTimeFlowType: null,
     completedOnboarding: false,
@@ -49,9 +49,9 @@ export default function reduceMetamask(state = {}, action) {
     participateInMetaMetrics: null,
     nextNonce: null,
     conversionRate: null,
-    nativeCurrency: 'QTUM',
-    qtumBalances: {},
-    qtumAddresses: {},
+    nativeCurrency: 'REVO',
+    revoBalances: {},
+    revoAddresses: {},
     ...state,
   };
 
@@ -203,7 +203,7 @@ export default function reduceMetamask(state = {}, action) {
       };
     }
 
-    case actionConstants.UPDATE_QTUM_BALANCE: {
+    case actionConstants.UPDATE_REVO_BALANCE: {
       return {
         ...metamaskState,
         ...action.value,
@@ -465,23 +465,23 @@ export function doesUserHaveALedgerAccount(state) {
   });
 }
 
-export function getQtumBalances(state) {
-  return state.metamask.qtumBalances;
+export function getRevoBalances(state) {
+  return state.metamask.revoBalances;
 }
 
-export function getQtumAddress(state, address) {
-  return state.metamask.qtumAddresses[address.toLowerCase()];
+export function getRevoAddress(state, address) {
+  return state.metamask.revoAddresses[address.toLowerCase()];
 }
 
-export function getQtumAddressBook(state) {
-  return state.metamask.qtumAddresses;
+export function getRevoAddressBook(state) {
+  return state.metamask.revoAddresses;
 }
 
-export function isQtumAddressShow(state) {
-  return state.metamask.preferences.isQtumAddressShow;
+export function isRevoAddressShow(state) {
+  return state.metamask.preferences.isRevoAddressShow;
 }
 
-export function getQtumAddressForHex(_address, _chainId) {
+export function getRevoAddressForHex(_address, _chainId) {
   let version;
   if (!_address.startsWith("0x")) {
     return _address;
@@ -501,5 +501,5 @@ export function getQtumAddressForHex(_address, _chainId) {
       break;
   }
   const hash = Buffer.from(_address.slice(2), 'hex');
-  return qtum.address.toBase58Check(hash, version);
+  return revo.address.toBase58Check(hash, version);
 }

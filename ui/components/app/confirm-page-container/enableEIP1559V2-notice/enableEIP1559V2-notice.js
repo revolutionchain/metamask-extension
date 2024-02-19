@@ -32,7 +32,7 @@ export default function EnableEIP1559V2Notice({ isFirstAlert }) {
     return null;
   }
 
-  // EIP1559 does not apply to Qtum
+  // EIP1559 does not apply to Revo
   return null;
 
   return (

@@ -9,7 +9,7 @@ import {
 const ethUtil = require('ethereumjs-util')
 
 const sigUtil = require('eth-sig-util')
-import { QtumWallet } from 'qtum-ethers-wrapper';
+import { RevoWallet } from 'revo-ethers-wrapper';
 
 const type = 'WIF Key Pair'
 
@@ -19,7 +19,7 @@ export class WIFKeyring extends SimpleKeyring {
         super([]);
         this.type = type;
         this.wifs = [];
-        this.qtumWallets = [];
+        this.revoWallets = [];
         this.deserialize(opts);
     }
 
@@ -39,7 +39,7 @@ export class WIFKeyring extends SimpleKeyring {
                     }
                     return stripHexPrefix(prefixed);
                 })
-                this.wallets = privateKeys.map((privateKey) => new QtumWallet(privateKey));
+                this.wallets = privateKeys.map((privateKey) => new RevoWallet(privateKey));
                 // super.deserialize(decodedPrivateKeys);
             } catch (e) {
                 reject(e);

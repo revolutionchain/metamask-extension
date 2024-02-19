@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAccountLink } from '@metamask/etherscan-link';
 import Modal from '../../modal';
-import { addressSummary, getQtumAddressFromHex, getURLHostName } from '../../../../helpers/utils/util';
+import { addressSummary, getRevoAddressFromHex, getURLHostName } from '../../../../helpers/utils/util';
 import Identicon from '../../../ui/identicon';
 import { EVENT } from '../../../../../shared/constants/metametrics';
 import ZENDESK_URLS from '../../../../helpers/constants/zendesk-url';
@@ -57,7 +57,7 @@ export default class ConfirmRemoveAccount extends Component {
           <a
             onClick={() => {
               const accountLink = getAccountLink(
-                getQtumAddressFromHex(identity.address, chainId),
+                getRevoAddressFromHex(identity.address, chainId),
                 chainId,
                 rpcPrefs,
               );

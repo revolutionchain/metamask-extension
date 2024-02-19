@@ -1,7 +1,7 @@
 import log from 'loglevel';
 import Wallet from 'ethereumjs-wallet';
 // import * as bs58 from 'bs58check';
-import { computeAddress, QtumWallet } from 'qtum-ethers-wrapper';
+import { computeAddress, RevoWallet } from 'revo-ethers-wrapper';
 import importers from 'ethereumjs-wallet/thirdparty';
 import {
   toBuffer,

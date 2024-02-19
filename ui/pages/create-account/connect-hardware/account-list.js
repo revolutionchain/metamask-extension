@@ -6,7 +6,7 @@ import Button from '../../../components/ui/button';
 import Checkbox from '../../../components/ui/check-box';
 import Dropdown from '../../../components/ui/dropdown';
 
-import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
+import { getRevoAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
 
 import { DEVICE_NAMES } from '../../../../shared/constants/hardware-wallets';
 import { EVENT } from '../../../../shared/constants/metametrics';
@@ -132,7 +132,7 @@ class AccountList extends Component {
                 className="hw-account-list__item__link"
                 onClick={() => {
                   const accountLink = getAccountLink(
-                    getQtumAddressFromHex(account.address, chainId),
+                    getRevoAddressFromHex(account.address, chainId),
                     chainId,
                     rpcPrefs,
                   );

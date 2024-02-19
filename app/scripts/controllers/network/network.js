@@ -19,16 +19,16 @@ import {
   RINKEBY_CHAIN_ID,
   INFURA_BLOCKED_KEY,
   CHAIN_ID_TO_RPC_URL_MAP,
-  QTUM_MAINNET_CHAIN_ID,
-  QTUM_TESTNET_CHAIN_ID,
-  QTUM_MAINNET_RPC_URL,
-  QTUM_TESTNET_RPC_URL,
-  QTUM_PROVIDER_TYPES,
-  QTUM_REGTEST_RPC_URL,
-  QTUM_REGTEST_CHAIN_ID,
-  QTUM_TESTNET,
+  REVO_MAINNET_CHAIN_ID,
+  REVO_TESTNET_CHAIN_ID,
+  REVO_MAINNET_RPC_URL,
+  REVO_TESTNET_RPC_URL,
+  REVO_PROVIDER_TYPES,
+  REVO_REGTEST_RPC_URL,
+  REVO_REGTEST_CHAIN_ID,
+  REVO_TESTNET,
   TEST_NETWORK_TICKER_MAP,
-  QTUM_TESTNET_NETWORK_ID,
+  REVO_TESTNET_NETWORK_ID,
 } from '../../../../shared/constants/network';
 import {
   isPrefixedFormattedHexString,
@@ -58,33 +58,33 @@ if (process.env.IN_TEST) {
   };
   defaultProviderConfigOpts = {
     type: NETWORK_TYPE_RPC,
-    chainId: QTUM_TESTNET_CHAIN_ID,
-    rpcUrl: QTUM_TESTNET_RPC_URL,
-    nickname: QTUM_TESTNET,
+    chainId: REVO_TESTNET_CHAIN_ID,
+    rpcUrl: REVO_TESTNET_RPC_URL,
+    nickname: REVO_TESTNET,
     rpcPrefs: {
-      blockExplorerUrl: "https://testnet.qtum.info/",
+      blockExplorerUrl: "https://testnet.revo.network/",
     },
-    blockExplorerUrl: "https://testnet.qtum.info/",
+    blockExplorerUrl: "https://testnet.revo.network/",
   };
-  // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_REGTEST_CHAIN_ID, rpcUrl: QTUM_REGTEST_RPC_URL };
+  // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: REVO_REGTEST_CHAIN_ID, rpcUrl: REVO_REGTEST_RPC_URL };
 } else {
   defaultProviderConfigOpts = { type: MAINNET, chainId: MAINNET_CHAIN_ID };
   defaultProviderConfigOpts = {
     type: NETWORK_TYPE_RPC,
-    chainId: QTUM_TESTNET_CHAIN_ID,
-    rpcUrl: QTUM_TESTNET_RPC_URL,
-    nickname: QTUM_TESTNET,
+    chainId: REVO_TESTNET_CHAIN_ID,
+    rpcUrl: REVO_TESTNET_RPC_URL,
+    nickname: REVO_TESTNET,
     rpcPrefs: {
-      blockExplorerUrl: "https://testnet.qtum.info/",
+      blockExplorerUrl: "https://testnet.revo.network/",
     },
-    blockExplorerUrl: "https://testnet.qtum.info/",
+    blockExplorerUrl: "https://testnet.revo.network/",
   };
-  // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: QTUM_MAINNET_CHAIN_ID, rpcUrl: QTUM_MAINNET_RPC_URL };
+  // defaultProviderConfigOpts = { type: NETWORK_TYPE_RPC, chainId: REVO_MAINNET_CHAIN_ID, rpcUrl: REVO_MAINNET_RPC_URL };
 }
 
 const defaultProviderConfig = {
   // ticker: 'ETH',
-  ticker: 'QTUM',
+  ticker: 'RVO',
   ...defaultProviderConfigOpts,
 };
 
@@ -276,7 +276,7 @@ export default class NetworkController extends EventEmitter {
     const { type } = this.getProviderConfig();
     const isInfura =
       INFURA_PROVIDER_TYPES.includes(type) &&
-      !QTUM_PROVIDER_TYPES.includes(type);
+      !REVO_PROVIDER_TYPES.includes(type);
 
     if (isInfura) {
       this._checkInfuraAvailability(type);
@@ -311,7 +311,7 @@ export default class NetworkController extends EventEmitter {
     return rpcUrl;
   }
 
-  setRpcTarget(rpcUrl, chainId, ticker = 'QTUM', nickname = '', rpcPrefs) {
+  setRpcTarget(rpcUrl, chainId, ticker = 'REVO', nickname = '', rpcPrefs) {
     assert.ok(
       isPrefixedFormattedHexString(chainId),
       `Invalid chain ID "${chainId}": invalid hex string.`,
@@ -342,12 +342,12 @@ export default class NetworkController extends EventEmitter {
     );
     const { chainId } = NETWORK_TYPE_TO_ID_MAP[type];
     let rpcUrl = '';
-    let ticker = 'QTUM';
+    let ticker = 'REVO';
     const providerType = type;
-    if (QTUM_PROVIDER_TYPES.includes(type)) {
+    if (REVO_PROVIDER_TYPES.includes(type)) {
       type = NETWORK_TYPE_RPC;
       rpcUrl = CHAIN_ID_TO_RPC_URL_MAP[chainId];
-      ticker = 'QTUM';
+      ticker = 'REVO';
     }
     this.setProviderConfig({
       labelKey: providerType,
@@ -450,7 +450,7 @@ export default class NetworkController extends EventEmitter {
     // infura type-based endpoints
     const isInfura =
       INFURA_PROVIDER_TYPES.includes(type) &&
-      !QTUM_PROVIDER_TYPES.includes(type);
+      !REVO_PROVIDER_TYPES.includes(type);
     if (isInfura) {
       this._configureInfuraProvider(type, this._infuraProjectId);
       // url-based rpc endpoints

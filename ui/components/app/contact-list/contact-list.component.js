@@ -6,8 +6,8 @@ import RecipientGroup from './recipient-group/recipient-group.component';
 
 export default class ContactList extends PureComponent {
   static propTypes = {
-    qtumAddressBook: PropTypes.object,
-    isQtumAddressShowCheck: PropTypes.bool,
+    revoAddressBook: PropTypes.object,
+    isRevoAddressShowCheck: PropTypes.bool,
     searchForContacts: PropTypes.func,
     searchForRecents: PropTypes.func,
     searchForMyAccounts: PropTypes.func,
@@ -28,7 +28,7 @@ export default class ContactList extends PureComponent {
     const { t } = this.context;
     const { isShowingAllRecent } = this.state;
     const nonContacts = this.props.searchForRecents();
-    const { qtumAddressBook, isQtumAddressShowCheck } = this.props;
+    const { revoAddressBook, isRevoAddressShowCheck } = this.props;
 
     const showLoadMore = !isShowingAllRecent && nonContacts.length > 2;
 
@@ -36,8 +36,8 @@ export default class ContactList extends PureComponent {
       <div className="send__select-recipient-wrapper__recent-group-wrapper">
         <RecipientGroup
           label={t('recents')}
-          qtumAddressBook={qtumAddressBook}
-          isQtumAddressShowCheck={isQtumAddressShowCheck}
+          revoAddressBook={revoAddressBook}
+          isRevoAddressShowCheck={isRevoAddressShowCheck}
           items={showLoadMore ? nonContacts.slice(0, 2) : nonContacts}
           onSelect={this.props.selectRecipient}
           selectedAddress={this.props.selectedAddress}
@@ -56,7 +56,7 @@ export default class ContactList extends PureComponent {
   }
 
   renderAddressBook() {
-    const { qtumAddressBook, isQtumAddressShowCheck } = this.props;
+    const { revoAddressBook, isRevoAddressShowCheck } = this.props;
     const unsortedContactsByLetter = this.props
       .searchForContacts()
       .reduce((obj, contact) => {
@@ -83,8 +83,8 @@ export default class ContactList extends PureComponent {
         key={`${letter}-contact-group`}
         label={letter}
         items={groupItems}
-        qtumAddressBook={qtumAddressBook}
-        isQtumAddressShowCheck={isQtumAddressShowCheck}
+        revoAddressBook={revoAddressBook}
+        isRevoAddressShowCheck={isRevoAddressShowCheck}
         onSelect={this.props.selectRecipient}
         selectedAddress={this.props.selectedAddress}
       />
@@ -93,13 +93,13 @@ export default class ContactList extends PureComponent {
 
   renderMyAccounts() {
     const myAccounts = this.props.searchForMyAccounts();
-    const { qtumAddressBook, isQtumAddressShowCheck } = this.props;
+    const { revoAddressBook, isRevoAddressShowCheck } = this.props;
 
     return (
       <RecipientGroup
         items={myAccounts}
-        qtumAddressBook={qtumAddressBook}
-        isQtumAddressShowCheck={isQtumAddressShowCheck}
+        revoAddressBook={revoAddressBook}
+        isRevoAddressShowCheck={isRevoAddressShowCheck}
         onSelect={this.props.selectRecipient}
         selectedAddress={this.props.selectedAddress}
       />

@@ -10,7 +10,7 @@ import {
   isValidHexAddress,
 } from '../../../../../shared/modules/hexstring-utils';
 import {
-  getHexAddressFromQtum,
+  getHexAddressFromRevo,
 } from '../../../../helpers/utils/util';
 
 export default class EditContact extends PureComponent {
@@ -28,8 +28,8 @@ export default class EditContact extends PureComponent {
     memo: PropTypes.string,
     viewRoute: PropTypes.string,
     listRoute: PropTypes.string,
-    qtumAddress: PropTypes.string,
-    isQtumAddressShow: PropTypes.bool,
+    revoAddress: PropTypes.string,
+    isRevoAddressShow: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -39,7 +39,7 @@ export default class EditContact extends PureComponent {
 
   state = {
     newName: this.props.name,
-    newAddress: this.props.isQtumAddressShow ? this.props.qtumAddress : this.props.address,
+    newAddress: this.props.isRevoAddressShow ? this.props.revoAddress : this.props.address,
     newMemo: this.props.memo,
     error: '',
   };
@@ -148,7 +148,7 @@ export default class EditContact extends PureComponent {
                 mixedCaseUseChecksum: true,
               });
               const hex = isHex ?
-                this.state.newAddress : getHexAddressFromQtum(this.state.newAddress);
+                this.state.newAddress : getHexAddressFromRevo(this.state.newAddress);
               if (
                 !isBurnAddress(hex)/* &&
                 isValidHexAddress(this.state.newAddress, {

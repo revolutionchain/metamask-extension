@@ -1,26 +1,26 @@
-# Metamask with QTUM support
+# Metamask with REVO support
 
-This is an alpha version of Metamask with QTUM support
+This is an alpha version of Metamask with REVO support
 
-To use Web3 in QTUM Dapps, use `window.qtum` as your Web3 provider instead of `window.ethereum`
+To use Web3 in REVO Dapps, use `window.revo` as your Web3 provider instead of `window.ethereum`
 
-See [Releases](https://github.com/earlgreytech/metamask-extension/releases) for tags/releases with QTUM support
+See [Releases](https://github.com/earlgreytech/metamask-extension/releases) for tags/releases with REVO support
 
-See [Janus](https://github.com/qtumproject/janus) for our Web3 compatible API layer
+See [Janus](https://github.com/revoproject/charon) for our Web3 compatible API layer
 
-See [qtum-ethers-wrapper](https://github.com/earlgreytech/qtum-ethers) for client-side transaction signing
+See [revo-ethers-wrapper](https://github.com/earlgreytech/revo-ethers) for client-side transaction signing
 
-# Qnekt Browser Extension
+# RevoMask Browser Extension
 
-You can find the latest version of Qnekt on [github](https://github.com/qtumproject/metamask-extension/releases). For help using MetaMask, visit our [Discord](https://www.qtum.org/support).
+You can find the latest version of RevoMask on [github](https://github.com/revoproject/metamask-extension/releases). For help using MetaMask, visit our [Discord](https://www.revo.org/support).
 
-Qnekt supports Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
+RevoMask supports Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
 
-For up to the minute news, follow our [Twitter](https://twitter.com/qtum) or [Medium](https://medium.com/@Qtum) pages.
+For up to the minute news, follow our [Twitter](https://twitter.com/revo) or [Medium](https://medium.com/@Revo) pages.
 
 To learn how to develop MetaMask-compatible applications, visit our [Developer Docs](https://metamask.github.io/metamask-docs/).
 
-To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/qtumproject/metamask-extension/tree/develop/docs).
+To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/revoproject/metamask-extension/tree/develop/docs).
 
 ## Building locally
 
@@ -30,7 +30,7 @@ To learn how to contribute to the MetaMask project itself, visit our [Internal D
 - Install dependencies: `yarn setup` (not the usual install command)
 - Copy the `.metamaskrc.dist` file to `.metamaskrc`
     - Replace the `INFURA_PROJECT_ID` value with your own personal [Infura Project ID](https://infura.io/docs).
-    - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/), see [Developing on Qnekt - Segment](./development/README.md#segment).
+    - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/), see [Developing on RevoMask - Segment](./development/README.md#segment).
     - If debugging unhandled exceptions, you'll need to add a value for `SENTRY_DSN` [Sentry Dsn](https://docs.sentry.io/product/sentry-basics/dsn-explainer/), see [Developing on MetaMask - Sentry](./development/README.md#sentry).
     - Optionally, replace the `PASSWORD` value with your development wallet password to avoid entering it each time you open the app.
 - Build the project to the `./dist/` folder with `yarn dist`.
@@ -61,7 +61,7 @@ To create a development build and run both of these tools simultaneously, run `y
 
 #### Test Dapp
 
-[This test site](https://qtumproject.github.io/test-dapp/) can be used to execute different user flows.
+[This test site](https://revoproject.github.io/test-dapp/) can be used to execute different user flows.
 
 ### Running Unit Tests and Linting
 

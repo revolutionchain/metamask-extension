@@ -95,8 +95,8 @@ export default class ConfirmPageContainerContent extends Component {
 
   render() {
     const {
-      qtumAddress,
-      isQtumAddressShow,
+      revoAddress,
+      isRevoAddressShow,
       action,
       errorKey,
       errorMessage,
@@ -150,8 +150,8 @@ export default class ConfirmPageContainerContent extends Component {
           <ConfirmPageContainerWarning warning={ethGasPriceWarning} />
         )}
         <ConfirmPageContainerSummary
-          qtumAddress={qtumAddress}
-          isQtumAddressShow={isQtumAddressShow}
+          revoAddress={revoAddress}
+          isRevoAddressShow={isRevoAddressShow}
           className={classnames({
             'confirm-page-container-summary--border':
               !detailsComponent || !dataComponent,

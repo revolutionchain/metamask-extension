@@ -322,7 +322,7 @@ export default class SettingsTab extends PureComponent {
 
   renderUsePrimaryAddressOptions() {
     const { t } = this.context;
-    const { setPrimaryAddressPreference, isQtumAddressShow } = this.props;
+    const { setPrimaryAddressPreference, isRevoAddressShow } = this.props;
 
     return (
       <div className="settings-page__content-row">
@@ -338,15 +338,15 @@ export default class SettingsTab extends PureComponent {
               <div className="settings-tab__radio-button">
                 <input
                   type="radio"
-                  id="qtum-primary-address"
+                  id="revo-primary-address"
                   onChange={() => setPrimaryAddressPreference(true)}
-                  checked={isQtumAddressShow}
+                  checked={isRevoAddressShow}
                 />
                 <label
-                  htmlFor="qtum-primary-address"
+                  htmlFor="revo-primary-address"
                   className="settings-tab__radio-label"
                 >
-                  {t('qtumAddress')}
+                  {t('revoAddress')}
                 </label>
               </div>
               <div className="settings-tab__radio-button">
@@ -354,7 +354,7 @@ export default class SettingsTab extends PureComponent {
                   type="radio"
                   id="hex-primary-address"
                   onChange={() => setPrimaryAddressPreference(false)}
-                  checked={!isQtumAddressShow}
+                  checked={!isRevoAddressShow}
                 />
                 <label
                   htmlFor="hex-primary-address"

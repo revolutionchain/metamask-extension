@@ -44,7 +44,7 @@
     "message": "log attività"
   },
   "addAcquiredTokens": {
-    "message": "Aggiungi i token che hai acquistato usando Qnekt"
+    "message": "Aggiungi i token che hai acquistato usando RevoMask"
   },
   "addAlias": {
     "message": "Aggiungi alias"
@@ -99,19 +99,19 @@
     "message": "Importo"
   },
   "appDescription": {
-    "message": "QTUM Browser Extension",
+    "message": "REVO Browser Extension",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -146,7 +146,7 @@
     "message": "Timer di logout automatico (minuti)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Imposta il tempo di inattività dopo il quale Qnekt fa il log out automaticamente"
+    "message": "Imposta il tempo di inattività dopo il quale RevoMask fa il log out automaticamente"
   },
   "average": {
     "message": "Media"
@@ -158,7 +158,7 @@
     "message": "Torna a \"Tutti\""
   },
   "backupApprovalInfo": {
-    "message": "Questo codice è necessario per recuperare il tuo portafoglio nel caso in cui perdi il tuo dispositivo, dimentichi la tua password, debba reinstallare Qnekt o voglia accedere al tuo portafoglio su un altro dispositivo."
+    "message": "Questo codice è necessario per recuperare il tuo portafoglio nel caso in cui perdi il tuo dispositivo, dimentichi la tua password, debba reinstallare RevoMask o voglia accedere al tuo portafoglio su un altro dispositivo."
   },
   "backupApprovalNotice": {
     "message": "Mantieni al sicuro il portafoglio e i fondi eseguendo il backup della frase di recupero."
@@ -192,7 +192,7 @@
     "message": "Compra $1 con Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre ti consente di usare la carta di credito per depositare $1 direttamente nel tuo account Qnekt."
+    "message": "Wyre ti consente di usare la carta di credito per depositare $1 direttamente nel tuo account RevoMask."
   },
   "canToggleInSettings": {
     "message": "Puoi riabilitare questa notifica in Impostazioni -> Avvisi."
@@ -207,7 +207,7 @@
     "message": "Annullata"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Devi usare Qnekt con Google Chrome per connettere il tuo Portafoglio Hardware"
+    "message": "Devi usare RevoMask con Google Chrome per connettere il tuo Portafoglio Hardware"
   },
   "clickToRevealSeed": {
     "message": "Clicca qui per rivelare la tua frase segreta"
@@ -262,8 +262,8 @@
     "message": "$1 account",
     "description": "$1 is the number of accounts to which the web3 site/application is asking to connect; this will substitute $1 in connectToMultiple"
   },
-  "connectWithQnekt": {
-    "message": "Connetti con Qnekt"
+  "connectWithRevoMask": {
+    "message": "Connetti con RevoMask"
   },
   "connectedAccountsDescriptionPlural": {
     "message": "Hai $1 account connessi a questo sito.",
@@ -273,7 +273,7 @@
     "message": "Hai un account connesso a questo sito."
   },
   "connectedAccountsEmptyDescription": {
-    "message": "Qnekt non è connesso a questo sito. Per connetterti ad un sito web3, trova il pulsante di connessione."
+    "message": "RevoMask non è connesso a questo sito. Per connetterti ad un sito web3, trova il pulsante di connessione."
   },
   "connectedSites": {
     "message": "Siti connessi"
@@ -299,7 +299,7 @@
     "message": "Connessione alla Rete di test Kovan"
   },
   "connectingToMainnet": {
-    "message": "Connessione alla Rete QTUM Principale"
+    "message": "Connessione alla Rete REVO Principale"
   },
   "connectingToRinkeby": {
     "message": "Connessione alla Rete di test Rinkeby"
@@ -380,7 +380,7 @@
     "message": "Token Personalizzato"
   },
   "dataBackupFoundInfo": {
-    "message": "Alcuni dati sul tuo account sono state salvate durante una installazione precedente di Qnekt. Questi includono le impostazioni, i contatti, e i token. Vuoi ripristinare questi dati?"
+    "message": "Alcuni dati sul tuo account sono state salvate durante una installazione precedente di RevoMask. Questi includono le impostazioni, i contatti, e i token. Vuoi ripristinare questi dati?"
   },
   "decimal": {
     "message": "Precisione Decimali"
@@ -491,13 +491,13 @@
     "message": "Non condividerla mai con nessuno."
   },
   "endOfFlowMessage5": {
-    "message": "Stai attento al phishing! Qnekt non ti chiederà mai spontaneamente la tua frase seed."
+    "message": "Stai attento al phishing! RevoMask non ti chiederà mai spontaneamente la tua frase seed."
   },
   "endOfFlowMessage6": {
     "message": "Se vorrai fare nuovamente un backup della frase, la puoi trovare in Impostazioni -> Sicurezza & Privacy."
   },
   "endOfFlowMessage8": {
-    "message": "Qnekt non può recuperare la tua frase seed. Impara di più."
+    "message": "RevoMask non può recuperare la tua frase seed. Impara di più."
   },
   "endOfFlowMessage9": {
     "message": "Scopri di più."
@@ -507,7 +507,7 @@
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Nome ENS non trovato sulla rete attuale. Prova a passare alla rete principale di QTUM."
+    "message": "Nome ENS non trovato sulla rete attuale. Prova a passare alla rete principale di REVO."
   },
   "ensRegistrationError": {
     "message": "Errore nella registrazione del nome ENS"
@@ -538,14 +538,14 @@
     "description": "Displayed error name for debugging purposes. $1 is the error name"
   },
   "errorPageTitle": {
-    "message": "Qnekt ha riscontrato un errore",
+    "message": "RevoMask ha riscontrato un errore",
     "description": "Title of generic error page"
   },
   "estimatedProcessingTimes": {
     "message": "Tempi di Elaborazione Stimati"
   },
   "ethereumPublicAddress": {
-    "message": "Indirizzo pubblico QTUM "
+    "message": "Indirizzo pubblico REVO "
   },
   "etherscanView": {
     "message": "Vedi account su Etherscan"
@@ -666,7 +666,7 @@
     "message": "Connetti portafoglio hardware"
   },
   "hardwareWalletsMsg": {
-    "message": "Selezione un portafoglio hardware che vuoi utilizzare con Qnekt"
+    "message": "Selezione un portafoglio hardware che vuoi utilizzare con RevoMask"
   },
   "here": {
     "message": "qui",
@@ -696,7 +696,7 @@
     "message": "Importa Account"
   },
   "importAccountMsg": {
-    "message": " Gli account importati non saranno associati alla frase seed originariamente creata con Qnekt. Scopri di più sugli account importati "
+    "message": " Gli account importati non saranno associati alla frase seed originariamente creata con RevoMask. Scopri di più sugli account importati "
   },
   "importAccountSeedPhrase": {
     "message": "Importa un Account con una Frase Seed"
@@ -826,7 +826,7 @@
     "message": "Tempo di inattività troppo lungo"
   },
   "mainnet": {
-    "message": "Rete QTUM Principale"
+    "message": "Rete REVO Principale"
   },
   "max": {
     "message": "Massimo"
@@ -841,7 +841,7 @@
     "message": "Messaggio"
   },
   "metaMaskConnectStatusParagraphOne": {
-    "message": "Ora hai piu controllo sulle connessioni del tuo account in Qnekt."
+    "message": "Ora hai piu controllo sulle connessioni del tuo account in RevoMask."
   },
   "metaMaskConnectStatusParagraphThree": {
     "message": "Clicca per gestire i tuo account connessi."
@@ -850,13 +850,13 @@
     "message": "Il bottone di stato della connessione mostra se il sito che stai visitando è connesso all'account corrente"
   },
   "metamaskDescription": {
-    "message": "Qnekt è una cassaforte sicura per identità su QTUM."
+    "message": "RevoMask è una cassaforte sicura per identità su REVO."
   },
   "metamaskSwapsOfflineDescription": {
-    "message": "Qnekt Swaps è in manutenzione. Prova più tardi."
+    "message": "RevoMask Swaps è in manutenzione. Prova più tardi."
   },
   "metamaskVersion": {
-    "message": "versione di Qnekt"
+    "message": "versione di RevoMask"
   },
   "metametricsCommitmentsAllowOptOut": {
     "message": "Ti consentirà sempre di rimuovere il consenso tramite Impostazioni"
@@ -866,7 +866,7 @@
     "description": "This string is localized separately from some of the commitments so that we can bold it"
   },
   "metametricsCommitmentsIntro": {
-    "message": "Qnekt.."
+    "message": "RevoMask.."
   },
   "metametricsCommitmentsNeverCollectIP": {
     "message": "$1 raccoglierà il tuo indirizzo IP completo",
@@ -883,11 +883,11 @@
   "metametricsCommitmentsSendAnonymizedEvents": {
     "message": "Invierà click e visualizzazioni di pagina in modo anonimo"
   },
-  "metametricsHelpImproveQnekt": {
-    "message": "Aiutaci a Migliorare Qnekt"
+  "metametricsHelpImproveRevoMask": {
+    "message": "Aiutaci a Migliorare RevoMask"
   },
   "metametricsOptInDescription": {
-    "message": "Qnekt vorrebbe raccogliere dati di utilizzo per capire meglio come gli utenti interagiscono con l'estensione. Questi dati verranno usati continuamente per migliorare l'usabilità e l'esperienza utente dei nostri prodotti e dell'ecosistema QTUM."
+    "message": "RevoMask vorrebbe raccogliere dati di utilizzo per capire meglio come gli utenti interagiscono con l'estensione. Questi dati verranno usati continuamente per migliorare l'usabilità e l'esperienza utente dei nostri prodotti e dell'ecosistema REVO."
   },
   "mustSelectOne": {
     "message": "Devi selezionare almeno un token."
@@ -929,8 +929,8 @@
   "newPassword": {
     "message": "Nuova Password (minimo 8 caratteri)"
   },
-  "newToQnekt": {
-    "message": "Nuovo su Qnekt?"
+  "newToRevoMask": {
+    "message": "Nuovo su RevoMask?"
   },
   "newTotal": {
     "message": "Nuovo Totale"
@@ -943,7 +943,7 @@
   },
   "nextNonceWarning": {
     "message": "Numero di transazione deve essere maggiore di $1",
-    "description": "The next nonce according to Qnekt's internal logic"
+    "description": "The next nonce according to RevoMask's internal logic"
   },
   "noAccountsFound": {
     "message": "Nessun account trovato per la ricerca effettuata"
@@ -1010,7 +1010,7 @@
     "message": "Participa in MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Participa in MetaMetrics per aiutarci a rendere Qnekt migliore"
+    "message": "Participa in MetaMetrics per aiutarci a rendere RevoMask migliore"
   },
   "passwordNotLongEnough": {
     "message": "Password non abbastanza lunga"
@@ -1323,7 +1323,7 @@
     "message": "Errore nel recupero dei log di stato."
   },
   "stateLogFileName": {
-    "message": "Log di Stato di Qnekt"
+    "message": "Log di Stato di RevoMask"
   },
   "stateLogs": {
     "message": "Log di stato"
@@ -1386,7 +1386,7 @@
     "message": "Modifica limite"
   },
   "swapEnableDescription": {
-    "message": "Questo è richiesto e darà a Qnekt il permesso di scambiare $1.",
+    "message": "Questo è richiesto e darà a RevoMask il permesso di scambiare $1.",
     "description": "Gives the user info about the required approval transaction for swaps. $1 will be the symbol of a token being approved for swaps."
   },
   "swapEstimatedNetworkFees": {
@@ -1413,11 +1413,11 @@
   "swapMaxSlippage": {
     "message": "Slippage massimo"
   },
-  "swapQnektFee": {
-    "message": "Tassa Qnekt"
+  "swapRevoMaskFee": {
+    "message": "Tassa RevoMask"
   },
-  "swapQnektFeeDescription": {
-    "message": "Troviamo i migliori prezzi dalle sorgenti di liquidità migliori, sempre. Una tassa del $1% è automaticamente aggiunta ad ogni quotazione, ciò serve a supportare lo sviluppo in modo da rendere Qnekt sempre migliore.",
+  "swapRevoMaskFeeDescription": {
+    "message": "Troviamo i migliori prezzi dalle sorgenti di liquidità migliori, sempre. Una tassa del $1% è automaticamente aggiunta ad ogni quotazione, ciò serve a supportare lo sviluppo in modo da rendere RevoMask sempre migliore.",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapNewQuoteIn": {
@@ -1573,16 +1573,16 @@
     "message": "Assicurati che nessun'altro stia guardando al tuo schermo quando scansioni questo codice"
   },
   "syncWithMobileComplete": {
-    "message": "I tuoi dati sono stati sincronizzati con successo. Goditi l'app di Qnekt!"
+    "message": "I tuoi dati sono stati sincronizzati con successo. Goditi l'app di RevoMask!"
   },
   "syncWithMobileDesc": {
-    "message": "Puoi sincronizzare i tuoi account e le tue informazioni con il tuo dispositivo mobile. Apri l'app di Qnekt, vai su \"Impostazioni\" e tocca \"Sincronizza da Estensione sul Browser\""
+    "message": "Puoi sincronizzare i tuoi account e le tue informazioni con il tuo dispositivo mobile. Apri l'app di RevoMask, vai su \"Impostazioni\" e tocca \"Sincronizza da Estensione sul Browser\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Se hai appena aperto l'app di Qnekt per la prima volta, segui i passaggi sul tuo telefono."
+    "message": "Se hai appena aperto l'app di RevoMask per la prima volta, segui i passaggi sul tuo telefono."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Scansiona questo codice con l'app di Qnekt"
+    "message": "Scansiona questo codice con l'app di RevoMask"
   },
   "syncWithMobileTitle": {
     "message": "Sincronizza con dispositivo mobile"
@@ -1735,7 +1735,7 @@
     "message": "Rilevamento del Phishing"
   },
   "usePhishingDetectionDescription": {
-    "message": "Visualizza un avvertimento sui domini di phishing rivolto a utenti di QTUM"
+    "message": "Visualizza un avvertimento sui domini di phishing rivolto a utenti di REVO"
   },
   "usedByClients": {
     "message": "Usato da una varietà di clients diversi"
@@ -1767,7 +1767,7 @@
     "description": "$1 is a clickable link."
   },
   "welcome": {
-    "message": "Benvenuto nella Beta di Qnekt"
+    "message": "Benvenuto nella Beta di RevoMask"
   },
   "welcomeBack": {
     "message": "Bentornato!"

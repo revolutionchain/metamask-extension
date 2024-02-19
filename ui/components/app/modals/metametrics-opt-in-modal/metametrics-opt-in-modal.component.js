@@ -100,7 +100,7 @@ export default class MetaMetricsOptInModal extends Component {
               {t('gdprMessage', [
                 <a
                   key="metametrics-bottom-text-wrapper"
-                  href="https://www.qtum.org/about/privacy"
+                  href="https://www.revo.org/about/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -1,4 +1,4 @@
-import { QtumFunctionProvider, QtumWallet } from 'qtum-ethers-wrapper';
+import { RevoFunctionProvider, RevoWallet } from 'revo-ethers-wrapper';
 import EventEmitter from 'safe-event-emitter';
 import { ObservableStore } from '@metamask/obs-store';
 import { bufferToHex, keccak, toBuffer, isHexString } from 'ethereumjs-util';
@@ -734,11 +734,11 @@ export default class TransactionController extends EventEmitter {
     // txParams.value will be in satoshi
     // metamask stores things in wei in the store
     // convert value from satoshi to wei before adding it to the store
-    // there will eventually be 3rd party chains that attach to Qtum
+    // there will eventually be 3rd party chains that attach to Revo
     // those chains may be based on ethereum, so we will need to maintain support for wei
     // we need a way to detect the decimals for the chain we are connected to
     // so that this ins't a huge problem in the future
-    // as right now, only janus is supported
+    // as right now, only charon is supported
 
     if (origin !== ORIGIN_METAMASK) { 
       normalizedTxParams.value = conversionUtil(normalizedTxParams.value, {
@@ -2490,7 +2490,7 @@ TransactionController.prototype.signTransaction = async function (txId) {
     networkType,
     nickname,
   } = this.getProviderConfig();
-  const qtumProvider = new QtumFunctionProvider(async (method, params) => {
+  const revoProvider = new RevoFunctionProvider(async (method, params) => {
     const result = await new Promise((resolve, reject) => {
       this.provider.sendAsync({
         method,
@@ -2557,8 +2557,8 @@ TransactionController.prototype.signTransaction = async function (txId) {
     fromAddress,
   );
 
-  const qtumWallet = new QtumWallet(key, qtumProvider, {filterDust: false});
-  const signedEthTx = await qtumWallet.signTransaction(ethTx);
+  const revoWallet = new RevoWallet(key, revoProvider, {filterDust: false});
+  const signedEthTx = await revoWallet.signTransaction(ethTx);
 
   // add r,s,v values for provider request purposes see createMetamaskMiddleware
   // and JSON rpc standard for further explanation

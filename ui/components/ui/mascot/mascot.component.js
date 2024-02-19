@@ -123,7 +123,7 @@ export default class Mascot extends Component {
 
   render() {
     // return <div />;
-    return <img src="./images/qtum_logo.png" alt=""/>;
+    return <img src="./images/revo_logo.png" alt=""/>;
     // this is a bit hacky
     // the event emitter is on `this.props`
     // and we dont get that until render

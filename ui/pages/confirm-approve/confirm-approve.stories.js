@@ -22,7 +22,7 @@ const PageSet = ({ children }) => {
   const origin = text('Origin', 'https://metamask.github.io');
   const subjectIconUrl = text(
     'Icon URL',
-    'https://metamask.github.io/test-dapp/qtum-logo.svg',
+    'https://metamask.github.io/test-dapp/revo-logo.svg',
   );
   const state = store.getState();
   const currentNetworkTxList = useSelector(currentNetworkTxListSelector);

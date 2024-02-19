@@ -25,8 +25,8 @@ function ViewContact({
   memo,
   editRoute,
   listRoute,
-  qtumAddress,
-  isQtumAddressShow,
+  revoAddress,
+  isRevoAddressShow,
 }) {
   const t = useI18nContext();
   const [copied, handleCopy] = useCopyToClipboard();
@@ -59,8 +59,8 @@ function ViewContact({
           <div className="address-book__view-contact__group__value">
             <div className="address-book__view-contact__group__static-address">
               {
-                isQtumAddressShow ?
-                  qtumAddress :
+                isRevoAddressShow ?
+                  revoAddress :
                   quadSplit(checkSummedAddress)
               }
             </div>
@@ -100,8 +100,8 @@ ViewContact.propTypes = {
   memo: PropTypes.string,
   editRoute: PropTypes.string,
   listRoute: PropTypes.string.isRequired,
-  qtumAddress: PropTypes.string,
-  isQtumAddressShow: PropTypes.bool,
+  revoAddress: PropTypes.string,
+  isRevoAddressShow: PropTypes.bool,
 };
 
 export default React.memo(ViewContact);

@@ -56,7 +56,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[2]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://www.qtum.org/about/privacy"
+            href="https://www.revo.org/about/privacy"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -78,7 +78,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[4]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://www.qtum.org/about/attributions"
+            href="https://www.revo.org/about/attributions"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -115,7 +115,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[6]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://www.qtum.org/"
+            href="https://www.revo.org/"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -178,9 +178,9 @@ export default class InfoTab extends PureComponent {
         </div>
         <div className="info-tab__logo-wrapper">
           <img
-            src="./images/logo/qtum-logo.svg"
+            src="./images/logo/revo-logo.svg"
             className="info-tab__logo"
-            alt="Qnekt Logo"
+            alt="RevoMask Logo"
           />
         </div>
       </div>

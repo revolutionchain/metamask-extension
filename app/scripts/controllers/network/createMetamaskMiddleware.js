@@ -8,7 +8,7 @@ import {
   hashMessage,
   recoverAddress,
   recoverAddressBtc,
-} from 'qtum-ethers-wrapper';
+} from 'revo-ethers-wrapper';
 
 export default function createMetamaskMiddleware({
   version,
@@ -34,7 +34,7 @@ export default function createMetamaskMiddleware({
       btc_ecRecover: createAsyncMiddleware((req, res) => {
         res.result = recoverAddressBtc(hashMessage(req.params[0]), req.params[1]).toLowerCase();
       }),
-      // web3_clientVersion: `Qnekt/v${version}`,
+      // web3_clientVersion: `RevoMask/v${version}`,
       btc_sign: createAsyncMiddleware(async (req, res) => {
         const message = req.params[0];
         // const address = await validateAndNormalizeKeyholder(req.params[1], req);

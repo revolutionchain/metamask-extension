@@ -33,7 +33,7 @@
     "message": "jurnal activitate"
   },
   "addAcquiredTokens": {
-    "message": "Adăugați token-urile pe care le-ați achiziționat folosind Qnekt"
+    "message": "Adăugați token-urile pe care le-ați achiziționat folosind RevoMask"
   },
   "addAlias": {
     "message": "Adăugare alias"
@@ -57,19 +57,19 @@
     "message": "Sumă"
   },
   "appDescription": {
-    "message": "Un portofel QTUM în browserul dvs.",
+    "message": "Un portofel REVO în browserul dvs.",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Temporizator deconectare automată (minute)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Setați perioada de inactivitate în minute înainte ca Qnekt să se deconecteze automat"
+    "message": "Setați perioada de inactivitate în minute înainte ca RevoMask să se deconecteze automat"
   },
   "average": {
     "message": "Mediu"
@@ -109,7 +109,7 @@
     "message": "Înapoi la toate"
   },
   "backupApprovalInfo": {
-    "message": "Acest cod secret este necesar pentru recuperarea portofelului în cazul în care pierdeți dispozitivul, uitați parola, trebuie să reinstalați Qnekt sau vreți să accesați portofelul de pe alt dispozitiv."
+    "message": "Acest cod secret este necesar pentru recuperarea portofelului în cazul în care pierdeți dispozitivul, uitați parola, trebuie să reinstalați RevoMask sau vreți să accesați portofelul de pe alt dispozitiv."
   },
   "backupApprovalNotice": {
     "message": "Creați o copie de rezervă a codului de recuperare secret pentru a vă menține portofelul și fondurile în siguranță."
@@ -140,7 +140,7 @@
     "message": "Cumpărați $1 cu Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre vă permite să folosiți un card de credit pentru a depune $1 direct în contul dvs. Qnekt."
+    "message": "Wyre vă permite să folosiți un card de credit pentru a depune $1 direct în contul dvs. RevoMask."
   },
   "bytes": {
     "message": "Octeți"
@@ -158,7 +158,7 @@
     "message": "ID lanț"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Trebuie să folosiți Qnekt în Google Chrome pentru a vă conecta la portofelul hardware."
+    "message": "Trebuie să folosiți RevoMask în Google Chrome pentru a vă conecta la portofelul hardware."
   },
   "clickToRevealSeed": {
     "message": "Faceți clic aici pentru a arăta cuvintele secrete"
@@ -197,7 +197,7 @@
     "message": "Se conectează la rețeaua de test Kovan"
   },
   "connectingToMainnet": {
-    "message": "Se conectează la rețeaua QTUM principală"
+    "message": "Se conectează la rețeaua REVO principală"
   },
   "connectingToRinkeby": {
     "message": "Se conectează la Rețeaua de test Rinkeby"
@@ -317,19 +317,19 @@
     "message": "Nu comunicați niciodată fraza cuiva."
   },
   "endOfFlowMessage5": {
-    "message": "Aveți grijă la phishing! Qnekt nu vă va cere niciodată în mod spontan expresia sursă."
+    "message": "Aveți grijă la phishing! RevoMask nu vă va cere niciodată în mod spontan expresia sursă."
   },
   "endOfFlowMessage6": {
     "message": "Dacă trebuie să vă salvați din nou fraza seed, puteți să o găsiți în Setări -> Securitate."
   },
   "endOfFlowMessage8": {
-    "message": "Qnekt nu vă poate recupera expresia sursă. Aflați mai multe."
+    "message": "RevoMask nu vă poate recupera expresia sursă. Aflați mai multe."
   },
   "endOfFlowMessage9": {
     "message": "Aflați mai multe."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "Numele ENS nu s-a găsit pe rețeaua curentă. Încercați să comutați la Rețeaua QTUM principală."
+    "message": "Numele ENS nu s-a găsit pe rețeaua curentă. Încercați să comutați la Rețeaua REVO principală."
   },
   "ensRegistrationError": {
     "message": "Eroare la înregistrarea numelui ENS"
@@ -344,7 +344,7 @@
     "message": "Timpi estimativi de procesare"
   },
   "ethereumPublicAddress": {
-    "message": "Adresa publică QTUM"
+    "message": "Adresa publică REVO"
   },
   "etherscanView": {
     "message": "Vizualizare cont pe Etherscan"
@@ -418,7 +418,7 @@
     "message": "Conectați un portofel hardware"
   },
   "hardwareWalletsMsg": {
-    "message": "Selectați un portofel hardware pe care doriți să îl folosiți cu Qnekt"
+    "message": "Selectați un portofel hardware pe care doriți să îl folosiți cu RevoMask"
   },
   "here": {
     "message": "aici",
@@ -444,7 +444,7 @@
     "message": "Importare cont"
   },
   "importAccountMsg": {
-    "message": "Conturile importate nu vor fi asociate cu seedphrase-ul contului dumneavoastră Qnekt creat inițial. Aflați mai multe despre conturile importate"
+    "message": "Conturile importate nu vor fi asociate cu seedphrase-ul contului dumneavoastră RevoMask creat inițial. Aflați mai multe despre conturile importate"
   },
   "importAccountSeedPhrase": {
     "message": "Importați un cont cu fraza seed"
@@ -527,7 +527,7 @@
     "message": "Deconectați-vă"
   },
   "mainnet": {
-    "message": "Rețeaua QTUM principală"
+    "message": "Rețeaua REVO principală"
   },
   "max": {
     "message": "Maximum"
@@ -542,10 +542,10 @@
     "message": "Mesaj"
   },
   "metamaskDescription": {
-    "message": "Vă conectăm la QTUM și la Internetul descentralizat."
+    "message": "Vă conectăm la REVO și la Internetul descentralizat."
   },
   "metamaskVersion": {
-    "message": "Versiune Qnekt"
+    "message": "Versiune RevoMask"
   },
   "mustSelectOne": {
     "message": "Trebuie să selectați cel puțin 1 simbol."
@@ -588,8 +588,8 @@
   "newPassword": {
     "message": "Parola Nouă (minimum 8 caractere)"
   },
-  "newToQnekt": {
-    "message": "Nefamiliarizat cu Qnekt?"
+  "newToRevoMask": {
+    "message": "Nefamiliarizat cu RevoMask?"
   },
   "newTotal": {
     "message": "Total nou"
@@ -643,7 +643,7 @@
     "message": "Participați la MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Alăturați-vă MetaMetrics pentru a ne ajuta să îmbunătățim Qnekt."
+    "message": "Alăturați-vă MetaMetrics pentru a ne ajuta să îmbunătățim RevoMask."
   },
   "password": {
     "message": "Parolă"
@@ -912,16 +912,16 @@
     "message": "Asigurați-vă că nimeni altcineva nu poate vedea ecranul dvs. când scanați acest cod"
   },
   "syncWithMobileComplete": {
-    "message": "Datele dvs. au fost sincronizate cu succes. Bucurați-vă de aplicația mobilă Qnekt!"
+    "message": "Datele dvs. au fost sincronizate cu succes. Bucurați-vă de aplicația mobilă RevoMask!"
   },
   "syncWithMobileDesc": {
-    "message": "Vă puteți sincroniza conturile și informațiile cu dispozitivul dvs. mobil. Deschideți aplicația mobilă Qnekt, mergeți la „Setări” și atingeți „Sincronizare de la extensia de browser”"
+    "message": "Vă puteți sincroniza conturile și informațiile cu dispozitivul dvs. mobil. Deschideți aplicația mobilă RevoMask, mergeți la „Setări” și atingeți „Sincronizare de la extensia de browser”"
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Dacă deschideți aplicația pentru mobil Qnekt pentru prima oară, urmați pașii afișați pe telefonul dvs."
+    "message": "Dacă deschideți aplicația pentru mobil RevoMask pentru prima oară, urmați pașii afișați pe telefonul dvs."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Scanați acest cod folosind aplicația dvs. mobilă Qnekt"
+    "message": "Scanați acest cod folosind aplicația dvs. mobilă RevoMask"
   },
   "syncWithMobileTitle": {
     "message": "Sincronizați cu mobilul"
@@ -1006,7 +1006,7 @@
     "message": "Încearcă din nou"
   },
   "typePassword": {
-    "message": "Scrieți parola dvs. pentru Qnekt"
+    "message": "Scrieți parola dvs. pentru RevoMask"
   },
   "unapproved": {
     "message": "Neaprobat"
@@ -1057,7 +1057,7 @@
     "message": "Accesați site-ul nostru"
   },
   "welcome": {
-    "message": "Bun venit la Qnekt"
+    "message": "Bun venit la RevoMask"
   },
   "welcomeBack": {
     "message": "Bine ai revenit!"

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { getValueFromWeiHex } from '../../../../../helpers/utils/conversions.util';
-import { QTUM } from '../../../../../helpers/constants/common';
+import { REVO } from '../../../../../helpers/constants/common';
 
 export default class SendRowErrorMessage extends Component {
   static propTypes = {
     errors: PropTypes.object,
     errorType: PropTypes.string,
-    qtumBalance: PropTypes.string,
+    revoBalance: PropTypes.string,
   };
 
   static contextTypes = {
@@ -16,11 +16,11 @@ export default class SendRowErrorMessage extends Component {
   };
 
   getDecimalValue(props) {
-    const { qtumBalance: hexValue } = props;
+    const { revoBalance: hexValue } = props;
     const decimalValueString = getValueFromWeiHex({
       value: hexValue,
-      fromCurrency: QTUM,
-      toCurrency: QTUM,
+      fromCurrency: REVO,
+      toCurrency: REVO,
       numberOfDecimals: 6,
     });
 
@@ -28,7 +28,7 @@ export default class SendRowErrorMessage extends Component {
   }
 
   render() {
-    const { errors, inErrorQtum, errorType, qtumBalance } = this.props;
+    const { errors, inErrorRevo, errorType, revoBalance } = this.props;
 
     const errorMessage = errors[errorType];
 
@@ -39,10 +39,10 @@ export default class SendRowErrorMessage extends Component {
         })}
       >
         {this.context.t(errorMessage)}{' '}
-        {qtumBalance !== null && inErrorQtum
-          ? `${this.context.t(errors.qtumBalances)} ${this.getDecimalValue(
+        {revoBalance !== null && inErrorRevo
+          ? `${this.context.t(errors.revoBalances)} ${this.getDecimalValue(
               this.props,
-            )} ${QTUM}`
+            )} ${REVO}`
           : ''}
       </div>
     ) : null;

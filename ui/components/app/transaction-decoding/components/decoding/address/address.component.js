@@ -24,7 +24,7 @@ const Address = ({
   );
   const recipientNickname = addressBookEntryObject?.name;
 
-  const shouldQtumAddressShow = useSelector(isQtumAddressShow)
+  const shouldRevoAddressShow = useSelector(isRevoAddressShow)
 
   const recipientToRender = addressOnly
     ? recipientNickname ||
@@ -56,7 +56,7 @@ const Address = ({
         <NicknamePopovers
           onClose={() => setShowNicknamePopovers(false)}
           address={checksummedRecipientAddress}
-          isQtumAddressShow={shouldQtumAddressShow}
+          isRevoAddressShow={shouldRevoAddressShow}
         />
       ) : null}
     </div>

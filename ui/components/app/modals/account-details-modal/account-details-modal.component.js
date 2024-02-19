@@ -6,7 +6,7 @@ import AccountModalContainer from '../account-modal-container';
 import QrView from '../../../ui/qr-code';
 import EditableLabel from '../../../ui/editable-label';
 import Button from '../../../ui/button';
-import { getURLHostName, getQtumAddressFromHex } from '../../../../helpers/utils/util';
+import { getURLHostName, getRevoAddressFromHex } from '../../../../helpers/utils/util';
 import { isHardwareKeyring } from '../../../../helpers/utils/hardware';
 import {
   EVENT,
@@ -70,7 +70,7 @@ export default class AccountDetailsModal extends Component {
     };
 
     const openBlockExplorer = () => {
-      const accountLink = getAccountLink(getQtumAddressFromHex(address, chainId), chainId, rpcPrefs);
+      const accountLink = getAccountLink(getRevoAddressFromHex(address, chainId), chainId, rpcPrefs);
       this.context.trackEvent({
         category: EVENT.CATEGORIES.NAVIGATION,
         event: EVENT_NAMES.EXTERNAL_LINK_CLICKED,

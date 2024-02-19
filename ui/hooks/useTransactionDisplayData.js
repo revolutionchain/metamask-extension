@@ -15,15 +15,15 @@ import {
   formatDateWithYearContext,
   shortenAddress,
   stripHttpSchemes,
-  getHexAddressFromQtum,
-  getQtumAddressFromHex
+  getHexAddressFromRevo,
+  getRevoAddressFromHex
 } from '../helpers/utils/util';
 
 import {
   PENDING_STATUS_HASH,
   TOKEN_CATEGORY_HASH,
 } from '../helpers/constants/transactions';
-import { getCollectibles, getTokens, getCurrentProvider, isQtumAddressShow } from '../ducks/metamask/metamask';
+import { getCollectibles, getTokens, getCurrentProvider, isRevoAddressShow } from '../ducks/metamask/metamask';
 import {
   TRANSACTION_TYPES,
   TRANSACTION_GROUP_CATEGORIES,
@@ -95,7 +95,7 @@ export function useTransactionDisplayData(transactionGroup) {
   const currentAsset = useCurrentAsset();
   const knownTokens = useSelector(getTokens);
   const knownCollectibles = useSelector(getCollectibles);
-  const isQtumAddressShowChk = useSelector(isQtumAddressShow);
+  const isRevoAddressShowChk = useSelector(isRevoAddressShow);
   const currentProvier = useSelector(getCurrentProvider);
   const { chainId } = currentProvier;
   const t = useI18nContext();
@@ -254,7 +254,7 @@ export function useTransactionDisplayData(transactionGroup) {
     category = TRANSACTION_GROUP_CATEGORIES.RECEIVE;
     title = t('receive');
     prefix = '';
-    subtitle = isQtumAddressShowChk ? t('fromAddress', [shortenAddress(getQtumAddressFromHex(senderAddress, chainId))]) : t('fromAddress', [shortenAddress(senderAddress)]);
+    subtitle = isRevoAddressShowChk ? t('fromAddress', [shortenAddress(getRevoAddressFromHex(senderAddress, chainId))]) : t('fromAddress', [shortenAddress(senderAddress)]);
   } else if (
     type === TRANSACTION_TYPES.TOKEN_METHOD_TRANSFER_FROM ||
     type === TRANSACTION_TYPES.TOKEN_METHOD_TRANSFER
@@ -269,11 +269,11 @@ export function useTransactionDisplayData(transactionGroup) {
     category = TRANSACTION_GROUP_CATEGORIES.SEND;
     title = t('safeTransferFrom');
     recipientAddress = getTokenAddressParam(tokenData);
-    subtitle = isQtumAddressShowChk ? t('toAddress', [shortenAddress(getQtumAddressFromHex(recipientAddress, chainId))]) : t('toAddress', [shortenAddress(recipientAddress)]);
+    subtitle = isRevoAddressShowChk ? t('toAddress', [shortenAddress(getRevoAddressFromHex(recipientAddress, chainId))]) : t('toAddress', [shortenAddress(recipientAddress)]);
   } else if (type === TRANSACTION_TYPES.SIMPLE_SEND) {
     category = TRANSACTION_GROUP_CATEGORIES.SEND;
     title = t('send');
-    subtitle = isQtumAddressShowChk ? t('toAddress', [shortenAddress(getQtumAddressFromHex(recipientAddress, chainId))]) : t('toAddress', [shortenAddress(recipientAddress)]);
+    subtitle = isRevoAddressShowChk ? t('toAddress', [shortenAddress(getRevoAddressFromHex(recipientAddress, chainId))]) : t('toAddress', [shortenAddress(recipientAddress)]);
   } else {
     dispatch(
       captureSingleException(

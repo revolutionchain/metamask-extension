@@ -6,14 +6,14 @@ import {
   resetEnsResolution,
 } from '../../../../ducks/ens';
 import {
-  getQtumAddressBook,
-  isQtumAddressShow,
+  getRevoAddressBook,
+  isRevoAddressShow,
 } from '../../../../ducks/metamask/metamask';
 import EnsInput from './ens-input.component';
 
 function mapStateToProps(state) {
-  const qtumAddressBook = getQtumAddressBook(state);
-  const isQtumAddressShowCheck = isQtumAddressShow(state);
+  const revoAddressBook = getRevoAddressBook(state);
+  const isRevoAddressShowCheck = isRevoAddressShow(state);
   const {
     metamask: {
       provider: { chainId },
@@ -22,8 +22,8 @@ function mapStateToProps(state) {
 
   return {
     chainId,
-    qtumAddressBook,
-    isQtumAddressShowCheck,
+    revoAddressBook,
+    isRevoAddressShowCheck,
   };
 }
 

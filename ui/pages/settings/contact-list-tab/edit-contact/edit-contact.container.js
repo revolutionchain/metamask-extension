@@ -13,8 +13,8 @@ import {
 import EditContact from './edit-contact.component';
 
 import {
-  getQtumAddress,
-  isQtumAddressShow,
+  getRevoAddress,
+  isRevoAddressShow,
 } from '../../../../ducks/metamask/metamask';
 
 const mapStateToProps = (state, ownProps) => {
@@ -39,8 +39,8 @@ const mapStateToProps = (state, ownProps) => {
     memo,
     viewRoute: CONTACT_VIEW_ROUTE,
     listRoute: CONTACT_LIST_ROUTE,
-    qtumAddress: contact ? getQtumAddress(state, address) : null,
-    isQtumAddressShow: isQtumAddressShow(state),
+    revoAddress: contact ? getRevoAddress(state, address) : null,
+    isRevoAddressShow: isRevoAddressShow(state),
   };
 };
 

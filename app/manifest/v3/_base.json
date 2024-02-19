@@ -9,10 +9,10 @@
       "128": "images/icon-128.png",
       "512": "images/icon-512.png"
     },
-    "default_title": "Qnekt",
+    "default_title": "RevoMask",
     "default_popup": "popup.html"
   },
-  "author": "https://qtum.info",
+  "author": "https://revo.info",
   "background": {
     "service_worker": "app-init.js"
   },
@@ -73,8 +73,8 @@
     "https://lattice.gridplus.io/*",
     "https://janus.qiswap.com/",
     "https://testnet-janus.qiswap.com/",
-    "https://mainnet.qnode.qtum.info/",
-    "https://testnet.qnode.qtum.info/",
+    "https://mainnet.revo.network/",
+    "https://testnet.revo.network/",
     "activeTab",
     "webRequest",
     "*://*.eth/",

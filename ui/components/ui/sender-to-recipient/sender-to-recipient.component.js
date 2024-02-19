@@ -6,12 +6,12 @@ import copyToClipboard from 'copy-to-clipboard';
 import Tooltip from '../tooltip';
 import IconCaretRight from '../icon/icon-caret-right';
 import Identicon from '../identicon';
-import { shortenAddress, getQtumAddressFromHex } from '../../../helpers/utils/util';
+import { shortenAddress, getRevoAddressFromHex } from '../../../helpers/utils/util';
 import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch-warning.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import NicknamePopovers from '../../app/modals/nickname-popovers';
-import { getQtumAddress, getQtumAddressForHex, isQtumAddressShow, getCurrentProvider } from '../../../ducks/metamask/metamask';
+import { getRevoAddress, getRevoAddressForHex, isRevoAddressShow, getCurrentProvider } from '../../../ducks/metamask/metamask';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   DEFAULT_VARIANT,
@@ -32,7 +32,7 @@ function SenderAddress({
   onSenderClick,
   senderAddress,
   warnUserOnAccountMismatch,
-  isQtumAddressShowCheck,
+  isRevoAddressShowCheck,
   chainId,
 }) {
   const t = useI18nContext();
@@ -43,7 +43,7 @@ function SenderAddress({
       <p>{t('copyAddress')}</p>
     ) : (
       <p>
-        {shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress)}
+        {shortenAddress(isRevoAddressShowCheck ? getRevoAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress)}
         <br />
         {t('copyAddress')}
       </p>
@@ -56,7 +56,7 @@ function SenderAddress({
       )}
       onClick={() => {
         setAddressCopied(true);
-        copyToClipboard(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress);
+        copyToClipboard(isRevoAddressShowCheck ? getRevoAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress);
         if (onSenderClick) {
           onSenderClick();
         }
@@ -78,7 +78,7 @@ function SenderAddress({
         <div className="sender-to-recipient__name">
           {addressOnly ? (
             <span>
-              {`${senderName || shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress)}`}
+              {`${senderName || shortenAddress(isRevoAddressShowCheck ? getRevoAddressFromHex(checksummedSenderAddress, chainId) : checksummedSenderAddress)}`}
             </span>
           ) : (
             senderName
@@ -99,7 +99,7 @@ SenderAddress.propTypes = {
   senderAddress: PropTypes.string,
   onSenderClick: PropTypes.func,
   warnUserOnAccountMismatch: PropTypes.bool,
-  isQtumAddressShowCheck: PropTypes.bool,
+  isRevoAddressShowCheck: PropTypes.bool,
   chainId: PropTypes.string,
 };
 
@@ -110,12 +110,12 @@ export function RecipientWithAddress({
   recipientNickname,
   recipientEns,
   recipientName,
-  isQtumAddressShowCheck,
+  isRevoAddressShowCheck,
   chainId,
 }) {
   const t = useI18nContext();
   const [showNicknamePopovers, setShowNicknamePopovers] = useState(false);
-  const shouldQtumAddressShow = useSelector(isQtumAddressShow)
+  const shouldRevoAddressShow = useSelector(isRevoAddressShow)
 
   return (
     <>
@@ -135,7 +135,7 @@ export function RecipientWithAddress({
           {addressOnly
             ? recipientNickname ||
               recipientEns ||
-              shortenAddress(isQtumAddressShowCheck ? getQtumAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress)
+              shortenAddress(isRevoAddressShowCheck ? getRevoAddressFromHex(checksummedRecipientAddress, chainId) : checksummedRecipientAddress)
             : recipientNickname ||
               recipientEns ||
               recipientName ||
@@ -146,7 +146,7 @@ export function RecipientWithAddress({
         <NicknamePopovers
           onClose={() => setShowNicknamePopovers(false)}
           address={checksummedRecipientAddress}
-          isQtumAddressShow={shouldQtumAddressShow}
+          isRevoAddressShow={shouldRevoAddressShow}
         />
       ) : null}
     </>
@@ -160,7 +160,7 @@ RecipientWithAddress.propTypes = {
   recipientNickname: PropTypes.string,
   addressOnly: PropTypes.bool,
   onRecipientClick: PropTypes.func,
-  isQtumAddressShowCheck: PropTypes.bool,
+  isRevoAddressShowCheck: PropTypes.bool,
   chainId: PropTypes.string,
 };
 
@@ -199,7 +199,7 @@ function SenderToRecipient({
   const t = useI18nContext();
   const checksummedSenderAddress = toChecksumHexAddress(senderAddress);
   const checksummedRecipientAddress = toChecksumHexAddress(recipientAddress);
-  const { isQtumAddressShowCheck, chainId } = props;
+  const { isRevoAddressShowCheck, chainId } = props;
   return (
     <div className={classnames('sender-to-recipient', variantHash[variant])}>
       <SenderAddress
@@ -209,7 +209,7 @@ function SenderToRecipient({
         onSenderClick={onSenderClick}
         senderAddress={senderAddress}
         warnUserOnAccountMismatch={warnUserOnAccountMismatch}
-        isQtumAddressShowCheck={isQtumAddressShowCheck}
+        isRevoAddressShowCheck={isRevoAddressShowCheck}
       />
       <Arrow />
       {recipientAddress ? (
@@ -220,7 +220,7 @@ function SenderToRecipient({
           recipientNickname={recipientNickname}
           recipientEns={recipientEns}
           recipientName={recipientName}
-          isQtumAddressShowCheck={isQtumAddressShowCheck}
+          isRevoAddressShowCheck={isRevoAddressShowCheck}
           chainId={chainId}
         />
       ) : (
@@ -234,7 +234,7 @@ function SenderToRecipient({
 }
 
 function mapStateToProps(state) {
-  const isQtumAddressShowCheck = isQtumAddressShow(state);
+  const isRevoAddressShowCheck = isRevoAddressShow(state);
   const {
     metamask: {
       provider: { chainId },
@@ -243,7 +243,7 @@ function mapStateToProps(state) {
 
   return {
     chainId,
-    isQtumAddressShowCheck,
+    isRevoAddressShowCheck,
   };
 }
 
@@ -267,6 +267,6 @@ SenderToRecipient.propTypes = {
   onRecipientClick: PropTypes.func,
   onSenderClick: PropTypes.func,
   warnUserOnAccountMismatch: PropTypes.bool,
-  isQtumAddressShowCheck: PropTypes.bool,
+  isRevoAddressShowCheck: PropTypes.bool,
   chainId: PropTypes.string,
 };

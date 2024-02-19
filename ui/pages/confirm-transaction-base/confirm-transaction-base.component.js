@@ -478,7 +478,7 @@ export default class ConfirmTransactionBase extends Component {
                       <p>{t('transactionDetailGasTooltipExplanation')}</p>
                       <p>
                         <a
-                          href="https://www.qtum.org/about/gas"
+                          href="https://www.revo.org/about/gas"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

@@ -15,19 +15,19 @@
     "message": "Bedrag"
   },
   "appDescription": {
-    "message": "QTUM Browser-extensie",
+    "message": "REVO Browser-extensie",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -147,7 +147,7 @@
     "message": "Account importeren"
   },
   "importAccountMsg": {
-    "message": " Geïmporteerde accounts worden niet gekoppeld aan de seedphrase van uw oorspronkelijk gemaakte Qnekt-account. Meer informatie over geïmporteerde accounts"
+    "message": " Geïmporteerde accounts worden niet gekoppeld aan de seedphrase van uw oorspronkelijk gemaakte RevoMask-account. Meer informatie over geïmporteerde accounts"
   },
   "imported": {
     "message": "geïmporteerd",
@@ -197,7 +197,7 @@
     "message": "Bericht"
   },
   "metamaskDescription": {
-    "message": "Qnekt is een veilige identiteitskluis voor QTUM."
+    "message": "RevoMask is een veilige identiteitskluis voor REVO."
   },
   "mustSelectOne": {
     "message": "Moet ten minste één token selecteren."
@@ -372,7 +372,7 @@
     "message": "Bezoek onze website"
   },
   "welcome": {
-    "message": "Welkom bij Qnekt"
+    "message": "Welkom bij RevoMask"
   },
   "youSign": {
     "message": "U ondertekent"

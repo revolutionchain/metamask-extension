@@ -5,7 +5,7 @@ import { memoize } from 'lodash';
 import { addHexPrefix } from '../../app/scripts/lib/util';
 import {
   MAINNET_CHAIN_ID,
-  QTUM_MAINNET_CHAIN_ID,
+  REVO_MAINNET_CHAIN_ID,
   TEST_CHAINS,
   NETWORK_TYPE_RPC,
   NATIVE_CURRENCY_TOKEN_IMAGE_MAP,
@@ -20,7 +20,7 @@ import {
   POLYGON_DISPLAY_NAME,
   AVALANCHE_DISPLAY_NAME,
   CHAIN_ID_TO_RPC_URL_MAP,
-  QTUM_MAINNET_DISPLAY_NAME,
+  REVO_MAINNET_DISPLAY_NAME,
 } from '../../shared/constants/network';
 import {
   KEYRING_TYPES,
@@ -527,7 +527,7 @@ export function getSuggestedAssets(state) {
 
 export function getIsMainnet(state) {
   const chainId = getCurrentChainId(state);
-  return chainId === QTUM_MAINNET_CHAIN_ID;
+  return chainId === REVO_MAINNET_CHAIN_ID;
 }
 
 export function getIsTestnet(state) {

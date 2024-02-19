@@ -7,9 +7,9 @@ export const MAINNET = 'mainnet';
 export const GOERLI = 'goerli';
 export const LOCALHOST = 'localhost';
 export const NETWORK_TYPE_RPC = 'rpc';
-export const QTUM_MAINNET = 'qtumMainnet';
-export const QTUM_TESTNET = 'qtumTestnet';
-export const QTUM_REGTEST = 'qtumRegtest';
+export const REVO_MAINNET = 'revoMainnet';
+export const REVO_TESTNET = 'revoTestnet';
+export const REVO_REGTEST = 'revoRegtest';
 export const HOMESTEAD = 'homestead';
 
 export const MAINNET_NETWORK_ID = '1';
@@ -18,9 +18,9 @@ export const RINKEBY_NETWORK_ID = '4';
 export const GOERLI_NETWORK_ID = '5';
 export const KOVAN_NETWORK_ID = '42';
 export const LOCALHOST_NETWORK_ID = '1337';
-export const QTUM_MAINNET_NETWORK_ID = '81';
-export const QTUM_TESTNET_NETWORK_ID = '8889';
-export const QTUM_REGTEST_NETWORK_ID = '8890';
+export const REVO_MAINNET_NETWORK_ID = '81';
+export const REVO_TESTNET_NETWORK_ID = '8889';
+export const REVO_REGTEST_NETWORK_ID = '8890';
 
 export const MAINNET_CHAIN_ID = '0x1';
 export const ROPSTEN_CHAIN_ID = '0x3';
@@ -32,12 +32,12 @@ export const BSC_CHAIN_ID = '0x38';
 export const OPTIMISM_CHAIN_ID = '0xa';
 export const OPTIMISM_TESTNET_CHAIN_ID = '0x1a4';
 export const POLYGON_CHAIN_ID = '0x89';
-export const QTUM_MAINNET_CHAIN_ID = '0x51';
-export const QTUM_MAINNET_ID = '89';
-export const QTUM_TESTNET_CHAIN_ID = '0x22b9';
-export const QTUM_TESTNET_ID = '8889';
-export const QTUM_REGTEST_CHAIN_ID = '0x22bA';
-export const QTUM_REGTEST_ID = '8890';
+export const REVO_MAINNET_CHAIN_ID = '0x51';
+export const REVO_MAINNET_ID = '89';
+export const REVO_TESTNET_CHAIN_ID = '0x22b9';
+export const REVO_TESTNET_ID = '8889';
+export const REVO_REGTEST_CHAIN_ID = '0x22bA';
+export const REVO_REGTEST_ID = '8890';
 export const AVALANCHE_CHAIN_ID = '0xa86a';
 export const FANTOM_CHAIN_ID = '0xfa';
 export const CELO_CHAIN_ID = '0xa4ec';
@@ -57,9 +57,9 @@ export const KOVAN_DISPLAY_NAME = 'Kovan';
 export const MAINNET_DISPLAY_NAME = 'Ethereum Mainnet';
 export const GOERLI_DISPLAY_NAME = 'Goerli';
 export const LOCALHOST_DISPLAY_NAME = 'Localhost 8545';
-export const QTUM_MAINNET_DISPLAY_NAME = 'QTUM Mainnet';
-export const QTUM_TESTNET_DISPLAY_NAME = 'QTUM Testnet';
-export const QTUM_REGTEST_DISPLAY_NAME = 'QTUM Regtest';
+export const REVO_MAINNET_DISPLAY_NAME = 'REVO Mainnet';
+export const REVO_TESTNET_DISPLAY_NAME = 'REVO Testnet';
+export const REVO_REGTEST_DISPLAY_NAME = 'REVO Regtest';
 export const BSC_DISPLAY_NAME = 'Binance Smart Chain';
 export const POLYGON_DISPLAY_NAME = 'Polygon';
 export const AVALANCHE_DISPLAY_NAME = 'Avalanche Network C-Chain';
@@ -81,16 +81,16 @@ export const KOVAN_RPC_URL = getRpcUrl({ network: KOVAN });
 export const MAINNET_RPC_URL = getRpcUrl({ network: MAINNET });
 export const GOERLI_RPC_URL = getRpcUrl({ network: GOERLI });
 export const LOCALHOST_RPC_URL = 'http://localhost:8545';
-export const QTUM_MAINNET_RPC_URL = `https://mainnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN`;
-export const QTUM_TESTNET_RPC_URL = `https://testnet.qnode.qtum.info/v1/S0ML1u0egLDKsfgzlj8JyAy25p0VJO2D2vJjN`;
-export const QTUM_REGTEST_RPC_URL = `https://localhost:23889`;
+export const REVO_MAINNET_RPC_URL = `https://charon.revo.network`;
+export const REVO_TESTNET_RPC_URL = `https://tcharon.revo.network`;
+export const REVO_REGTEST_RPC_URL = `https://localhost:23889`;
 
 export const ETH_SYMBOL = 'ETH';
 export const WETH_SYMBOL = 'WETH';
 export const TEST_ETH_SYMBOL = 'TESTETH';
 export const BNB_SYMBOL = 'BNB';
 export const MATIC_SYMBOL = 'MATIC';
-export const QTUM_SYMBOL = 'QTUM';
+export const REVO_SYMBOL = 'RVO';
 export const AVALANCHE_SYMBOL = 'AVAX';
 export const FANTOM_SYMBOL = 'FTM';
 export const CELO_SYMBOL = 'CELO';
@@ -102,7 +102,7 @@ export const ETH_TOKEN_IMAGE_URL = './images/eth_logo.svg';
 export const TEST_ETH_TOKEN_IMAGE_URL = './images/black-eth-logo.svg';
 export const BNB_TOKEN_IMAGE_URL = './images/bnb.png';
 export const MATIC_TOKEN_IMAGE_URL = './images/matic-token.png';
-export const QTUM_TOKEN_IMAGE_URL = './images/qtum_logo.png';
+export const REVO_TOKEN_IMAGE_URL = './images/revo_logo.png';
 export const AVAX_TOKEN_IMAGE_URL = './images/avax-token.png';
 export const AETH_TOKEN_IMAGE_URL = './images/arbitrum.svg';
 export const FTM_TOKEN_IMAGE_URL = './images/fantom-opera.svg';
@@ -116,11 +116,11 @@ export const INFURA_PROVIDER_TYPES = [
   KOVAN,
   MAINNET,
   GOERLI,
-  QTUM_MAINNET,
-  QTUM_TESTNET,
-  QTUM_REGTEST,
+  REVO_MAINNET,
+  REVO_TESTNET,
+  REVO_REGTEST,
 ];
-export const QTUM_PROVIDER_TYPES = [QTUM_MAINNET, QTUM_TESTNET, QTUM_REGTEST];
+export const REVO_PROVIDER_TYPES = [REVO_MAINNET, REVO_TESTNET, REVO_REGTEST];
 
 export const TEST_CHAINS = [
   ROPSTEN_CHAIN_ID,
@@ -128,8 +128,8 @@ export const TEST_CHAINS = [
   GOERLI_CHAIN_ID,
   KOVAN_CHAIN_ID,
   LOCALHOST_CHAIN_ID,
-  QTUM_TESTNET_CHAIN_ID,
-  QTUM_REGTEST_CHAIN_ID,
+  REVO_TESTNET_CHAIN_ID,
+  REVO_REGTEST_CHAIN_ID,
 ];
 
 export const TEST_NETWORK_TICKER_MAP = {
@@ -171,20 +171,20 @@ export const NETWORK_TYPE_TO_ID_MAP = {
     networkId: LOCALHOST_NETWORK_ID,
     chainId: LOCALHOST_CHAIN_ID,
   },
-  [QTUM_MAINNET]: {
-    networkId: QTUM_MAINNET_NETWORK_ID,
-    chainId: QTUM_MAINNET_CHAIN_ID,
-    ticker: QTUM_SYMBOL,
+  [REVO_MAINNET]: {
+    networkId: REVO_MAINNET_NETWORK_ID,
+    chainId: REVO_MAINNET_CHAIN_ID,
+    ticker: REVO_SYMBOL,
   },
-  [QTUM_TESTNET]: {
-    networkId: QTUM_TESTNET_NETWORK_ID,
-    chainId: QTUM_TESTNET_CHAIN_ID,
-    ticker: QTUM_SYMBOL,
+  [REVO_TESTNET]: {
+    networkId: REVO_TESTNET_NETWORK_ID,
+    chainId: REVO_TESTNET_CHAIN_ID,
+    ticker: REVO_SYMBOL,
   },
-  [QTUM_REGTEST]: {
-    networkId: QTUM_REGTEST_NETWORK_ID,
-    chainId: QTUM_REGTEST_CHAIN_ID,
-    ticker: QTUM_SYMBOL,
+  [REVO_REGTEST]: {
+    networkId: REVO_REGTEST_NETWORK_ID,
+    chainId: REVO_REGTEST_CHAIN_ID,
+    ticker: REVO_SYMBOL,
   },
 };
 
@@ -210,17 +210,17 @@ export const NETWORK_TO_NAME_MAP = {
   [MAINNET_CHAIN_ID]: MAINNET_DISPLAY_NAME,
   [LOCALHOST_CHAIN_ID]: LOCALHOST_DISPLAY_NAME,
 
-  [QTUM_MAINNET]: QTUM_MAINNET_DISPLAY_NAME,
-  [QTUM_TESTNET]: QTUM_TESTNET_DISPLAY_NAME,
-  [QTUM_REGTEST]: QTUM_REGTEST_DISPLAY_NAME,
+  [REVO_MAINNET]: REVO_MAINNET_DISPLAY_NAME,
+  [REVO_TESTNET]: REVO_TESTNET_DISPLAY_NAME,
+  [REVO_REGTEST]: REVO_REGTEST_DISPLAY_NAME,
 
-  [QTUM_MAINNET_NETWORK_ID]: QTUM_MAINNET_DISPLAY_NAME,
-  [QTUM_TESTNET_NETWORK_ID]: QTUM_TESTNET_DISPLAY_NAME,
-  [QTUM_REGTEST_NETWORK_ID]: QTUM_REGTEST_DISPLAY_NAME,
+  [REVO_MAINNET_NETWORK_ID]: REVO_MAINNET_DISPLAY_NAME,
+  [REVO_TESTNET_NETWORK_ID]: REVO_TESTNET_DISPLAY_NAME,
+  [REVO_REGTEST_NETWORK_ID]: REVO_REGTEST_DISPLAY_NAME,
 
-  [QTUM_MAINNET_CHAIN_ID]: QTUM_MAINNET_DISPLAY_NAME,
-  [QTUM_TESTNET_CHAIN_ID]: QTUM_TESTNET_DISPLAY_NAME,
-  [QTUM_REGTEST_CHAIN_ID]: QTUM_REGTEST_DISPLAY_NAME,
+  [REVO_MAINNET_CHAIN_ID]: REVO_MAINNET_DISPLAY_NAME,
+  [REVO_TESTNET_CHAIN_ID]: REVO_TESTNET_DISPLAY_NAME,
+  [REVO_REGTEST_CHAIN_ID]: REVO_REGTEST_DISPLAY_NAME,
 };
 
 export const CHAIN_ID_TO_TYPE_MAP = Object.entries(
@@ -237,9 +237,9 @@ export const CHAIN_ID_TO_RPC_URL_MAP = {
   [GOERLI_CHAIN_ID]: GOERLI_RPC_URL,
   [MAINNET_CHAIN_ID]: MAINNET_RPC_URL,
   [LOCALHOST_CHAIN_ID]: LOCALHOST_RPC_URL,
-  [QTUM_MAINNET_CHAIN_ID]: QTUM_MAINNET_RPC_URL,
-  [QTUM_TESTNET_CHAIN_ID]: QTUM_TESTNET_RPC_URL,
-  [QTUM_REGTEST_CHAIN_ID]: QTUM_REGTEST_RPC_URL,
+  [REVO_MAINNET_CHAIN_ID]: REVO_MAINNET_RPC_URL,
+  [REVO_TESTNET_CHAIN_ID]: REVO_TESTNET_RPC_URL,
+  [REVO_REGTEST_CHAIN_ID]: REVO_REGTEST_RPC_URL,
 };
 
 export const CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP = {
@@ -253,7 +253,7 @@ export const CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP = {
   [HARMONY_CHAIN_ID]: HARMONY_ONE_TOKEN_IMAGE_URL,
   [OPTIMISM_CHAIN_ID]: OPTIMISM_TOKEN_IMAGE_URL,
   [PALM_CHAIN_ID]: PALM_TOKEN_IMAGE_URL,
-  [QTUM_MAINNET_CHAIN_ID]: QTUM_TOKEN_IMAGE_URL,
+  [REVO_MAINNET_CHAIN_ID]: REVO_TOKEN_IMAGE_URL,
 };
 
 export const NETWORK_ID_TO_ETHERS_NETWORK_NAME_MAP = {
@@ -261,9 +261,9 @@ export const NETWORK_ID_TO_ETHERS_NETWORK_NAME_MAP = {
   [RINKEBY_NETWORK_ID]: RINKEBY,
   [GOERLI_NETWORK_ID]: GOERLI,
   [MAINNET_NETWORK_ID]: HOMESTEAD,
-  [QTUM_MAINNET_ID]: QTUM_MAINNET,
-  [QTUM_TESTNET_ID]: QTUM_TESTNET,
-  [QTUM_REGTEST_ID]: QTUM_REGTEST,
+  [REVO_MAINNET_ID]: REVO_MAINNET,
+  [REVO_TESTNET_ID]: REVO_TESTNET,
+  [REVO_REGTEST_ID]: REVO_REGTEST,
 };
 
 export const CHAIN_ID_TO_NETWORK_ID_MAP = Object.values(
@@ -278,7 +278,7 @@ export const NATIVE_CURRENCY_TOKEN_IMAGE_MAP = {
   [TEST_ETH_SYMBOL]: TEST_ETH_TOKEN_IMAGE_URL,
   [BNB_SYMBOL]: BNB_TOKEN_IMAGE_URL,
   [MATIC_SYMBOL]: MATIC_TOKEN_IMAGE_URL,
-  [QTUM_SYMBOL]: QTUM_TOKEN_IMAGE_URL,
+  [REVO_SYMBOL]: REVO_TOKEN_IMAGE_URL,
   [AVALANCHE_SYMBOL]: AVAX_TOKEN_IMAGE_URL,
 };
 

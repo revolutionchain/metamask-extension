@@ -21,8 +21,8 @@ import {
   getEnsWarning,
 } from '../../../../ducks/ens';
 import {
-  getQtumAddressBook,
-  isQtumAddressShow,
+  getRevoAddressBook,
+  isRevoAddressShow,
 } from '../../../../ducks/metamask/metamask';
 import AddRecipient from './add-recipient.component';
 
@@ -38,15 +38,15 @@ function mapStateToProps(state) {
   }
 
   const addressBook = getAddressBook(state);
-  const qtumAddressBook = getQtumAddressBook(state);
-  const isQtumAddressShowCheck = isQtumAddressShow(state);
+  const revoAddressBook = getRevoAddressBook(state);
+  const isRevoAddressShowCheck = isRevoAddressShow(state);
 
   const ownedAccounts = getMetaMaskAccountsOrdered(state);
 
   return {
     addressBook,
-    qtumAddressBook,
-    isQtumAddressShowCheck,
+    revoAddressBook,
+    isRevoAddressShowCheck,
     addressBookEntryName,
     contacts: addressBook.filter(({ name }) => Boolean(name)),
     ensResolution,

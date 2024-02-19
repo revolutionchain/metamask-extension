@@ -1554,7 +1554,7 @@
         "@lavamoat/lavapack>umd": true,
         "browserify>JSONStream": true,
         "browserify>browser-pack>through2": true,
-        "qtumjs-lib>safe-buffer": true,
+        "revojs-lib>safe-buffer": true,
         "watchify>defined": true
       }
     },
@@ -1779,7 +1779,7 @@
     },
     "browserify>string_decoder": {
       "packages": {
-        "qtumjs-lib>safe-buffer": true
+        "revojs-lib>safe-buffer": true
       }
     },
     "browserify>syntax-error": {
@@ -5310,7 +5310,7 @@
       "packages": {
         "gulp>vinyl-fs>remove-bom-buffer": true,
         "gulp>vinyl-fs>remove-bom-stream>through2": true,
-        "qtumjs-lib>safe-buffer": true
+        "revojs-lib>safe-buffer": true
       }
     },
     "gulp>vinyl-fs>remove-bom-stream>through2": {
@@ -5988,7 +5988,7 @@
         "util.inherits": true
       }
     },
-    "qtumjs-lib>safe-buffer": {
+    "revojs-lib>safe-buffer": {
       "builtin": {
         "buffer": true
       }
@@ -7006,7 +7006,7 @@
         "util.inherits": true
       },
       "packages": {
-        "qtumjs-lib>safe-buffer": true,
+        "revojs-lib>safe-buffer": true,
         "readable-stream": true
       }
     },

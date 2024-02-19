@@ -10,7 +10,7 @@ import {
 } from '../../../selectors';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
-import { getQtumAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
+import { getRevoAddressFromHex, getURLHostName } from '../../../helpers/utils/util';
 import { getAccountLink } from '@metamask/etherscan-link';
 
 const getBlockExplorerLink = (address, chainId, rpcPrefs) => {
@@ -27,7 +27,7 @@ export default function TokenCell({
   isERC721,
 }) {
   const chainId = useSelector(getCurrentChainId);
-  const userAddress = getQtumAddressFromHex(useSelector(getSelectedAddress), chainId);
+  const userAddress = getRevoAddressFromHex(useSelector(getSelectedAddress), chainId);
   const t = useI18nContext();
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
   const blockExplorerLink = getBlockExplorerLink(userAddress, chainId, rpcPrefs)

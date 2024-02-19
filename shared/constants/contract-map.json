@@ -91,7 +91,7 @@
     "name": "Wrapped QTUM",
     "symbol": "WQTUM",
     "erc20": true,
-    "logo": "qtum.png",
+    "logo": "revo.png",
     "decimals": 8
   },
   "0x4060e21ac01b5c5d2a3f01cecd7cbf820f50be95": {
@@ -146,7 +146,7 @@
   },
   "0xb406040d9e1a9bbb19fcc803a7a808b038ae45ce": {
     "name": "QI Swap Liquidity Token -- Wrapped QTUM : QCASH",
-    "symbol": "QILP-WQTUM_QC",
+    "symbol": "QILP-WREVO_QC",
     "erc20": true,
     "decimals": 8
   },

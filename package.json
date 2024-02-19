@@ -208,8 +208,8 @@
     "punycode": "^2.1.1",
     "qrcode-generator": "1.4.1",
     "qrcode.react": "^1.0.1",
-    "qtum-ethers-wrapper": "^2.1.1",
-    "qtumjs-lib": "^0.0.8",
+    "revo-ethers-wrapper": "github:revolutionchain/revo-ethers",
+    "revojs-lib": "github:revolutionchain/revojs-lib",
     "react": "^16.12.0",
     "react-dnd": "^3.0.2",
     "react-dnd-html5-backend": "^7.4.4",
@@ -496,7 +496,7 @@
       "@metamask/rpc-methods>@metamask/key-tree>secp256k1": false,
       "eth-lattice-keyring>gridplus-sdk>secp256k1": false,
       "eth-lattice-keyring>secp256k1": false,
-      "qtum-ethers-wrapper>secp256k1": false
+      "revo-ethers-wrapper>secp256k1": false
     }
   }
 }

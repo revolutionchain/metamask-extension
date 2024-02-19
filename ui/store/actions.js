@@ -544,26 +544,26 @@ export function setNativeCurrency() {
   };
 }
 
-export function getHexAddressFromQtumAddress(_address) {
+export function getHexAddressFromRevoAddress(_address) {
   return async () => {
     try {
-      const qtumAddress = await promisifiedBackground.getHexAddressFromQtum(
+      const revoAddress = await promisifiedBackground.getHexAddressFromRevo(
         _address,
       );
-      return qtumAddress;
+      return revoAddress;
     } catch (error) {
       return undefined;
     }
   };
 }
 
-export function getQtumAddressFromHexAddress(_address) {
+export function getRevoAddressFromHexAddress(_address) {
   return async () => {
     try {
-      const qtumAddress = await promisifiedBackground.getQtumAddressFromHex(
+      const revoAddress = await promisifiedBackground.getRevoAddressFromHex(
         _address,
       );
-      return qtumAddress;
+      return revoAddress;
     } catch (error) {
       return undefined;
     }
@@ -1448,7 +1448,7 @@ export function updateMetamaskState(newState) {
       selectedAddress: newSelectedAddress,
       provider: newProvider,
       nativeCurrency,
-      qtumAddresses,
+      revoAddresses,
     } = newState;
 
     if (currentLocale && newLocale && currentLocale !== newLocale) {
@@ -1524,17 +1524,17 @@ export function updateMetamaskState(newState) {
     });
 
     if (
-      nativeCurrency === 'QTUM' &&
-      newState.qtumBalances[newSelectedAddress] !== undefined
+      nativeCurrency === 'REVO' &&
+      newState.revoBalances[newSelectedAddress] !== undefined
     ) {
       dispatch({
-        type: actionConstants.UPDATE_QTUM_BALANCE,
+        type: actionConstants.UPDATE_REVO_BALANCE,
         payload: {
-          qtumBalances: {
+          revoBalances: {
             spendableBalance:
-              newState.qtumBalances[newSelectedAddress].spendableBalance,
+              newState.revoBalances[newSelectedAddress].spendableBalance,
             pendingBalance:
-              newState.qtumBalances[newSelectedAddress].pendingBalance,
+              newState.revoBalances[newSelectedAddress].pendingBalance,
           },
         },
       });
@@ -2570,7 +2570,7 @@ export function setUseNativeCurrencyAsPrimaryCurrencyPreference(value) {
 }
 
 export function setPrimaryAddressPreference(value) {
-  return setPreference('isQtumAddressShow', value);
+  return setPreference('isRevoAddressShow', value);
 }
 
 export function setHideZeroBalanceTokens(value) {

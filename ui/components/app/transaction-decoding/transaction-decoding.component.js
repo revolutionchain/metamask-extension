@@ -156,12 +156,12 @@ export default function TransactionDecoding({ to = '', inputData: data = '' }) {
 
           case 'address': {
             const address = value?.asAddress;
-            const qtumAddress = useSelector(getQtumAddress, address)
+            const revoAddress = useSelector(getRevoAddress, address)
             return (
               <Address
                 addressOnly
                 checksummedRecipientAddress={toChecksumHexAddress(address)}
-                qtumAddress
+                revoAddress
               />
             );
           }

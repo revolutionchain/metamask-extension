@@ -6,8 +6,8 @@ import { isHexString } from 'ethereumjs-util';
 import {
   shortenAddress,
   isValidDomainName,
-  getHexAddressFromQtum,
-  getQtumAddressFromHex,
+  getHexAddressFromRevo,
+  getRevoAddressFromHex,
 } from '../../../../helpers/utils/util';
 import { addHexPrefix } from '../../../../../app/scripts/lib/util';
 import {
@@ -25,8 +25,8 @@ export default class EnsInput extends Component {
     className: PropTypes.string,
     chainId: PropTypes.string,
     selectedAddress: PropTypes.string,
-    qtumAddressBook: PropTypes.object,
-    isQtumAddressShowCheck: PropTypes.bool,
+    revoAddressBook: PropTypes.object,
+    isRevoAddressShowCheck: PropTypes.bool,
     selectedName: PropTypes.string,
     scanQrCode: PropTypes.func,
     onPaste: PropTypes.func,
@@ -54,7 +54,7 @@ export default class EnsInput extends Component {
         let hexAddress = input;
         if (this.isBase58(input) || !isHexString(input)) {
           try {
-            hexAddress = getHexAddressFromQtum(input);
+            hexAddress = getHexAddressFromRevo(input);
           } catch (e) {
 
           }
@@ -81,7 +81,7 @@ export default class EnsInput extends Component {
     let hexAddress = input;
     if (this.isBase58(input) || !isHexString(input)) {
       try {
-        hexAddress = getHexAddressFromQtum(input);
+        hexAddress = getHexAddressFromRevo(input);
       } catch (e) {
 
       }
@@ -111,16 +111,16 @@ export default class EnsInput extends Component {
   };
 
   convertAddress = (input) => {
-    const { chainId, isQtumAddressShowCheck } = this.props;
-    if (isQtumAddressShowCheck && isHexString(input) && input !== '' && input.length === 42) {
-      const newAddress = getQtumAddressFromHex(input, chainId);
+    const { chainId, isRevoAddressShowCheck } = this.props;
+    if (isRevoAddressShowCheck && isHexString(input) && input !== '' && input.length === 42) {
+      const newAddress = getRevoAddressFromHex(input, chainId);
       return newAddress;
     } else if (
-      !isQtumAddressShowCheck &&
+      !isRevoAddressShowCheck &&
       this.isBase58(input) &&
       input !== ''
     ) if (isHexString(input)) {
-      const newAddress = getHexAddressFromQtum(input);
+      const newAddress = getHexAddressFromRevo(input);
       return newAddress;
     }
     return input;
@@ -133,8 +133,8 @@ export default class EnsInput extends Component {
       selectedAddress,
       selectedName,
       userInput,
-      qtumAddressBook,
-      isQtumAddressShowCheck,
+      revoAddressBook,
+      isRevoAddressShowCheck,
     } = this.props;
 
     const hasSelectedAddress = Boolean(selectedAddress);
@@ -164,14 +164,14 @@ export default class EnsInput extends Component {
               <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
                 <div className="ens-input__selected-input__title">
                   {this.convertAddress(selectedName) ||
-                    (isQtumAddressShowCheck
-                      ? qtumAddressBook[selectedAddress]
+                    (isRevoAddressShowCheck
+                      ? revoAddressBook[selectedAddress]
                       : this.convertAddress(selectedAddress))}
                 </div>
                 {selectedName !== selectedAddress && (
                   <div className="ens-input__selected-input__subtitle">
-                    {isQtumAddressShowCheck
-                      ? qtumAddressBook[selectedAddress]
+                    {isRevoAddressShowCheck
+                      ? revoAddressBook[selectedAddress]
                       : selectedAddress}
                   </div>
                 )}

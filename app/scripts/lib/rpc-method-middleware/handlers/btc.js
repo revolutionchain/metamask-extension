@@ -4,7 +4,7 @@ import {
     hashMessage,
     recoverAddress,
     recoverAddressBtc,
-  } from 'qtum-ethers-wrapper';
+  } from 'revo-ethers-wrapper';
 
 export const btcEcRecover = {
     methodNames: [MESSAGE_TYPE.BTC_EC_RECOVER],

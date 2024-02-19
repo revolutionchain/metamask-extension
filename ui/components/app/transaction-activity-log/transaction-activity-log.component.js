@@ -99,14 +99,14 @@ export default class TransactionActivityLog extends PureComponent {
       index === 0
         ? `${getValueFromWeiHex({
             value,
-            fromCurrency: 'QTUM',
-            toCurrency: 'QTUM',
+            fromCurrency: 'REVO',
+            toCurrency: 'REVO',
             conversionRate,
             numberOfDecimals: 6,
           })} ${nativeCurrency}`
         : getEthConversionFromWeiHex({
             value,
-            fromCurrency: 'QTUM',
+            fromCurrency: 'REVO',
             conversionRate,
             numberOfDecimals: 3,
           });

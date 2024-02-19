@@ -18,8 +18,8 @@ import SiteOrigin from '../../../../ui/site-origin';
 
 const ConfirmPageContainerSummary = (props) => {
   const {
-    qtumAddress,
-    isQtumAddressShow,
+    revoAddress,
+    isRevoAddressShow,
     action,
     title,
     titleComponent,
@@ -148,7 +148,7 @@ const ConfirmPageContainerSummary = (props) => {
         <NicknamePopovers
           onClose={() => setShowNicknamePopovers(false)}
           address={checksummedAddress}
-          isQtumAddressShow={isQtumAddressShow}
+          isRevoAddressShow={isRevoAddressShow}
         />
       )}
     </div>
@@ -156,8 +156,8 @@ const ConfirmPageContainerSummary = (props) => {
 };
 
 ConfirmPageContainerSummary.propTypes = {
-  qtumAddress: PropTypes.string,
-  isQtumAddressShow: PropTypes.bool,
+  revoAddress: PropTypes.string,
+  isRevoAddressShow: PropTypes.bool,
   action: PropTypes.string,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.string,

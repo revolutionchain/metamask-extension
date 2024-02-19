@@ -66,7 +66,7 @@ import {
   ACCOUNT_CHANGED,
   ADDRESS_BOOK_UPDATED,
   GAS_FEE_ESTIMATES_UPDATED,
-  UPDATE_QTUM_BALANCE,
+  UPDATE_REVO_BALANCE,
 } from '../../store/actionConstants';
 import {
   calcTokenAmount,
@@ -88,7 +88,7 @@ import {
   getGasEstimateType,
   getTokens,
   getUnapprovedTxs,
-  getQtumBalances,
+  getRevoBalances,
 } from '../metamask/metamask';
 
 import { resetEnsResolution } from '../ens';
@@ -317,10 +317,10 @@ export const RECIPIENT_SEARCH_MODES = {
  */
 
 /**
- * @typedef {Object} QtumBalances
- * @property {string} spendableBalance - spendable P2PK qtum balance
- * @property {string} pendingBalance - pending qtum balance
- * @property {string} [error] - error to display for qtum spendable balance fields.
+ * @typedef {Object} RevoBalances
+ * @property {string} spendableBalance - spendable P2PK revo balance
+ * @property {string} pendingBalance - pending revo balance
+ * @property {string} [error] - error to display for revo spendable balance fields.
  */
 
 /**
@@ -456,7 +456,7 @@ export const draftTransactionInitialState = {
  * @property {MapValuesToUnion<SendStateStages>} stage - The stage of the
  *  send flow that the user has progressed to. Defaults to 'INACTIVE' which
  *  results in the send screen not being shown.
- * @property {QtumBalances} qtumBalances - The spendable qtum balance to use for max send amount.
+ * @property {RevoBalances} revoBalances - The spendable revo balance to use for max send amount.
  */
 
 /**
@@ -480,7 +480,7 @@ export const initialState = {
     balance: '0x0',
   },
   stage: SEND_STAGES.INACTIVE,
-  qtumBalances: {
+  revoBalances: {
     spendableBalance: '0x0',
     pendingBalane: '0x0',
     error: null,
@@ -719,9 +719,9 @@ export const initializeSendState = createAsyncThunk(
       );
     }
 
-    let qtumBalances;
+    let revoBalances;
     if (draftTransaction.asset.type === ASSET_TYPES.NATIVE) {
-      qtumBalances = getQtumBalances(state);
+      revoBalances = getRevoBalances(state);
     }
 
     // There may be a case where the send has been canceled by the user while
@@ -750,7 +750,7 @@ export const initializeSendState = createAsyncThunk(
       eip1559support,
       useTokenDetection: getUseTokenDetection(state),
       tokenAddressList: Object.keys(getTokenList(state)),
-      qtumBalances,
+      revoBalances,
     };
   },
 );
@@ -998,7 +998,7 @@ const slice = createSlice({
           state.gasTotalForLayer1 || '0x0',
         );
         amount = subtractCurrencies(
-          addHexPrefix(state.qtumBalances.spendableBalance),
+          addHexPrefix(state.revoBalances.spendableBalance),
           addHexPrefix(_gasTotal),
           {
             toNumericBase: 'hex',
@@ -1350,7 +1350,7 @@ const slice = createSlice({
      * @returns {void}
      */
     validateAmountField: (state) => {
-      const { qtumBalances } = state;
+      const { revoBalances } = state;
       const draftTransaction =
         state.draftTransactions[state.currentTransactionUUID];
       switch (true) {
@@ -1359,7 +1359,7 @@ const slice = createSlice({
         case draftTransaction.asset.type === ASSET_TYPES.NATIVE &&
           !isBalanceSufficient({
             amount: draftTransaction.amount.value,
-            balance: qtumBalances.spendableBalance,
+            balance: revoBalances.spendableBalance,
             gasTotal: draftTransaction.gas.gasTotal ?? '0x0',
           }):
           draftTransaction.amount.error = INSUFFICIENT_FUNDS_ERROR;
@@ -1398,7 +1398,7 @@ const slice = createSlice({
      * @returns {void}
      */
     validateGasField: (state) => {
-      const { qtumBalances } = state;
+      const { revoBalances } = state;
       const draftTransaction =
         state.draftTransactions[state.currentTransactionUUID];
       const insufficientFunds = !isBalanceSufficient({
@@ -1408,7 +1408,7 @@ const slice = createSlice({
             : '0x0',
         balance:
           draftTransaction.asset.type === ASSET_TYPES.NATIVE
-            ? qtumBalances.spendableBalance
+            ? revoBalances.spendableBalance
             : draftTransaction.fromAccount?.balance ??
               state.selectedAccount.balance,
         gasTotal: draftTransaction.gas.gasTotal ?? '0x0',
@@ -1603,8 +1603,8 @@ const slice = createSlice({
           payload: action.payload,
         });
       })
-      .addCase(UPDATE_QTUM_BALANCE, (state, action) => {
-        state.qtumBalances = { ...action.payload.qtumBalances };
+      .addCase(UPDATE_REVO_BALANCE, (state, action) => {
+        state.revoBalances = { ...action.payload.revoBalances };
       })
       .addCase(initializeSendState.pending, (state) => {
         // when we begin initializing state, which can happen when switching
@@ -1618,7 +1618,7 @@ const slice = createSlice({
         state.eip1559support = action.payload.eip1559support;
         state.selectedAccount.address = action.payload.account.address;
         state.selectedAccount.balance = action.payload.account.balance;
-        // state.qtumBalances = { ...action.payload.qtumBalances };
+        // state.revoBalances = { ...action.payload.revoBalances };
         const draftTransaction =
           state.draftTransactions[state.currentTransactionUUID];
         if (draftTransaction) {
@@ -2699,8 +2699,8 @@ export function sendAmountIsInError(state) {
   return Boolean(getCurrentDraftTransaction(state).amount?.error);
 }
 
-export function sendQtumAmountIsInError(state) {
-  return Boolean(state[name].qtumBalances.error);
+export function sendRevoAmountIsInError(state) {
+  return Boolean(state[name].revoBalances.error);
 }
 
 // Recipient Selectors
@@ -2778,7 +2778,7 @@ export function getSendErrors(state) {
   return {
     gasFee: getCurrentDraftTransaction(state).gas?.error,
     amount: getCurrentDraftTransaction(state).amount?.error,
-    qtumBalances: state.send.qtumBalances.error,
+    revoBalances: state.send.revoBalances.error,
   };
 }
 
@@ -2814,12 +2814,12 @@ export function getSendStage(state) {
   return state[name].stage;
 }
 
-export function getQtumSpendableBalanceInString(state) {
+export function getRevoSpendableBalanceInString(state) {
   let balance = '0x0';
   const draftTransaction = getCurrentDraftTransaction(state);
-  if (state.send.qtumBalances.spendableBalance) {
+  if (state.send.revoBalances.spendableBalance) {
     const amount = subtractCurrencies(
-      addHexPrefix(state.send.qtumBalances.spendableBalance),
+      addHexPrefix(state.send.revoBalances.spendableBalance),
       addHexPrefix(draftTransaction.gas.gasTotal),
       {
         toNumericBase: 'hex',

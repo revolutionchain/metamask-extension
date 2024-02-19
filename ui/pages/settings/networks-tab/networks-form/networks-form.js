@@ -366,7 +366,7 @@ const NetworksForm = ({
           warningMessage = t('failedToFetchTickerSymbolData');
         } else {
           const returnedTickerSymbol = matchedChain.nativeCurrency?.symbol;
-          if (returnedTickerSymbol !== formTickerSymbol && (returnedTickerSymbol === "ETH" && formTickerSymbol !== "QTUM")) {
+          if (returnedTickerSymbol !== formTickerSymbol && (returnedTickerSymbol === "ETH" && formTickerSymbol !== "RV")) {
             warningKey = 'chainListReturnedDifferentTickerSymbol';
             warningMessage = t('chainListReturnedDifferentTickerSymbol', [
               formChainId,

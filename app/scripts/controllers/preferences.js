@@ -30,8 +30,8 @@ export default class PreferencesController {
    */
   constructor(opts = {}) {
     const initState = {
-      qtumBalances: {},
-      qtumAddresses: {},
+      revoBalances: {},
+      revoAddresses: {},
       frequentRpcListDetail: [],
       useBlockie: false,
       useNonceField: false,
@@ -63,7 +63,7 @@ export default class PreferencesController {
         showTestNetworks: false,
         useNativeCurrencyAsPrimaryCurrency: true,
         hideZeroBalanceTokens: false,
-        isQtumAddressShow: true,
+        isRevoAddressShow: true,
       },
       // ENS decentralized website resolution
       ipfsGateway: IPFS_DEFAULT_GATEWAY_URL,
@@ -230,19 +230,19 @@ export default class PreferencesController {
     return textDirection;
   }
 
-  getQtumBalances() {
-    return this.store.getState().qtumBalances;
+  getRevoBalances() {
+    return this.store.getState().revoBalances;
   }
 
-  setQtumBalances(address, balances) {
-    const oldBalances = this.getQtumBalances();
+  setRevoBalances(address, balances) {
+    const oldBalances = this.getRevoBalances();
 
     oldBalances[address] = {
       ...oldBalances[address],
       ...balances,
     };
 
-    this.store.updateState({ qtumBalances: oldBalances });
+    this.store.updateState({ revoBalances: oldBalances });
   }
 
   /**
@@ -263,24 +263,24 @@ export default class PreferencesController {
     this.store.updateState({ identities });
   }
 
-  getQtumAddresses() {
-    return this.store.getState().qtumAddresses;
+  getRevoAddresses() {
+    return this.store.getState().revoAddresses;
   }
 
   /**
-   * Updates qtumAddresses to only include specified addresses.
+   * Updates revoAddresses to only include specified addresses.
    *
    * @param {string[]} addresses - An array of hex addresses
    * @param address
-   * @param qtumAddress
+   * @param revoAddress
    */
-  setQtumAddress(address, qtumAddress) {
-    const { qtumAddresses } = this.store.getState();
+  setRevoAddress(address, revoAddress) {
+    const { revoAddresses } = this.store.getState();
     const normalizedAddress = normalizeAddress(address);
     const lowerCasedAddress = normalizedAddress.toLowerCase();
-    qtumAddresses[normalizedAddress] = qtumAddress;
-    qtumAddresses[lowerCasedAddress] = qtumAddress;
-    this.store.updateState({ qtumAddresses });
+    revoAddresses[normalizedAddress] = revoAddress;
+    revoAddresses[lowerCasedAddress] = revoAddress;
+    this.store.updateState({ revoAddresses });
   }
 
   /**
@@ -308,23 +308,23 @@ export default class PreferencesController {
   }
 
   /**
-   * Removes an qtum address from state
+   * Removes an revo address from state
    *
    * @param {string} address - A hex address
    * @returns {string} the address that was removed
    */
-  removeQtumAddress(address) {
-    const { qtumAddresses } = this.store.getState();
+  removeRevoAddress(address) {
+    const { revoAddresses } = this.store.getState();
 
     const normalizedAddress = normalizeAddress(address);
     const lowerCasedAddress = normalizeAddress.toLowerCase();
 
-    if (!qtumAddresses[normalizedAddress] && !qtumAddresses[lowerCasedAddress]) {
+    if (!revoAddresses[normalizedAddress] && !revoAddresses[lowerCasedAddress]) {
       throw new Error(`${address} can't be deleted cause it was not found`);
     }
-    delete qtumAddresses[normalizedAddress];
-    delete qtumAddresses[lowerCasedAddress];
-    this.store.updateState({ qtumAddresses });
+    delete revoAddresses[normalizedAddress];
+    delete revoAddresses[lowerCasedAddress];
+    this.store.updateState({ revoAddresses });
   }
 
   /**

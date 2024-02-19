@@ -11,8 +11,8 @@ function addressesEqual(address1, address2) {
 export default function RecipientGroup({
   label,
   items,
-  qtumAddressBook,
-  isQtumAddressShowCheck,
+  revoAddressBook,
+  isRevoAddressShowCheck,
   onSelect,
   selectedAddress,
 }) {
@@ -50,14 +50,14 @@ export default function RecipientGroup({
           >
             <div className="send__select-recipient-wrapper__group-item__title">
               {name ||
-                (isQtumAddressShowCheck
-                  ? (qtumAddressBook[address] || ellipsify(address))
+                (isRevoAddressShowCheck
+                  ? (revoAddressBook[address] || ellipsify(address))
                   : ellipsify(address))}
             </div>
             {name && (
               <div className="send__select-recipient-wrapper__group-item__subtitle">
-                {isQtumAddressShowCheck
-                  ? (qtumAddressBook[address] || ellipsify(address))
+                {isRevoAddressShowCheck
+                  ? (revoAddressBook[address] || ellipsify(address))
                   : ellipsify(address)}
               </div>
             )}
@@ -76,8 +76,8 @@ RecipientGroup.propTypes = {
       name: PropTypes.string,
     }),
   ),
-  qtumAddressBook: PropTypes.object,
-  isQtumAddressShowCheck: PropTypes.bool,
+  revoAddressBook: PropTypes.object,
+  isRevoAddressShowCheck: PropTypes.bool,
   onSelect: PropTypes.func.isRequired,
   selectedAddress: PropTypes.string,
 };

@@ -33,7 +33,7 @@
     "message": "aktivitetslogg"
   },
   "addAcquiredTokens": {
-    "message": "Lägg till de tokens du har skaffat med Qnekt"
+    "message": "Lägg till de tokens du har skaffat med RevoMask"
   },
   "addAlias": {
     "message": "Lägg till alias"
@@ -57,19 +57,19 @@
     "message": "Belopp"
   },
   "appDescription": {
-    "message": "En QTUM-plånbok i din webbläsare",
+    "message": "En REVO-plånbok i din webbläsare",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Qnekt",
+    "message": "RevoMask",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Qnekt Beta",
+    "message": "RevoMask Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Qnekt Flask",
+    "message": "RevoMask Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Timer för automatisk utloggning (minuter)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Ställ in efter hur lång tids inaktivitet som Qnekt automatiskt loggar ut"
+    "message": "Ställ in efter hur lång tids inaktivitet som RevoMask automatiskt loggar ut"
   },
   "average": {
     "message": "Genomsnitt"
@@ -109,7 +109,7 @@
     "message": "Tillbaka till Alla"
   },
   "backupApprovalInfo": {
-    "message": "Den hemliga koden krävs för att komma åt din plånbok ifall du tappar bort din enhet, glömmer ditt lösenord, behöver installera om Qnekt eller om du vill komma åt din plånbok på en annan enhet."
+    "message": "Den hemliga koden krävs för att komma åt din plånbok ifall du tappar bort din enhet, glömmer ditt lösenord, behöver installera om RevoMask eller om du vill komma åt din plånbok på en annan enhet."
   },
   "backupApprovalNotice": {
     "message": "Säkerhetskopiera din hemliga återställningskod för att se till att din plånbok och dina tillgångar är säkra."
@@ -140,7 +140,7 @@
     "message": "Köp $1 med Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre låter dig använda ett kreditkort för att sätta in $1 direkt på ditt Qnekt-konto."
+    "message": "Wyre låter dig använda ett kreditkort för att sätta in $1 direkt på ditt RevoMask-konto."
   },
   "cancel": {
     "message": "Avbryt"
@@ -152,7 +152,7 @@
     "message": "Avbruten"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Du måste använda Qnekt på Google Chrome för att ansluta till din hårdvaruplånbok."
+    "message": "Du måste använda RevoMask på Google Chrome för att ansluta till din hårdvaruplånbok."
   },
   "clickToRevealSeed": {
     "message": "Klicka här för att visa hemliga ord"
@@ -191,7 +191,7 @@
     "message": "Ansluter till Kovans testnätverk"
   },
   "connectingToMainnet": {
-    "message": "Koppla till QTUMs huvudnätverk"
+    "message": "Koppla till REVOs huvudnätverk"
   },
   "connectingToRinkeby": {
     "message": "Ansluter till Rinkeby Test Network"
@@ -311,19 +311,19 @@
     "message": "Dela aldrig frasen med någon."
   },
   "endOfFlowMessage5": {
-    "message": "Se upp för nätfiske! Qnekt kommer aldrig att oväntat fråga om din seed phrase."
+    "message": "Se upp för nätfiske! RevoMask kommer aldrig att oväntat fråga om din seed phrase."
   },
   "endOfFlowMessage6": {
     "message": "Om du behöver säkerhetskopiera din nyckelfras igen, kan du hitta den i Inställningar -> Säkerhet"
   },
   "endOfFlowMessage8": {
-    "message": "Qnekt kan inte återställa din seedphrase. Läs mer."
+    "message": "RevoMask kan inte återställa din seedphrase. Läs mer."
   },
   "endOfFlowMessage9": {
     "message": "Lär dig mer."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS-namnet hittades inte i det aktuella nätverket. Prova att byta till QTUM Mainnet."
+    "message": "ENS-namnet hittades inte i det aktuella nätverket. Prova att byta till REVO Mainnet."
   },
   "ensRegistrationError": {
     "message": "Fel i ENS-namnregistrering"
@@ -338,7 +338,7 @@
     "message": "Uppskattade behandlingstider"
   },
   "ethereumPublicAddress": {
-    "message": "QTUM offentlig adress"
+    "message": "REVO offentlig adress"
   },
   "etherscanView": {
     "message": "Visa konto på Etherscan"
@@ -418,7 +418,7 @@
     "message": "Anslut en hårdvaruplånbok"
   },
   "hardwareWalletsMsg": {
-    "message": "Välj en hårdvaruplånbok som du vill använda med Qnekt"
+    "message": "Välj en hårdvaruplånbok som du vill använda med RevoMask"
   },
   "here": {
     "message": "här",
@@ -444,7 +444,7 @@
     "message": "Importera konto"
   },
   "importAccountMsg": {
-    "message": "Importerade konton kommer inte att kopplas till din ursprungligen skapade seedphrase för ditt Qnekt-konto. Läs mer om importerade konton"
+    "message": "Importerade konton kommer inte att kopplas till din ursprungligen skapade seedphrase för ditt RevoMask-konto. Läs mer om importerade konton"
   },
   "importAccountSeedPhrase": {
     "message": "Importera konto med"
@@ -527,7 +527,7 @@
     "message": "Logga ut"
   },
   "mainnet": {
-    "message": "QTUMs huvudnätverk"
+    "message": "REVOs huvudnätverk"
   },
   "max": {
     "message": "Maximalt"
@@ -539,10 +539,10 @@
     "message": "Meddelande"
   },
   "metamaskDescription": {
-    "message": "Ansluter dig mot QTUM och den decentraliserade webben."
+    "message": "Ansluter dig mot REVO och den decentraliserade webben."
   },
   "metamaskVersion": {
-    "message": "Qnekt-version"
+    "message": "RevoMask-version"
   },
   "mustSelectOne": {
     "message": "Minst 1 token måste väljas."
@@ -585,8 +585,8 @@
   "newPassword": {
     "message": "Nytt lösenord (minst 8 tecken)"
   },
-  "newToQnekt": {
-    "message": "Ny på Qnekt?"
+  "newToRevoMask": {
+    "message": "Ny på RevoMask?"
   },
   "newTotal": {
     "message": "Ny totalsumma"
@@ -640,7 +640,7 @@
     "message": "Delta i MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Delta i MetaMetrics för att hjälpa oss göra Qnekt bättre"
+    "message": "Delta i MetaMetrics för att hjälpa oss göra RevoMask bättre"
   },
   "password": {
     "message": "Lösenord"
@@ -906,16 +906,16 @@
     "message": "Försäkra dig om att ingen tittar på din skärm när du skannar denna kod"
   },
   "syncWithMobileComplete": {
-    "message": "Din data har nu synkats. Ha det så kul med Qnekts mobil-app!"
+    "message": "Din data har nu synkats. Ha det så kul med RevoMasks mobil-app!"
   },
   "syncWithMobileDesc": {
-    "message": "Du kan nu synka dina konton och din information med din mobil-enhet. Öppna Qnekts mobil-app, gå till \"Inställningar\" och tryck på \"Synka från webbläsartillägg\""
+    "message": "Du kan nu synka dina konton och din information med din mobil-enhet. Öppna RevoMasks mobil-app, gå till \"Inställningar\" och tryck på \"Synka från webbläsartillägg\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Om du öppnar Qnekt mobilapplikation för första gången behöver du bara följa stegen som visas i telefonen."
+    "message": "Om du öppnar RevoMask mobilapplikation för första gången behöver du bara följa stegen som visas i telefonen."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Skanna den här koden med din Qnekt mobilapplikation"
+    "message": "Skanna den här koden med din RevoMask mobilapplikation"
   },
   "syncWithMobileTitle": {
     "message": "Synka med mobil"
@@ -1000,7 +1000,7 @@
     "message": "Försök igen"
   },
   "typePassword": {
-    "message": "Ange ditt Qnekt-lösenord"
+    "message": "Ange ditt RevoMask-lösenord"
   },
   "unapproved": {
     "message": "Inte godkänd"
@@ -1051,7 +1051,7 @@
     "message": "Besök vår hemsida"
   },
   "welcome": {
-    "message": "Välkommen till Qnekt"
+    "message": "Välkommen till RevoMask"
   },
   "welcomeBack": {
     "message": "Välkommen tillbaka!"

@@ -8,14 +8,14 @@ import {
   getCurrentChainId,
   getAddressBook,
 } from '../../../../selectors';
-import { getQtumAddressFromHex, getHexAddressFromQtum } from '../../../../helpers/utils/util';
+import { getRevoAddressFromHex, getHexAddressFromRevo } from '../../../../helpers/utils/util';
 import NicknamePopover from '../../../ui/nickname-popover';
 import UpdateNicknamePopover from '../../../ui/update-nickname-popover/update-nickname-popover';
 
 const SHOW_NICKNAME_POPOVER = 'SHOW_NICKNAME_POPOVER';
 const ADD_NICKNAME_POPOVER = 'ADD_NICKNAME_POPOVER';
 
-const NicknamePopovers = ({ address, onClose, isQtumAddressShow }) => {
+const NicknamePopovers = ({ address, onClose, isRevoAddressShow }) => {
   const dispatch = useDispatch();
 
   const [popoverToDisplay, setPopoverToDisplay] = useState(
@@ -31,10 +31,10 @@ const NicknamePopovers = ({ address, onClose, isQtumAddressShow }) => {
 
   const recipientNickname = addressBookEntryObject?.name;
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
-  const qtumAddress = getQtumAddressFromHex(address, chainId);
+  const revoAddress = getRevoAddressFromHex(address, chainId);
 
   const explorerLink = getAccountLink(
-    qtumAddress,
+    revoAddress,
     chainId,
     { blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null },
     null,
@@ -43,13 +43,13 @@ const NicknamePopovers = ({ address, onClose, isQtumAddressShow }) => {
   if (popoverToDisplay === ADD_NICKNAME_POPOVER) {
     return (
       <UpdateNicknamePopover
-        address={isQtumAddressShow ? qtumAddress : address}
+        address={isRevoAddressShow ? revoAddress : address}
         nickname={recipientNickname || null}
         memo={addressBookEntryObject?.memo || null}
         onClose={() => setPopoverToDisplay(SHOW_NICKNAME_POPOVER)}
         onAdd={(recipient, nickname, memo) => {
           try {
-            recipient = getHexAddressFromQtum(recipient)
+            recipient = getHexAddressFromRevo(recipient)
           } catch (e) {
             // ok
           }
@@ -63,7 +63,7 @@ const NicknamePopovers = ({ address, onClose, isQtumAddressShow }) => {
   // SHOW_NICKNAME_POPOVER case
   return (
     <NicknamePopover
-      address={isQtumAddressShow ? qtumAddress : address}
+      address={isRevoAddressShow ? revoAddress : address}
       nickname={recipientNickname || null}
       onClose={onClose}
       onAdd={() => setPopoverToDisplay(ADD_NICKNAME_POPOVER)}

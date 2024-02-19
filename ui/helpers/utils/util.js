@@ -2,7 +2,7 @@ import punycode from 'punycode/punycode';
 import abi from 'human-standard-token-abi';
 import BigNumber from 'bignumber.js';
 import * as ethUtil from 'ethereumjs-util';
-import qtum from 'qtumjs-lib';
+import revo from 'revojs-lib';
 import { DateTime } from 'luxon';
 import { getFormattedIpfsUrl } from '@metamask/controllers/dist/util';
 import slip44 from '@metamask/slip44';
@@ -12,7 +12,7 @@ import {
   KOVAN_CHAIN_ID,
   LOCALHOST_CHAIN_ID,
   MAINNET_CHAIN_ID,
-  QTUM_MAINNET_CHAIN_ID,
+  REVO_MAINNET_CHAIN_ID,
   RINKEBY_CHAIN_ID,
   ROPSTEN_CHAIN_ID,
 } from '../../../shared/constants/network';
@@ -60,7 +60,7 @@ export function isDefaultMetaMaskChain(chainId) {
     chainId === KOVAN_CHAIN_ID ||
     chainId === GOERLI_CHAIN_ID ||
     chainId === LOCALHOST_CHAIN_ID ||
-    chainId === QTUM_MAINNET_CHAIN_ID
+    chainId === REVO_MAINNET_CHAIN_ID
   ) {
     return true;
   }
@@ -433,7 +433,7 @@ export function clearClipboard() {
   window.navigator.clipboard.writeText('');
 }
 
-export function getQtumAddressFromHex(_address, _chainId) {
+export function getRevoAddressFromHex(_address, _chainId) {
   if (!_address.startsWith("0x")) {
     return _address;
   }
@@ -453,11 +453,11 @@ export function getQtumAddressFromHex(_address, _chainId) {
       break;
   }
   const hash = Buffer.from(_address.slice(2), 'hex');
-  return qtum.address.toBase58Check(hash, version);
+  return revo.address.toBase58Check(hash, version);
 }
 
-export function getHexAddressFromQtum(_address) {
-  const hexAddress = qtum.address.fromBase58Check(_address).hash.toString('hex')
+export function getHexAddressFromRevo(_address) {
+  const hexAddress = revo.address.fromBase58Check(_address).hash.toString('hex')
   return `0x${hexAddress}`
 }
 

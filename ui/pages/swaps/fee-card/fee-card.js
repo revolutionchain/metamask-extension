@@ -22,7 +22,7 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT } from '../../../../shared/constants/metametrics';
 
 const GAS_FEES_LEARN_MORE_URL =
-  'https://www.qtum.org/about/gas';
+  'https://www.revo.org/about/gas';
 
 export default function FeeCard({
   primaryFee,

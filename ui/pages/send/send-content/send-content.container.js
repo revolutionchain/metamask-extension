@@ -16,7 +16,7 @@ import {
   getRecipientWarningAcknowledgement,
 } from '../../../ducks/send';
 import {
-  isQtumAddressShow
+  isRevoAddressShow
 } from '../../../ducks/metamask/metamask';
 
 import SendContent from './send-content.component';
@@ -44,7 +44,7 @@ function mapStateToProps(state) {
     assetError: getAssetError(state),
     recipient,
     recipientWarningAcknowledged,
-    isQtumAddressShow: isQtumAddressShow(state),
+    isRevoAddressShow: isRevoAddressShow(state),
   };
 }
 

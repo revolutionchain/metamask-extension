@@ -5,7 +5,7 @@ import copyToClipboard from 'copy-to-clipboard';
 import { getTokenTrackerLink, getAccountLink } from '@metamask/etherscan-link';
 import UrlIcon from '../../../components/ui/url-icon';
 import { addressSummary } from '../../../helpers/utils/util';
-import { getQRCTokenTrackerLink, getQtumAddressFromHex } from '../../../helpers/utils/util';
+import { getQRCTokenTrackerLink, getRevoAddressFromHex } from '../../../helpers/utils/util';
 import { formatCurrency } from '../../../helpers/utils/confirm-tx.util';
 import { ellipsify } from '../../send/send.utils';
 import Typography from '../../../components/ui/typography';
@@ -679,7 +679,7 @@ export default class ConfirmApproveContent extends Component {
                       blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null,
                     }))
                   : getAccountLink(
-                      getQtumAddressFromHex(toAddress, chainId),
+                      getRevoAddressFromHex(toAddress, chainId),
                       chainId,
                       {
                         blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null,

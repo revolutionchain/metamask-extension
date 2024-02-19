@@ -39,8 +39,8 @@ export default class ConfirmPageContainer extends Component {
   };
 
   static propTypes = {
-    qtumAddress: PropTypes.string,
-    isQtumAddressShow: PropTypes.bool,
+    revoAddress: PropTypes.string,
+    isRevoAddressShow: PropTypes.bool,
     // Header
     action: PropTypes.string,
     hideSubtitle: PropTypes.bool,
@@ -103,8 +103,8 @@ export default class ConfirmPageContainer extends Component {
 
   render() {
     const {
-      qtumAddress,
-      isQtumAddressShow,
+      revoAddress,
+      isRevoAddressShow,
       showEdit,
       onEdit,
       fromName,
@@ -227,7 +227,7 @@ export default class ConfirmPageContainer extends Component {
                       this.setState({ showNicknamePopovers: false })
                     }
                     address={toAddress}
-                    isQtumAddressShow={isQtumAddressShow}
+                    isRevoAddressShow={isRevoAddressShow}
                   />
                 ) : null}
               </>
@@ -236,8 +236,8 @@ export default class ConfirmPageContainer extends Component {
           <EnableEIP1559V2Notice isFirstAlert={!showAddToAddressDialog} />
           {contentComponent || (
             <ConfirmPageContainerContent
-              qtumAddress={qtumAddress}
-              isQtumAddressShow={isQtumAddressShow}
+              revoAddress={revoAddress}
+              isRevoAddressShow={isRevoAddressShow}
               action={action}
               title={title}
               image={image}

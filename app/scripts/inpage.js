@@ -72,6 +72,6 @@ if (shouldInjectProvider()) {
  * @param providerInstance - The provider instance.
  */
 function setGlobalProvider(providerInstance) {
-  window.qtum = providerInstance;
-  window.dispatchEvent(new Event('qtum#initialized'));
+  window.revo = providerInstance;
+  window.dispatchEvent(new Event('revo#initialized'));
 }

@@ -56,7 +56,7 @@ export default function CreateNewVault({
     [password, t],
   );
 
-  includeTerms = false; // Qnekt has no TOS
+  includeTerms = false; // RevoMask has no TOS
 
   const isValid =
     !disabled &&
