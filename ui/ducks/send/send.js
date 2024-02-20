@@ -765,7 +765,8 @@ export function getGasPriceInWei(gasPriceString) {
     toDenomination: 'SATOSHI',
   }) : parseInt(gasPriceString + '', 10);
 
-  const minimumGasPriceInWei = conversionUtil("0x9502f9000", {
+  //const minimumGasPriceInWei = conversionUtil("0x9502f9000", {
+  const minimumGasPriceInWei = conversionUtil("0x3B9ACA00", {
     fromNumericBase: 'hex',
     toNumericBase: 'dec',
     fromDenomination: 'WEI',
