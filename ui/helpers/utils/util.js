@@ -442,14 +442,14 @@ export function getRevoAddressFromHex(_address, _chainId) {
     case '0x22B8':
     case '0x22b8':
     case '0x51':
-      version = 58;
+      version = 60;
       break;
     case '0x22B9':
     case '0x22b9':
-      version = 120;
+      version = 65;
       break;
     default:
-      version = 120;
+      version = 65;
       break;
   }
   const hash = Buffer.from(_address.slice(2), 'hex');
