@@ -32,7 +32,7 @@ const defaultNetworksData = [
     providerType: REVO_MAINNET,
     rpcUrl: REVO_MAINNET_RPC_URL,
     chainId: REVO_MAINNET_CHAIN_ID,
-    ticker: 'REVO',
+    ticker: 'RVO',
     rpcPrefs: {
       blockExplorerUrl: "https://mainnet.revo.network/",
     },
@@ -44,7 +44,7 @@ const defaultNetworksData = [
     providerType: REVO_TESTNET,
     rpcUrl: REVO_TESTNET_RPC_URL,
     chainId: REVO_TESTNET_CHAIN_ID,
-    ticker: 'REVO',
+    ticker: 'RVO',
     rpcPrefs: {
       blockExplorerUrl: "https://testnet.revo.network/",
     },
@@ -56,7 +56,7 @@ const defaultNetworksData = [
     providerType: NETWORK_TYPE_RPC,
     rpcUrl: REVO_REGTEST_RPC_URL,
     chainId: REVO_REGTEST_CHAIN_ID,
-    ticker: 'REVO',
+    ticker: 'RVO',
     // blockExplorerUrl: 'https://etherscan.io',
   },
   /*
