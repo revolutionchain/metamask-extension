@@ -19,15 +19,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "मेटामास्क/RevoMask",
+    "message": "मेटामास्क/RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {

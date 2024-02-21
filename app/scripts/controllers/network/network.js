@@ -311,7 +311,7 @@ export default class NetworkController extends EventEmitter {
     return rpcUrl;
   }
 
-  setRpcTarget(rpcUrl, chainId, ticker = 'REVO', nickname = '', rpcPrefs) {
+  setRpcTarget(rpcUrl, chainId, ticker = 'RVO', nickname = '', rpcPrefs) {
     assert.ok(
       isPrefixedFormattedHexString(chainId),
       `Invalid chain ID "${chainId}": invalid hex string.`,
@@ -342,12 +342,12 @@ export default class NetworkController extends EventEmitter {
     );
     const { chainId } = NETWORK_TYPE_TO_ID_MAP[type];
     let rpcUrl = '';
-    let ticker = 'REVO';
+    let ticker = 'RVO';
     const providerType = type;
     if (REVO_PROVIDER_TYPES.includes(type)) {
       type = NETWORK_TYPE_RPC;
       rpcUrl = CHAIN_ID_TO_RPC_URL_MAP[chainId];
-      ticker = 'REVO';
+      ticker = 'RVO';
     }
     this.setProviderConfig({
       labelKey: providerType,

@@ -41,7 +41,7 @@
     "message": "سجل النشاط"
   },
   "addAcquiredTokens": {
-    "message": "أضف العملات الرمزية التي اكتسبتها باستخدام RevoMask"
+    "message": "أضف العملات الرمزية التي اكتسبتها باستخدام RevoLink"
   },
   "addAlias": {
     "message": "إضافة اسم مستعار"
@@ -69,15 +69,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -105,7 +105,7 @@
     "message": "مؤقت تسجيل الخروج التلقائي (بالدقائق)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "اضبط مهلة السكون بالدقائق التي يقوم RevoMask بتسجيل الخروج بعدها تلقائيًا"
+    "message": "اضبط مهلة السكون بالدقائق التي يقوم RevoLink بتسجيل الخروج بعدها تلقائيًا"
   },
   "average": {
     "message": "المتوسط"
@@ -117,7 +117,7 @@
     "message": "العودة إلى الجميع"
   },
   "backupApprovalInfo": {
-    "message": "هذا الرمز السري مطلوب لاسترداد محفظتك في حالة فقد جهازك أو نسيان كلمة مرورك أو إعادة تثبيت RevoMask أو الرغبة في الوصول إلى محفظتك عبر جهاز آخر."
+    "message": "هذا الرمز السري مطلوب لاسترداد محفظتك في حالة فقد جهازك أو نسيان كلمة مرورك أو إعادة تثبيت RevoLink أو الرغبة في الوصول إلى محفظتك عبر جهاز آخر."
   },
   "backupApprovalNotice": {
     "message": "قم بالنسخ الاحتياطي لرمز الاسترداد السري للحفاظ على محفظتك وأموالك بأمان."
@@ -148,7 +148,7 @@
     "message": "قم بشراء عملة إيثير بواسطة Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "يتيح لك Wyre استخدام بطاقة ائتمان لإيداع 1$ مباشرة في حساب RevoMask الخاص بك."
+    "message": "يتيح لك Wyre استخدام بطاقة ائتمان لإيداع 1$ مباشرة في حساب RevoLink الخاص بك."
   },
   "bytes": {
     "message": "بايتات"
@@ -166,7 +166,7 @@
     "message": "معرّف السلسلة"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "تحتاج إلى استخدام RevoMask على Google Chrome للاتصال بمحفظة الأجهزة الخاصة بك."
+    "message": "تحتاج إلى استخدام RevoLink على Google Chrome للاتصال بمحفظة الأجهزة الخاصة بك."
   },
   "clickToRevealSeed": {
     "message": "انقر هنا للكشف عن الكلمات السرية"
@@ -325,13 +325,13 @@
     "message": "لا تشارك هذه الجملة مطلقًا مع أي شخص."
   },
   "endOfFlowMessage5": {
-    "message": "كن حذراً من الخداع الإلكتروني! لن يسأل RevoMask من تلقاء نفسه عن عبارة الأمان الخاصة بك أبداً."
+    "message": "كن حذراً من الخداع الإلكتروني! لن يسأل RevoLink من تلقاء نفسه عن عبارة الأمان الخاصة بك أبداً."
   },
   "endOfFlowMessage6": {
     "message": "إذا كنت بحاجة إلى عمل نسخة احتياطية من عبارة الأمان الخاصة بك مرة أخرى، يمكنك العثور عليها في الإعدادات -> الأمان."
   },
   "endOfFlowMessage8": {
-    "message": "لا يمكن لـ RevoMask استعادة جملتك البذرية. تعلم المزيد."
+    "message": "لا يمكن لـ RevoLink استعادة جملتك البذرية. تعلم المزيد."
   },
   "endOfFlowMessage9": {
     "message": "اعرف المزيد."
@@ -432,7 +432,7 @@
     "message": "الاتصال بمحفظة hardware wallet"
   },
   "hardwareWalletsMsg": {
-    "message": "حدد محفظة أجهزة ترغب في استخدامها مع RevoMask"
+    "message": "حدد محفظة أجهزة ترغب في استخدامها مع RevoLink"
   },
   "here": {
     "message": "هنا",
@@ -458,7 +458,7 @@
     "message": "استيراد الحساب"
   },
   "importAccountMsg": {
-    "message": "لن يتم ربط الحسابات التي تم استيرادها بعبارة أمان حساب RevoMask الذي تم إنشاؤها في الأصل. تعرف على المزيد حول الحسابات المستوردة"
+    "message": "لن يتم ربط الحسابات التي تم استيرادها بعبارة أمان حساب RevoLink الذي تم إنشاؤها في الأصل. تعرف على المزيد حول الحسابات المستوردة"
   },
   "importAccountSeedPhrase": {
     "message": "استيراد حساب باستخدام عبارة الأمان"
@@ -559,7 +559,7 @@
     "message": "إيصالك بالإيثيريوم وبالشبكة اللامركزية."
   },
   "metamaskVersion": {
-    "message": "إصدار RevoMask "
+    "message": "إصدار RevoLink "
   },
   "mustSelectOne": {
     "message": "يجب تحديد عملة رمزية واحدة على الأقل."
@@ -602,8 +602,8 @@
   "newPassword": {
     "message": "كلمة مرور جديدة (8 أحرف كحد أدنى)"
   },
-  "newToRevoMask": {
-    "message": "هل انت جديد في RevoMask؟"
+  "newToRevoLink": {
+    "message": "هل انت جديد في RevoLink؟"
   },
   "newTotal": {
     "message": "إجمالي جديد"
@@ -657,7 +657,7 @@
     "message": "المشاركة في MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "شارك في MetaMetrics لمساعدتنا في جعل RevoMask أفضل"
+    "message": "شارك في MetaMetrics لمساعدتنا في جعل RevoLink أفضل"
   },
   "password": {
     "message": "كلمة المرور"
@@ -926,16 +926,16 @@
     "message": "تأكد من عدم قيام أي شخص آخر بالنظر إلى شاشتك عند مسح هذا الرمز"
   },
   "syncWithMobileComplete": {
-    "message": "تمت مزامنة بياناتك بنجاح. استمتع بتطبيق RevoMask للهاتف المحمول!"
+    "message": "تمت مزامنة بياناتك بنجاح. استمتع بتطبيق RevoLink للهاتف المحمول!"
   },
   "syncWithMobileDesc": {
-    "message": "يمكنك مزامنة حساباتك ومعلوماتك مع جهازك المحمول. افتح تطبيق RevoMask على الجهاز المحمول وانتقل إلى \"الإعدادات\" ثم انقر على \"المزامنة من إضافة المتصفح\""
+    "message": "يمكنك مزامنة حساباتك ومعلوماتك مع جهازك المحمول. افتح تطبيق RevoLink على الجهاز المحمول وانتقل إلى \"الإعدادات\" ثم انقر على \"المزامنة من إضافة المتصفح\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "إذا قمت للتوّ بفتح تطبيق RevoMask للهواتف المحمولة لأول مرة، فاتبع الخطوات الموجودة في هاتفك."
+    "message": "إذا قمت للتوّ بفتح تطبيق RevoLink للهواتف المحمولة لأول مرة، فاتبع الخطوات الموجودة في هاتفك."
   },
   "syncWithMobileScanThisCode": {
-    "message": "امسح هذا الرمز ضوئياً باستخدام تطبيق RevoMask للهواتف المحمولة"
+    "message": "امسح هذا الرمز ضوئياً باستخدام تطبيق RevoLink للهواتف المحمولة"
   },
   "syncWithMobileTitle": {
     "message": "المزامنة مع الجهاز المحمول"
@@ -1026,7 +1026,7 @@
     "message": "إعادة المحاولة"
   },
   "typePassword": {
-    "message": "أدخل كلمة مرور RevoMask الخاصة بك"
+    "message": "أدخل كلمة مرور RevoLink الخاصة بك"
   },
   "unapproved": {
     "message": "تم الرفض"
@@ -1077,7 +1077,7 @@
     "message": "قم بزيارة موقعنا على الإنترنت"
   },
   "welcome": {
-    "message": "مرحباً بك في RevoMask"
+    "message": "مرحباً بك في RevoLink"
   },
   "welcomeBack": {
     "message": "نرحب بعودتك!"

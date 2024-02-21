@@ -33,7 +33,7 @@
     "message": "protokol aktivity"
   },
   "addAcquiredTokens": {
-    "message": "Pridajte tokeny, ktoré ste získali pomocou RevoMask"
+    "message": "Pridajte tokeny, ktoré ste získali pomocou RevoLink"
   },
   "addAlias": {
     "message": "Pridať alias"
@@ -61,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -94,7 +94,7 @@
     "message": "Časovač automatického odhlásenia (minúty)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Nastavte čas nečinnosti v minútach skôr, než sa RevoMask automaticky odhlási"
+    "message": "Nastavte čas nečinnosti v minútach skôr, než sa RevoLink automaticky odhlási"
   },
   "average": {
     "message": "Priemerný"
@@ -106,7 +106,7 @@
     "message": "Späť na všetko"
   },
   "backupApprovalInfo": {
-    "message": "Tento tajný kód je potrebný na obnovenie peňaženky v prípade straty zariadenia, zabudnutia hesla, preinštalovania RevoMask alebo prístupu k peňaženke na inom zariadení."
+    "message": "Tento tajný kód je potrebný na obnovenie peňaženky v prípade straty zariadenia, zabudnutia hesla, preinštalovania RevoLink alebo prístupu k peňaženke na inom zariadení."
   },
   "backupApprovalNotice": {
     "message": "Zálohujte si svoj tajný kód na obnovenie, aby bola vaša peňaženka a prostriedky bezpečné."
@@ -134,7 +134,7 @@
     "message": "Kúpte $1 s Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre vám umožňuje použiť kreditnú kartu na vloženie depozitu $1 priamo na váš účet RevoMask."
+    "message": "Wyre vám umožňuje použiť kreditnú kartu na vloženie depozitu $1 priamo na váš účet RevoLink."
   },
   "bytes": {
     "message": "Bajty"
@@ -152,7 +152,7 @@
     "message": "ID reťazca"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Ak sa chcete pripojiť k svojej hardvérovej peňaženke, musíte v Google Chrome použiť RevoMask."
+    "message": "Ak sa chcete pripojiť k svojej hardvérovej peňaženke, musíte v Google Chrome použiť RevoLink."
   },
   "clickToRevealSeed": {
     "message": "Kliknutím sem odkryjete tajné slová"
@@ -311,13 +311,13 @@
     "message": "Nikdy nezdieľajte frázu s niekým iným."
   },
   "endOfFlowMessage5": {
-    "message": "Dávajte pozor na phishing! RevoMask nikdy nebude spontánne požadovať vašu seed frázu."
+    "message": "Dávajte pozor na phishing! RevoLink nikdy nebude spontánne požadovať vašu seed frázu."
   },
   "endOfFlowMessage6": {
     "message": "Ak potrebujete backup frázu znova zálohovať, nájdete ju v časti Nastavenia -> Zabezpečenie."
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask nemôže obnoviť vašu seed frázu. Zistiť viac."
+    "message": "RevoLink nemôže obnoviť vašu seed frázu. Zistiť viac."
   },
   "endOfFlowMessage9": {
     "message": "Dozvedieť sa viac."
@@ -422,7 +422,7 @@
     "message": "Pripojiť hardvérovú peňaženku"
   },
   "hardwareWalletsMsg": {
-    "message": "Vyberte hardvérovú peňaženku, ktorú chcete používať s RevoMask"
+    "message": "Vyberte hardvérovú peňaženku, ktorú chcete používať s RevoLink"
   },
   "here": {
     "message": "zde",
@@ -441,7 +441,7 @@
     "message": "Import účtu"
   },
   "importAccountMsg": {
-    "message": "Importované účty nebudou spojeny s vaší původní RevoMaskovou klíčovou frází. Zjistěte více o importovaných účtech "
+    "message": "Importované účty nebudou spojeny s vaší původní RevoLinkovou klíčovou frází. Zjistěte více o importovaných účtech "
   },
   "importAccountSeedPhrase": {
     "message": "Importovať účet so seed frázou"
@@ -527,10 +527,10 @@
     "message": "Zpráva"
   },
   "metamaskDescription": {
-    "message": "RevoMask je bezpečný osobní trezor pro REVO."
+    "message": "RevoLink je bezpečný osobní trezor pro REVO."
   },
   "metamaskVersion": {
-    "message": "Verzia RevoMask"
+    "message": "Verzia RevoLink"
   },
   "mustSelectOne": {
     "message": "Musíte zvolit aspoň 1 token."
@@ -573,8 +573,8 @@
   "newPassword": {
     "message": "Nové heslo (min 8 znaků)"
   },
-  "newToRevoMask": {
-    "message": "Ste noví na RevoMask?"
+  "newToRevoLink": {
+    "message": "Ste noví na RevoLink?"
   },
   "newTotal": {
     "message": "Nový súčet"
@@ -625,7 +625,7 @@
     "message": "Zúčastnite sa na MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Zúčastnite sa na MetaMetrics a pomôžte nám vylepšiť RevoMask"
+    "message": "Zúčastnite sa na MetaMetrics a pomôžte nám vylepšiť RevoLink"
   },
   "password": {
     "message": "Heslo"
@@ -885,16 +885,16 @@
     "message": "Pri skenovaní tohto kódu sa uistite, že sa nikto iný nedíva na vašu obrazovku"
   },
   "syncWithMobileComplete": {
-    "message": "Vaše údaje boli úspešne synchronizované. Užite si mobilnú aplikáciu RevoMask!"
+    "message": "Vaše údaje boli úspešne synchronizované. Užite si mobilnú aplikáciu RevoLink!"
   },
   "syncWithMobileDesc": {
-    "message": "Svoje účty a informácie môžete synchronizovať so svojim mobilným zariadením. Otvorte mobilnú aplikáciu RevoMask, prejdite na „Nastavenia“ a kliknite na „Synchronizovať z rozšírenia prehliadača“."
+    "message": "Svoje účty a informácie môžete synchronizovať so svojim mobilným zariadením. Otvorte mobilnú aplikáciu RevoLink, prejdite na „Nastavenia“ a kliknite na „Synchronizovať z rozšírenia prehliadača“."
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Ak otvoríte mobilnú aplikáciu RevoMask prvýkrát, postupujte podľa pokynov v telefóne."
+    "message": "Ak otvoríte mobilnú aplikáciu RevoLink prvýkrát, postupujte podľa pokynov v telefóne."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Naskenujte tento kód pomocou mobilnej aplikácie RevoMask"
+    "message": "Naskenujte tento kód pomocou mobilnej aplikácie RevoLink"
   },
   "syncWithMobileTitle": {
     "message": "Synchronizácia s mobilom"
@@ -1033,7 +1033,7 @@
     "message": "Navštivte naši stránku"
   },
   "welcome": {
-    "message": "Vitajte v RevoMask"
+    "message": "Vitajte v RevoLink"
   },
   "welcomeBack": {
     "message": "Vitajte späť!"

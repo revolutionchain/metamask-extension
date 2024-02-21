@@ -1524,7 +1524,7 @@ export function updateMetamaskState(newState) {
     });
 
     if (
-      nativeCurrency === 'REVO' &&
+      nativeCurrency === 'RVO' &&
       newState.revoBalances[newSelectedAddress] !== undefined
     ) {
       dispatch({

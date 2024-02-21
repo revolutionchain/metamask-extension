@@ -170,7 +170,7 @@ export const METAMASK_CONTROLLER_EVENTS = {
 };
 
 // stream channels
-const PHISHING_SAFELIST = 'qnekt-phishing-safelist';
+const PHISHING_SAFELIST = 'revolink-phishing-safelist';
 
 export default class MetamaskController extends EventEmitter {
   /**
@@ -3568,7 +3568,7 @@ export default class MetamaskController extends EventEmitter {
 
     // messages between inpage and background
     this.setupProviderConnection(
-      mux.createStream('qnekt-provider'),
+      mux.createStream('revolink-provider'),
       sender,
       _subjectType,
     );

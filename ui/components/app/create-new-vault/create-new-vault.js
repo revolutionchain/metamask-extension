@@ -56,7 +56,7 @@ export default function CreateNewVault({
     [password, t],
   );
 
-  includeTerms = false; // RevoMask has no TOS
+  includeTerms = false; // RevoLink has no TOS
 
   const isValid =
     !disabled &&

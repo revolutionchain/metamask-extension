@@ -33,7 +33,7 @@
     "message": "dziennik aktywności"
   },
   "addAcquiredTokens": {
-    "message": "Dodaj tokeny pozyskane przy pomocy RevoMask"
+    "message": "Dodaj tokeny pozyskane przy pomocy RevoLink"
   },
   "addAlias": {
     "message": "Dodaj alias"
@@ -61,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Czas automatycznego wylogowania (w minutach)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Ustaw czas bezczynności w minutach, po którym RevoMask wyloguje Cię automatycznie"
+    "message": "Ustaw czas bezczynności w minutach, po którym RevoLink wyloguje Cię automatycznie"
   },
   "average": {
     "message": "Średnia"
@@ -109,7 +109,7 @@
     "message": "Wróć do wszystkich"
   },
   "backupApprovalInfo": {
-    "message": "Ten tajny kod jest wymagany do odzyskania portfela w przypadku zgubienia urządzenia, zapomnienia hasła, ponownego zainstalowania RevoMask lub potrzeby uzyskania dostępu do portfela na innym urządzeniu."
+    "message": "Ten tajny kod jest wymagany do odzyskania portfela w przypadku zgubienia urządzenia, zapomnienia hasła, ponownego zainstalowania RevoLink lub potrzeby uzyskania dostępu do portfela na innym urządzeniu."
   },
   "backupApprovalNotice": {
     "message": "Utwórz kopię zapasową tajnego kodu odzyskiwania, aby zapewnić bezpieczeństwo swojego portfela i środków."
@@ -140,7 +140,7 @@
     "message": "Kup $1 poprzez Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Dzięki Wyre możesz użyć karty kredytowej, aby wpłacić $1 bezpośrednio na swoje konto RevoMask."
+    "message": "Dzięki Wyre możesz użyć karty kredytowej, aby wpłacić $1 bezpośrednio na swoje konto RevoLink."
   },
   "bytes": {
     "message": "Bajty"
@@ -158,7 +158,7 @@
     "message": "Identyfikator łańcucha"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Żeby połączyć się z portfelem sprzętowym, należy uruchomić RevoMask z przeglądarką Google Chrome."
+    "message": "Żeby połączyć się z portfelem sprzętowym, należy uruchomić RevoLink z przeglądarką Google Chrome."
   },
   "clickToRevealSeed": {
     "message": "Kliknij tutaj, aby odkryć tajne słowa"
@@ -317,13 +317,13 @@
     "message": "Nigdy nie udostępniaj nikomu tej frazy."
   },
   "endOfFlowMessage5": {
-    "message": "Uważaj na phishing! RevoMask nigdy spontanicznie nie poprosi Cię o podanie frazy seed."
+    "message": "Uważaj na phishing! RevoLink nigdy spontanicznie nie poprosi Cię o podanie frazy seed."
   },
   "endOfFlowMessage6": {
     "message": "Jeśli zajdzie konieczność ponownego wykonania kopii zapasowej frazy seed, znajdziesz ją w Ustawieniach -> Zabezpieczenia."
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask nie może odzyskać Twojej frazy seed. Dowiedz się więcej."
+    "message": "RevoLink nie może odzyskać Twojej frazy seed. Dowiedz się więcej."
   },
   "endOfFlowMessage9": {
     "message": "Dowiedz się więcej."
@@ -428,7 +428,7 @@
     "message": "Podłącz sprzętowy portfel"
   },
   "hardwareWalletsMsg": {
-    "message": "Wybierz portfel sprzętowy, którego chcesz użyć z RevoMaskiem"
+    "message": "Wybierz portfel sprzętowy, którego chcesz użyć z RevoLinkiem"
   },
   "here": {
     "message": "tutaj",
@@ -454,7 +454,7 @@
     "message": "Importuj konto"
   },
   "importAccountMsg": {
-    "message": " Importowane konta nie będą powiązane z Twoją pierwotną frazą seed RevoMask. Dowiedz się więcej o importowaniu kont "
+    "message": " Importowane konta nie będą powiązane z Twoją pierwotną frazą seed RevoLink. Dowiedz się więcej o importowaniu kont "
   },
   "importAccountSeedPhrase": {
     "message": "Zaimportuj konto za pomocą frazy seed"
@@ -552,10 +552,10 @@
     "message": "Wiadomość"
   },
   "metamaskDescription": {
-    "message": "RevoMask to bezpieczny portfel dla REVO."
+    "message": "RevoLink to bezpieczny portfel dla REVO."
   },
   "metamaskVersion": {
-    "message": "Wersja RevoMask"
+    "message": "Wersja RevoLink"
   },
   "mustSelectOne": {
     "message": "Należy wybrać co najmniej 1 token."
@@ -598,8 +598,8 @@
   "newPassword": {
     "message": "Nowe hasło (min. 8 znaków)"
   },
-  "newToRevoMask": {
-    "message": "Pierwszy raz w RevoMask?"
+  "newToRevoLink": {
+    "message": "Pierwszy raz w RevoLink?"
   },
   "newTotal": {
     "message": "Nowa suma"
@@ -650,7 +650,7 @@
     "message": "Weź udział w MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Weź udział w MetaMetrics, aby pomóc nam ulepszyć RevoMask"
+    "message": "Weź udział w MetaMetrics, aby pomóc nam ulepszyć RevoLink"
   },
   "password": {
     "message": "Hasło"
@@ -916,16 +916,16 @@
     "message": "Upewnij się, że nikt inny nie patrzy na Twój ekran podczas skanowania tego kodu"
   },
   "syncWithMobileComplete": {
-    "message": "Twoje dane zostały zsynchronizowane. Miłego korzystania z aplikacji mobilnej RevoMask!"
+    "message": "Twoje dane zostały zsynchronizowane. Miłego korzystania z aplikacji mobilnej RevoLink!"
   },
   "syncWithMobileDesc": {
-    "message": "Możesz synchronizować swoje konta i informacje z urządzeniem mobilnym. Otwórz aplikację mobilną RevoMask, przejdź do „Ustawień” i wybierz opcję „Synchronizuj z rozszerzeniem przeglądarki”."
+    "message": "Możesz synchronizować swoje konta i informacje z urządzeniem mobilnym. Otwórz aplikację mobilną RevoLink, przejdź do „Ustawień” i wybierz opcję „Synchronizuj z rozszerzeniem przeglądarki”."
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Jeśli po raz pierwszy otwierasz aplikację RevoMask Mobile, postępuj zgodnie z instrukcjami w telefonie."
+    "message": "Jeśli po raz pierwszy otwierasz aplikację RevoLink Mobile, postępuj zgodnie z instrukcjami w telefonie."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Zeskanuj ten kod za pomocą aplikacji mobilnej RevoMask"
+    "message": "Zeskanuj ten kod za pomocą aplikacji mobilnej RevoLink"
   },
   "syncWithMobileTitle": {
     "message": "Synchronizuj z telefonem"
@@ -1064,7 +1064,7 @@
     "message": "Odwiedź naszą stronę"
   },
   "welcome": {
-    "message": "Witaj w RevoMask"
+    "message": "Witaj w RevoLink"
   },
   "welcomeBack": {
     "message": "Witaj z powrotem!"

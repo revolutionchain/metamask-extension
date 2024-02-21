@@ -27,7 +27,7 @@
     "message": "aktivite ki fèt"
   },
   "addAcquiredTokens": {
-    "message": "Ajoute tokens yo ou te achte lè l sèvi avèk RevoMask"
+    "message": "Ajoute tokens yo ou te achte lè l sèvi avèk RevoLink"
   },
   "addSuggestedTokens": {
     "message": "Ajoute Token Yo Sikjere W"
@@ -43,15 +43,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -88,7 +88,7 @@
     "message": "Anilasyon Gaz Chaj"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Ou bezwen sèvi ak RevoMask sou Google Chrome yo nan lòd yo konekte sou Hardware Wallet."
+    "message": "Ou bezwen sèvi ak RevoLink sou Google Chrome yo nan lòd yo konekte sou Hardware Wallet."
   },
   "close": {
     "message": "Fèmen"
@@ -238,7 +238,7 @@
     "message": "Materyèl Wallet konekte"
   },
   "hardwareWalletsMsg": {
-    "message": "Chwazi yon Materyèl Wallet ou ta renmen itilize ak RevoMask"
+    "message": "Chwazi yon Materyèl Wallet ou ta renmen itilize ak RevoLink"
   },
   "here": {
     "message": "isit la",
@@ -261,7 +261,7 @@
     "message": "Pòte Kont"
   },
   "importAccountMsg": {
-    "message": " Kont pòte pa pral asosye avèk orijinal ou te kreye nan kont RevoMask seed fraz. Aprann plis sou kont enpòte "
+    "message": " Kont pòte pa pral asosye avèk orijinal ou te kreye nan kont RevoLink seed fraz. Aprann plis sou kont enpòte "
   },
   "imported": {
     "message": "Pòte",
@@ -332,10 +332,10 @@
     "message": "Mesaje"
   },
   "metamaskDescription": {
-    "message": "RevoMask sekirize idantite pou REVO."
+    "message": "RevoLink sekirize idantite pou REVO."
   },
   "metamaskVersion": {
-    "message": "RevoMask Vèsyon"
+    "message": "RevoLink Vèsyon"
   },
   "mustSelectOne": {
     "message": "Ou dwe chwazi omwen 1 token."
@@ -676,7 +676,7 @@
     "message": "Vizite sit entènèt nou an"
   },
   "welcome": {
-    "message": "Byenveni nan RevoMask"
+    "message": "Byenveni nan RevoLink"
   },
   "welcomeBack": {
     "message": "Bon Retou!"

@@ -33,7 +33,7 @@
     "message": "aktivitetslogg"
   },
   "addAcquiredTokens": {
-    "message": "Lägg till de tokens du har skaffat med RevoMask"
+    "message": "Lägg till de tokens du har skaffat med RevoLink"
   },
   "addAlias": {
     "message": "Lägg till alias"
@@ -61,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Timer för automatisk utloggning (minuter)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Ställ in efter hur lång tids inaktivitet som RevoMask automatiskt loggar ut"
+    "message": "Ställ in efter hur lång tids inaktivitet som RevoLink automatiskt loggar ut"
   },
   "average": {
     "message": "Genomsnitt"
@@ -109,7 +109,7 @@
     "message": "Tillbaka till Alla"
   },
   "backupApprovalInfo": {
-    "message": "Den hemliga koden krävs för att komma åt din plånbok ifall du tappar bort din enhet, glömmer ditt lösenord, behöver installera om RevoMask eller om du vill komma åt din plånbok på en annan enhet."
+    "message": "Den hemliga koden krävs för att komma åt din plånbok ifall du tappar bort din enhet, glömmer ditt lösenord, behöver installera om RevoLink eller om du vill komma åt din plånbok på en annan enhet."
   },
   "backupApprovalNotice": {
     "message": "Säkerhetskopiera din hemliga återställningskod för att se till att din plånbok och dina tillgångar är säkra."
@@ -140,7 +140,7 @@
     "message": "Köp $1 med Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre låter dig använda ett kreditkort för att sätta in $1 direkt på ditt RevoMask-konto."
+    "message": "Wyre låter dig använda ett kreditkort för att sätta in $1 direkt på ditt RevoLink-konto."
   },
   "cancel": {
     "message": "Avbryt"
@@ -152,7 +152,7 @@
     "message": "Avbruten"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Du måste använda RevoMask på Google Chrome för att ansluta till din hårdvaruplånbok."
+    "message": "Du måste använda RevoLink på Google Chrome för att ansluta till din hårdvaruplånbok."
   },
   "clickToRevealSeed": {
     "message": "Klicka här för att visa hemliga ord"
@@ -311,13 +311,13 @@
     "message": "Dela aldrig frasen med någon."
   },
   "endOfFlowMessage5": {
-    "message": "Se upp för nätfiske! RevoMask kommer aldrig att oväntat fråga om din seed phrase."
+    "message": "Se upp för nätfiske! RevoLink kommer aldrig att oväntat fråga om din seed phrase."
   },
   "endOfFlowMessage6": {
     "message": "Om du behöver säkerhetskopiera din nyckelfras igen, kan du hitta den i Inställningar -> Säkerhet"
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask kan inte återställa din seedphrase. Läs mer."
+    "message": "RevoLink kan inte återställa din seedphrase. Läs mer."
   },
   "endOfFlowMessage9": {
     "message": "Lär dig mer."
@@ -418,7 +418,7 @@
     "message": "Anslut en hårdvaruplånbok"
   },
   "hardwareWalletsMsg": {
-    "message": "Välj en hårdvaruplånbok som du vill använda med RevoMask"
+    "message": "Välj en hårdvaruplånbok som du vill använda med RevoLink"
   },
   "here": {
     "message": "här",
@@ -444,7 +444,7 @@
     "message": "Importera konto"
   },
   "importAccountMsg": {
-    "message": "Importerade konton kommer inte att kopplas till din ursprungligen skapade seedphrase för ditt RevoMask-konto. Läs mer om importerade konton"
+    "message": "Importerade konton kommer inte att kopplas till din ursprungligen skapade seedphrase för ditt RevoLink-konto. Läs mer om importerade konton"
   },
   "importAccountSeedPhrase": {
     "message": "Importera konto med"
@@ -542,7 +542,7 @@
     "message": "Ansluter dig mot REVO och den decentraliserade webben."
   },
   "metamaskVersion": {
-    "message": "RevoMask-version"
+    "message": "RevoLink-version"
   },
   "mustSelectOne": {
     "message": "Minst 1 token måste väljas."
@@ -585,8 +585,8 @@
   "newPassword": {
     "message": "Nytt lösenord (minst 8 tecken)"
   },
-  "newToRevoMask": {
-    "message": "Ny på RevoMask?"
+  "newToRevoLink": {
+    "message": "Ny på RevoLink?"
   },
   "newTotal": {
     "message": "Ny totalsumma"
@@ -640,7 +640,7 @@
     "message": "Delta i MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Delta i MetaMetrics för att hjälpa oss göra RevoMask bättre"
+    "message": "Delta i MetaMetrics för att hjälpa oss göra RevoLink bättre"
   },
   "password": {
     "message": "Lösenord"
@@ -906,16 +906,16 @@
     "message": "Försäkra dig om att ingen tittar på din skärm när du skannar denna kod"
   },
   "syncWithMobileComplete": {
-    "message": "Din data har nu synkats. Ha det så kul med RevoMasks mobil-app!"
+    "message": "Din data har nu synkats. Ha det så kul med RevoLinks mobil-app!"
   },
   "syncWithMobileDesc": {
-    "message": "Du kan nu synka dina konton och din information med din mobil-enhet. Öppna RevoMasks mobil-app, gå till \"Inställningar\" och tryck på \"Synka från webbläsartillägg\""
+    "message": "Du kan nu synka dina konton och din information med din mobil-enhet. Öppna RevoLinks mobil-app, gå till \"Inställningar\" och tryck på \"Synka från webbläsartillägg\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Om du öppnar RevoMask mobilapplikation för första gången behöver du bara följa stegen som visas i telefonen."
+    "message": "Om du öppnar RevoLink mobilapplikation för första gången behöver du bara följa stegen som visas i telefonen."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Skanna den här koden med din RevoMask mobilapplikation"
+    "message": "Skanna den här koden med din RevoLink mobilapplikation"
   },
   "syncWithMobileTitle": {
     "message": "Synka med mobil"
@@ -1000,7 +1000,7 @@
     "message": "Försök igen"
   },
   "typePassword": {
-    "message": "Ange ditt RevoMask-lösenord"
+    "message": "Ange ditt RevoLink-lösenord"
   },
   "unapproved": {
     "message": "Inte godkänd"
@@ -1051,7 +1051,7 @@
     "message": "Besök vår hemsida"
   },
   "welcome": {
-    "message": "Välkommen till RevoMask"
+    "message": "Välkommen till RevoLink"
   },
   "welcomeBack": {
     "message": "Välkommen tillbaka!"

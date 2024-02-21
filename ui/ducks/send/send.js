@@ -482,7 +482,7 @@ export const initialState = {
   stage: SEND_STAGES.INACTIVE,
   revoBalances: {
     spendableBalance: '0x0',
-    pendingBalane: '0x0',
+    pendingBalance: '0x0',
     error: null,
   },
 };

@@ -10,11 +10,11 @@ See [Janus](https://github.com/revoproject/charon) for our Web3 compatible API l
 
 See [revo-ethers-wrapper](https://github.com/earlgreytech/revo-ethers) for client-side transaction signing
 
-# RevoMask Browser Extension
+# RevoLink Browser Extension
 
-You can find the latest version of RevoMask on [github](https://github.com/revoproject/metamask-extension/releases). For help using MetaMask, visit our [Discord](https://www.revo.org/support).
+You can find the latest version of RevoLink on [github](https://github.com/revoproject/metamask-extension/releases). For help using MetaMask, visit our [Discord](https://www.revo.org/support).
 
-RevoMask supports Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
+RevoLink supports Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
 
 For up to the minute news, follow our [Twitter](https://twitter.com/revo) or [Medium](https://medium.com/@Revo) pages.
 
@@ -30,7 +30,7 @@ To learn how to contribute to the MetaMask project itself, visit our [Internal D
 - Install dependencies: `yarn setup` (not the usual install command)
 - Copy the `.metamaskrc.dist` file to `.metamaskrc`
     - Replace the `INFURA_PROJECT_ID` value with your own personal [Infura Project ID](https://infura.io/docs).
-    - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/), see [Developing on RevoMask - Segment](./development/README.md#segment).
+    - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/), see [Developing on RevoLink - Segment](./development/README.md#segment).
     - If debugging unhandled exceptions, you'll need to add a value for `SENTRY_DSN` [Sentry Dsn](https://docs.sentry.io/product/sentry-basics/dsn-explainer/), see [Developing on MetaMask - Sentry](./development/README.md#sentry).
     - Optionally, replace the `PASSWORD` value with your development wallet password to avoid entering it each time you open the app.
 - Build the project to the `./dist/` folder with `yarn dist`.

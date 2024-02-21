@@ -49,7 +49,7 @@ export default function reduceMetamask(state = {}, action) {
     participateInMetaMetrics: null,
     nextNonce: null,
     conversionRate: null,
-    nativeCurrency: 'REVO',
+    nativeCurrency: 'RVO',
     revoBalances: {},
     revoAddresses: {},
     ...state,

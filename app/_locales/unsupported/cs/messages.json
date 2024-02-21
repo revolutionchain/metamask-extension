@@ -22,15 +22,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -173,7 +173,7 @@
     "message": "Import účtu"
   },
   "importAccountMsg": {
-    "message": "Importované účty nebudou spojeny s vaší původní RevoMaskovou klíčovou frází. Zjistěte více o importovaných účtech "
+    "message": "Importované účty nebudou spojeny s vaší původní RevoLinkovou klíčovou frází. Zjistěte více o importovaných účtech "
   },
   "imported": {
     "message": "Importováno",
@@ -226,7 +226,7 @@
     "message": "Zpráva"
   },
   "metamaskDescription": {
-    "message": "RevoMask je bezpečný osobní trezor pro REVO."
+    "message": "RevoLink je bezpečný osobní trezor pro REVO."
   },
   "mustSelectOne": {
     "message": "Musíte zvolit aspoň 1 token."
@@ -426,7 +426,7 @@
     "message": "Navštivte naši stránku"
   },
   "welcome": {
-    "message": "Vítejte v RevoMask"
+    "message": "Vítejte v RevoLink"
   },
   "youSign": {
     "message": "Podepisujete"

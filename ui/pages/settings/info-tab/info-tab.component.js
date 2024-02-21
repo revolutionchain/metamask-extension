@@ -180,7 +180,7 @@ export default class InfoTab extends PureComponent {
           <img
             src="./images/logo/revo-logo.svg"
             className="info-tab__logo"
-            alt="RevoMask Logo"
+            alt="RevoLink Logo"
           />
         </div>
       </div>

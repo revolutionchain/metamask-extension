@@ -66,7 +66,7 @@
     "message": "Akses dompet Anda dengan Frasa Pemulihan Rahasia"
   },
   "accessYourWalletWithSRPDescription": {
-    "message": "RevoMask tidak dapat memulihkan kata sandi Anda. Kami akan menggunakan Frasa Pemulihan Rahasia untuk memvalidasi kepemilikan Anda, memulihkan dompet Anda, dan mengatur kata sandi baru. Pertama, masukkan Frasa Pemulihan Rahasia yang diberikan saat membuat dompet. $1",
+    "message": "RevoLink tidak dapat memulihkan kata sandi Anda. Kami akan menggunakan Frasa Pemulihan Rahasia untuk memvalidasi kepemilikan Anda, memulihkan dompet Anda, dan mengatur kata sandi baru. Pertama, masukkan Frasa Pemulihan Rahasia yang diberikan saat membuat dompet. $1",
     "description": "$1 is the words 'Learn More' from key 'learnMore', separated here so that it can be added as a link"
   },
   "accessingYourCamera": {
@@ -116,7 +116,7 @@
     "message": "Tambahkan nama panggilan"
   },
   "addAcquiredTokens": {
-    "message": "Tambahkan token yang Anda peroleh menggunakan RevoMask"
+    "message": "Tambahkan token yang Anda peroleh menggunakan RevoLink"
   },
   "addAlias": {
     "message": "Tambahkan alias"
@@ -132,10 +132,10 @@
     "description": "$1 is a blockchain explorer for a specific network, e.g. Etherscan for REVO"
   },
   "addREVOChainConfirmationDescription": {
-    "message": "Tindakan ini akan membantu jaringan ini agar dapat digunakan dengan RevoMask."
+    "message": "Tindakan ini akan membantu jaringan ini agar dapat digunakan dengan RevoLink."
   },
   "addREVOChainConfirmationRisks": {
-    "message": "RevoMask tidak memverifikasi jaringan kustom."
+    "message": "RevoLink tidak memverifikasi jaringan kustom."
   },
   "addREVOChainConfirmationRisksLearnMore": {
     "message": "Pelajari tentang $1.",
@@ -256,15 +256,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -324,7 +324,7 @@
     "message": "Pewaktu Kunci Otomatis (menit)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Atur waktu siaga dalam menit sebelum RevoMask terkunci."
+    "message": "Atur waktu siaga dalam menit sebelum RevoLink terkunci."
   },
   "average": {
     "message": "Rata-rata"
@@ -336,7 +336,7 @@
     "message": "Kembali ke Semua"
   },
   "backupApprovalInfo": {
-    "message": "Kode rahasia ini diperlukan untuk memulihkan dompet seandainya perangkat Anda hilang, lupa kata sandi, harus memasang kembali RevoMask, atau ingin mengakses dompet Anda di perangkat lain."
+    "message": "Kode rahasia ini diperlukan untuk memulihkan dompet seandainya perangkat Anda hilang, lupa kata sandi, harus memasang kembali RevoLink, atau ingin mengakses dompet Anda di perangkat lain."
   },
   "backupApprovalNotice": {
     "message": "Cadangkan Frasa Pemulihan Rahasia Anda untuk menjaga keamanan dompet dan dana Anda."
@@ -357,10 +357,10 @@
     "message": "Dasar"
   },
   "betaMetamaskDescription": {
-    "message": "RevoMask merupakan dompet aman yang dipercaya oleh jutaan orang, yang membuat dunia web3 dapat diakses oleh semua orang."
+    "message": "RevoLink merupakan dompet aman yang dipercaya oleh jutaan orang, yang membuat dunia web3 dapat diakses oleh semua orang."
   },
   "betaMetamaskDescriptionExplanation": {
-    "message": "Gunakan versi ini untuk menguji fitur mendatang sebelum dirilis. Penggunaan dan masukan Anda membantu kami membangun versi RevoMask terbaik. Penggunaan RevoMask Beta Anda tunduk pada $1 standar kami dan $2 kami. Sebagai Beta, akan ada peningkatan risiko kekutu. Dengan melanjutkan, Anda menerima dan mengakui risiko ini, serta risiko yang ditemukan dalam Syarat dan Ketentuan Beta kami.",
+    "message": "Gunakan versi ini untuk menguji fitur mendatang sebelum dirilis. Penggunaan dan masukan Anda membantu kami membangun versi RevoLink terbaik. Penggunaan RevoLink Beta Anda tunduk pada $1 standar kami dan $2 kami. Sebagai Beta, akan ada peningkatan risiko kekutu. Dengan melanjutkan, Anda menerima dan mengakui risiko ini, serta risiko yang ditemukan dalam Syarat dan Ketentuan Beta kami.",
     "description": "$1 represents localization item betaMetamaskDescriptionExplanationTermsLinkText.  $2 represents localization item betaMetamaskDescriptionExplanationBetaTermsLinkText"
   },
   "betaMetamaskDescriptionExplanationBetaTermsLinkText": {
@@ -370,10 +370,10 @@
     "message": "Syarat"
   },
   "betaMetamaskVersion": {
-    "message": "Versi Beta RevoMask"
+    "message": "Versi Beta RevoLink"
   },
   "betaWelcome": {
-    "message": "Selamat datang di RevoMask Beta"
+    "message": "Selamat datang di RevoLink Beta"
   },
   "blockExplorerAccountAction": {
     "message": "Akun",
@@ -407,7 +407,7 @@
     "message": "Buat daftar kontak Anda"
   },
   "builtAroundTheWorld": {
-    "message": "RevoMask dirancang dan dibangun di seluruh dunia."
+    "message": "RevoLink dirancang dan dibangun di seluruh dunia."
   },
   "busy": {
     "message": "Sibuk"
@@ -432,21 +432,21 @@
     "description": "$1 represents the cypto symbol to be purchased"
   },
   "buyCryptoWithMoonPayDescription": {
-    "message": "MoonPay mendukung metode pembayaran populer, termasuk Visa, Mastercard, Apple/Google/Samsung Pay, dan transfer bank di 145+ negara. Token akan didepositokan ke akun RevoMask Anda."
+    "message": "MoonPay mendukung metode pembayaran populer, termasuk Visa, Mastercard, Apple/Google/Samsung Pay, dan transfer bank di 145+ negara. Token akan didepositokan ke akun RevoLink Anda."
   },
   "buyCryptoWithTransak": {
     "message": "Beli $1 melalui Transak",
     "description": "$1 represents the cypto symbol to be purchased"
   },
   "buyCryptoWithTransakDescription": {
-    "message": "Transak mendukung kartu kredit & debit, Apple Pay, MobiKwik, dan transfer bank (tergantung lokasi) di 100+ negara. $1 akan langsung didepositokan ke akun RevoMask Anda.",
+    "message": "Transak mendukung kartu kredit & debit, Apple Pay, MobiKwik, dan transfer bank (tergantung lokasi) di 100+ negara. $1 akan langsung didepositokan ke akun RevoLink Anda.",
     "description": "$1 represents the crypto symbol to be purchased"
   },
   "buyWithWyre": {
     "message": "Beli $1 dengan Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Orientasi mudah untuk pembelian hingga $ 1000. Verifikasi pembelian limit tinggi interaktif yang cepat. Mendukung Kartu Debit/Kredit, Apple Pay, Transfer Bank. Tersedia di 100+ negara. Token disetor ke Akun RevoMask Anda"
+    "message": "Orientasi mudah untuk pembelian hingga $ 1000. Verifikasi pembelian limit tinggi interaktif yang cepat. Mendukung Kartu Debit/Kredit, Apple Pay, Transfer Bank. Tersedia di 100+ negara. Token disetor ke Akun RevoLink Anda"
   },
   "bytes": {
     "message": "Byte"
@@ -501,7 +501,7 @@
     "description": "$1 is the chain id currently entered in the network form and $2 is the return value of nativeCurrency.symbol from chainlist.network"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Anda perlu menggunakan RevoMask di Google Chrome untuk terhubung ke Dompet Perangkat Keras Anda."
+    "message": "Anda perlu menggunakan RevoLink di Google Chrome untuk terhubung ke Dompet Perangkat Keras Anda."
   },
   "clickToConnectLedgerViaWebHID": {
     "message": "Klik di sini untuk menghubungkan Ledger Anda melalui WebHID",
@@ -579,8 +579,8 @@
     "message": "$1 akun",
     "description": "$1 is the number of accounts to which the web3 site/application is asking to connect; this will substitute $1 in connectToMultiple"
   },
-  "connectWithRevoMask": {
-    "message": "Hubungkan Dengan RevoMask"
+  "connectWithRevoLink": {
+    "message": "Hubungkan Dengan RevoLink"
   },
   "connectedAccountsDescriptionPlural": {
     "message": "Anda memiliki $1 akun yang terhubung ke situs ini.",
@@ -590,7 +590,7 @@
     "message": "Anda memiliki 1 akun yang terhubung ke situs ini."
   },
   "connectedAccountsEmptyDescription": {
-    "message": "RevoMask tidak terhubung ke situs ini. Untuk terhubung ke situs web3, temukan dan klik tombol hubungkan."
+    "message": "RevoLink tidak terhubung ke situs ini. Untuk terhubung ke situs web3, temukan dan klik tombol hubungkan."
   },
   "connectedSites": {
     "message": "Situs yang terhubung"
@@ -665,7 +665,7 @@
     "message": "Interaksi Kontrak"
   },
   "convertTokenToNFTDescription": {
-    "message": "Kami mendeteksi bahwa aset ini merupakan NFT. Kini RevoMask memiliki dukungan asli penuh untuk NFT. Ingin menghapusnya dari daftar token dan menambahkannya sebagai NFT?"
+    "message": "Kami mendeteksi bahwa aset ini merupakan NFT. Kini RevoLink memiliki dukungan asli penuh untuk NFT. Ingin menghapusnya dari daftar token dan menambahkannya sebagai NFT?"
   },
   "convertTokenToNFTExistDescription": {
     "message": "Kami mendeteksi bahwa aset ini telah ditambahkan sebagai NFT. Anda ingin menghapusnya dari daftar token?"
@@ -788,7 +788,7 @@
     "message": "Data"
   },
   "dataBackupFoundInfo": {
-    "message": "Beberapa data akun Anda telah dicadangkan selama pemasangan RevoMask yang lalu. Ini bisa mencakup pengaturan, kontak, dan token Anda. Apakah Anda ingin memulihkan data ini sekarang?"
+    "message": "Beberapa data akun Anda telah dicadangkan selama pemasangan RevoLink yang lalu. Ini bisa mencakup pengaturan, kontak, dan token Anda. Apakah Anda ingin memulihkan data ini sekarang?"
   },
   "dataHex": {
     "message": "Hex"
@@ -1091,7 +1091,7 @@
     "message": "Jangan bagikan frasa kepada siapa pun."
   },
   "endOfFlowMessage5": {
-    "message": "Berhati-hatilah dengan pengelabuan! RevoMask tidak pernah secara spontan meminta Frasa Pemulihan Rahasia Anda."
+    "message": "Berhati-hatilah dengan pengelabuan! RevoLink tidak pernah secara spontan meminta Frasa Pemulihan Rahasia Anda."
   },
   "endOfFlowMessage6": {
     "message": "Jika Anda perlu mencadangkan Frasa Pemulihan Rahasia lagi, Anda dapat menemukannya di Pengaturan -> Keamanan."
@@ -1101,7 +1101,7 @@
     "description": "$1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask tidak dapat memulihkan Frasa Pemulihan Rahasia Anda."
+    "message": "RevoLink tidak dapat memulihkan Frasa Pemulihan Rahasia Anda."
   },
   "endOfFlowMessage9": {
     "message": "Pelajari selengkapnya."
@@ -1159,7 +1159,7 @@
     "description": "Message displayed on generic error page in the popup UI, $1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
   },
   "errorPageTitle": {
-    "message": "RevoMask mengalami galat",
+    "message": "RevoLink mengalami galat",
     "description": "Title of generic error page"
   },
   "errorStack": {
@@ -1250,15 +1250,15 @@
   },
   "flaskWelcomeWarning2": {
     "message": "Kami tidak menjamin keamanan atau stabilitas ekstensi ini. API baru yang ditawarkan oleh Flask tidak diperkuat untuk menghadapi serangan pengelabuan, artinya setiap situs atau snap yang memerlukan Flask mungkin merupakan upaya jahat untuk mencuri aset Anda.",
-    "description": "This explains the risks of using RevoMask Flask"
+    "description": "This explains the risks of using RevoLink Flask"
   },
   "flaskWelcomeWarning3": {
-    "message": "Semua API Flask bersifat eksperimental. API dapat diubah atau dihapus tanpa pemberitahuan, atau tetap berada di Flask tanpa batas waktu dan tanpa pernah dimigrasikan ke RevoMask yang stabil. Gunakan API dengan risiko Anda sendiri.",
+    "message": "Semua API Flask bersifat eksperimental. API dapat diubah atau dihapus tanpa pemberitahuan, atau tetap berada di Flask tanpa batas waktu dan tanpa pernah dimigrasikan ke RevoLink yang stabil. Gunakan API dengan risiko Anda sendiri.",
     "description": "This message warns developers about unstable Flask APIs"
   },
   "flaskWelcomeWarning4": {
-    "message": "Pastikan untuk menonaktifkan ekstensi RevoMask reguler Anda saat menggunakan Flask.",
-    "description": "This message calls to pay attention about multiple versions of RevoMask running on the same site (Flask + Prod)"
+    "message": "Pastikan untuk menonaktifkan ekstensi RevoLink reguler Anda saat menggunakan Flask.",
+    "description": "This message calls to pay attention about multiple versions of RevoLink running on the same site (Flask + Prod)"
   },
   "flaskWelcomeWarningAcceptButton": {
     "message": "Saya menerima risikonya",
@@ -1442,7 +1442,7 @@
     "message": "Hubungkan dompet perangkat keras"
   },
   "hardwareWalletsMsg": {
-    "message": "Pilih dompet perangkat keras yang ingin Anda gunakan dengan RevoMask."
+    "message": "Pilih dompet perangkat keras yang ingin Anda gunakan dengan RevoLink."
   },
   "here": {
     "message": "di sini",
@@ -1503,7 +1503,7 @@
     "message": "Galat saat mengimpor akun."
   },
   "importAccountMsg": {
-    "message": "Akun yang diimpor tidak akan dikaitkan dengan Frasa Pemulihan Rahasia akun RevoMask yang asli dibuat. Pelajari selengkapnya tentang akun yang diimpor"
+    "message": "Akun yang diimpor tidak akan dikaitkan dengan Frasa Pemulihan Rahasia akun RevoLink yang asli dibuat. Pelajari selengkapnya tentang akun yang diimpor"
   },
   "importAccountSeedPhrase": {
     "message": "Impor dompet dengan Frasa Pemulihan Rahasia"
@@ -1553,7 +1553,7 @@
     "description": "status showing that an account has been fully loaded into the keyring"
   },
   "infuraBlockedNotification": {
-    "message": "RevoMask tidak dapat terhubung ke host blockchain. Tinjau alasan yang mungkin $1.",
+    "message": "RevoLink tidak dapat terhubung ke host blockchain. Tinjau alasan yang mungkin $1.",
     "description": "$1 is a clickable link with with text defined by the 'here' key"
   },
   "initialTransactionConfirmed": {
@@ -1710,7 +1710,7 @@
     "message": "Buka dan buka Aplikasi Ledger Live"
   },
   "ledgerConnectionPreferenceDescription": {
-    "message": "Sesuaikan cara Anda menghubungkan Ledger ke RevoMask. Kami merekomendasikan $1, tetapi opsi lain tersedia. Baca selengkapnya di sini: $2",
+    "message": "Sesuaikan cara Anda menghubungkan Ledger ke RevoLink. Kami merekomendasikan $1, tetapi opsi lain tersedia. Baca selengkapnya di sini: $2",
     "description": "A description that appears above a dropdown where users can select between up to three options - Ledger Live, U2F or WebHID - depending on what is supported in their browser. $1 is the recommended browser option, it will be either WebHID or U2f. $2 is a link to an article where users can learn more, but will be the translation of the learnMore message."
   },
   "ledgerDeviceOpenFailureMessage": {
@@ -1718,7 +1718,7 @@
   },
   "ledgerLive": {
     "message": "Ledger Live",
-    "description": "The name of a desktop app that can be used with your ledger device. We can also use it to connect a users Ledger device to RevoMask."
+    "description": "The name of a desktop app that can be used with your ledger device. We can also use it to connect a users Ledger device to RevoLink."
   },
   "ledgerLiveApp": {
     "message": "Aplikasi Ledger Live"
@@ -1840,7 +1840,7 @@
     "message": "Pesan"
   },
   "metaMaskConnectStatusParagraphOne": {
-    "message": "Kini, Anda memiliki kontrol lebih banyak atas koneksi akun Anda di RevoMask."
+    "message": "Kini, Anda memiliki kontrol lebih banyak atas koneksi akun Anda di RevoLink."
   },
   "metaMaskConnectStatusParagraphThree": {
     "message": "Klik untuk mengelola akun Anda yang terhubung."
@@ -1852,10 +1852,10 @@
     "message": "Menghubungkan Anda ke REVO dan Web Terdesentralisasi."
   },
   "metamaskSwapsOfflineDescription": {
-    "message": "RevoMask Swap sedang dalam pemeliharaan. Harap periksa kembali nanti."
+    "message": "RevoLink Swap sedang dalam pemeliharaan. Harap periksa kembali nanti."
   },
   "metamaskVersion": {
-    "message": "Versi RevoMask"
+    "message": "Versi RevoLink"
   },
   "metametricsCommitmentsAllowOptOut": {
     "message": "Selalu izinkan Anda untuk keluar melalui Pengaturan"
@@ -1868,7 +1868,7 @@
     "description": "This string is localized separately from some of the commitments so that we can bold it"
   },
   "metametricsCommitmentsIntro": {
-    "message": "RevoMask akan.."
+    "message": "RevoLink akan.."
   },
   "metametricsCommitmentsNeverCollect": {
     "message": "Jangan pernah mengumpulkan kunci, alamat, transaksi, saldo, hash, atau informasi pribadi apa pun"
@@ -1894,17 +1894,17 @@
   "metametricsCommitmentsSendAnonymizedEvents": {
     "message": "Kirim kejadian pageview & klik anonim"
   },
-  "metametricsHelpImproveRevoMask": {
-    "message": "Bantu Kami Menyempurnakan RevoMask"
+  "metametricsHelpImproveRevoLink": {
+    "message": "Bantu Kami Menyempurnakan RevoLink"
   },
   "metametricsOptInDescription": {
-    "message": "RevoMask ingin mengumpulkan data penggunaan untuk lebih memahami cara pengguna berinteraksi dengan ekstensi. Data ini akan digunakan untuk meningkatkan kegunaan dan pengalaman pengguna atas produk kami dan ekosistem REVO secara berkala."
+    "message": "RevoLink ingin mengumpulkan data penggunaan untuk lebih memahami cara pengguna berinteraksi dengan ekstensi. Data ini akan digunakan untuk meningkatkan kegunaan dan pengalaman pengguna atas produk kami dan ekosistem REVO secara berkala."
   },
   "metametricsOptInDescription2": {
     "message": "Kami ingin mengumpulkan data penggunaan dasar dalam rangka meningkatkan kegunaan produk kami. Metrik ini akan..."
   },
   "metametricsTitle": {
-    "message": "Bergabunglah bersama 6 Jt+ pengguna untuk meningkatkan RevoMask"
+    "message": "Bergabunglah bersama 6 Jt+ pengguna untuk meningkatkan RevoLink"
   },
   "mismatchedChainLinkText": {
     "message": "memverifikasi detail jaringan",
@@ -1936,7 +1936,7 @@
     "message": "Tidak melihat token Anda?"
   },
   "mobileSyncWarning": {
-    "message": "Fitur 'Sinkronkan dengan ekstensi' dinonaktifkan untuk sementara waktu. Jika Anda ingin menggunakan dompet ekstensi Anda di ponsel RevoMask, maka pada aplikasi seluler Anda: kembali ke opsi pengaturan dompet dan pilih opsi 'Impor dengan Frasa Pemulihan Rahasia'. Gunakan frasa rahasia dompet ekstensi Anda untuk mengimpor dompet Anda ke ponsel nantinya."
+    "message": "Fitur 'Sinkronkan dengan ekstensi' dinonaktifkan untuk sementara waktu. Jika Anda ingin menggunakan dompet ekstensi Anda di ponsel RevoLink, maka pada aplikasi seluler Anda: kembali ke opsi pengaturan dompet dan pilih opsi 'Impor dengan Frasa Pemulihan Rahasia'. Gunakan frasa rahasia dompet ekstensi Anda untuk mengimpor dompet Anda ke ponsel nantinya."
   },
   "mustSelectOne": {
     "message": "Harus memilih minimal 1 token."
@@ -1948,7 +1948,7 @@
     "message": "Nama"
   },
   "needCryptoInWallet": {
-    "message": "Untuk berinteraksi dengan aplikasi terdesentralisasi menggunakan RevoMask, Anda memerlukan $1 di dompet.",
+    "message": "Untuk berinteraksi dengan aplikasi terdesentralisasi menggunakan RevoLink, Anda memerlukan $1 di dompet.",
     "description": "$1 represents the cypto symbol to be purchased"
   },
   "needHelp": {
@@ -1959,7 +1959,7 @@
     "message": "Bagikan Masukan Anda"
   },
   "needHelpLinkText": {
-    "message": "Dukungan RevoMask"
+    "message": "Dukungan RevoLink"
   },
   "needHelpSubmitTicket": {
     "message": "Kirimkan Tiket"
@@ -2056,7 +2056,7 @@
     "message": "Kontrak Baru"
   },
   "newNFTDetectedMessage": {
-    "message": "Izinkan RevoMask mendeteksi NFT dari Opensea secara otomatis dan menampilkannya di dompet Anda."
+    "message": "Izinkan RevoLink mendeteksi NFT dari Opensea secara otomatis dan menampilkannya di dompet Anda."
   },
   "newNFTsDetected": {
     "message": "Baru! Deteksi NFT"
@@ -2067,8 +2067,8 @@
   "newPassword": {
     "message": "Kata sandi baru (min 8 karakter)"
   },
-  "newToRevoMask": {
-    "message": "Baru menggunakan RevoMask?"
+  "newToRevoLink": {
+    "message": "Baru menggunakan RevoLink?"
   },
   "newTokensImportedMessage": {
     "message": "Anda berhasil mengimpor $1.",
@@ -2091,7 +2091,7 @@
   },
   "nextNonceWarning": {
     "message": "Nonce lebih tinggi dari nonce $1 yang disarankan",
-    "description": "The next nonce according to RevoMask's internal logic"
+    "description": "The next nonce according to RevoLink's internal logic"
   },
   "nft": {
     "message": "NFT"
@@ -2207,19 +2207,19 @@
     "message": "Tambahkan Jaringan Populer"
   },
   "notifications1Description": {
-    "message": "Pengguna RevoMask Mobile kini bisa menukar token di dalam dompet seluler mereka. Pindai kode QR untuk mendapatkan aplikasi seluler dan mulai menukar.",
+    "message": "Pengguna RevoLink Mobile kini bisa menukar token di dalam dompet seluler mereka. Pindai kode QR untuk mendapatkan aplikasi seluler dan mulai menukar.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the swapping on mobile feature."
   },
   "notifications1Title": {
     "message": "Penukaran pada perangkat seluler telah hadir!",
-    "description": "Title for a notification in the 'See What's New' popup. Tells users that they can now use RevoMask Swaps on Mobile."
+    "description": "Title for a notification in the 'See What's New' popup. Tells users that they can now use RevoLink Swaps on Mobile."
   },
   "notifications3ActionText": {
     "message": "Baca selengkapnya",
     "description": "The 'call to action' on the button, or link, of the 'Stay secure' notification. Upon clicking, users will be taken to a page about security on the metamask support website."
   },
   "notifications3Description": {
-    "message": "Dapatkan informasi terbaru seputar praktik terbaik keamanan RevoMask dan dapatkan kiat-kiat keamanan terkini dari dukungan RevoMask resmi.",
+    "message": "Dapatkan informasi terbaru seputar praktik terbaik keamanan RevoLink dan dapatkan kiat-kiat keamanan terkini dari dukungan RevoLink resmi.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the information they can get on security from the linked support page."
   },
   "notifications3Title": {
@@ -2231,7 +2231,7 @@
     "description": "The 'call to action' on the button, or link, of the 'Swap on Binance Smart Chain!' notification. Upon clicking, users will be taken to a page where then can swap tokens on Binance Smart Chain."
   },
   "notifications4Description": {
-    "message": "Dapatkan harga penukaran token terbaik langsung di dompet Anda. RevoMask kini menghubungkan Anda ke berbagai agregator penukaran terdesentralisasi dan pembuat pasar profesional di Binance Smart Chain.",
+    "message": "Dapatkan harga penukaran token terbaik langsung di dompet Anda. RevoLink kini menghubungkan Anda ke berbagai agregator penukaran terdesentralisasi dan pembuat pasar profesional di Binance Smart Chain.",
     "description": "Description of a notification in the 'See What's New' popup."
   },
   "notifications4Title": {
@@ -2243,11 +2243,11 @@
     "description": "Description of a notification in the 'See What's New' popup. Describes the seed phrase wording update."
   },
   "notifications6DescriptionOne": {
-    "message": "Pada Chrome versi 91, API yang memungkinkan dukungan Ledger (U2F) kami tidak lagi mendukung dompet perangkat keras. RevoMask telah menerapkan dukungan Ledger Live baru yang memungkinkan Anda untuk terus terhubung ke perangkat Ledger Anda melalui aplikasi desktop Ledger Live.",
+    "message": "Pada Chrome versi 91, API yang memungkinkan dukungan Ledger (U2F) kami tidak lagi mendukung dompet perangkat keras. RevoLink telah menerapkan dukungan Ledger Live baru yang memungkinkan Anda untuk terus terhubung ke perangkat Ledger Anda melalui aplikasi desktop Ledger Live.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the Ledger support update."
   },
   "notifications6DescriptionThree": {
-    "message": "Saat berinteraksi dengan akun Ledger Anda di RevoMask, tab baru akan terbuka dan Anda akan diminta untuk membuka aplikasi Ledger Live.  Setelah aplikasi tersebut terbuka, Anda akan diminta untuk mengizinkan koneksi WebSocket ke akun RevoMask Anda. Tidak diperlukan tindakan lebih lanjut!",
+    "message": "Saat berinteraksi dengan akun Ledger Anda di RevoLink, tab baru akan terbuka dan Anda akan diminta untuk membuka aplikasi Ledger Live.  Setelah aplikasi tersebut terbuka, Anda akan diminta untuk mengizinkan koneksi WebSocket ke akun RevoLink Anda. Tidak diperlukan tindakan lebih lanjut!",
     "description": "Description of a notification in the 'See What's New' popup. Describes the Ledger support update."
   },
   "notifications6DescriptionTwo": {
@@ -2259,7 +2259,7 @@
     "description": "Title for a notification in the 'See What's New' popup. Lets users know about the Ledger support update"
   },
   "notifications7DescriptionOne": {
-    "message": "RevoMask v10.1.0 menyertakan dukungan baru untuk transaksi EIP-1559 saat menggunakan perangkat Ledger.",
+    "message": "RevoLink v10.1.0 menyertakan dukungan baru untuk transaksi EIP-1559 saat menggunakan perangkat Ledger.",
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for ledger and EIP1559 in v10.1.0"
   },
   "notifications7DescriptionTwo": {
@@ -2275,7 +2275,7 @@
     "description": "Description on an action button that appears in the What's New popup. Tells the user that if they click it, they will go to our Advanced settings page."
   },
   "notifications8DescriptionOne": {
-    "message": "Pada RevoMask v10.4.0, Anda tidak lagi memerlukan Ledger Live untuk menghubungkan perangkat Ledger Anda ke RevoMask.",
+    "message": "Pada RevoLink v10.4.0, Anda tidak lagi memerlukan Ledger Live untuk menghubungkan perangkat Ledger Anda ke RevoLink.",
     "description": "Description of a notification in the 'See What's New' popup. Describes changes for how Ledger Live is no longer needed to connect the device."
   },
   "notifications8DescriptionTwo": {
@@ -2345,16 +2345,16 @@
     "message": "Klik ikon ekstensi peramban"
   },
   "onboardingPinExtensionDescription": {
-    "message": "Sematkan RevoMask pada peramban Anda agar dapat diakses dan memudahkan dalam melihat konfirmasi transaksi."
+    "message": "Sematkan RevoLink pada peramban Anda agar dapat diakses dan memudahkan dalam melihat konfirmasi transaksi."
   },
   "onboardingPinExtensionDescription2": {
-    "message": "Anda dapat membuka RevoMask dengan mengeklik ekstensi dan mengakses dompet Anda dalam 1 klik."
+    "message": "Anda dapat membuka RevoLink dengan mengeklik ekstensi dan mengakses dompet Anda dalam 1 klik."
   },
   "onboardingPinExtensionDescription3": {
     "message": "Klik ikon ekstensi peramban untuk mengaksesnya secara langsung"
   },
   "onboardingPinExtensionLabel": {
-    "message": "Sematkan RevoMask"
+    "message": "Sematkan RevoLink"
   },
   "onboardingPinExtensionStep1": {
     "message": "1"
@@ -2363,7 +2363,7 @@
     "message": "2"
   },
   "onboardingPinExtensionTitle": {
-    "message": "Pemasangan RevoMask Anda selesai!"
+    "message": "Pemasangan RevoLink Anda selesai!"
   },
   "onboardingReturnNotice": {
     "message": "\"$1\" akan menutup tab ini dan mengarahkan kembali ke $2",
@@ -2384,8 +2384,8 @@
     "message": "Hanya hubungkan ke situs yang Anda percayai."
   },
   "openFullScreenForLedgerWebHid": {
-    "message": "Buka RevoMask dalam layar penuh untuk menghubungkan ledger Anda melalui WebHID.",
-    "description": "Shown to the user on the confirm screen when they are viewing RevoMask in a popup window but need to connect their ledger via webhid."
+    "message": "Buka RevoLink dalam layar penuh untuk menghubungkan ledger Anda melalui WebHID.",
+    "description": "Shown to the user on the confirm screen when they are viewing RevoLink in a popup window but need to connect their ledger via webhid."
   },
   "optional": {
     "message": "Opsional"
@@ -2412,7 +2412,7 @@
     "message": "Berpartisipasilah dalam MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Berpartisipasilah dalam MetaMetrics untuk membantu kami menjadikan RevoMask lebih baik lagi"
+    "message": "Berpartisipasilah dalam MetaMetrics untuk membantu kami menjadikan RevoLink lebih baik lagi"
   },
   "password": {
     "message": "Kata sandi"
@@ -2421,7 +2421,7 @@
     "message": "Kata sandi kurang panjang"
   },
   "passwordSetupDetails": {
-    "message": "Kata sandi ini akan membuka dompet RevoMask Anda hanya pada perangkat ini. RevoMask tidak dapat memulihkan kata sandi ini."
+    "message": "Kata sandi ini akan membuka dompet RevoLink Anda hanya pada perangkat ini. RevoLink tidak dapat memulihkan kata sandi ini."
   },
   "passwordStrength": {
     "message": "Kekuatan kata sandi: $1",
@@ -2431,7 +2431,7 @@
     "message": "Kata sandi yang kuat dapat meningkatkan keamanan dompet jika perangkat Anda dicuri atau disusupi."
   },
   "passwordTermsWarning": {
-    "message": "Saya memahami bahwa RevoMask tidak dapat memulihkan kata sandi ini untuk saya. $1"
+    "message": "Saya memahami bahwa RevoLink tidak dapat memulihkan kata sandi ini untuk saya. $1"
   },
   "passwordsDontMatch": {
     "message": "Kata Sandi Tidak Cocok"
@@ -2468,7 +2468,7 @@
     "description": "The description for the `wallet_snap_*` permission. $1 is the name of the Snap."
   },
   "permission_customConfirmation": {
-    "message": "Tampilkan konfirmasi di RevoMask.",
+    "message": "Tampilkan konfirmasi di RevoLink.",
     "description": "The description for the `snap_confirm` permission"
   },
   "permission_ethereumAccounts": {
@@ -2601,7 +2601,7 @@
     "message": "Jangan membagikan Frasa Pemulihan Rahasia Anda kepada siapa pun"
   },
   "recoveryPhraseReminderItemTwo": {
-    "message": "Tim RevoMask tidak akan pernah meminta Frasa Pemulihan Rahasia Anda"
+    "message": "Tim RevoLink tidak akan pernah meminta Frasa Pemulihan Rahasia Anda"
   },
   "recoveryPhraseReminderSubText": {
     "message": "Frasa Pemulihan Rahasia Anda mengendalikan semua akun Anda."
@@ -2677,7 +2677,7 @@
     "message": "Reset Dompet"
   },
   "resetWalletSubHeader": {
-    "message": "RevoMask tidak menyimpan salinan kata sandi Anda. Jika terjadi masalah saat membuka akun, reset dompet Anda. Anda dapat melakukannya dengan memberikan Frasa Pemulihan Rahasia yang digunakan saat mengatur dompet."
+    "message": "RevoLink tidak menyimpan salinan kata sandi Anda. Jika terjadi masalah saat membuka akun, reset dompet Anda. Anda dapat melakukannya dengan memberikan Frasa Pemulihan Rahasia yang digunakan saat mengatur dompet."
   },
   "resetWalletUsingSRP": {
     "message": "Tindakan ini akan menghapus dompet saat ini dan Frasa Pemulihan Rahasia dari perangkat ini, bersama dengan daftar akun yang telah Anda kelola. Setelah direset dengan Frasa Pemulihan Rahasia, Anda akan melihat daftar akun berdasarkan Frasa Pemulihan Rahasia yang Anda gunakan untuk mereset. Daftar baru ini secara otomatis akan menyertakan akun yang memiliki saldo. Anda juga dapat $1 yang telah dibuat sebelumnya. Akun khusus yang Anda impor harus $2, dan token khusus yang Anda tambahkan ke akun harus $3 juga."
@@ -2686,7 +2686,7 @@
     "message": "Pastikan Anda menggunakan Frasa Pemulihan Rahasia yang benar sebelum melanjutkan. Anda tidak dapat membatalkan tindakan ini."
   },
   "restartMetamask": {
-    "message": "Mulai ulang RevoMask"
+    "message": "Mulai ulang RevoLink"
   },
   "restore": {
     "message": "Pulihkan"
@@ -2815,7 +2815,7 @@
     "message": "Jika seseorang menanyakan frasa pemulihan Anda, kemungkinan mereka akan mencoba menipu dan mencuri dana di dompet Anda"
   },
   "seedPhraseIntroSidebarCopyTwo": {
-    "message": "Jangan pernah membagikan Frasa Pemulihan Rahasia Anda bahkan kepada RevoMask sekali pun!"
+    "message": "Jangan pernah membagikan Frasa Pemulihan Rahasia Anda bahkan kepada RevoLink sekali pun!"
   },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "Apa itu Frasa Pemulihan Rahasia?"
@@ -2854,7 +2854,7 @@
     "message": "Pilih Akun"
   },
   "selectAnAccountAlreadyConnected": {
-    "message": "Akun ini sudah terhubung ke RevoMask."
+    "message": "Akun ini sudah terhubung ke RevoLink."
   },
   "selectEachPhrase": {
     "message": "Pilih masing-masing frasa untuk memastikan kebenarannya."
@@ -2908,7 +2908,7 @@
     "message": "Atur pengaturan privasi lanjutan"
   },
   "setAdvancedPrivacySettingsDetails": {
-    "message": "RevoMask menggunakan layanan pihak ketiga tepercaya ini untuk meningkatkan kegunaan dan keamanan produk."
+    "message": "RevoLink menggunakan layanan pihak ketiga tepercaya ini untuk meningkatkan kegunaan dan keamanan produk."
   },
   "setApprovalForAll": {
     "message": "Atur Persetujuan untuk Semua"
@@ -3127,7 +3127,7 @@
     "message": "Galat pada log status pengambilan."
   },
   "stateLogFileName": {
-    "message": "Log Status RevoMask"
+    "message": "Log Status RevoLink"
   },
   "stateLogs": {
     "message": "Log Status"
@@ -3148,7 +3148,7 @@
     "message": "Pastikan Lattice1 Anda siap terhubung"
   },
   "step1LatticeWalletMsg": {
-    "message": "Anda dapat menghubungkan RevoMask ke perangkat Lattice1 setelah diatur dan online. Buka perangkat Anda dan siapkan ID Perangkat Anda. Untuk informasi selengkapnya seputar penggunaan dompet perangkat keras, $1",
+    "message": "Anda dapat menghubungkan RevoLink ke perangkat Lattice1 setelah diatur dan online. Buka perangkat Anda dan siapkan ID Perangkat Anda. Untuk informasi selengkapnya seputar penggunaan dompet perangkat keras, $1",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "step1LedgerWallet": {
@@ -3206,7 +3206,7 @@
     "message": "Cobalah untuk menukar lagi. Kami akan selalu hadir untuk melindungi Anda dari risiko serupa di lain waktu."
   },
   "stxDescription": {
-    "message": "Pertukaran RevoMask menjadi semakin pintar! Mengaktifkan Transaksi Pintar akan memungkinkan RevoMask mengoptimalkan Pertukaran Anda secara terprogram untuk membantu:"
+    "message": "Pertukaran RevoLink menjadi semakin pintar! Mengaktifkan Transaksi Pintar akan memungkinkan RevoLink mengoptimalkan Pertukaran Anda secara terprogram untuk membantu:"
   },
   "stxErrorNotEnoughFunds": {
     "message": "Dana tidak cukup untuk mengaktifkan transaksi pintar."
@@ -3347,7 +3347,7 @@
     "message": "Edit batas"
   },
   "swapEnableDescription": {
-    "message": "Ini diwajibkan dan memberikan RevoMask izin untuk menukar $1 Anda.",
+    "message": "Ini diwajibkan dan memberikan RevoLink izin untuk menukar $1 Anda.",
     "description": "Gives the user info about the required approval transaction for swaps. $1 will be the symbol of a token being approved for swaps."
   },
   "swapEnableTokenForSwapping": {
@@ -3397,14 +3397,14 @@
     "message": "Biaya gas pada layar sebelumnya dibagi antara kedua transaksi ini."
   },
   "swapGasFeesSummary": {
-    "message": "Biaya gas dibayarkan kepada penambang kripto yang memproses transaksi di jaringan $1. RevoMask tidak mengambil keuntungan dari biaya gas.",
+    "message": "Biaya gas dibayarkan kepada penambang kripto yang memproses transaksi di jaringan $1. RevoLink tidak mengambil keuntungan dari biaya gas.",
     "description": "$1 is the selected network, e.g. REVO or BSC"
   },
   "swapHighSlippageWarning": {
     "message": "Jumlah slippage sangat tinggi."
   },
   "swapIncludesMMFee": {
-    "message": "Termasuk $1% biaya RevoMask.",
+    "message": "Termasuk $1% biaya RevoLink.",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapLowSlippageError": {
@@ -3413,10 +3413,10 @@
   "swapMaxSlippage": {
     "message": "Slippage maks"
   },
-  "swapRevoMaskFee": {
-    "message": "Biaya RevoMask"
+  "swapRevoLinkFee": {
+    "message": "Biaya RevoLink"
   },
-  "swapRevoMaskFeeDescription": {
+  "swapRevoLinkFeeDescription": {
     "message": "Kami menemukan harga terbaik dari sumber likuiditas teratas, setiap waktu. Biaya sebesar $1% otomatis diperhitungkan ke kuotasi ini.",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
@@ -3601,7 +3601,7 @@
     "message": "Lihat di laman aktivitas"
   },
   "switchREVOChainConfirmationDescription": {
-    "message": "Ini akan mengalihkan jaringan yang dipilih dalam RevoMask ke jaringan yang ditambahkan sebelumnya:"
+    "message": "Ini akan mengalihkan jaringan yang dipilih dalam RevoLink ke jaringan yang ditambahkan sebelumnya:"
   },
   "switchREVOChainConfirmationTitle": {
     "message": "Izinkan situs ini untuk beralih jaringan?"
@@ -3641,16 +3641,16 @@
     "message": "Pastikan tidak ada orang lain yang melihat layar Anda saat memindai kode ini"
   },
   "syncWithMobileComplete": {
-    "message": "Data Anda telah berhasil disinkronkan. Nikmati aplikasi seluler RevoMask!"
+    "message": "Data Anda telah berhasil disinkronkan. Nikmati aplikasi seluler RevoLink!"
   },
   "syncWithMobileDesc": {
-    "message": "Anda dapat menyinkronkan akun dan informasi dengan perangkat seluler Anda. Buka aplikasi seluler RevoMask, buka \"Pengaturan\" dan ketuk \"Sinkronkan dari Ekstensi Peramban\""
+    "message": "Anda dapat menyinkronkan akun dan informasi dengan perangkat seluler Anda. Buka aplikasi seluler RevoLink, buka \"Pengaturan\" dan ketuk \"Sinkronkan dari Ekstensi Peramban\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Jika Anda baru membuka aplikasi seluler RevoMask untuk pertama kali, cukup ikuti langkah-langkah yang ada di ponsel Anda."
+    "message": "Jika Anda baru membuka aplikasi seluler RevoLink untuk pertama kali, cukup ikuti langkah-langkah yang ada di ponsel Anda."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Pindai kode ini dengan aplikasi seluler RevoMask Anda"
+    "message": "Pindai kode ini dengan aplikasi seluler RevoLink Anda"
   },
   "syncWithMobileTitle": {
     "message": "Sinkronkan dengan seluler"
@@ -3683,7 +3683,7 @@
     "message": "Tema"
   },
   "themeDescription": {
-    "message": "Pilih tema RevoMask yang Anda sukai."
+    "message": "Pilih tema RevoLink yang Anda sukai."
   },
   "thisWillCreate": {
     "message": "Ini akan membuat Frasa Pemulihan Rahasia dan dompet baru"
@@ -3782,7 +3782,7 @@
     "message": "Situs yang disarankan"
   },
   "transactionDetailDappGasTooltip": {
-    "message": "Edit untuk menggunakan biaya gas yang direkomendasikan RevoMask berdasarkan blok terbaru."
+    "message": "Edit untuk menggunakan biaya gas yang direkomendasikan RevoLink berdasarkan blok terbaru."
   },
   "transactionDetailGasHeading": {
     "message": "Estimasi biaya gas"
@@ -3797,7 +3797,7 @@
     "message": "Biaya gas ditetapkan oleh jaringan dan berfluktuasi berdasarkan lalu lintas jaringan dan kompleksitas transaksi."
   },
   "transactionDetailGasTooltipIntro": {
-    "message": "Biaya gas dibayarkan kepada penambang kripto yang memproses transaksi di jaringan $1. RevoMask tidak mengambil keuntungan dari biaya gas."
+    "message": "Biaya gas dibayarkan kepada penambang kripto yang memproses transaksi di jaringan $1. RevoLink tidak mengambil keuntungan dari biaya gas."
   },
   "transactionDetailGasTotalSubtitle": {
     "message": "Jumlah + biaya gas"
@@ -3867,7 +3867,7 @@
     "description": "$1 is the wallet device name; $2 is a link to wallet connection guide"
   },
   "troubleStarting": {
-    "message": "RevoMask mengalami masalah saat memulai. Kesalahan ini dapat terjadi berselang, coba mulai ulang ekstensi."
+    "message": "RevoLink mengalami masalah saat memulai. Kesalahan ini dapat terjadi berselang, coba mulai ulang ekstensi."
   },
   "troubleTokenBalances": {
     "message": "Kami mengalami masalah saat memuat saldo token Anda. Anda dapat melihatnya ",
@@ -3889,14 +3889,14 @@
     "message": "Pemahaman transaksi tidak didukung untuk kontrak ini saat ini."
   },
   "typePassword": {
-    "message": "Ketikkan kata sandi RevoMask Anda"
+    "message": "Ketikkan kata sandi RevoLink Anda"
   },
   "typeYourSRP": {
     "message": "Ketik Frasa Pemulihan Rahasia"
   },
   "u2f": {
     "message": "U2F",
-    "description": "A name on an API for the browser to interact with devices that support the U2F protocol. On some browsers we use it to connect RevoMask to Ledger devices."
+    "description": "A name on an API for the browser to interact with devices that support the U2F protocol. On some browsers we use it to connect RevoLink to Ledger devices."
   },
   "unapproved": {
     "message": "Tidak disetujui"
@@ -4030,10 +4030,10 @@
     "message": "Anda telah berhasil melindungi dompet Anda. Jaga agar Frasa Pemulihan Rahasia tetap aman dan terlindungi -- ini merupakan tanggung jawab Anda!"
   },
   "walletCreationSuccessReminder1": {
-    "message": "RevoMask tidak dapat memulihkan Frasa Pemulihan Rahasia Anda."
+    "message": "RevoLink tidak dapat memulihkan Frasa Pemulihan Rahasia Anda."
   },
   "walletCreationSuccessReminder2": {
-    "message": "RevoMask tidak akan pernah menanyakan Frasa Pemulihan Rahasia Anda."
+    "message": "RevoLink tidak akan pernah menanyakan Frasa Pemulihan Rahasia Anda."
   },
   "walletCreationSuccessReminder3": {
     "message": "$1 dengan siapa pun atau dana Anda berisiko dicuri",
@@ -4064,7 +4064,7 @@
     "description": "Refers to a interface for connecting external devices to the browser. Used for connecting ledger to the browser. Read more here https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API"
   },
   "welcome": {
-    "message": "Selamat datang di RevoMask"
+    "message": "Selamat datang di RevoLink"
   },
   "welcomeBack": {
     "message": "Selamat Datang Kembali!"
@@ -4076,20 +4076,20 @@
     "message": "Jelajahi aplikasi terdesentralisasi"
   },
   "welcomeLoginDescription": {
-    "message": "Gunakan RevoMask Anda untuk masuk ke aplikasi terdesentralisasi - tak perlu mendaftar."
+    "message": "Gunakan RevoLink Anda untuk masuk ke aplikasi terdesentralisasi - tak perlu mendaftar."
   },
   "welcomeLoginTitle": {
     "message": "Ucapkan halo pada dompet Anda"
   },
-  "welcomeToRevoMask": {
+  "welcomeToRevoLink": {
     "message": "Mari kita mulai"
   },
-  "welcomeToRevoMaskIntro": {
-    "message": "RevoMask merupakan dompet aman yang dipercaya oleh jutaan orang, yang membuat dunia web3 dapat diakses oleh semua orang."
+  "welcomeToRevoLinkIntro": {
+    "message": "RevoLink merupakan dompet aman yang dipercaya oleh jutaan orang, yang membuat dunia web3 dapat diakses oleh semua orang."
   },
   "whatsNew": {
     "message": "Apa yang baru",
-    "description": "This is the title of a popup that gives users notifications about new features and updates to RevoMask."
+    "description": "This is the title of a popup that gives users notifications about new features and updates to RevoLink."
   },
   "whatsThis": {
     "message": "Apa ini?"

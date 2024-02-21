@@ -1,7 +1,7 @@
 export const ETH = 'ETH';
 export const GWEI = 'GWEI';
 export const WEI = 'WEI';
-export const REVO = 'REVO';
+export const RVO = 'RVO';
 export const SATOSHI = 'SATOSHI';
 
 export const PRIMARY = 'PRIMARY';

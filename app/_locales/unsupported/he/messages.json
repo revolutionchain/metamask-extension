@@ -33,7 +33,7 @@
     "message": "יומן פעילות"
   },
   "addAcquiredTokens": {
-    "message": "הוספת הטוקנים שהשגת באמצעות RevoMask"
+    "message": "הוספת הטוקנים שהשגת באמצעות RevoLink"
   },
   "addAlias": {
     "message": "הוסף כינוי"
@@ -61,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "טיימר התנתקות אוטומטית (דקות)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "הגדר/י את זמן היעדר הפעילות בדקות לפני ש-RevoMask יתנתק אוטומטית."
+    "message": "הגדר/י את זמן היעדר הפעילות בדקות לפני ש-RevoLink יתנתק אוטומטית."
   },
   "average": {
     "message": "ממוצע"
@@ -109,7 +109,7 @@
     "message": "חזרה אל 'הכל'"
   },
   "backupApprovalInfo": {
-    "message": "קוד סודי זה נדרש כדי לשחזר את הארנק שלך במקרה שתאבד/י את מכשירך, תשכח/י את הססמה, תצטרכ/י להתקין מחדש את RevoMask או שתרצה/י לגשת לארנק שלך במכשיר אחר."
+    "message": "קוד סודי זה נדרש כדי לשחזר את הארנק שלך במקרה שתאבד/י את מכשירך, תשכח/י את הססמה, תצטרכ/י להתקין מחדש את RevoLink או שתרצה/י לגשת לארנק שלך במכשיר אחר."
   },
   "backupApprovalNotice": {
     "message": "גבה/י את קוד השחזור הסודי שלך כדי לשמור את בטיחות הארנק והכספים שלך."
@@ -140,7 +140,7 @@
     "message": "רכישת את'ר עם Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre מאפשרת לך להשתמש בכרטיס אשראי כדי להפקיד $1 ישירות בחשבון ה-RevoMask שלך."
+    "message": "Wyre מאפשרת לך להשתמש בכרטיס אשראי כדי להפקיד $1 ישירות בחשבון ה-RevoLink שלך."
   },
   "bytes": {
     "message": "בייטים"
@@ -158,7 +158,7 @@
     "message": "מזהה שרשרת"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "עליך להשתמש ב-RevoMask בגוגל כרום כדי להתחבר לארנק החומרה שלך."
+    "message": "עליך להשתמש ב-RevoLink בגוגל כרום כדי להתחבר לארנק החומרה שלך."
   },
   "clickToRevealSeed": {
     "message": "לחצ/י כאן לחשיפת מילים סודיות"
@@ -317,13 +317,13 @@
     "message": "לעולם אל תשתפ/י את הצירוף עם אף אחד."
   },
   "endOfFlowMessage5": {
-    "message": "היזהר/י מהתחזות! RevoMask לעולם לא יבקש באופן ספונטני את צירוף הגרעין שלך."
+    "message": "היזהר/י מהתחזות! RevoLink לעולם לא יבקש באופן ספונטני את צירוף הגרעין שלך."
   },
   "endOfFlowMessage6": {
     "message": "אם עליך לגבות את צירוף הגרעין שלך שוב, תוכל/י למצוא זאת בהגדרות -> אבטחה."
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask לא הצליח לשחזר את ה-seedphrase שלך. למד/י עוד."
+    "message": "RevoLink לא הצליח לשחזר את ה-seedphrase שלך. למד/י עוד."
   },
   "endOfFlowMessage9": {
     "message": "למד עוד."
@@ -428,7 +428,7 @@
     "message": "חבר ארנק חומרה"
   },
   "hardwareWalletsMsg": {
-    "message": "בחר/י ארנק חומרה שבו תרצה להשתמש עם RevoMask"
+    "message": "בחר/י ארנק חומרה שבו תרצה להשתמש עם RevoLink"
   },
   "here": {
     "message": "כאן",
@@ -454,7 +454,7 @@
     "message": "יבא חשבון"
   },
   "importAccountMsg": {
-    "message": "חשבונות מיובאים לא ישויכו לצירוף הגרעין (seed) שנוצר במקור עבור חשבון ה-RevoMask שלך. למד/י עוד על חשבונות מיובאים"
+    "message": "חשבונות מיובאים לא ישויכו לצירוף הגרעין (seed) שנוצר במקור עבור חשבון ה-RevoLink שלך. למד/י עוד על חשבונות מיובאים"
   },
   "importAccountSeedPhrase": {
     "message": "יבא חשבון באמצעות Seed Phrase"
@@ -555,7 +555,7 @@
     "message": "מחבר אותך לאתריום ולרשת המבוזרת."
   },
   "metamaskVersion": {
-    "message": "גרסת RevoMask"
+    "message": "גרסת RevoLink"
   },
   "mustSelectOne": {
     "message": "חובה לבחור לפחות אסימון אחד."
@@ -598,8 +598,8 @@
   "newPassword": {
     "message": "ססמה חדשה (לפחות 8 תווים)"
   },
-  "newToRevoMask": {
-    "message": "חדש/ה ב- RevoMask?"
+  "newToRevoLink": {
+    "message": "חדש/ה ב- RevoLink?"
   },
   "newTotal": {
     "message": "סכום כולל חדש"
@@ -653,7 +653,7 @@
     "message": "קח/י חלק ב- MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "קח/י חלק ב-MetaMetrics כדי לעזור לנו לשפר את RevoMask"
+    "message": "קח/י חלק ב-MetaMetrics כדי לעזור לנו לשפר את RevoLink"
   },
   "password": {
     "message": "סיסמה"
@@ -919,16 +919,16 @@
     "message": "ודא/י כי איש אינו מסתכל על המסך שלך בזמן סריקת קוד זה"
   },
   "syncWithMobileComplete": {
-    "message": "הנתונים שלך סונכרנו בהצלחה. תיהנה/י מאפליקציית RevoMask לטלפונים ניידים! "
+    "message": "הנתונים שלך סונכרנו בהצלחה. תיהנה/י מאפליקציית RevoLink לטלפונים ניידים! "
   },
   "syncWithMobileDesc": {
-    "message": "באפשרותך לסנכרן את החשבונות והמידע שלך עם המכשיר הנייד שלך. יש לפתוח את האפליקציה לנייד של RevoMask, לעבור אל \"הגדרות\" וללחוץ על \"סנכרון מהרחבה לדפדפן\""
+    "message": "באפשרותך לסנכרן את החשבונות והמידע שלך עם המכשיר הנייד שלך. יש לפתוח את האפליקציה לנייד של RevoLink, לעבור אל \"הגדרות\" וללחוץ על \"סנכרון מהרחבה לדפדפן\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "אם את/ה פותח/ת  את אפליקציית RevoMask Mobile בפעם הראשונה, פשוט בצע/י את השלבים בטלפון שלך."
+    "message": "אם את/ה פותח/ת  את אפליקציית RevoLink Mobile בפעם הראשונה, פשוט בצע/י את השלבים בטלפון שלך."
   },
   "syncWithMobileScanThisCode": {
-    "message": "יש לסרוק קוד QR זה באמצעות אפליקציית RevoMask לטלפון נייד"
+    "message": "יש לסרוק קוד QR זה באמצעות אפליקציית RevoLink לטלפון נייד"
   },
   "syncWithMobileTitle": {
     "message": "סנכרן עם הנייד"
@@ -1019,7 +1019,7 @@
     "message": "ניסיון חוזר"
   },
   "typePassword": {
-    "message": "נא להקליד את סיסמת RevoMask שלך"
+    "message": "נא להקליד את סיסמת RevoLink שלך"
   },
   "unapproved": {
     "message": "לא אושר"
@@ -1070,7 +1070,7 @@
     "message": "בקר/י באתר שלנו"
   },
   "welcome": {
-    "message": "ברוכים הבאים ל- RevoMask"
+    "message": "ברוכים הבאים ל- RevoLink"
   },
   "welcomeBack": {
     "message": "ברוך שובך!"

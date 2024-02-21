@@ -134,7 +134,7 @@ chrome.runtime.onMessage.addListener(() => {
  */
 chrome.scripting.registerContentScripts([
   {
-    id: 'qnekt-inpage',
+    id: 'revolink-inpage',
     matches: ['file://*/*', 'http://*/*', 'https://*/*'],
     js: ['inpage.js'],
     runAt: 'document_start',

@@ -33,7 +33,7 @@
     "message": "log aktiviti"
   },
   "addAcquiredTokens": {
-    "message": "Tambah token yang anda peroleh menggunakan RevoMask"
+    "message": "Tambah token yang anda peroleh menggunakan RevoLink"
   },
   "addAlias": {
     "message": "Tambah alias"
@@ -61,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Pemasa Logout Automatik (minit)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Tetapkan masa melahu dalam minit sebelum RevoMask log keluar secara automatik"
+    "message": "Tetapkan masa melahu dalam minit sebelum RevoLink log keluar secara automatik"
   },
   "average": {
     "message": "Purata"
@@ -109,7 +109,7 @@
     "message": "Kembali kepada Semua"
   },
   "backupApprovalInfo": {
-    "message": "Kod rahsia ini diperlukan untuk memulihkan dompet anda sekiranya anda kehilangan peranti anda, terlupa kata laluan anda, perlu memasang semua RevoMask, atau mahu mengakses dompet anda menggunakan peranti lain."
+    "message": "Kod rahsia ini diperlukan untuk memulihkan dompet anda sekiranya anda kehilangan peranti anda, terlupa kata laluan anda, perlu memasang semua RevoLink, atau mahu mengakses dompet anda menggunakan peranti lain."
   },
   "backupApprovalNotice": {
     "message": "Sandarkan kod Pemulihan Rahsia anda untuk memastikan dompet dan dana anda sentiasa selamat."
@@ -140,7 +140,7 @@
     "message": "Beli $1 dengan Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre membolehkan anda menggunakan kad kredit untuk mendeposit $1 secara terus ke dalam akaun RevoMask anda."
+    "message": "Wyre membolehkan anda menggunakan kad kredit untuk mendeposit $1 secara terus ke dalam akaun RevoLink anda."
   },
   "bytes": {
     "message": "Bait"
@@ -158,7 +158,7 @@
     "message": "ID Rantaian"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Anda perlu menggunakan RevoMask di Google Chrome untuk menyambung kepada Dompet Perkakasan anda."
+    "message": "Anda perlu menggunakan RevoLink di Google Chrome untuk menyambung kepada Dompet Perkakasan anda."
   },
   "clickToRevealSeed": {
     "message": "Klik di sini untuk mendedahkan perkataan rahsia"
@@ -314,13 +314,13 @@
     "message": "Jangan sesekali kongsi frasa ini dengan sesiapa."
   },
   "endOfFlowMessage5": {
-    "message": "Berhati-hati dengan pemancingan data! RevoMask tidak akan sesekali meminta frasa benih anda secara tiba-tiba."
+    "message": "Berhati-hati dengan pemancingan data! RevoLink tidak akan sesekali meminta frasa benih anda secara tiba-tiba."
   },
   "endOfFlowMessage6": {
     "message": "Jika anda perlu membuat sandaran ungkapan benih anda sekali lagi, anda boleh lakukannya melalui Tetapan -> Keselamatan."
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask tidak dapat memulihkan ungkapan benih anda. Ketahui lebih lanjut."
+    "message": "RevoLink tidak dapat memulihkan ungkapan benih anda. Ketahui lebih lanjut."
   },
   "endOfFlowMessage9": {
     "message": "Ketahui lebih lanjut."
@@ -421,7 +421,7 @@
     "message": "Sambungkan dompet perkakasan"
   },
   "hardwareWalletsMsg": {
-    "message": "Pilih dompet perkakasan yang anda ingin gunakan dengan RevoMask"
+    "message": "Pilih dompet perkakasan yang anda ingin gunakan dengan RevoLink"
   },
   "here": {
     "message": "di sini",
@@ -443,7 +443,7 @@
     "message": "Import Akaun"
   },
   "importAccountMsg": {
-    "message": "Akaun yang diimport tidak akan dikaitkan dengan frasa benih akaun RevoMask asal yang anda cipta. Ketahui lebih lanjut tentang akaun import"
+    "message": "Akaun yang diimport tidak akan dikaitkan dengan frasa benih akaun RevoLink asal yang anda cipta. Ketahui lebih lanjut tentang akaun import"
   },
   "importAccountSeedPhrase": {
     "message": "Import Akaun dengan Frasa Benih"
@@ -541,7 +541,7 @@
     "message": "Menyambungkan anda kepada REVO dan Web Ternyahpusat."
   },
   "metamaskVersion": {
-    "message": "Versi RevoMask"
+    "message": "Versi RevoLink"
   },
   "mustSelectOne": {
     "message": "Mesti memilih sekurang-kurangnya 1 token."
@@ -584,8 +584,8 @@
   "newPassword": {
     "message": "Kata Laluan Baru (min 8 aks)"
   },
-  "newToRevoMask": {
-    "message": "Baru mengenali RevoMask?"
+  "newToRevoLink": {
+    "message": "Baru mengenali RevoLink?"
   },
   "newTotal": {
     "message": "Jumlah Keseluruhan Baru"
@@ -636,7 +636,7 @@
     "message": "Sertai MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Sertai MetaMetrics untuk membantu kami menambah baik RevoMask"
+    "message": "Sertai MetaMetrics untuk membantu kami menambah baik RevoLink"
   },
   "password": {
     "message": "Kata laluan"
@@ -905,16 +905,16 @@
     "message": "Pastikan tiada orang lain melihat skrin anda ketika anda mengimbas kod ini"
   },
   "syncWithMobileComplete": {
-    "message": "Data anda berjaya disegerakkan. Nikmati aplikasi mudah alih RevoMask!"
+    "message": "Data anda berjaya disegerakkan. Nikmati aplikasi mudah alih RevoLink!"
   },
   "syncWithMobileDesc": {
-    "message": "Anda boleh menyegerakkan akaun dan maklumat anda dengan peranti mudah alih anda. Buka ap mudah alih RevoMask, pergi ke \"Tetapan\" dan ketik \"Segerakkan daripada Sambungan Pelayar\""
+    "message": "Anda boleh menyegerakkan akaun dan maklumat anda dengan peranti mudah alih anda. Buka ap mudah alih RevoLink, pergi ke \"Tetapan\" dan ketik \"Segerakkan daripada Sambungan Pelayar\""
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Jika ini kali pertama anda membuka aplikasi mudah alih RevoMask, anda cuma perlu ikuti langkah-langkah di telefon anda."
+    "message": "Jika ini kali pertama anda membuka aplikasi mudah alih RevoLink, anda cuma perlu ikuti langkah-langkah di telefon anda."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Imbas kod ini dengan aplikasi mudah alih RevoMask anda"
+    "message": "Imbas kod ini dengan aplikasi mudah alih RevoLink anda"
   },
   "syncWithMobileTitle": {
     "message": "Segerakkan dengan mudah alih"
@@ -1002,7 +1002,7 @@
     "message": "Cuba lagi"
   },
   "typePassword": {
-    "message": "Taip kata laluan RevoMask anda"
+    "message": "Taip kata laluan RevoLink anda"
   },
   "unapproved": {
     "message": "Belum Diluluskan"
@@ -1053,7 +1053,7 @@
     "message": "Kunjungi laman web kami"
   },
   "welcome": {
-    "message": "Selamat datang ke RevoMask"
+    "message": "Selamat datang ke RevoLink"
   },
   "welcomeBack": {
     "message": "Selamat Kembali!"

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { getValueFromWeiHex } from '../../../../../helpers/utils/conversions.util';
-import { REVO } from '../../../../../helpers/constants/common';
+import { RVO } from '../../../../../helpers/constants/common';
 
 export default class SendRowErrorMessage extends Component {
   static propTypes = {
@@ -19,8 +19,8 @@ export default class SendRowErrorMessage extends Component {
     const { revoBalance: hexValue } = props;
     const decimalValueString = getValueFromWeiHex({
       value: hexValue,
-      fromCurrency: REVO,
-      toCurrency: REVO,
+      fromCurrency: RVO,
+      toCurrency: RVO,
       numberOfDecimals: 6,
     });
 
@@ -42,7 +42,7 @@ export default class SendRowErrorMessage extends Component {
         {revoBalance !== null && inErrorRevo
           ? `${this.context.t(errors.revoBalances)} ${this.getDecimalValue(
               this.props,
-            )} ${REVO}`
+            )} ${RVO}`
           : ''}
       </div>
     ) : null;

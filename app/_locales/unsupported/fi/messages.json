@@ -33,7 +33,7 @@
     "message": "toimintaloki"
   },
   "addAcquiredTokens": {
-    "message": "Lisää RevoMaskia käyttämällä hankkimasi tietueet"
+    "message": "Lisää RevoLinkia käyttämällä hankkimasi tietueet"
   },
   "addAlias": {
     "message": "Lisää alias"
@@ -61,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "RevoMask",
+    "message": "RevoLink",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "RevoMask Beta",
+    "message": "RevoLink Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "RevoMask Flask",
+    "message": "RevoLink Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +97,7 @@
     "message": "Automaattisen uloskirjautumisen ajastin (minuuttia)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Määritä, montako minuuttia RevoMask on ollut joutilaana ennen kuin sinut kirjataan automaattisesti ulos"
+    "message": "Määritä, montako minuuttia RevoLink on ollut joutilaana ennen kuin sinut kirjataan automaattisesti ulos"
   },
   "average": {
     "message": "Keskiverto"
@@ -109,7 +109,7 @@
     "message": "Takaisin kaikkiin"
   },
   "backupApprovalInfo": {
-    "message": "Tämä salainen koodi vaaditaan kukkarosi palauttamiseen siinä tapauksessa, että kadotat laitteesi, unohdat salasanasi, joudut asentamaan RevoMaskin uudestaan tai haluat käyttää lompakkoasi jollakin toisella laitteella."
+    "message": "Tämä salainen koodi vaaditaan kukkarosi palauttamiseen siinä tapauksessa, että kadotat laitteesi, unohdat salasanasi, joudut asentamaan RevoLinkin uudestaan tai haluat käyttää lompakkoasi jollakin toisella laitteella."
   },
   "backupApprovalNotice": {
     "message": "Varmuuskopioi salainen palautuskoodisi pitääksesi kukkarosi ja varasi turvassa."
@@ -140,7 +140,7 @@
     "message": "Osta $1 :ta Wyrella"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre antaa sinun käyttää luottokorttia, jotta voit tallettaa $1 :ta suoraan RevoMask-tilillesi."
+    "message": "Wyre antaa sinun käyttää luottokorttia, jotta voit tallettaa $1 :ta suoraan RevoLink-tilillesi."
   },
   "bytes": {
     "message": "Tavua"
@@ -158,7 +158,7 @@
     "message": "Ketjun tunnus"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Sinun tarvitsee käyttää RevoMaskia Google Chromessa voidaksesi yhdistää laitteistokukkaroosi."
+    "message": "Sinun tarvitsee käyttää RevoLinkia Google Chromessa voidaksesi yhdistää laitteistokukkaroosi."
   },
   "clickToRevealSeed": {
     "message": "Paljasta salaiset sanat napsauttamalla tästä"
@@ -317,13 +317,13 @@
     "message": "Älä koskaan luovuta lausetta kenellekään."
   },
   "endOfFlowMessage5": {
-    "message": "Varo tietojenkalastelua! RevoMask ei koskaan pyydä spontaanisti siemenlausettasi."
+    "message": "Varo tietojenkalastelua! RevoLink ei koskaan pyydä spontaanisti siemenlausettasi."
   },
   "endOfFlowMessage6": {
     "message": "Jos tarvitse uuden varmuuskopion juurilauseestasi, niin se löytyy osiosta Asetukset -> Turvallisuus."
   },
   "endOfFlowMessage8": {
-    "message": "RevoMask ei pysty palauttamaan salaustekstiäsi. Lue lisää."
+    "message": "RevoLink ei pysty palauttamaan salaustekstiäsi. Lue lisää."
   },
   "endOfFlowMessage9": {
     "message": "Lue lisää."
@@ -428,7 +428,7 @@
     "message": "Yhdistä kiinteän laitteiston lompakko"
   },
   "hardwareWalletsMsg": {
-    "message": "Valitse laitteistokukkaro, jota haluaisit käyttää RevoMaskilla"
+    "message": "Valitse laitteistokukkaro, jota haluaisit käyttää RevoLinkilla"
   },
   "here": {
     "message": "tässä",
@@ -454,7 +454,7 @@
     "message": "Tuo tili"
   },
   "importAccountMsg": {
-    "message": "Tuotuja tilejä ei liitetä alkuperäisen RevoMask-tilisi siemenlauseeseen. Lue lisää tuoduista tileistä"
+    "message": "Tuotuja tilejä ei liitetä alkuperäisen RevoLink-tilisi siemenlauseeseen. Lue lisää tuoduista tileistä"
   },
   "importAccountSeedPhrase": {
     "message": "Tuo tili siemenlauseella"
@@ -558,7 +558,7 @@
     "message": "Sinua yhdistetään REVOiin ja hajautettuun verkkoon."
   },
   "metamaskVersion": {
-    "message": "RevoMask-versio"
+    "message": "RevoLink-versio"
   },
   "mustSelectOne": {
     "message": "Valittava vähintään 1 poletti."
@@ -601,8 +601,8 @@
   "newPassword": {
     "message": "Uusi salasana (väh. 8 merkkiä)"
   },
-  "newToRevoMask": {
-    "message": "Onko RevoMask ennestään outo?"
+  "newToRevoLink": {
+    "message": "Onko RevoLink ennestään outo?"
   },
   "newTotal": {
     "message": "Uusi kokonaissumma"
@@ -653,7 +653,7 @@
     "message": "Osallistu MetaMetricsiin"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Osallistu MetaMetricsiin auttaaksesi meitä tekemään RevoMaskista paremman"
+    "message": "Osallistu MetaMetricsiin auttaaksesi meitä tekemään RevoLinkista paremman"
   },
   "password": {
     "message": "Salasana"
@@ -922,16 +922,16 @@
     "message": "Varmista, ettei kukaan muu katsele näyttöäsi, kun skannaat koodin"
   },
   "syncWithMobileComplete": {
-    "message": "Tietojesi synkronoiminen onnistui. Nauti RevoMask-mobiilisovelluksesta!"
+    "message": "Tietojesi synkronoiminen onnistui. Nauti RevoLink-mobiilisovelluksesta!"
   },
   "syncWithMobileDesc": {
-    "message": "Voit synkronoida tilisi ja tietosi mobiililaitteidesi kesken. Avaa RevoMaskin mobiilisovellus, siirry \"Asetukset\"-osioon ja napauta \"Synkronoi selainlaajennuksesta\" -vaihtoehtoa"
+    "message": "Voit synkronoida tilisi ja tietosi mobiililaitteidesi kesken. Avaa RevoLinkin mobiilisovellus, siirry \"Asetukset\"-osioon ja napauta \"Synkronoi selainlaajennuksesta\" -vaihtoehtoa"
   },
   "syncWithMobileDescNewUsers": {
-    "message": "Jos avaat RevoMaskin mobiilisovelluksen vasta ensimmäistä kertaa, noudata vain puhelimesi ilmoittamia vaiheita."
+    "message": "Jos avaat RevoLinkin mobiilisovelluksen vasta ensimmäistä kertaa, noudata vain puhelimesi ilmoittamia vaiheita."
   },
   "syncWithMobileScanThisCode": {
-    "message": "Lue tämä koodi RevoMask-mobiilisovelluksellasi"
+    "message": "Lue tämä koodi RevoLink-mobiilisovelluksellasi"
   },
   "syncWithMobileTitle": {
     "message": "Synkronoi mobiililaitteen kanssa"
@@ -1022,7 +1022,7 @@
     "message": "Yritä uudelleen"
   },
   "typePassword": {
-    "message": "Kirjoita RevoMask-salasanasi"
+    "message": "Kirjoita RevoLink-salasanasi"
   },
   "unapproved": {
     "message": "Ei hyväksytty"
@@ -1073,7 +1073,7 @@
     "message": "Vieraile verkkosivustollamme"
   },
   "welcome": {
-    "message": "Tervetuloa RevoMaskiin"
+    "message": "Tervetuloa RevoLinkiin"
   },
   "welcomeBack": {
     "message": "Tervetuloa takaisin!"
