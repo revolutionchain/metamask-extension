@@ -208,7 +208,7 @@
     "punycode": "^2.1.1",
     "qrcode-generator": "1.4.1",
     "qrcode.react": "^1.0.1",
-    "revo-ethers-wrapper": "github:revolutionchain/revo-ethers",
+    "revo-ethers-wrapper": "github:revolutionchain/revo-ethers#2.1.4",
     "revojs-lib": "github:revolutionchain/revojs-lib",
     "react": "^16.12.0",
     "react-dnd": "^3.0.2",
