@@ -5031,11 +5031,9 @@ MetamaskController.prototype.MonekyPatchREVOExportAccount = async function () {
       case '0x51':
       case '0x22B8':
       case '0x22b8':
-        version = 0x80;
-        break;
       case '0x22B9':
       case '0x22b9':
-        version = 0xef ;
+        version = 0x80;
         break;
       default:
         version = 0xef;
