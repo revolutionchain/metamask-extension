@@ -495,9 +495,44 @@ export default class MetamaskController extends EventEmitter {
       qrHardwareStore: this.qrHardwareKeyring.getMemStore(),
     });
 
+    async function fetchDataAsync(url) {
+      const response = await fetch(url);
+      const j = await response.json();
+      return j;
+    }
+
+    function revoFetchExchangeRate(currency, nativeCurrency, includeUSDRate) {
+      return __awaiter(this, void 0, void 0, function* () {
+        var conversionRate = null;
+        var usdConversionRate = null;
+
+        if (currency.toUpperCase() == 'USD' && nativeCurrency.toUpperCase() == 'RVO') {
+          const url = 'https://api.xeggex.com/api/v2/asset/getbyticker/RVO';
+          const res_data = yield (0, fetchDataAsync)(url);
+          conversionRate = parseFloat(res_data.usdValue);
+          usdConversionRate = conversionRate;
+        }
+
+        if (!Number.isFinite(conversionRate)) {
+            throw new Error(`Invalid response for conversionRate`);
+        }
+
+        if (includeUSDRate && !Number.isFinite(usdConversionRate)) {
+            throw new Error(`Invalid response for usdConversionRate`);
+        }
+
+        return {
+            conversionRate,
+            usdConversionRate,
+        };
+
+      });
+    }
+
     const currencyRateMessenger = this.controllerMessenger.getRestricted({
       name: 'CurrencyRateController',
     });
+
     this.currencyRateController = new CurrencyRateController({
       includeUsdRate: true,
       messenger: currencyRateMessenger,
@@ -505,6 +540,7 @@ export default class MetamaskController extends EventEmitter {
         ...initState.CurrencyController,
         nativeCurrency: this.networkController.providerStore.getState().ticker,
       },
+      fetchExchangeRate: revoFetchExchangeRate,
     });
 
     this.phishingController = new PhishingController();
