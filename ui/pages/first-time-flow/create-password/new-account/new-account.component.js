@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../../../components/ui/button';
 import {
   INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
+  INITIALIZE_SEED_PHRASE_ROUTE,
   INITIALIZE_SELECT_ACTION_ROUTE,
 } from '../../../../helpers/constants/routes';
 import TextField from '../../../../components/ui/text-field';
@@ -105,7 +106,8 @@ export default class NewAccount extends PureComponent {
         event: EVENT_NAMES.ACCOUNT_PASSWORD_CREATED,
         properties: {},
       });
-      history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
+      //history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
+      history.push(INITIALIZE_SEED_PHRASE_ROUTE);
     } catch (error) {
       this.setState({ passwordError: error.message });
     }
